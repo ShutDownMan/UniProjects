@@ -4,7 +4,7 @@
 #include <time.h>
 
 #define MAXSTR	128
-#define MAXPTR 	64
+#define MAXPTR 	1024
 
 typedef struct Item {
 	int id;
@@ -44,8 +44,8 @@ void loadDate(FILE* f, struct tm* date);
 void loadWaiter(FILE* f, OrderData* order, Waiter** waiters, int* quantWaiters);
 void loadConsumed(FILE* f, OrderData* order, Item** items, int* quantItems);
 
-Waiter* findWaiter(char waiterName[], Waiter** waiters, int* quantWaiters);
-Item* findItem(char itemName[], Item** items, int* quantItems);
+Waiter* findWaiter(char waiterName[], Waiter** waiters, int quantWaiters);
+Item* findItem(char itemName[], Item** items, int quantItems);
 
 int debugRelat(char fileName[], OrderData** orders, int quantOrders);
 
@@ -83,14 +83,14 @@ int loadData(char fileName[], OrderData** orders, int* quantOrders, Waiter** wai
 
 	loadDate(f, &date);
 
-	for (i = 0; i < 5; ++i) {
+	for (i = 0; !feof(f); ++i) {
 		orders[i] = malloc(sizeof(OrderData));
 
 		loadWaiter(f, orders[i], waiters, quantWaiters);
 
 		fscanf(f, "%*s %d%*c", &orders[i]->tableID);
 
-		printf("%d\n", orders[i]->tableID);
+		printf("table => %d\n", orders[i]->tableID);
 
 		fscanf(f, "%d%*c%d%*c", &orders[i]->startTimeStamp.tm_hour, &orders[i]->startTimeStamp.tm_min);
 		fscanf(f, "%d%*c%d%*c", &orders[i]->endTimeStamp.tm_hour, &orders[i]->endTimeStamp.tm_min);
@@ -119,35 +119,35 @@ void loadConsumed(FILE* f, OrderData* order, Item** items, int* quantItems) {
 	for (i = 0; strcmp(currItemName, "<fim>"); ++i) {
 		fscanf(f, "%d %f%*c", &currItemQuant, &currItemPrice);
 
-		printf("%s\n", currItemName);
-
 		order->consumed[i] = malloc(sizeof(Order));
 
-		if(order->consumed[i]->orderedItem = findItem(currItemName, items, quantItems)) {
-			(*quantItems)++;
-			return;
-		}
-
-		order->consumed[i]->orderedItem = malloc(sizeof(Item));
-
-		order->consumed[i]->orderedItem->id = *quantItems;
-		order->consumed[i]->orderedItem->name = strcpy(malloc(sizeof(char) * strlen(currItemName)), currItemName);
-		order->consumed[i]->orderedItem->price = currItemPrice;
+		printf("[%d] => %s\n", i, currItemName);
 
 		order->consumed[i]->quant = currItemQuant;
 		order->quantConsumed++;
 
-		items[*quantItems] = order->consumed[i]->orderedItem;
-		(*quantItems)++;
+		if(!(order->consumed[i]->orderedItem = findItem(currItemName, items, *quantItems))) {
+
+			order->consumed[i]->orderedItem = malloc(sizeof(Item));
+
+			order->consumed[i]->orderedItem->id = *quantItems;
+			order->consumed[i]->orderedItem->name = strcpy(malloc(sizeof(char) * strlen(currItemName)), currItemName);
+			order->consumed[i]->orderedItem->price = currItemPrice;
+
+			items[*quantItems] = order->consumed[i]->orderedItem;
+			(*quantItems)++;
+		}
 
 		fscanf(f, "%s%*c", currItemName);
 	}
+	realloc(order->consumed, sizeof(Order*) * (order->quantConsumed));
+	printf("------\n");
 }
 
-Item* findItem(char itemName[], Item** items, int* quantItems) {
+Item* findItem(char itemName[], Item** items, int quantItems) {
 	int i;
 
-	for (i = 0; i < *quantItems; ++i) {
+	for (i = 0; i < quantItems; ++i) {
 		if(!strcmp(items[i]->name, itemName)) return items[i];
 	}
 
@@ -159,9 +159,9 @@ void loadWaiter(FILE* f, OrderData* order, Waiter** waiters, int* quantWaiters) 
 
 	fscanf(f, "%[^\n]%*c", waiterName);
 
-	printf("%s / %d\n", waiterName, *quantWaiters);
+	printf("name = %s / quant = %d\n", waiterName, *quantWaiters);
 
-	if(order->mainWaiter = findWaiter(waiterName, waiters, quantWaiters)) return;
+	if(order->mainWaiter = findWaiter(waiterName, waiters, *quantWaiters)) return;
 
 	order->mainWaiter = malloc(sizeof(Waiter));
 
@@ -170,12 +170,14 @@ void loadWaiter(FILE* f, OrderData* order, Waiter** waiters, int* quantWaiters) 
 
 	waiters[*quantWaiters] = order->mainWaiter;
 	(*quantWaiters)++;
+
+	printf("waiters = %d\n", *quantWaiters);
 }
 
-Waiter* findWaiter(char waiterName[], Waiter** waiters, int* quantWaiters) {
+Waiter* findWaiter(char waiterName[], Waiter** waiters, int quantWaiters) {
 	int i;
 
-	for (i = 0; i < *quantWaiters; ++i) {
+	for (i = 0; i < quantWaiters; ++i) {
 		if(!strcmp(waiters[i]->name, waiterName)) return waiters[i];
 	}
 
