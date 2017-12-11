@@ -21,6 +21,7 @@ typedef struct Order {
 typedef struct Waiter {
 	int id;
 	char* name;
+	float vendaTotal;
 } Waiter;
 
 typedef struct OrderData {
