@@ -29,10 +29,10 @@ typedef struct OrderData {
 	struct tm endTimeStamp;
 
 	Waiter* mainWaiter;
-	
+
 	int tableID;
-	int peopleNum;
-	
+	int quantPeople;
+
 	Order** consumed;
 	int quantConsumed;
 
@@ -40,7 +40,7 @@ typedef struct OrderData {
 
 int loadData(char fileName[], OrderData** orders, int* quantOrders, Waiter** waiters, int* quantWaiters, Item** items, int* quantItems);
 
-void loadDate(FILE* f, OrderData* order);
+void loadDate(FILE* f, struct tm* date);
 void loadWaiter(FILE* f, OrderData* order, Waiter** waiters, int* quantWaiters);
 void loadConsumed(FILE* f, OrderData* order, Item** items, int* quantItems);
 
@@ -75,24 +75,27 @@ int main(int argc, char const *argv[]) {
 
 int loadData(char fileName[], OrderData** orders, int* quantOrders, Waiter** waiters, int* quantWaiters, Item** items, int* quantItems) {
 	FILE* f;
+	struct tm date;
 	int i;
 
 	*quantOrders = *quantWaiters = *quantItems = 0;
 	if(!(f = fopen(fileName, "r"))) return 1;
 
-	for (i = 0; i < 1; ++i) {
-		orders[i] = malloc(sizeof(OrderData));
+	loadDate(f, &date);
 
-		loadDate(f, orders[i]);
+	for (i = 0; i < 5; ++i) {
+		orders[i] = malloc(sizeof(OrderData));
 
 		loadWaiter(f, orders[i], waiters, quantWaiters);
 
 		fscanf(f, "%*s %d%*c", &orders[i]->tableID);
 
-		fscanf(f, "%d%*c%d ", &orders[i]->startTimeStamp.tm_hour, &orders[i]->startTimeStamp.tm_min);
+		printf("%d\n", orders[i]->tableID);
+
+		fscanf(f, "%d%*c%d%*c", &orders[i]->startTimeStamp.tm_hour, &orders[i]->startTimeStamp.tm_min);
 		fscanf(f, "%d%*c%d%*c", &orders[i]->endTimeStamp.tm_hour, &orders[i]->endTimeStamp.tm_min);
 
-		fscanf(f, "%d%*c", &orders[i]->peopleNum);
+		fscanf(f, "%d%*c", &orders[i]->quantPeople);
 
 		loadConsumed(f, orders[i], items, quantItems);
 
@@ -112,9 +115,11 @@ void loadConsumed(FILE* f, OrderData* order, Item** items, int* quantItems) {
 
 	order->quantConsumed = 0;
 
-	fscanf(f, "%s", currItemName);
+	fscanf(f, "%s%*c", currItemName);
 	for (i = 0; strcmp(currItemName, "<fim>"); ++i) {
 		fscanf(f, "%d %f%*c", &currItemQuant, &currItemPrice);
+
+		printf("%s\n", currItemName);
 
 		order->consumed[i] = malloc(sizeof(Order));
 
@@ -135,9 +140,8 @@ void loadConsumed(FILE* f, OrderData* order, Item** items, int* quantItems) {
 		items[*quantItems] = order->consumed[i]->orderedItem;
 		(*quantItems)++;
 
-		fscanf(f, "%s", currItemName);
+		fscanf(f, "%s%*c", currItemName);
 	}
-
 }
 
 Item* findItem(char itemName[], Item** items, int* quantItems) {
@@ -155,6 +159,8 @@ void loadWaiter(FILE* f, OrderData* order, Waiter** waiters, int* quantWaiters) 
 
 	fscanf(f, "%[^\n]%*c", waiterName);
 
+	printf("%s / %d\n", waiterName, *quantWaiters);
+
 	if(order->mainWaiter = findWaiter(waiterName, waiters, quantWaiters)) return;
 
 	order->mainWaiter = malloc(sizeof(Waiter));
@@ -162,6 +168,7 @@ void loadWaiter(FILE* f, OrderData* order, Waiter** waiters, int* quantWaiters) 
 	order->mainWaiter->id = *quantWaiters;
 	order->mainWaiter->name = strcpy(malloc(sizeof(char) * strlen(waiterName)), waiterName);
 
+	waiters[*quantWaiters] = order->mainWaiter;
 	(*quantWaiters)++;
 }
 
@@ -175,12 +182,11 @@ Waiter* findWaiter(char waiterName[], Waiter** waiters, int* quantWaiters) {
 	return 0;
 }
 
-void loadDate(FILE* f, OrderData* order) {
-	fscanf(f, "%d/%d/%d%*c", &(order->startTimeStamp.tm_mday), &(order->startTimeStamp.tm_mon), &(order->startTimeStamp.tm_year));
 
-	order->endTimeStamp.tm_mday = order->startTimeStamp.tm_mday;
-	order->endTimeStamp.tm_mon = order->startTimeStamp.tm_mon;
-	order->endTimeStamp.tm_year = order->startTimeStamp.tm_year;
+void loadDate(FILE* f, struct tm* date) {
+	fscanf(f, "%d/%d/%d%*c", &(date->tm_mday), &(date->tm_mon), &(date->tm_year));
+
+	fprintf(stderr, "%d/%d/%d\n", date->tm_mday, date->tm_mon, date->tm_year);
 }
 
 // PRINT DATA
@@ -191,12 +197,13 @@ int debugRelat(char fileName[], OrderData** orders, int quantOrders) {
 
 	if(!(f = fopen(fileName, "w"))) return 1;
 
-	fprintf(stdout, "quantOrders = %d\n", quantOrders);
+	fprintf(stderr, "quantOrders = %d\n", quantOrders);
 
 	for (i = 0; i < quantOrders; ++i) {
-		fprintf(stderr, "%s\n", orders[i]->mainWaiter->name);
-		//fprintf(stderr, "%d\n", orders[i]->tableID);
-		//fprintf(f, "%-30s\n", orders[i]->mainWaiter->name);
+		//fprintf(stderr, "%d/%d/%d\n", orders[i]->startTimeStamp.tm_mday, orders[i]->startTimeStamp.tm_mon, orders[i]->startTimeStamp.tm_year);
+		//fprintf(stderr, "%s\n", orders[i]->mainWaiter->name);
+		//fprintf(stderr, "MESA %d\n", orders[i]->tableID);
+		//fprintf(stderr, "%d\n", orders[i]->quantPeople);
 	}
 
 
