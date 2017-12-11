@@ -1,0 +1,49 @@
+								Simulação com várias médias
+
+												 N1   N2   N3   N4   M1   M2   M3  
+01 - Acácio Zeferino Neto						 8.9  4.7  9.1  6.1  7.3  7.0  6.7 
+02 - Agaton Augusto Pereira						 6.2  6.4  4.5  9.4  6.7  7.0  5.9 
+03 - Alan Bartoski								 6.5  6.4  8.4  9.8  8.0  8.4  6.9 
+04 - Ali Hussein Tachtach						 8.4  7.5  5.1  5.8  6.5  6.2  6.2 
+05 - Allan Richard Reizner Nunes				 8.7  7.2  8.1  8.2  8.1  8.0  7.3 
+06 - Bruna Pletikoszits Andrade Parcianello		 8.7  8.1  6.5  9.8  8.3  8.4  7.5 
+07 - Bruno José Assis							 7.1  9.1  8.8  7.4  8.1  8.1  7.2 
+08 - Camila Alessandra Broetto					 5.5  6.7  8.6  9.3  7.8  8.2  6.6 
+09 - Carlos Alexandre Ferreira da Silva			 5.6  9.6  6.2  7.1  7.0  7.2  6.3 
+10 - Christian Felipe Schneider					 9.8  5.2  8.3  8.9  8.2  8.1  7.4 
+11 - Claudia Andrea Kostycz Silva				 6.5  7.7  9.3  9.4  8.4  8.7  7.2 
+12 - Dihordy Ross Lauschner						 6.2  6.0  8.1  7.3  7.1  7.2  6.1 
+13 - Diogo Teixeira Vercino Silva				 6.5  9.6  5.7  6.6  6.9  6.9  6.3 
+14 - Evandro Brocco Maria						 8.3  9.8  7.1  6.8  7.8  7.6  7.2 
+15 - Evandro José dos Santos					 7.1  6.9  8.7  5.8  7.2  7.0  6.4 
+16 - Everton Golle								 8.0  7.2  6.4  4.7  6.4  6.0  6.1 
+17 - Fauzi Marraui								 7.0  4.5  6.4  5.8  6.0  5.8  5.4 
+18 - Felipe Augusto Saito Leseux				 7.4  4.8  8.4  7.2  7.1  7.1  6.3 
+19 - Fernando Fabio Rodriguez Aruquipa			 8.6  5.2  5.9  4.7  5.9  5.6  5.7 
+20 - Guilherme Cordeiro dos Santos				 4.9  8.1  9.6  8.0  7.9  8.2  6.6 
+21 - Guilherme Ribeiro Pereira					 5.1  4.9  9.4  8.8  7.5  7.8  6.2 
+22 - Gustavo André Barbado Farias				 6.1  6.1  7.0  7.5  6.8  6.9  6.0 
+23 - Henrique Benitez de Freitas				 4.5  6.8  9.8  6.6  7.2  7.4  6.0 
+24 - Hugo Vinícius Kanova Cardoso				 6.8  4.6  7.9  7.4  6.9  6.9  6.0 
+25 - Jacqueline Tatiani Pereira					 5.9  8.4  4.8  4.9  5.8  5.7  5.4 
+26 - Jose Alberto Pereira dos Santos			 5.2  5.4  5.4  8.4  6.3  6.6  5.4 
+27 - Josiane Gonçalves da Silva				 5.0  7.2  8.8  6.5  7.0  7.2  6.0 
+28 - Julio Cesar Irala Mena						 4.7  9.6  9.9  7.9  8.2  8.5  6.9 
+29 - Liciane Otremba							 8.2  6.5  5.1  4.6  5.9  5.5  5.7 
+30 - Luan Felipe Spohr							 9.7  4.9  8.2  7.9  7.8  7.6  7.1 
+31 - Lucas Meira								 5.7  9.4  8.6  5.8  7.3  7.4  6.5 
+32 - Luciano Martins Marques					 5.3  9.0  4.9  8.5  6.9  7.2  6.1 
+33 - Marcelo Felipe Chan Yu						 8.7  5.9  7.5  9.0  7.9  7.9  7.1 
+34 - Marco Aurélio Garcia André				 9.2  9.9  4.7  6.3  7.1  6.8  6.9 
+35 - Matheus Ampessam Vivan						 9.1  8.9  9.3  6.9  8.5  8.2  7.8 
+36 - Micheli Franceis Faoro						 5.3  5.5  6.9  7.6  6.5  6.7  5.6 
+37 - Pablo Monteiro Carneiro					 5.2  5.4  7.3  7.8  6.7  6.9  5.7 
+38 - Pablo Shimoe Paganoto						 4.5  4.5  7.1  9.6  6.8  7.3  5.6 
+39 - Patricia Poloni							 9.6  6.3  9.5  7.5  8.3  8.1  7.5 
+40 - Paulo Henrique Galassi						 5.6  7.1  6.5  7.0  6.6  6.7  5.8 
+41 - Raul Almeida								 8.7  7.5  7.4  8.1  7.9  7.8  7.2 
+42 - Renata Bortolato Ferreira					 6.2  5.7  9.9  4.7  6.8  6.6  5.9 
+43 - Ricardo Hablich do Prado					 9.6  7.1  5.4 10.0  8.0  8.0  7.4 
+44 - Robson Toledo Chiodelli					 6.1  8.7  8.9  6.9  7.7  7.8  6.7 
+45 - Thaís Caroline Gazola						 7.1  4.7  9.4  9.9  8.1  8.4  6.9 
+46 - William de Oliveira Villalba				 9.1  7.2  9.4  4.8  7.5  7.1  7.0 

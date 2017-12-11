@@ -1,0 +1,154 @@
+1
+44168 Arthur Sobral Alcino da Silva
+56 56 55 56
+2
+64335 Augusto Dalponte
+3 0 0 0 1
+3
+64293 Carlos Dimitri Ramirez Ribera
+51 86 85 74
+4
+64289 Carlos Pedroso
+57 71 50 59
+5
+63016 Davi Jacob Jaroszczuk
+3 0 0 1
+6
+64365 Don Richard Schwertz
+31 10 0 0
+7
+63030 Eduardo Cembranel
+98 88 62 0
+8
+64981 Gabriel da Silva Paco
+3 5 10 6
+9
+63088 Gabriel Horst Montoanelli
+38 83 75 65
+10
+63814 Gabriel Veiga
+67 77 65 70
+11
+64993 Giovani Heineck Chiele
+0 0 0 0
+12
+63854 Giovanni Pereira Gomes
+3 16 5 8
+13
+63835 Guilherme Bachega Gomes
+100 87 55 81
+14
+64294 Guilherme Massi dos Santos
+36 31 35 34
+15
+63674 Guilherme Rodrigues Sganderla
+64 68 70 67
+16
+62865 Igor Aristides Amaral dos Santos
+5 29 15 16
+17
+63817 Isabela Pimentel Loebel
+20 28 30 26
+18
+63843 Jean Clayton Oliveira
+91 100 15 69
+19
+63025 Jedson Gabriel Ferreira de Paula
+90 100 80 90
+20
+63045 Joao Vitor Abruceze Senna
+74 40 38 21
+46795 Julia Gabriela de Oliveira
+3 0 0 1
+22
+63541 Kame Haung Zhu
+82 82 60 75
+23
+63544 Leonardo Benitez de Freitas
+33 15 0 16
+24
+64891 Leonardo Sá Pessoa
+0 0 0 0
+25
+48365 Leonardo Vinicius de Gasperin
+50 53 35 46
+26
+63832 Lucas Rodrigues da Silva
+23 10 5 13
+27
+64298 Luiz Gustavo Fracaroli
+3 3 0 2
+28
+64295 Matheus Maciel
+88 65 50 68
+29
+63847 Milan Steven Liu Gallardo
+3
+10
+4
+30
+62979 Milena Lucas dos Santos
+5
+10
+55
+23
+31
+63023 Natã Rafael Cruz de Jesus
+39
+39
+10
+29
+32
+63519 Pedro Sergio de Lima Junior
+3
+6
+10
+6
+33
+64983 Rafael de Jesus Calcena
+0
+0
+0
+0
+34
+63039 Raianny Proenca de Camargo de Oliveira
+58
+83
+50
+64
+35
+63861 Samuel Henrique Alves Ramos
+19
+3
+40
+21
+36
+64291 Valeriana Rocha de Oliveira
+36
+30
+30
+32
+37
+63691 Victor Hugo Marques Turnes
+100
+100
+100
+100
+38
+63723 Vinicius Dias de Paula Ramos
+5
+0
+0
+2
+39
+63824 Vivian Miwa Fugihara
+43
+24
+30
+32
+40
+63010 Ysyo Camassary Socorro
+54
+16
+15
+28

@@ -1,0 +1,8 @@
+#entries:0005
+INDEX STUDENT_NAME STUDENT_GROUP EXPERIENCE KARMA
+0001 "Joao                            " "Os Herois                       " 0000 1000
+0002 "Maria                           " "Os Herois                       " 0000 1000
+0003 "Pedro                           " "Blue Build                      " 0000 1000
+0004 "Fulano Ciclano                  " "Os Herois                       " 0000 1000
+0005 "Vitinho das silvas das vidas    " "Blue Build                      " 0000 1000
+
