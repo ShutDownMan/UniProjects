@@ -43,11 +43,14 @@ int loadData(char fileName[], OrderData** orders, int* quantOrders, Waiter** wai
 void loadDate(FILE* f, struct tm* date);
 void loadWaiter(FILE* f, OrderData* order, Waiter** waiters, int* quantWaiters);
 void loadConsumed(FILE* f, OrderData* order, Item** items, int* quantItems);
+void loadHour(FILE* f, OrderData* order, struct tm date);
 
 Waiter* findWaiter(char waiterName[], Waiter** waiters, int quantWaiters);
 Item* findItem(char itemName[], Item** items, int quantItems);
 
 int debugRelat(char fileName[], OrderData** orders, int quantOrders);
+
+void freeMem(OrderData** orders, Waiter** waiters, Item** items, int quantOrders, int quantWaiters, int quantItems);
 
 int main(int argc, char const *argv[]) {
 	// orders store all orders of the day
@@ -71,8 +74,13 @@ int main(int argc, char const *argv[]) {
 	waiters = realloc(waiters, sizeof(Waiter*) * (quantWaiters));
 	items = realloc(items, sizeof(Item*) * (quantItems));
 
+	printf("quantWaiters => %d\n", quantWaiters);
+	printf("quantItems => %d\n", quantItems);
+
 	// Let see if things loaded correctly
 	debugRelat("debugrelat.txt", orders, quantOrders);
+
+	freeMem(orders, waiters, items, quantOrders, quantWaiters, quantItems);
 
 	return 0;
 }
@@ -103,11 +111,8 @@ int loadData(char fileName[], OrderData** orders, int* quantOrders, Waiter** wai
 		// get table ID
 		fscanf(f, "%*s %d%*c", &orders[i]->tableID);
 
-		// printf("table => %d\n", orders[i]->tableID);
-
 		// Get hour of meal(?)
-		fscanf(f, "%d%*c%d%*c", &orders[i]->startTimeStamp.tm_hour, &orders[i]->startTimeStamp.tm_min);
-		fscanf(f, "%d%*c%d%*c", &orders[i]->endTimeStamp.tm_hour, &orders[i]->endTimeStamp.tm_min);
+		loadHour(f, orders[i], date);
 
 		// get quant of people at table
 		fscanf(f, "%d%*c", &orders[i]->quantPeople);
@@ -233,6 +238,16 @@ void loadDate(FILE* f, struct tm* date) {
 	// fprintf(stderr, "%d/%d/%d\n", date->tm_mday, date->tm_mon, date->tm_year);
 }
 
+void loadHour(FILE* f, OrderData* order, struct tm date) {
+	fscanf(f, "%d%*c%d%*c", &order->startTimeStamp.tm_hour, &order->startTimeStamp.tm_min);
+	fscanf(f, "%d%*c%d%*c", &order->endTimeStamp.tm_hour, &order->endTimeStamp.tm_min);
+
+	order->startTimeStamp.tm_mday = order->endTimeStamp.tm_mday = date.tm_mday;
+	order->startTimeStamp.tm_mon = order->endTimeStamp.tm_mon = date.tm_mon;
+	order->startTimeStamp.tm_year = order->endTimeStamp.tm_year = date.tm_year;
+
+}
+
 // PRINT DATA
 
 int debugRelat(char fileName[], OrderData** orders, int quantOrders) {
@@ -241,7 +256,7 @@ int debugRelat(char fileName[], OrderData** orders, int quantOrders) {
 
 	if(!(f = fopen(fileName, "w"))) return 1;
 
-	fprintf(stderr, "quantOrders = %d\n", quantOrders);
+	// fprintf(stderr, "quantOrders = %d\n", quantOrders);
 
 	for (i = 0; i < quantOrders; ++i) {
 		//fprintf(stderr, "%d/%d/%d\n", orders[i]->startTimeStamp.tm_mday, orders[i]->startTimeStamp.tm_mon, orders[i]->startTimeStamp.tm_year);
@@ -251,4 +266,30 @@ int debugRelat(char fileName[], OrderData** orders, int quantOrders) {
 	}
 
 
+}
+
+// HELPERS
+
+void freeMem(OrderData** orders, Waiter** waiters, Item** items, int quantOrders, int quantWaiters, int quantItems) {
+	int i, j;
+
+	for (i = 0; i < quantItems; ++i) {
+		free(items[i]->name);
+		free(items[i]);
+	}
+	for (i = 0; i < quantWaiters; ++i) {
+		free(waiters[i]->name);
+		free(waiters[i]);
+	}
+	for (i = 0; i < quantOrders; ++i) {
+		for (j = 0; j < orders[i]->quantConsumed; ++j) {
+			free(orders[i]->consumed[j]);
+		}
+		free(orders[i]->consumed);
+		free(orders[i]);
+	}
+
+	free(orders);
+	free(waiters);
+	free(items);
 }
