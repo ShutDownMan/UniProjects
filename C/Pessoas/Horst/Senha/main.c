@@ -23,11 +23,11 @@ int main(int argc, char const *argv[]){
 	_codigo **cripto;//ponteiro que aponta pro vetor de ponteiro
 	int num_senhas;
 
-	cripto = malloc(100 * sizeof(_codigo)); //aloca 100 structs qualquer
+	cripto = malloc(MAX * sizeof(_codigo*)); //aloca 100 structs qualquer
 
 	if(!load("senhas.txt", cripto, &num_senhas)){
 
-		cripto = realloc(cripto, num_senhas*sizeof(_codigo)); //realocando com o tamanho exato do vetor
+		cripto = realloc(cripto, num_senhas*sizeof(_codigo*)); //realocando com o tamanho exato do vetor
 
 		analisaSenha(cripto, num_senhas);
 
@@ -50,11 +50,11 @@ int load (char *fn, _codigo *cripto[], int* num_senhas){
 	for(i = 0; !feof(f); i ++){
 
 		cripto[i] = malloc(sizeof(_codigo));
-		cripto[i]->senha = malloc(100);
+		cripto[i]->senha = malloc(sizeof(char)*MAX);
 
-		fscanf(f, "%[^\n]", &cripto[i]->senha);
+		fscanf(f, "%[^\n]%*c", cripto[i]->senha);
 
-		cripto[i]->senha = realloc(cripto[i]->senha, strlen(cripto[i]->senha)+1);
+		cripto[i]->senha = realloc(cripto[i]->senha, sizeof(char)*strlen(cripto[i]->senha));
 
 	}
 
@@ -63,7 +63,7 @@ int load (char *fn, _codigo *cripto[], int* num_senhas){
 
 	return 0;
 }
-int analisaSenha( _codigo *cripto[], int num_senhas){
+int analisaSenha(_codigo *cripto[], int num_senhas){
 	int i;
 
 	for(i = 0; i < num_senhas; i++){
@@ -104,7 +104,6 @@ int senha (char *str){
 	if(carac_esp > 0) indice += 20;
 
 	return indice;
-
 }
 
 int relatorio (char * fn, _codigo *cripto[], int num_senhas, int tipo){
@@ -128,7 +127,7 @@ int relat(char *fn, _codigo *cripto[], int num_senhas){
 		fprintf(frelat, "SENHA\t\t\t");
 		fprintf(frelat, "INDICE\n");
 
-		fprintf(frelat, "%s", cripto[i]->senha);
+		fprintf(frelat, "%s\t\t", cripto[i]->senha);
 		fprintf(frelat, "%d\n", cripto[i]->indice);
 	}
 }
