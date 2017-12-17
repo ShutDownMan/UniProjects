@@ -1,0 +1,20 @@
+Marca: VECTRA
+Cor: VERMELHO
+Ano: 2008
+IPVA: R$: 657.50
+
+Marca: FORD
+Cor: AZUL
+Ano: 2015
+IPVA: R$: 850.00
+
+Marca: OMEGA
+Cor: CINZA
+Ano: 2001
+IPVA: R$: 217.50
+
+Marca: RUBY
+Cor: LILAS
+Ano: 2020
+IPVA: R$: 1325.00
+

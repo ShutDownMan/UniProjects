@@ -16,6 +16,7 @@ int main(void) {
 		lst = curr;
 	}
 
-
 	printf("%d\n", result);
+
+	return 0;
 }

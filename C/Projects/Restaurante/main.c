@@ -87,7 +87,7 @@ int main(int argc, char const *argv[]) {
 
 // LOAD DATA
 
-int loadData(char fileName[], OrderData** orders, int* quantOrders, Waiter** waiters, int* quantWaiters, Item** items, int* quantItems) {
+int loadData(char fileName[], OrderrderData** orders, int* quantOrders, Waiter** waiters, int* quantWaiters, Item** items, int* quantItems) {
 	FILE* f;
 	struct tm date;
 	int i;
@@ -167,8 +167,7 @@ void loadConsumed(FILE* f, OrderData* order, Item** items, int* quantItems) {
 			order->consumed[i]->orderedItem->price = currItemPrice;
 
 			// add pointer to array and update list counter
-			items[*quantItems] = order->consumed[i]->orderedItem;
-			(*quantItems)++;
+			items[(*quantItems)++] = order->consumed[i]->orderedItem;
 		}
 
 		// scan for a new item
@@ -211,10 +210,7 @@ void loadWaiter(FILE* f, OrderData* order, Waiter** waiters, int* quantWaiters) 
 	order->mainWaiter->name = strcpy(malloc(sizeof(char) * strlen(waiterName)), waiterName);
 
 	// add pointer to array and update array counter
-	waiters[*quantWaiters] = order->mainWaiter;
-	(*quantWaiters)++;
-
-	// printf("waiters = %d\n", *quantWaiters);
+	waiters[(*quantWaiters)++] = order->mainWaiter;
 }
 
 Waiter* findWaiter(char waiterName[], Waiter** waiters, int quantWaiters) {

@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
 	int n;
 
 	scanf("%d", &n);
@@ -25,7 +24,7 @@ int main(int argc, char const *argv[])
 	}
 
 	for (int i = 0; i < n; ++i)
-	{	
+	{
 		// Sum all tentativas
 		Sr += S[i]; Br += B[i]; Ar += A[i];
 		// Sum all sucedidas
