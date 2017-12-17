@@ -1,10 +1,10 @@
 SENHA			INDICE
-<Comp12>		100
+<Comp12>                100
 SENHA			INDICE
-NaumSeiMen321		80
+NaumSeiMen321           80
 SENHA			INDICE
-AiMeuCul123		80
+AiMeuCul123             80
 SENHA			INDICE
-32165498753159		40
+32165498753159          40
 SENHA			INDICE
-a*^~		40
+a*^~                    40
