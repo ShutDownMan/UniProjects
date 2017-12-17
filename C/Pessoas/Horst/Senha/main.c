@@ -35,8 +35,6 @@ int main(int argc, char const *argv[]){
 		// relatorio("indice2.txt", cripto, num_senhas, 2);
 
 		libera(cripto, num_senhas);
-		free(cripto);
-
 	}
 	return 0;
 }
@@ -82,31 +80,32 @@ int senha (char *str){
 	int dig_num = 0;
 	int carac_esp = 0;
 
-	if(strlen(str)>= 8) indice += 20;
-	for(i = 0; !str; i++){
-		if(islower(str[i])){
+	if(strlen(str) >= 8) indice += 20;
+
+	for(i = 0; str[i]; i++) {
+		if(islower(str[i])) {
 			l_minuscula ++;
-		}else
-			if(isupper(str[i])){
-				l_maiuscula ++;
-			}else
-				if(isdigit(str[i])){
-					dig_num ++;
-				}else
-					if(!isalnum(str[i])){
-						carac_esp ++;
+		} else
+			if(isupper(str[i])) {
+				l_maiuscula++;
+			} else
+				if(isdigit(str[i])) {
+					dig_num++;
+				} else
+					if(!isalnum(str[i])) {
+						carac_esp++;
 				}
 	}
 
-	if(l_minuscula > 0) indice += 20;
-	if(l_maiuscula > 0) indice += 20;
-	if(dig_num > 0) indice += 20;
-	if(carac_esp > 0) indice += 20;
+	if(l_minuscula) indice += 20;
+	if(l_maiuscula) indice += 20;
+	if(dig_num) indice += 20;
+	if(carac_esp) indice += 20;
 
 	return indice;
 }
 
-int relatorio (char * fn, _codigo *cripto[], int num_senhas, int tipo){
+int relatorio (char* fn, _codigo *cripto[], int num_senhas, int tipo){
 
 	switch(tipo){
 		case 1: relat(fn, cripto, num_senhas);
@@ -135,7 +134,10 @@ int relat(char *fn, _codigo *cripto[], int num_senhas){
 void libera (_codigo *cripto[], int num_senhas){
 	int i;
 
-	for( i = 0; i < num_senhas; i++)
+	for( i = 0; i < num_senhas; i++) {
 		free(cripto[i]->senha);
 		free(cripto[i]);
+	}
+	free(cripto);
+
 }
