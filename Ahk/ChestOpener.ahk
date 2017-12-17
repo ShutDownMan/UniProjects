@@ -1,11 +1,10 @@
 #MaxThreadsPerHotkey 3
 ^j::  ; Ctrl+J hotkey
-	
+
 	#MaxThreadsPerHotkey 1
-	if KeepProgramRunning
-	{
+	if KeepProgramRunning {
 		KeepProgramRunning := false
-		return  
+		return
 	}
 
 	KeepProgramRunning := true
