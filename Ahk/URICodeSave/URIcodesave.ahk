@@ -11,6 +11,7 @@
 
 	if KeepProgramRunning
 	{
+		KeepProgramRunning := false
 		return
 	}
 
