@@ -63,7 +63,7 @@ int load(char fileName[], Client** totalClients, int* totalClientsNum, Account**
 	for (i = 0; !feof(f); ++i) {
 		// aloca memória tamanho Cliente para indice i da matriz totalClients
 		totalClients[i] = malloc(sizeof(Client));
-		// aloca memória tamanho Account para indice i da matriz totalAccounts
+		// aloca memória tamanho MAXSTR para nome do dono da conta
 		totalClients[i]->name = malloc(sizeof(char) * MAXSTR);
 
 		// inicializa numero de contas para 1
