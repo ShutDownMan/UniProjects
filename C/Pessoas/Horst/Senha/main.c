@@ -176,10 +176,8 @@ int relatDecres(char *fn, codigo *cripto[], int num_senhas) {
 	for (i = 0; i < num_senhas; ++i) {
 		// troque o maior pela atual
 		first(&cripto[i], num_senhas-i);
-	}
 
-	// para cada senha
-	for(i = 0; i < num_senhas; i++) {
+		// printa no arquivo
 		fprintf(frelat, "SENHA\t\t\t");
 		fprintf(frelat, "INDICE\n");
 
