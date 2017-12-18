@@ -66,7 +66,7 @@ int load(char fileName[], Client** totalClients, int* totalClientsNum, Account**
 		// aloca memória tamanho MAXSTR para nome do dono da conta
 		totalClients[i]->name = malloc(sizeof(char) * MAXSTR);
 
-		// inicializa numero de contas para 1
+		// inicializa numero de contas para 0
 		totalClients[i]->accountsNum = 0;
 
 		// lê nome do dono da conta
@@ -109,6 +109,7 @@ int loadAccount(FILE* f, Client* currClient, Account** totalAccounts, int* total
 
 		foundAccount->id = accountID;
 		foundAccount->balance = accountBalance;
+		foundAccount->clientsNum = 1;
 
 		totalAccounts[(*totalAccountsNum)++] = foundAccount;
 	}
@@ -124,6 +125,8 @@ int loadAccount(FILE* f, Client* currClient, Account** totalAccounts, int* total
 
 Account* findAccount(int accountID, Account** totalAccounts, int totalAccountsNum) {
 	int i;
+
+	printf("NUM: %d\n", totalAccountsNum);
 
 	// para cada conta em totalAccounts
 	for (i = 0; i < totalAccountsNum; ++i) {
