@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAXPTR 256
 #define MAXSTR 256
@@ -25,6 +26,12 @@ int loadAccount(FILE* f, Client* currClient, Account** totalAccounts, int* total
 
 Account* findAccount(int accountID, Account** totalAccounts, int totalAccountsNum);
 
+int movement(char fileName[], Client** totalClients, int totalClientsNum, Account** totalAccounts, int totalAccountsNum);
+int draft(Account* originAccount, float quant);
+int deposit(Account* originAccount, float quant);
+int transfer(Account* originAccount, Account* destAccount, float quant);
+
+
 int main(int argc, char const *argv[]) {
 	Client** totalClients;
 	Account** totalAccounts;
@@ -47,7 +54,7 @@ int main(int argc, char const *argv[]) {
 
 	// movimentos aqui
 
-
+	movement("movimentos.txt", totalClients, totalClientsNum, totalAccounts, totalAccountsNum);
 
 	return 0;
 }
@@ -126,8 +133,6 @@ int loadAccount(FILE* f, Client* currClient, Account** totalAccounts, int* total
 Account* findAccount(int accountID, Account** totalAccounts, int totalAccountsNum) {
 	int i;
 
-	printf("NUM: %d\n", totalAccountsNum);
-
 	// para cada conta em totalAccounts
 	for (i = 0; i < totalAccountsNum; ++i) {
 		// se o id se iguala
@@ -138,4 +143,129 @@ Account* findAccount(int accountID, Account** totalAccounts, int totalAccountsNu
 	}
 
 	return NULL;
+}
+
+int movement(char fileName[], Client** totalClients, int totalClientsNum, Account** totalAccounts, int totalAccountsNum) {
+	FILE* f;
+	int i, originAccountID, destAccountID, transactionState;
+	int dia, mes, ano;
+	float quant;
+	char type[MAXSTR];
+
+	// abre arquivo de movimentos
+	if(!(f = fopen(fileName, "r"))) return 1;
+
+	// inicializa variáveis para 0 (importante)
+	originAccountID = 0;
+	destAccountID = 0;
+
+	// enquanto não fim de arquivo
+	for (i = 0; !feof(f); ++i) {
+		transactionState = 0;
+		// ler tipo de transação
+		fscanf(f, "%s", type);
+		// ler data
+		fscanf(f, "%d/%d/%d", &dia, &mes, &ano);
+
+		printf("%d : %s\n", i, type);
+
+		// se transação for saque
+		if(!strcmp(type, "SAQUE")) {
+			// ler parametroz para saque
+			fscanf(f, "%d %f", &originAccountID, &quant);
+			// tentar realizar saque
+			transactionState = draft(findAccount(originAccountID, totalAccounts, totalAccountsNum), quant);
+
+			// se deu certo
+			if(!transactionState) {
+				// mensagem de sucesso
+				printf("%d/%d/%d\n", dia, mes, ano);
+				printf("Transação tipo 'SAQUE' realizada com sucesso na conta: %d\n", originAccountID);
+			}
+		}
+
+		// se transação for depósito
+		if(!strcmp(type, "DEPOSITO")) {
+			// ler parametros para deposito
+			fscanf(f, "%d %f", &originAccountID, &quant);
+
+			// tentar realizar saque
+			transactionState = deposit(findAccount(originAccountID, totalAccounts, totalAccountsNum), quant);
+
+			// se deu certo
+			if(!transactionState) {
+				// mensagem de sucesso
+				printf("%d/%d/%d\n", dia, mes, ano);
+				printf("Transação tipo 'DEPOSITO' realizada com sucesso na conta: %d\n", originAccountID);
+			}
+		}
+
+		// se transação for transferência
+		if(!strcmp(type, "TRANSFERE")) {
+			// ler parâmetros para transferência
+			fscanf(f, "%d %d %f", &originAccountID, &destAccountID, &quant);
+
+			// tentar realizar transferência
+			transactionState = transfer(findAccount(originAccountID, totalAccounts, totalAccountsNum), findAccount(destAccountID, totalAccounts, totalAccountsNum), quant);
+
+			// se deu certo
+			if(!transactionState) {
+				// mensagem de sucesso
+				printf("%d/%d/%d\n", dia, mes, ano);
+				printf("Transação tipo 'TRANSFERE' realizada com sucesso nas contas: %d => %d\n", originAccountID, destAccountID);
+			}
+		}
+
+		//fscanf(f, "%*c");
+
+		// mensagens de erro
+		switch(transactionState) {
+			case 0:
+				break;
+
+			case 1:
+				printf("Conta inexistente.\n");
+				break;
+
+			case 2:
+				printf("Saldo insuficuente para realizar transação.\n");
+				break;
+
+			case 3:
+				break;
+
+			default:
+				printf("Algum erro no processo de transação\n");
+				break;
+		}
+		printf("------------\n");
+	}
+}
+
+int draft(Account* originAccount, float quant) {
+	if(!originAccount) return 1;
+	if(originAccount->balance < quant) return 2;
+
+	printf("NAME: %s\n", originAccount->clients[0]->name);
+
+	originAccount->balance -= quant;
+
+	return 0;
+}
+
+int deposit(Account* originAccount, float quant) {
+	if(!originAccount) return 1;
+
+	originAccount->balance += quant;
+
+	return 0;
+}
+
+int transfer(Account* originAccount, Account* destAccount, float quant) {
+	if(!originAccount || !destAccount) return 1;
+
+	draft(originAccount, quant);
+	deposit(destAccount, quant);
+
+	return 0;
 }
