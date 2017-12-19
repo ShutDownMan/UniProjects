@@ -10,15 +10,13 @@ typedef struct Account Account;
 
 typedef struct Client {
 	char* name;
-	Account* accounts[10];
-	int accountsNum;
+	Account* account;
 } Client;
 
 typedef struct Account {
 	int id;
 	float balance;
-	Client* clients[2];
-	int clientsNum;
+	Client* client;
 } Account;
 
 int load(char fileName[], Client** totalClients, int* totalClientsNum, Account** totalAccounts, int* totalAccountsNum);
@@ -73,19 +71,22 @@ int load(char fileName[], Client** totalClients, int* totalClientsNum, Account**
 		// aloca memória tamanho MAXSTR para nome do dono da conta
 		totalClients[i]->name = malloc(sizeof(char) * MAXSTR);
 
-		// inicializa numero de contas para 0
-		totalClients[i]->accountsNum = 0;
-
 		// lê nome do dono da conta
 		fscanf(f, "%[^\n]%*c", totalClients[i]->name);
 
+		// realoca memória para tamanho da string
+		totalClients[i]->name = realloc(totalClients[i]->name, sizeof(char) * strlen(totalClients[i]->name));
+
 		// carrega conta para struct Cliente
-		loadAccount(f, totalClients[i], totalAccounts, totalAccountsNum);
+		if(loadAccount(f, totalClients[i], totalAccounts, totalAccountsNum)) {
+			// se deu algum erro, vai pra proxima conta
+			i--;
+		}
 
 		// Debug
 		printf("NAME: %s\n", totalClients[i]->name);
-		printf("ACCOUNT: %d\n", totalClients[i]->accounts[0]->id);
-		printf("SALDO: %.2f\n", totalClients[i]->accounts[0]->balance);
+		printf("ACCOUNT: %d\n", totalClients[i]->account->id);
+		printf("SALDO: %.2f\n", totalClients[i]->account->balance);
 		printf("----------------------\n");
 	}
 }
@@ -102,30 +103,24 @@ int loadAccount(FILE* f, Client* currClient, Account** totalAccounts, int* total
 	// lê saldo da conta
 	fscanf(f, "%f%*c", &accountBalance);
 
-	// se cliente não tem mais de 10 contas
-	if(currClient->accountsNum >= 10) return 1;
-
 	// tenta achar conta na lista de contas
 	foundAccount = findAccount(accountID, totalAccounts, *totalAccountsNum);
 
-	printf("Accounts: %d\n", *totalAccountsNum);
+	// se achou retorna como erro
+	if(foundAccount) return 1;
 
-	// se não achou, cria uma e coloca na lista
-	if(!foundAccount) {
-		foundAccount = malloc(sizeof(Account));
+	// cria nova conta
+	foundAccount = malloc(sizeof(Account));
 
-		foundAccount->id = accountID;
-		foundAccount->balance = accountBalance;
-		foundAccount->clientsNum = 1;
+	// inicializa ID e saldo da conta
+	foundAccount->id = accountID;
+	foundAccount->balance = accountBalance;
 
-		totalAccounts[(*totalAccountsNum)++] = foundAccount;
-	}
+	// adiciona conta na lista
+	totalAccounts[(*totalAccountsNum)++] = foundAccount;
 
-	// se a conta nn tem mais de 2 donos
-	if(foundAccount->clientsNum > 2) return 2;
-
-	// adiciona a lista de contas do cliente
-	currClient->accounts[currClient->accountsNum++] = foundAccount;
+	// adiciona na struct de contas do cliente
+	currClient->account = foundAccount;
 
 	return 0;
 }
@@ -221,6 +216,7 @@ int movement(char fileName[], Client** totalClients, int totalClientsNum, Accoun
 		// mensagens de erro
 		switch(transactionState) {
 			case 0:
+				// deu td certo
 				break;
 
 			case 1:
@@ -229,9 +225,6 @@ int movement(char fileName[], Client** totalClients, int totalClientsNum, Accoun
 
 			case 2:
 				printf("Saldo insuficuente para realizar transação.\n");
-				break;
-
-			case 3:
 				break;
 
 			default:
@@ -243,27 +236,32 @@ int movement(char fileName[], Client** totalClients, int totalClientsNum, Accoun
 }
 
 int draft(Account* originAccount, float quant) {
+	// se conta é nula
 	if(!originAccount) return 1;
+	// se saldo insuficiente
 	if(originAccount->balance < quant) return 2;
 
-	printf("NAME: %s\n", originAccount->clients[0]->name);
-
+	// se td ta certo, faz saque
 	originAccount->balance -= quant;
 
 	return 0;
 }
 
 int deposit(Account* originAccount, float quant) {
+	// se conta é nula
 	if(!originAccount) return 1;
 
+	// se td ta certo, faz dapósito
 	originAccount->balance += quant;
 
 	return 0;
 }
 
 int transfer(Account* originAccount, Account* destAccount, float quant) {
+	// se uma das contas é nula
 	if(!originAccount || !destAccount) return 1;
 
+	// se tudo der certo, faz transferência
 	draft(originAccount, quant);
 	deposit(destAccount, quant);
 
