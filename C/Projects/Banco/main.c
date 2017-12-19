@@ -50,8 +50,6 @@ int main(int argc, char const *argv[]) {
 	totalClients = realloc(totalClients, sizeof(Client*) * totalClientsNum);
 	totalAccounts = realloc(totalAccounts, sizeof(Account*) * totalAccountsNum);
 
-	// movimentos aqui
-
 	movement("movimentos.txt", totalClients, totalClientsNum, totalAccounts, totalAccountsNum);
 
 	return 0;
@@ -59,29 +57,27 @@ int main(int argc, char const *argv[]) {
 
 int load(char fileName[], Client** totalClients, int* totalClientsNum, Account** totalAccounts, int* totalAccountsNum) {
 	int i;
+	char clientName[MAXSTR];
 	FILE* f;
 
 	// abre arquivo de entrada
 	if(!(f = fopen(fileName, "r"))) return 1;
 
-	// ler arquivo até fim deste
+	// ler arquivo até o fim deste
 	for (i = 0; !feof(f); ++i) {
 		// aloca memória tamanho Cliente para indice i da matriz totalClients
 		totalClients[i] = malloc(sizeof(Client));
-		// aloca memória tamanho MAXSTR para nome do dono da conta
-		totalClients[i]->name = malloc(sizeof(char) * MAXSTR);
 
-		// lê nome do dono da conta
-		fscanf(f, "%[^\n]%*c", totalClients[i]->name);
+		fscanf(f, "%[^\n]%*c", clientName);
 
-		// realoca memória para tamanho da string
-		totalClients[i]->name = realloc(totalClients[i]->name, sizeof(char) * strlen(totalClients[i]->name));
-
-		// carrega conta para struct Cliente
-		if(loadAccount(f, totalClients[i], totalAccounts, totalAccountsNum)) {
-			// se deu algum erro, vai pra proxima conta
-			i--;
+		// enquanto conta for inválida
+		while(loadAccount(f, totalClients[i], totalAccounts, totalAccountsNum)) {
+			// ele continua lendo o nome
+			fscanf(f, "%[^\n]%*c", clientName);
 		}
+
+		// copia e aloca memória do tamanho correto do nome
+		totalClients[i]->name = strcpy(malloc(sizeof(char) * strlen(clientName)), clientName);
 
 		// Debug
 		printf("NAME: %s\n", totalClients[i]->name);
