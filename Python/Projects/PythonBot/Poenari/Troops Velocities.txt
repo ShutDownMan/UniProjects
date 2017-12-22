@@ -1,0 +1,8 @@
+Spearman>	00:14:00
+Swordsman>	00:18:00
+Viking>		00:14:00
+Archer>		00:14:00
+Light Cv>	00:08:00
+Mnt Archer>	00:08:00
+Heavy Cv>	00:09:00
+Berseker>	00:14:00

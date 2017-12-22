@@ -1,0 +1,8 @@
+Spearman>	25
+Swordsman>	15
+Viking>		20
+Archer>		10
+Light Cv>	50
+Mnt Archer>	50
+Heavy Cv>	50
+Berseker>	10

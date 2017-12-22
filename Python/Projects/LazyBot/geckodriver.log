@@ -1,0 +1,211 @@
+1477356338384	geckodriver	INFO	Listening on 127.0.0.1:3735
+1477356340355	mozprofile::profile	INFO	Using profile path C:\Users\JEDSO_~1\AppData\Local\Temp\rust_mozprofile.Xz7AKDJTdrMc
+1477356340361	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe
+1477356340367	geckodriver::marionette	INFO	Connecting to Marionette on localhost:3741
+JavaScript warning: https://normandy.cdn.mozilla.net/static/bundles/selfrepair-910943d53dbd84b4c75a.a958f9d28733.js, line 7: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1477356351355 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-pristine ng-untouched ng-valid
+1477356351432 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-dirty ng-valid-parse
+1477356351512 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-dirty ng-valid-parse
+1477356351549 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-dirty ng-valid-parse
+1477356351614 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-dirty ng-valid-parse
+1477356351666 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-dirty ng-valid-parse
+1477356351718 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-dirty ng-valid-parse
+1477356351749 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-dirty ng-valid-parse
+1477356351779 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-dirty ng-valid-parse
+JavaScript error: https://twxbr.innogamescdn.com/js/landing.min_826b3b8392.js, line 37: TypeError: window.twx is undefined
+JavaScript error: https://twxbr.innogamescdn.com/js/game.min_62414af70c.js, line 85: TypeError: m.resourceBoosts is undefined
+1477356367602 Marionette: Element is missing an accesible name -> id: world-map, tagName: A, className: btn-orange icon-44x44-view-worldmap
+1477356368198 Marionette: Element does not support any accessible actions -> id: , tagName: INPUT, className: textfield-border ng-pristine ng-valid ng-touched
+1477356368801 Marionette: Element does not support any accessible actions -> id: , tagName: INPUT, className: textfield-border ng-valid ng-dirty ng-touched
+1477356369014 Marionette: Element does not support any accessible actions -> id: , tagName: TD, className: 
+1477356369238 Marionette: Element is missing an accesible name -> id: world-map, tagName: A, className: btn-orange icon-44x44-view-worldmap
+1477356406554 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: main-canvas, tagName: CANVAS, className: 
+1477356415500 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356415948 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356416416 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356416982 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356424326 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356424776 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356425588 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356426089 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356433593 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356434267 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356434821 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356435293 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356445922 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356446365 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356446806 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356447280 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356455683 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356456296 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356456830 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477356457346 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: this.browser.getBrowserForTab is not a function
+Full stack: BrowserObj.prototype.hasRemotenessChange@chrome://marionette/content/driver.js:3239:25
+BrowserObj.prototype.executeWhenReady@chrome://marionette/content/driver.js:3270:7
+GeckoDriver.prototype.sendAsync@chrome://marionette/content/driver.js:228:5
+send/proxy<@chrome://marionette/content/proxy.js:150:7
+send@chrome://marionette/content/proxy.js:111:17
+ownPriorityGetterTrap.get/<@chrome://marionette/content/proxy.js:28:25
+GeckoDriver.prototype.findElement@chrome://marionette/content/driver.js:1905:1
+TaskImpl_run@resource://gre/modules/Task.jsm:331:41
+TaskImpl@resource://gre/modules/Task.jsm:276:3
+createAsyncFunction/asyncFunction@resource://gre/modules/Task.jsm:250:14
+Task_spawn@resource://gre/modules/Task.jsm:164:12
+TaskImpl_handleResultValue@resource://gre/modules/Task.jsm:384:1
+TaskImpl_run@resource://gre/modules/Task.jsm:323:13
+TaskImpl@resource://gre/modules/Task.jsm:276:3
+createAsyncFunction/asyncFunction@resource://gre/modules/Task.jsm:250:14
+Task_spawn@resource://gre/modules/Task.jsm:164:12
+Dispatcher.prototype.execute@chrome://marionette/content/dispatcher.js:119:13
+Dispatcher.prototype.onPacket@chrome://marionette/content/dispatcher.js:90:5
+DebuggerTransport.prototype._onJSONObjectReady/<@chrome://marionette/content/server.js -> resource://devtools/shared/transport/transport.js:479:9
+makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+
+*************************
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: this.browser.getBrowserForTab is not a function
+Full stack: BrowserObj.prototype.hasRemotenessChange@chrome://marionette/content/driver.js:3239:25
+BrowserObj.prototype.executeWhenReady@chrome://marionette/content/driver.js:3270:7
+GeckoDriver.prototype.sendAsync@chrome://marionette/content/driver.js:228:5
+send/proxy<@chrome://marionette/content/proxy.js:150:7
+send@chrome://marionette/content/proxy.js:111:17
+ownPriorityGetterTrap.get/<@chrome://marionette/content/proxy.js:28:25
+GeckoDriver.prototype.findElement@chrome://marionette/content/driver.js:1905:1
+TaskImpl_run@resource://gre/modules/Task.jsm:331:41
+TaskImpl@resource://gre/modules/Task.jsm:276:3
+createAsyncFunction/asyncFunction@resource://gre/modules/Task.jsm:250:14
+Task_spawn@resource://gre/modules/Task.jsm:164:12
+TaskImpl_handleResultValue@resource://gre/modules/Task.jsm:384:1
+TaskImpl_run@resource://gre/modules/Task.jsm:323:13
+TaskImpl@resource://gre/modules/Task.jsm:276:3
+createAsyncFunction/asyncFunction@resource://gre/modules/Task.jsm:250:14
+Task_spawn@resource://gre/modules/Task.jsm:164:12
+Dispatcher.prototype.execute@chrome://marionette/content/dispatcher.js:119:13
+Dispatcher.prototype.onPacket@chrome://marionette/content/dispatcher.js:90:5
+DebuggerTransport.prototype._onJSONObjectReady/<@chrome://marionette/content/server.js -> resource://devtools/shared/transport/transport.js:479:9
+makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+
+*************************
+*************************
+A coding exception was thrown in a Promise rejection callback.
+See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+
+Full message: TypeError: this.browser.getBrowserForTab is not a function
+Full stack: BrowserObj.prototype.hasRemotenessChange@chrome://marionette/content/driver.js:3239:25
+BrowserObj.prototype.executeWhenReady@chrome://marionette/content/driver.js:3270:7
+GeckoDriver.prototype.sendAsync@chrome://marionette/content/driver.js:228:5
+send/proxy<@chrome://marionette/content/proxy.js:150:7
+send@chrome://marionette/content/proxy.js:111:17
+ownPriorityGetterTrap.get/<@chrome://marionette/content/proxy.js:28:25
+GeckoDriver.prototype.findElement@chrome://marionette/content/driver.js:1905:1
+TaskImpl_run@resource://gre/modules/Task.jsm:331:41
+TaskImpl@resource://gre/modules/Task.jsm:276:3
+createAsyncFunction/asyncFunction@resource://gre/modules/Task.jsm:250:14
+Task_spawn@resource://gre/modules/Task.jsm:164:12
+TaskImpl_handleResultValue@resource://gre/modules/Task.jsm:384:1
+TaskImpl_run@resource://gre/modules/Task.jsm:323:13
+TaskImpl@resource://gre/modules/Task.jsm:276:3
+createAsyncFunction/asyncFunction@resource://gre/modules/Task.jsm:250:14
+Task_spawn@resource://gre/modules/Task.jsm:164:12
+Dispatcher.prototype.execute@chrome://marionette/content/dispatcher.js:119:13
+Dispatcher.prototype.onPacket@chrome://marionette/content/dispatcher.js:90:5
+DebuggerTransport.prototype._onJSONObjectReady/<@chrome://marionette/content/server.js -> resource://devtools/shared/transport/transport.js:479:9
+makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+
+*************************
+Marionette threw an error: TypeError: this.browser.getBrowserForTab is not a function
+BrowserObj.prototype.hasRemotenessChange@chrome://marionette/content/driver.js:3239:25
+BrowserObj.prototype.executeWhenReady@chrome://marionette/content/driver.js:3270:7
+GeckoDriver.prototype.sendAsync@chrome://marionette/content/driver.js:228:5
+send/proxy<@chrome://marionette/content/proxy.js:150:7
+send@chrome://marionette/content/proxy.js:111:17
+ownPriorityGetterTrap.get/<@chrome://marionette/content/proxy.js:28:25
+GeckoDriver.prototype.findElement@chrome://marionette/content/driver.js:1905:1
+TaskImpl_run@resource://gre/modules/Task.jsm:331:41
+TaskImpl@resource://gre/modules/Task.jsm:276:3
+createAsyncFunction/asyncFunction@resource://gre/modules/Task.jsm:250:14
+Task_spawn@resource://gre/modules/Task.jsm:164:12
+TaskImpl_handleResultValue@resource://gre/modules/Task.jsm:384:1
+TaskImpl_run@resource://gre/modules/Task.jsm:323:13
+TaskImpl@resource://gre/modules/Task.jsm:276:3
+createAsyncFunction/asyncFunction@resource://gre/modules/Task.jsm:250:14
+Task_spawn@resource://gre/modules/Task.jsm:164:12
+Dispatcher.prototype.execute@chrome://marionette/content/dispatcher.js:119:13
+Dispatcher.prototype.onPacket@chrome://marionette/content/dispatcher.js:90:5
+DebuggerTransport.prototype._onJSONObjectReady/<@chrome://marionette/content/server.js -> resource://devtools/shared/transport/transport.js:479:9
+makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+
+className: size-34x34 btn-orange icon-26x26-arrow-up btn-border
+1477355681341 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355681834 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355682288 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355682828 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355687578 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355687723 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355687899 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355688060 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355688179 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355688321 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355688581 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355688756 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355688931 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355689121 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355689293 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355689528 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355689782 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355689946 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355690073 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355691221 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-up btn-border
+1477355691941 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-up btn-border
+1477355692995 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355693583 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355694086 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355694783 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355700237 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355700446 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355700725 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355701130 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355701330 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355701497 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355701648 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355701878 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355702022 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355702139 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355702311 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355702496 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355702677 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355702802 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355702964 Marionette: Element is missing an accesible name -> id: , tagName: INPUT, className: ng-untouched ng-valid ng-valid-maxlength ng-dirty ng-valid-parse
+1477355703944 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-up btn-border
+1477355704706 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-up btn-border
+1477355705397 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355705845 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355706317 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355706935 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355786891 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: main-canvas, tagName: CANVAS, className: 
+1477355797971 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: main-canvas, tagName: CANVAS, className: 
+1477355843283 Marionette: Element does not have a correct accessibility role and may not be manipulated via the accessibility API -> id: main-canvas, tagName: CANVAS, className: 
+1477355864400 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355864973 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355865634 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355866189 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355880449 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355880971 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355881458 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355881946 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355899298 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355900976 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355901513 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+1477355902937 Marionette: Element is missing an accesible name -> id: , tagName: A, className: size-34x34 btn-orange icon-26x26-arrow-down btn-border
+thread '<unnamed>' panicked at 'called `Result::unwrap()` on an `Err` value: Error { repr: Os { code: 10054, message: "Foi forçado o cancelamento de uma conexão existente pelo host remoto." } }', ../src/libcore\result.rs:788
+note: Run with `RUST_BACKTRACE=1` for a backtrace.

@@ -1,0 +1,36 @@
+[0x00 - Village]:{
+
+	Predefinitions Setup:False
+
+	Rally Point:2
+
+	Wood Boost:True
+	Clay Boost:False
+	Iron Boost:False
+
+	Donate Amount:10
+
+	Farm Strategy:{
+		Competitive:0
+	}
+
+	Predefinitions:{
+		Spearman:None
+		Swordsman:None
+		Viking:None
+		Archer:None
+		Light Cv:None
+		Mnt Archer:None
+		Heavy Cv:None
+		Berseker:None
+	}
+
+	Build Schedule:[
+		Farm
+		Warehouse
+		Timber Camp
+		Clay pit
+		Iron Mine
+	]
+
+}

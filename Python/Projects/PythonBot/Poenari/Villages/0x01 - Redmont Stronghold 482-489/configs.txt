@@ -1,0 +1,7 @@
+Farm Strategy>Competitive:0
+
+Wood Boost:False
+Clay Boost:False
+Iron Boost:False
+
+Donate Amount:10
