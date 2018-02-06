@@ -38,11 +38,11 @@ int main(){
 		if(indice == 4) printf("Senha valida.\n");
 		else printf("Senha invalida.\n");
 
-		indice = 0;
 		l_minuscula = 0;
-		l_maiuscula = 0;
+		l_minuscula = 0;
 		dig_num = 0;
 		carac_esp = 0;
+		indice = 0;
 	}
 
 	return 0;
