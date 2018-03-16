@@ -2,7 +2,68 @@
 #include <math.h>
 #include <string.h>
 
-#define MAX 128
+#include "recursivefunctions.h"
+
+#define MAX 32
+
+int main(int argc, char *argv[]) {
+    int m, n;
+    int* length, vet[MAX];
+    char str[5] = "";
+    char set[MAX];
+
+    // printf("Type in any number (n): \n");
+    // scanf("%d", &n);
+
+    // printf("Type in any number (m): \n");
+    // scanf("%d", &m);
+
+    // readVet(&length, vet);
+    // printVet(length, vet);
+
+    // readSet(set);
+    // printSet(set);
+
+    // 1.
+    // printToN(n);
+    // printf("\n");
+
+    // 2.
+    // printFromN(n);
+    // printf("\n");
+
+    // 3.
+    // printf("Sum to N: %d\n", sumFromN(n));
+
+    // 4.
+    // printf("sf of N is: %lld\n", superFactorial(n));
+
+    // 5.
+    // printf("Exponential factorial of N is: %lld\n", expFac(n));
+
+    // 6.
+    // printf("Catalan function of N is: %lld\n", catalan(n));
+
+    // 7.
+    // printf("Is '%s' a palindrom: %d\n", str, isPalim(str, strlen(str)));
+
+    // 8.
+    // printf("Subsets: \n");
+    // printSubsets(set, str, 0);
+
+    // 9.
+    // invertVet(length, vet);
+    // printVet(length, vet);
+
+    // 10.
+    // printf("Ackerman function of M and N is: %lld\n", ackerman(m, n));
+
+    // 11.
+    // printf("The sum of the dgits of N is: %d\n", digSum(n));
+
+    return 0;
+}
+
 
 void printToN(int n) {
     if(n > 0) {
@@ -69,8 +130,56 @@ int isPalim(char* str, int length) {
     return 1;
 }
 
-void printSubsets(char* str, int n) {
-    // God may helpl me with this one
+char* readSet(char set[]) {
+    int i;
+    char c;
+
+    printf("Type in a symbol to be added to the set: ");
+    scanf("%c", &c);
+    for(i = 0;!isspace(c);i++) {
+        set[i] = c;
+
+        printf("Type in a new symbol to be added to the set: ");
+        scanf("%*c%c", &c);
+    }
+    printf("\n");
+
+    set[i] = 0;
+    return set;
+}
+
+void printSet(char subset[]) {
+    int i;
+
+    printf("{");
+    for(i = 0;i < strlen(subset);i++) {
+        printf("%c", subset[i]);
+
+        if(i < strlen(subset)-1) {
+            printf(", ");
+        }
+    }
+    printf("}\n");
+}
+
+void printSubsets(char base[], char subset[], int level) {
+    int length;
+    char newSubset[MAX];
+
+    length = strlen(subset);
+
+    strcpy(newSubset, subset);
+    newSubset[length] = base[level];
+    newSubset[length+1] = 0;
+
+    if(level == strlen(base)-1) {
+        printSet(subset);
+        printSet(newSubset);
+        return;
+    }
+
+    printSubsets(base, subset, level+1);
+    printSubsets(base, newSubset, level+1);
 }
 
 void readVet(int* length, int vet[]) {
@@ -127,58 +236,4 @@ void invertVet(int length, int vet[]) {
         return;
     }
     return;
-}
-
-int main(int argc, char *argv[]) {
-    int m, n;
-    int* length, vet[MAX];
-    char str[5] = "abc";
-
-    // printf("Type in any number (n): \n");
-    // scanf("%d", &n);
-
-    // printf("Type in any number (m): \n");
-    // scanf("%d", &m);
-
-    // readVet(&length, vet);
-    // printVet(length, vet);
-
-    // 1.
-    // printToN(n);
-    // printf("\n");
-
-    // 2.
-    // printFromN(n);
-    // printf("\n");
-
-    // 3.
-    // printf("Sum to N: %d\n", sumFromN(n));
-
-    // 4.
-    // printf("sf of N is: %lld\n", superFactorial(n));
-
-    // 5.
-    // printf("Exponential factorial of N is: %lld\n", expFac(n));
-
-    // 6.
-    // printf("Catalan function of N is: %lld\n", catalan(n));
-
-    // 7.
-    // printf("Is '%s' a palindrom: %d\n", str, isPalim(str, strlen(str)));
-
-    // 8.
-    // printSubsets(str, 0);
-    // printf("\n");
-
-    // 9.
-    // invertVet(length, vet);
-    // printVet(length, vet);
-
-    // 10.
-    // printf("Ackerman function of M and N is: %lld\n", ackerman(m, n));
-
-    // 11.
-    // printf("The sum of the dgits of N is: %d\n", digSum(n));
-
-    return 0;
 }

@@ -46,7 +46,7 @@ OBJECTS_DIR   = debug
 SOURCES       = ..\Recursion\main.c 
 OBJECTS       = debug/main.o
 
-DIST          =   ..\Recursion\main.c
+DIST          =  recursivefunctions.h ..\Recursion\main.c
 QMAKE_TARGET  = Recursion
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = Recursion.exe
@@ -94,7 +94,7 @@ compiler_clean:
 
 ####### Compile
 
-debug/main.o: ../Recursion/main.c 
+debug/main.o: ../Recursion/main.c ../Recursion/recursivefunctions.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\main.o ..\Recursion\main.c
 
 ####### Install
