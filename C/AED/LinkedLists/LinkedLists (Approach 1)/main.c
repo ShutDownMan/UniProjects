@@ -6,15 +6,15 @@
 int main(int argc, char *argv[]) {
     List *start1, *start2;
 
-    // createLinkedList(&start1);
-    // printList(start1);
+    createLinkedList(&start1);
+    printList(start1);
 
-    // createLinkedList(&start2);
-    // printList(start2);
+    createLinkedList(&start2);
+    printList(start2);
 
-    // start1 = merge(start1, start2);
+    start1 = merge(start1, start2);
 
-    // printList(start1);
+    printList(start1);
 
     return 0;
 }
@@ -93,17 +93,18 @@ List* concat(List *list1, List *list2) {
 }
 
 List* merge(List *list1, List *list2) {
-    struct knot *p, *q, *r;
+    struct knot *next, *rest, *current;
 
     if(isEmpty(list1) || isEmpty(list2)) return NULL;
 
-    p = list2;
-    for(r = list1; r;) {
-        q = r->next;
-        r->next = p;
+    current = list1;
+    next = list2;
+    for(; rest;) {
+        rest = current->next;
+        current->next = next;
 
-        r = p;
-        p = q;
+        current = next;
+        next = rest;
     }
 
     return list1;
