@@ -34,7 +34,7 @@ List* invert(List* list);
 /// Entrada: duas listas encadeadas
 /// Pré-condição: nenhuma
 /// Pós-condição: concatena valores de ambas
-List* concat(List* list1, List* lst2);
+List* concat(List* list1, List* list2);
 
 /// Entrada: duas listas encadeadas
 /// Pré-condição: nenhuma

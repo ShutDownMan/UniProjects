@@ -4,21 +4,26 @@
 #include "linkedlist.h"
 
 int main(int argc, char *argv[]) {
-    List* start;
+    List *start1, *start2;
 
-    createLinkedList(&start);
-    printList(start);
-    remove(start, 2);
-    printList(start);
+    // createLinkedList(&start1);
+    // printList(start1);
+
+    // createLinkedList(&start2);
+    // printList(start2);
+
+    // start1 = merge(start1, start2);
+
+    // printList(start1);
 
     return 0;
 }
 
+// LINKED LIST FUNCTIONS //
+
 int isEmpty(List *list) {
     return !list;
 }
-
-// LINKED LIST FUNCTIONS //
 
 List* insert(List *list, int val) {
     struct knot **tracer;
@@ -27,7 +32,7 @@ List* insert(List *list, int val) {
         return NULL;
     }
 
-    for(tracer = &list;*tracer;tracer = &(*tracer)->next)
+    for(tracer = &list; *tracer; tracer = &(*tracer)->next)
         ;
 
     *tracer = createKnot(val);
@@ -40,11 +45,9 @@ List* remove(List *list, int val) {
     struct knot** tracer;
     char present = 0;
 
-    if(isEmpty(list)) {
-        return NULL;
-    }
+    if(isEmpty(list)) return NULL;
 
-    for(tracer = &list;*tracer && !(present = ((*tracer)->val == val));tracer = &(*tracer)->next)
+    for(tracer = &list; *tracer && !(present = ((*tracer)->val == val)); tracer = &(*tracer)->next)
         ;
 
     if(present) {
@@ -54,6 +57,56 @@ List* remove(List *list, int val) {
     }
 
     return list;
+}
+
+List* invert(List *list) {
+    struct knot *l_old, *l_current, *l_next;
+
+    if(isEmpty(list) || !list->next) return list;
+
+    l_next = l_current = l_next = list;
+    l_next = l_next->next->next;
+    l_current = l_current->next;
+    l_old->next = NULL;
+    l_current->next = l_old;
+
+    for(; l_next; l_current->next = l_old) {
+        l_old = l_current;
+        l_current = l_next;
+        l_next = l_next->next;
+    }
+
+    return l_current;
+}
+
+List* concat(List *list1, List *list2) {
+    struct knot **tracer;
+
+    if(isEmpty(list1) || isEmpty(list2)) return NULL;
+
+    for(tracer = &list1; *tracer; tracer = &(*tracer)->next)
+        ;
+
+    *tracer = list2;
+
+    return list1;
+}
+
+List* merge(List *list1, List *list2) {
+    struct knot *p, *q, *r;
+
+    if(isEmpty(list1) || isEmpty(list2)) return NULL;
+
+    p = list2;
+    for(r = list1; r;) {
+        q = r->next;
+        r->next = p;
+
+        r = p;
+        p = q;
+    }
+
+    return list1;
 }
 
 // HELPER FUNCTIONS //
@@ -95,5 +148,5 @@ void printList(List *head) {
         printf("(%d)-> ", curr->val);
         curr = curr->next;
     }
-    printf("(NULL).\n");
+    printf("(!).\n");
 }
