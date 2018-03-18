@@ -4,12 +4,17 @@
 #include "linkedlist.h"
 
 int main(int argc, char *argv[]) {
-    List* start;
+    List *start1, *start2;
 
-    createLinkedList(&start);
-    printList(start);
-    remove(start, 3);
-    printList(start);
+    createLinkedList(&start1);
+    printList(start1);
+
+    createLinkedList(&start2);
+    printList(start2);
+
+    start1 = merge(start1, start2);
+
+    printList(start1);
 
     return 0;
 }
@@ -53,11 +58,40 @@ List* remove(List *list, int val) {
     return list;
 }
 
+List* invert(List *list) {
+    struct knot* rest;
+
+    if(isEmpty(list->next)) return list;
+
+    rest = invert(list->next);
+
+    list->next->next = list;
+
+    list->next = NULL;
+
+    return rest;
+}
+
+List* concat(List *list1, List *list2) {
+    if(isEmpty(list1)) return list2;
+
+    list1->next = concat(list1->next, list2);
+
+    return list1;
+}
+
+List* merge(List *list1, List *list2) {
+    if(isEmpty(list1)) return list2;
+
+    list1->next = merge(list2, list1->next);
+
+    return list1;
+}
+
 // HELPER FUNCTIONS //
 
 void createLinkedList(List **head) {
     int val;
-    struct knot* newKnot = *head;
 
     printf("Type in a value to start the list: ");
     scanf("%d", &val);
