@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "linkedlist.h"
 
@@ -12,8 +13,7 @@ int main(int argc, char *argv[]) {
     createLinkedList(&start2);
     printList(start2);
 
-    start1 = merge(start1, start2);
-
+    printList(remove(invert(start1), 1));
     printList(start1);
 
     return 0;
@@ -64,7 +64,7 @@ List* invert(List *list) {
 
     if(isEmpty(list) || !list->next) return list;
 
-    l_next = l_current = l_next = list;
+    l_next = l_current = l_old = cpyList(list);
     l_next = l_next->next->next;
     l_current = l_current->next;
     l_old->next = NULL;
@@ -80,25 +80,29 @@ List* invert(List *list) {
 }
 
 List* concat(List *list1, List *list2) {
-    struct knot **tracer;
+    struct knot *tracer, *head;
 
     if(isEmpty(list1) || isEmpty(list2)) return NULL;
 
-    for(tracer = &list1; *tracer; tracer = &(*tracer)->next)
-        ;
+    head = cpyKnot(list1);
+    for(tracer = head; tracer->next; tracer = tracer->next) {
+        tracer->next = cpyKnot(tracer->next);
+    }
 
-    *tracer = list2;
+    tracer->next = cpyList(list2);
 
-    return list1;
+    return head;
 }
 
 List* merge(List *list1, List *list2) {
-    struct knot *next, *rest, *current;
+    struct knot *head, *next, *rest, *current;
 
     if(isEmpty(list1) || isEmpty(list2)) return NULL;
 
-    current = list1;
-    next = list2;
+    head = cpyList(list1);
+
+    current = head;
+    next = cpyList(list2);
     for(; rest;) {
         rest = current->next;
         current->next = next;
@@ -107,14 +111,13 @@ List* merge(List *list1, List *list2) {
         next = rest;
     }
 
-    return list1;
+    return cpyKnot(list1);
 }
 
 // HELPER FUNCTIONS //
 
 void createLinkedList(List **head) {
     int val;
-    struct knot* newKnot = *head;
 
     printf("Type in a value to start the list: ");
     scanf("%d", &val);
@@ -151,3 +154,34 @@ void printList(List *head) {
     }
     printf("(!).\n");
 }
+
+List* cpyKnot(List *list) {
+    struct knot *newKnot;
+
+    if(isEmpty(list)) return NULL;
+
+    newKnot = createKnot(0);
+    memcpy(newKnot, list, sizeof(struct knot));
+
+//    printf("[%d]\n", newKnot->val);
+
+    return newKnot;
+}
+
+List* cpyList(List* list) {
+    struct knot *tracer, *head;
+
+    if(isEmpty(list)) return NULL;
+
+    head = cpyKnot(list);
+    for(tracer = head; tracer->next; tracer = tracer->next) {
+        tracer->next = cpyKnot(tracer->next);
+    }
+
+    return head;
+}
+
+/*
+    querido diário, já é o quarto dia e eu ainda nn terminei essa lista.
+    Um dia talvez...
+*/

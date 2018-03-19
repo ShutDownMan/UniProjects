@@ -51,4 +51,9 @@ void createLinkedList(List **head);
 /// Pós-condição: aloca e retorna um novo nó
 List* createKnot(int val);
 
+/// Entrada: um nó
+/// Pré-condição: nenhuma
+/// Pós-condição: aloca e retorna uma cópia de nó
+List* cpyKnot(List *list);
+
 #endif // LINKEDLIST_H

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "linkedlist.h"
 
@@ -9,11 +10,10 @@ int main(int argc, char *argv[]) {
     createLinkedList(&start1);
     printList(start1);
 
-    createLinkedList(&start2);
-    printList(start2);
+//    createLinkedList(&start2);
+//    printList(start2);
 
-    start1 = merge(start1, start2);
-
+    printList(invert(start1));
     printList(start1);
 
     return 0;
@@ -59,7 +59,7 @@ List* remove(List *list, int val) {
 }
 
 List* invert(List *list) {
-    struct knot* rest;
+    struct knot *rest;
 
     if(isEmpty(list->next)) return list;
 
@@ -127,4 +127,17 @@ void printList(List *head) {
         curr = curr->next;
     }
     printf("(!).\n");
+}
+
+List* cpyKnot(List *list) {
+    struct knot *newKnot;
+
+    if(isEmpty(list)) return NULL;
+
+    newKnot = createKnot(0);
+    memcpy(newKnot, list, sizeof(struct knot));
+
+    printf("[%d]\n", newKnot->val);
+
+    return newKnot;
 }
