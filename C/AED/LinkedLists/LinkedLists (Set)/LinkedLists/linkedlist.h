@@ -12,17 +12,17 @@ typedef struct knot {
 int isEmpty(List* head);
 
 /// Entrada: lista encadeada, valor inteiro
-/// Pré-condição: cabeça da lista não pode estar nula
+/// Pré-condição: nenhuma
 /// Pós-condição: insere valor na lista
-List* insert(List* list, int val);
+List* insert(List **list, int val);
 
 /// Entrada: lista encadeada, valor inteiro
 /// Pré-condição: nenhuma
 /// Pós-condição: remove valor da lista se este for encontrado
-List* remove(List* list, int val);
+List* remove(List **list, int val);
 
 /// Entrada: lista encadeada
-/// Pré-condição: cabeça da lista não pode estar nula
+/// Pré-condição: nenhuma
 /// Pós-condição: printa na saida padrão a lista encadeada
 void printList(List *head);
 
@@ -48,15 +48,30 @@ List* append(List *list1, List *list2);
 
 /// Entrada: uma lista e um inteiro
 /// Pré-condição: nenhuma
-/// Pós-condição: conta numero de duplicatas do inteiro na lista
-int countDupes(List* list, int val);
+/// Pós-condição: itera sobre a lista e checka pela presença de val
+int contains(List* list, int val);
 
-/// Entrada: uma lista
+/// Entrada: duas listas
 /// Pré-condição: nenhuma
-/// Pós-condição: limpa a lista de duplicatas
-List* removeDupes(List* list);
+/// Pós-condição: retorna a união de duas listas encadeadas sem duplicadas
+List *unionSet(List *list1, List *list2);
 
-// HELPERS //
+/// Entrada: duas listas
+/// Pré-condição: nenhuma
+/// Pós-condição: retorna a interseção de duas listas encadeadas
+List *IntersectionSet(List *list1, List *list2);
+
+/// Entrada: duas listas
+/// Pré-condição: nenhuma
+/// Pós-condição: retorna a diferença de duas listas encadeadas
+List *differenceSet(List *list1, List *list2);
+
+/// Entrada: duas listas
+/// Pré-condição: nenhuma
+/// Pós-condição: retorna se a primeira lista está contida na segunda
+int isContained(List *list1, List *list2);
+
+// HELPER FUNCTIONS //
 
 /// Entrada: duas listas encadeadas
 /// Pré-condição: nenhuma
@@ -76,16 +91,16 @@ List* cpyKnot(List *list);
 /// Entrada: uma lista
 /// Pré-condição: nenhuma
 /// Pós-condição: aloca e retorna uma cópia de uma lista
-List* cpyList(List *list);
-
-/// Entrada: uma lista e um inteiro val
-/// Pré-condição: nenhuma
-/// Pós-condição: traversa lista e checka pelo inteiro val
-int contains(List *list, int val);
+List* cpyList(List* list);
 
 /// Entrada: uma lista
 /// Pré-condição: nenhuma
 /// Pós-condição: libera a memória de todos os nós alocados em uma lista
 void removeList(List *list);
+
+/// Entrada: uma lista
+/// Pré-condição: nenhuma
+/// Pós-condição: limpa a lista de duplicatas
+List* removeDupes(List* list);
 
 #endif // LINKEDLIST_H

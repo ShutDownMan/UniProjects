@@ -74,22 +74,20 @@ int kPowN(int k, int n) {
     if(n > 1) {
         return k * kPowN(k, n-1);
     }
-    return k;
+    return 1;
 }
 
-void swap(int* a, int* b) {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
+void swap(int *a, int *b) {
+    *a = *a + *b;
+    *b = *a - *b;
+    *a = *a - *b;
 }
 
 void invertVet(int length, int vet[]) {
     if(length > 1) {
         swap(&vet[0], &vet[length-1]);
         invertVet(length-2, vet+1);
-        return;
     }
-    return;
 }
 
 int gdc(int n, int k) {
@@ -117,44 +115,44 @@ int main(int argc, char *argv[]) {
     int n, k;
     int length, vet[MAX];
 
-    // printf("Type in any number (k)\n");
-    // scanf("%d", &k);
-    // printf("Type in any number (n)\n");
-    // scanf("%d", &n);
+//    printf("Type in any number (k)\n");
+//    scanf("%d", &k);
+//    printf("Type in any number (n)\n");
+//    scanf("%d", &n);
 
-    // readVet(&length, vet);
-    // printVet(length, vet);
+//    readVet(&length, vet);
+//    printVet(length, vet);
 
-    // 1.
-    // printf("fac(%d) = %lld\n", n, fac(n));
+//    1.
+//    printf("fac(%d) = %lld\n", n, fac(n));
 
-    // 2.
-    // printf("fib(%d) = %lld\n", n, fib(n));
+//    2.
+//    printf("fib(%d) = %lld\n", n, fib(n));
 
-    // 3.
-    // printf("rev(%d) = %d\n", n, rev(n));
+//    3.
+//     printf("rev(%d) = %d\n", n, rev(n));
 
-    // 4.
-    // printf("vetSum(vet) = %d\n", vetSum(length, vet));
+//    4.
+//    printf("vetSum(vet) = %d\n", vetSum(length, vet));
 
-    // 5.
-    // printf("sumFromN(%d) = %d\n", n, sumFromN(n));
+//    5.
+//    printf("sumFromN(%d) = %d\n", n, sumFromN(n));
 
-    // 6.
-    // printf("kPowN(%d, %d) = %d\n", k, n, kPowN(k, n));
+//    6.
+//    printf("kPowN(%d, %d) = %d\n", k, n, kPowN(k, n));
 
-    // 7.
-    // invertVet(length, vet);
-    // printVet(length, vet);
+//    7.
+//    invertVet(length, vet);
+//    printVet(length, vet);
 
-    // 8.
-    // printf("mdc(%d, %d) = %d\n", k, n, gdc(k, n));
+//    8.
+//    printf("mdc(%d, %d) = %d\n", k, n, gdc(k, n));
 
-    // 9.
-    // printf("occ(%d, %d) = %d\n", k, n, occ(k, n));
+//    9.
+//    printf("occ(%d, %d) = %d\n", k, n, occ(k, n));
 
-    // 10.
-    // printf("mult(%d, %d) = %d\n", k, n, mult(k, n));
+//    10.
+//    printf("mult(%d, %d) = %d\n", k, n, mult(k, n));
 
     return 0;
 }

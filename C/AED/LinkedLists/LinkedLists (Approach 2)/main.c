@@ -10,10 +10,10 @@ int main(int argc, char *argv[]) {
     createLinkedList(&start1);
     printList(start1);
 
-//    createLinkedList(&start2);
-//    printList(start2);
+    createLinkedList(&start2);
+    printList(start2);
 
-    printList(invert(start1));
+    printList(merge(start1, start2));
     printList(start1);
 
     return 0;
@@ -59,31 +59,42 @@ List* remove(List *list, int val) {
 }
 
 List* invert(List *list) {
-    struct knot *rest;
+    struct knot *acc;
 
-    if(isEmpty(list->next)) return list;
+    if(isEmpty(list->next)) return cpyKnot(list);
 
-    rest = invert(list->next);
+    acc = invert(list->next);
+    insert(acc, list->val);
 
-    list->next->next = list;
-
-    list->next = NULL;
-
-    return rest;
+    return acc;
 }
 
 List* concat(List *list1, List *list2) {
-    if(isEmpty(list1)) return list2;
+    struct knot* knot;
 
-    list1->next = concat(list1->next, list2);
+    if(isEmpty(list1)) return cpyList(list2);
 
-    return list1;
+    knot = cpyKnot(list1);
+    knot->next = concat(list1->next, list2);
+
+    return knot;
 }
 
 List* merge(List *list1, List *list2) {
+    struct knot* knot;
+
+    if(isEmpty(list1)) return cpyKnot(list2);
+
+    knot = cpyKnot(list1);
+    knot->next = merge(list2, list1->next);
+
+    return knot;
+}
+
+List* append(List *list1, List *list2) {
     if(isEmpty(list1)) return list2;
 
-    list1->next = merge(list2, list1->next);
+    list1->next = concat(list1->next, list2);
 
     return list1;
 }
@@ -140,4 +151,16 @@ List* cpyKnot(List *list) {
     printf("[%d]\n", newKnot->val);
 
     return newKnot;
+}
+
+List* cpyList(List* list) {
+    struct knot *head;
+
+    if(isEmpty(list)) return NULL;
+
+    head = cpyKnot(list);
+
+    head->next = cpyList(head->next);
+
+    return head;
 }

@@ -10,10 +10,11 @@ int main(int argc, char *argv[]) {
     createLinkedList(&start1);
     printList(start1);
 
-    createLinkedList(&start2);
-    printList(start2);
+//    createLinkedList(&start2);
+//    printList(start2);
 
-    printList(remove(invert(start1), 1));
+//    printf("dupes of 1 = %d\n", countDupes(start1, 1));
+    printList(removeDupes(start1));
     printList(start1);
 
     return 0;
@@ -114,6 +115,81 @@ List* merge(List *list1, List *list2) {
     return cpyKnot(list1);
 }
 
+List* append(List *list1, List *list2) {
+    struct knot **tracer;
+
+    if(isEmpty(list1) || isEmpty(list2)) return NULL;
+
+    for(tracer = &list1; *tracer; tracer = &(*tracer)->next)
+        ;
+
+    *tracer = list2;
+
+    return list1;
+}
+
+int countDupes(List* list, int val) {
+    struct knot **tracer;
+    int count = 0;
+
+    if(isEmpty(list)) return 0;
+
+    for(tracer = &list; *tracer; tracer = &(*tracer)->next) {
+        if((*tracer)->val == val)
+            count++;
+    }
+
+    return count;
+}
+
+//List* removeDupes(List* list) {
+//    struct knot **tracer, *old, *acc;
+
+//    if(isEmpty(list)) return NULL;
+
+//    old = acc = NULL;
+//    for(tracer = &list; *tracer;) {
+//        if(contains(acc, (*tracer)->val)) {
+//            old = *tracer;
+//            *tracer = (*tracer)->next;
+//            free(old);
+//        } else {
+//            if(isEmpty(acc)) {
+//                acc = createKnot((*tracer)->val);
+//            } else {
+//                 insert(acc, (*tracer)->val);
+//            }
+//            tracer = &(*tracer)->next;
+//        }
+//    }
+
+//    removeList(acc);
+
+//    return list;
+//}
+
+List* removeDupes(List* list) {
+    struct knot **tracer, *acc;
+
+    if(isEmpty(list)) return 0;
+
+    acc = createKnot(list->val);
+    for(tracer = &list->next; *tracer; tracer = &(*tracer)->next) {
+        if(!contains(acc, (*tracer)->val)) {
+            if(isEmpty(acc)) {
+                acc = createKnot((*tracer)->val);
+            } else {
+                insert(acc, (*tracer)->val);
+            }
+        }
+    }
+
+    removeList(list->next);
+    list->next = acc->next;
+
+    return list;
+}
+
 // HELPER FUNCTIONS //
 
 void createLinkedList(List **head) {
@@ -168,7 +244,7 @@ List* cpyKnot(List *list) {
     return newKnot;
 }
 
-List* cpyList(List* list) {
+List* cpyList(List *list) {
     struct knot *tracer, *head;
 
     if(isEmpty(list)) return NULL;
@@ -179,6 +255,27 @@ List* cpyList(List* list) {
     }
 
     return head;
+}
+
+int contains(List *list, int val) {
+    struct knot** tracer;
+    char present = 0;
+
+    if(isEmpty(list)) return 0;
+
+    for(tracer = &list; *tracer && !(present = ((*tracer)->val == val)); tracer = &(*tracer)->next)
+        ;
+
+    return present;
+}
+
+void removeList(List *list) {
+    if(isEmpty(list)) return;
+
+    removeList(list->next);
+    free(list);
+
+    return;
 }
 
 /*

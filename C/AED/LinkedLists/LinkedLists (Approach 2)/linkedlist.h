@@ -12,7 +12,7 @@ typedef struct knot {
 int isEmpty(List* head);
 
 /// Entrada: lista encadeada, valor inteiro
-/// Pré-condição: cabeça da lista não pode estar nula
+/// Pré-condição: nenhuma
 /// Pós-condição: insere valor na lista
 List* insert(List* list, int val);
 
@@ -22,7 +22,7 @@ List* insert(List* list, int val);
 List* remove(List* list, int val);
 
 /// Entrada: lista encadeada
-/// Pré-condição: cabeça da lista não pode estar nula
+/// Pré-condição: nenhuma
 /// Pós-condição: printa na saida padrão a lista encadeada
 void printList(List *head);
 
@@ -43,6 +43,13 @@ List* merge(List* list1, List* list2);
 
 /// Entrada: duas listas encadeadas
 /// Pré-condição: nenhuma
+/// Pós-condição: concatena l2 no final de l1 e retorna l1 modicada
+List* append(List *list1, List *list2);
+
+// HELPERS //
+
+/// Entrada: duas listas encadeadas
+/// Pré-condição: nenhuma
 /// Pós-condição: função auxiliar para criação de uma lista encadeada
 void createLinkedList(List **head);
 
@@ -55,5 +62,10 @@ List* createKnot(int val);
 /// Pré-condição: nenhuma
 /// Pós-condição: aloca e retorna uma cópia de nó
 List* cpyKnot(List *list);
+
+/// Entrada: uma lista
+/// Pré-condição: nenhuma
+/// Pós-condição: aloca e retorna uma cópia de uma lista
+List* cpyList(List* list);
 
 #endif // LINKEDLIST_H
