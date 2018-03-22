@@ -59,7 +59,7 @@ void printSubsets(char base[], char subset[], int level);
 /// Entrada: um vetor de inteiros e seu tamanho
 /// Pré-condição: nenhuma
 /// Pós-condição: lê da entrada de dados padrão inteiros e adiciona-os ao vetor
-void readVet(int* length, int vet[]);
+void readVet(int *length, int vet[]);
 
 /// Entrada: um vetor de inteiro e seu tamanho
 /// Pré-condição: nenhuma

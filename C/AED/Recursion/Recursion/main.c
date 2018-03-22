@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 #include <math.h>
 #include <string.h>
 
@@ -8,7 +9,7 @@
 
 int main(int argc, char *argv[]) {
     int m, n;
-    int* length, vet[MAX];
+    int vet[MAX], length = 0;
     char str[5] = "";
     char set[MAX];
 
@@ -20,8 +21,8 @@ int main(int argc, char *argv[]) {
 //    readVet(&length, vet);
 //    printVet(length, vet);
 
-    readSet(set);
-    printSet(set);
+//    readSet(set);
+//    printSet(set);
 
 //    1.
 //    printToN(n);
@@ -44,11 +45,11 @@ int main(int argc, char *argv[]) {
 //    printf("Catalan function of N is: %lld\n", catalan(n));
 
 //    7.
-//    printf("Is '%s' a palindrom: %d\n", str, isPalim(str, strlen(str)));
+//    printf("Is '%s' a palindrom: %d\n", str, isPalim(str, (int)strlen(str)));
 
 //    8.
-    printf("Subsets: \n");
-    printSubsets(set, str, 0);
+//    printf("Subsets: \n");
+//    printSubsets(set, str, 0);
 
 //    9.
 //    invertVet(length, vet);
@@ -147,10 +148,10 @@ void printSet(char subset[]) {
     int i;
 
     printf("{");
-    for(i = 0;i < strlen(subset);i++) {
+    for(i = 0;i < (int)strlen(subset);i++) {
         printf("%c", subset[i]);
 
-        if(i < strlen(subset)-1) {
+        if(i < (int)strlen(subset)-1) {
             printf(", ");
         }
     }
@@ -161,13 +162,13 @@ void printSubsets(char base[], char subset[], int level) {
     int length;
     char newSubset[MAX];
 
-    length = strlen(subset);
+    length = (int)strlen(subset);
 
     strcpy(newSubset, subset);
     newSubset[length] = base[level];
     newSubset[length+1] = 0;
 
-    if(level == strlen(base)-1) {
+    if(level == (int)strlen(base)-1) {
         printSet(subset);
         printSet(newSubset);
         return;
@@ -177,7 +178,7 @@ void printSubsets(char base[], char subset[], int level) {
     printSubsets(base, newSubset, level+1);
 }
 
-void readVet(int* length, int vet[]) {
+void readVet(int *length, int vet[]) {
     int i;
 
     printf("Type in the length of the array: \n");

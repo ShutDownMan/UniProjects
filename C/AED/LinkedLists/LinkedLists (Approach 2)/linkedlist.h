@@ -8,7 +8,7 @@ typedef struct knot {
 
 /// Entrada: lista encadeada
 /// Pré-condição: nenhuma
-/// Pós-condição: retorna se listá é vazia
+/// Pós-condição: retorna se lista é vazia
 int isEmpty(List* head);
 
 /// Entrada: lista encadeada, valor inteiro
