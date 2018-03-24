@@ -10,13 +10,17 @@
 int main(int argc, char *argv[]) {
     int m, n;
     int vet[MAX], length = 0;
-    char str[5] = "";
+    char str[MAX] = "";
     char set[MAX];
 
+    readNum(&n);
+//    readNum(&m);
 //    printf("Type in any number (n): \n");
 //    scanf("%d", &n);
 //    printf("Type in any number (m): \n");
 //    scanf("%d", &m);
+
+//    readLine(str);
 
 //    readVet(&length, vet);
 //    printVet(length, vet);
@@ -42,10 +46,10 @@ int main(int argc, char *argv[]) {
 //    printf("Exponential factorial of N is: %lld\n", expFac(n));
 
 //    6.
-//    printf("Catalan function of N is: %lld\n", catalan(n));
+    printf("Catalan function of N is: %lld\n", catalan(n));
 
 //    7.
-//    printf("Is '%s' a palindrom: %d\n", str, isPalim(str, (int)strlen(str)));
+//    printf("Is '%s' a palindrom: %s\n", str, isPalim(str, (int)strlen(str)) ? "yes" : "no");
 
 //    8.
 //    printf("Subsets: \n");
@@ -111,7 +115,7 @@ long long int catalan(int n) {
     if(n < 1) {
         return 1;
     }
-    return (2 * (2*n - 1))/(n + 1) * catalan(n-1);
+    return (2 * (2*n - 1)) / (double)(n + 1) * catalan(n-1);
 }
 
 int isPalim(char* str, int length) {
@@ -124,6 +128,60 @@ int isPalim(char* str, int length) {
     }
 
     return 0;
+}
+
+void printSubsets(char base[], char subset[], int level) {
+    int length;
+    char newSubset[MAX];
+
+    length = (int)strlen(subset);
+
+    strcpy(newSubset, subset);
+    newSubset[length] = base[level];
+    newSubset[length+1] = 0;
+
+    if(level == (int)strlen(base)-1) {
+        printSet(subset);
+        printSet(newSubset);
+        return;
+    }
+
+    printSubsets(base, subset, level+1);
+    printSubsets(base, newSubset, level+1);
+}
+
+long long int ackerman(int m, int n) {
+    if(m > 0) {
+        if(n > 0) {
+            return ackerman(m-1, ackerman(m, n-1));
+        } else {
+            return ackerman(m - 1, 1);
+        }
+    }
+    return n+1;
+}
+
+int digSum(int n) {
+    if(n > 0) {
+        return n%10 + digSum(n/10);
+    }
+    return 0;
+}
+
+void invertVet(int length, int vet[]) {
+    if(length > 1) {
+        swap(&vet[0], &vet[length-1]);
+        invertVet(length-2, vet+1);
+        return;
+    }
+    return;
+}
+
+// HELPER FUNCTIONS //
+
+void readLine(char str[]) {
+    printf("Type in a word: ");
+    scanf("%[^\n]%*c", str);
 }
 
 char* readSet(char set[]) {
@@ -158,26 +216,6 @@ void printSet(char subset[]) {
     printf("}\n");
 }
 
-void printSubsets(char base[], char subset[], int level) {
-    int length;
-    char newSubset[MAX];
-
-    length = (int)strlen(subset);
-
-    strcpy(newSubset, subset);
-    newSubset[length] = base[level];
-    newSubset[length+1] = 0;
-
-    if(level == (int)strlen(base)-1) {
-        printSet(subset);
-        printSet(newSubset);
-        return;
-    }
-
-    printSubsets(base, subset, level+1);
-    printSubsets(base, newSubset, level+1);
-}
-
 void readVet(int *length, int vet[]) {
     int i;
 
@@ -201,35 +239,13 @@ void printVet(int length, int vet[]) {
     return;
 }
 
-long long int ackerman(int m, int n) {
-    if(m > 0) {
-        if(n > 0) {
-            return ackerman(m-1, ackerman(m, n-1));
-        } else {
-            return ackerman(m - 1, 1);
-        }
-    }
-    return n+1;
-}
-
-int digSum(int n) {
-    if(n > 0) {
-        return n%10 + digSum(n/10);
-    }
-    return 0;
-}
-
 void swap(int *a, int *b) {
     int tmp = *a;
     *a = *b;
     *b = tmp;
 }
 
-void invertVet(int length, int vet[]) {
-    if(length > 1) {
-        swap(&vet[0], &vet[length-1]);
-        invertVet(length-2, vet+1);
-        return;
-    }
-    return;
+void readNum(int *num) {
+        printf("Type in any number: \n");
+        scanf("%d", &num);
 }
