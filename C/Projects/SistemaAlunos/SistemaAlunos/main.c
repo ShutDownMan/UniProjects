@@ -6,7 +6,7 @@
 
 #include <sistemaalunos.h>
 
-#define MAX 64
+#define MAX 254
 
 int main(int argc, char *argv[]) {
     List students = {.length = 0, .head = NULL, .tail = NULL};
@@ -22,6 +22,9 @@ int main(int argc, char *argv[]) {
             break;
         case 'R':
             search(&students);
+            break;
+        case 'U':
+            update(&students);
             break;
         default:
             return 0;
@@ -65,10 +68,19 @@ Student *readStudent() {
 
     printf("Name: ");
     scanf("%[^\n]%*c", str);
-    newStudent->name = strcpy(malloc(sizeof(strlen(str)+1)), str);
+    while(!isValidString(str)) {
+        printf("Name: ");
+        scanf("%[^\n]%*c", str);
+    }
+    newStudent->name = strcpy(malloc(sizeof(strlen(str))+1), str);
+
     printf("Course: ");
     scanf("%[^\n]%*c", str);
-    newStudent->course = strcpy(malloc(sizeof(strlen(str)+1)), str);
+    while(!isValidString(str)) {
+        printf("Course: ");
+        scanf("%[^\n]%*c", str);
+    }
+    newStudent->course = strcpy(malloc(sizeof(strlen(str))+1), str);
 
     return newStudent;
 }
@@ -104,6 +116,8 @@ Node *createNode(Student *stdnt) {
 
     return newNode;
 }
+
+// SEARCH FUNCTIONS //
 
 void search(List *list) {
     char c;
@@ -150,7 +164,7 @@ void printStudent(Student *stdnt) {
     printf("\n");
 }
 
-void searchID(List *list) {
+Student *searchID(List *list) {
     Student *foundStudent;
     int id;
 
@@ -175,6 +189,8 @@ void searchID(List *list) {
     } else {
         printf(">There was a problem locating '%04d'\n", id);
     }
+
+    return foundStudent;
 }
 
 Student *findFromID(List *list, int id) {
@@ -190,7 +206,7 @@ Student *findFromID(List *list, int id) {
     return tracer->student;
 }
 
-void searchName(List *list) {
+Student *searchName(List *list) {
     Student *foundStudent;
     char name[MAX];
 
@@ -198,7 +214,7 @@ void searchName(List *list) {
     printf("Searching by name:\n\n");
     printf(">Type in a valid name: ");
     scanf("%[^\n]%*c", name);
-    while(!isValidName(name)) {
+    while(!isValidString(name)) {
 
         cls();
         printf("Searching by name:\n\n");
@@ -215,6 +231,8 @@ void searchName(List *list) {
     } else {
         printf(">There was a problem locating '%s'\n", name);
     }
+
+    return foundStudent;
 }
 
 Student *findFromName(List *list, char name[]) {
@@ -232,7 +250,7 @@ Student *findFromName(List *list, char name[]) {
     return NULL;
 }
 
-void searchCourse(List *list) {
+List *searchCourse(List *list) {
     List *foundStudents;
     char course[MAX];
 
@@ -240,7 +258,7 @@ void searchCourse(List *list) {
     printf("Searching by course:\n\n");
     printf(">Type in a valid course: ");
     scanf("%[^\n]%*c", course);
-    while(!isValidName(course)) {
+    while(!isValidString(course)) {
 
         cls();
         printf("Searching by course:\n\n");
@@ -258,7 +276,7 @@ void searchCourse(List *list) {
         printf(">There was a problem locating couse '%s'\n", course);
     }
 
-    freeList(foundStudents);
+    return foundStudents;
 }
 
 List *findFromCourse(List *list, char course[]) {
@@ -277,6 +295,182 @@ List *findFromCourse(List *list, char course[]) {
     return foundStudents;
 }
 
+// UPDATE FUNCTIONS //
+
+void update(List *list) {
+    Student *student;
+    char c;
+
+    while((c = updateMenu())) {
+        switch (c) {
+        case '?':
+            showHelpUpdate();
+            break;
+        case 'F':
+            student = findStudent(list);
+            break;
+        case 'I':
+            updateID(student);
+            break;
+        case 'N':
+            updateName(student);
+            break;
+        case 'C':
+            updateCourse(student);
+            break;
+        case 'S':
+            cls();
+            printStudent(student);
+            break;
+        default:
+            return;
+            break;
+        }
+        confirm();
+        if(student) {
+            cls();
+            printStudent(student);
+        }
+    }
+}
+
+char updateMenu() {
+    char cmd;
+
+    cls();
+    printf("Update menu: \n\n");
+    printf(">Type in a command: ");
+    scanf("%c", &cmd);
+    fflush(stdin);
+
+    while(!isValidUpdate(toupper(cmd))) {
+        cls();
+        printf("Update menu: \n\n");
+        printf(">Invalid command!\n");
+        printf("(?) -> Shows help\n");
+        printf(">Type in a new command: ");
+
+        scanf("%c", &cmd);
+        fflush(stdin);
+    }
+
+    return toupper(cmd);
+}
+
+int isValidUpdate(char c) {
+    int i, present;
+    char validCmds[MAX] = "FINCSE?";
+
+    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
+        ;
+
+    return present;
+}
+
+void showHelpUpdate() {
+    cls();
+    printf("Update menu: \n\n");
+    printf("(F) -> Find entry\n");
+    printf("(I) -> Update ID\n");
+    printf("(N) -> Update name\n");
+    printf("(C) -> Update course\n");
+    printf("(S) -> Show found student\n");
+    printf("(E) -> Exit\n");
+    printf("(?) -> Shows help\n");
+    confirm();
+    cls();
+}
+
+Student *findStudent(List *list) {
+    List *foundList = NULL;
+    Student *foundStudent = NULL;
+    char c;
+
+    while((c = searchMenu())) {
+        switch (c) {
+        case '?':
+            showHelpSearch();
+            break;
+        case 'L':
+            printList(list);
+            break;
+        case 'I':
+            foundStudent = searchID(list);
+            break;
+        case 'N':
+            foundStudent = searchName(list);
+            break;
+        case 'C':
+            foundList = searchCourse(list);
+            foundStudent = findStudent(foundList);
+
+            freeList(foundList);
+            break;
+        default:
+            return foundStudent;
+            break;
+        }
+        if(foundStudent)
+            return foundStudent;
+        confirm();
+    }
+
+    return foundStudent;
+}
+
+void updateID(Student *stdnt) {
+    if(!stdnt) return;
+
+    // This shouldn't be allowed
+
+    cls();
+    printStudent(stdnt);
+    printf("\n>Type in a new ID: \n");
+    scanf("%d", &stdnt->ID);
+
+    printf("\n>ID sucessfully updated!\n");
+}
+
+void updateName(Student *stdnt) {
+    char str[MAX];
+    if(!stdnt) return;
+
+    cls();
+    printStudent(stdnt);
+    printf("\n>Type in a valid name: \n");
+    scanf("%[^\n]%*c", str);
+    while(!isValidString(str)) {
+        cls();
+        printStudent(stdnt);
+        printf(">Invalid name!\n");
+        printf("\n>Type in a valid name: \n");
+        scanf("%[^\n]%*c", str);
+    }
+    stdnt->name = strcpy(realloc(stdnt->name, (sizeof(strlen(str))+1)), str);
+
+    printf("\n>Name sucessfully updated!\n");
+}
+
+void updateCourse(Student *stdnt) {
+    char str[MAX];
+    if(!stdnt) return;
+
+    cls();
+    printStudent(stdnt);
+    printf("\n>Type in a valid course: \n");
+    scanf("%[^\n]%*c", str);
+    while(!isValidString(str)) {
+        cls();
+        printStudent(stdnt);
+        printf(">Invalid course!\n");
+        printf("\n>Type in a valid course: \n");
+        scanf("%[^\n]%*c", str);
+    }
+    stdnt->course = strcpy(realloc(stdnt->course, (sizeof(strlen(str))+1)), str);
+
+    printf("\n>Course sucessfully updated!\n");
+}
+
 // HELPER FUNCIONS //
 
 char mainMenu() {
@@ -292,7 +486,7 @@ char mainMenu() {
         cls();
         printf("Main menu: \n\n");
         printf(">Invalid command!\n");
-        printf("(?) -> shows help\n");
+        printf("(?) -> Shows help\n");
         printf(">Type in a new command: ");
 
         scanf("%c", &cmd);
@@ -320,7 +514,7 @@ void showHelpMain() {
     printf("(U) -> Edit entry\n");
     printf("(D) -> Delete entry\n");
     printf("(E) -> Exit\n");
-    printf("(?) -> shows help\n");
+    printf("(?) -> Shows help\n");
     confirm();
     cls();
 }
@@ -338,7 +532,7 @@ char searchMenu() {
         cls();
         printf("Search menu: \n\n");
         printf(">Invalid command!\n");
-        printf("(?) -> shows help\n");
+        printf("(?) -> Shows help\n");
         printf(">Type in a new command: ");
 
         scanf("%c", &cmd);
@@ -366,12 +560,12 @@ void showHelpSearch() {
     printf("(N) -> Search by name\n");
     printf("(C) -> Search by course\n");
     printf("(E) -> Exit\n");
-    printf("(?) -> shows help\n");
+    printf("(?) -> Shows help\n");
     confirm();
     cls();
 }
 
-int isValidName(char name[]) {
+int isValidString(char name[]) {
     int i, present;
 
     for(i = present = 0; name[i] && !(present = (!isalpha(name[i]) && name[i] != ' ')); i++)

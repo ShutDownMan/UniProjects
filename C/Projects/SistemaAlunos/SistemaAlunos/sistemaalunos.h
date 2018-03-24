@@ -30,23 +30,43 @@ Node *insertNode(Node *node, Student *stdnt);
 
 Node *createNode(Student *stdnt);
 
+// SEARCH FUNCTIONS //
+
 void search(List *list);
 
 void printList(List *list);
 
 void printStudent(Student *stdnt);
 
-void searchID(List *list);
+Student *searchID(List *list);
 
 Student *findFromID(List *list, int id);
 
-void searchName(List *list);
+Student *searchName(List *list);
 
 Student *findFromName(List *list, char name[]);
 
-void searchCourse(List *list);
+List *searchCourse(List *list);
 
 List *findFromCourse(List *list, char course[]);
+
+// UPDATE FUNCTIONS //
+
+void update(List *list);
+
+char updateMenu();
+
+int isValidUpdate(char c);
+
+void showHelpUpdate();
+
+Student *findStudent(List *list);
+
+void updateID(Student *stdnt);
+
+void updateName(Student *stdnt);
+
+void updateCourse(Student *stdnt);
 
 // HELPER FUNCIONS //
 
@@ -64,7 +84,7 @@ void showHelpSearch();
 
 void printList(List *list);
 
-int isValidName(char name[]);
+int isValidString(char name[]);
 
 void cls();
 
