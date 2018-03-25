@@ -4,9 +4,9 @@
 #include <ctype.h>
 #include <conio.h>
 
-#include <sistemaalunos.h>
+#include "sistemaalunos.h"
 
-#define MAX 254
+#define MAX 256
 
 int main(int argc, char *argv[]) {
     List students = {.length = 0, .head = NULL, .tail = NULL};
@@ -25,6 +25,9 @@ int main(int argc, char *argv[]) {
             break;
         case 'U':
             update(&students);
+            break;
+        case 'D':
+            delet(&students);
             break;
         default:
             return 0;
@@ -52,11 +55,9 @@ void createForm(List *list) {
         } else {
             printf(">There was a problem adding entry to list.\n");
         }
-
     } else {
         printf(">There was a problem reading student data.\n");
     }
-
 }
 
 Student *readStudent() {
@@ -92,7 +93,8 @@ int insert(List *list, Student *stdnt) {
     }
 
     list->tail = createNode(stdnt);
-    return (int)insertNode(list->head, stdnt);
+    insertNode(list->head, stdnt);
+    return 1;
 }
 
 Node *insertNode(Node *node, Student *stdnt) {
@@ -111,8 +113,10 @@ Node *insertNode(Node *node, Student *stdnt) {
 Node *createNode(Student *stdnt) {
     Node *newNode = malloc(sizeof(Node));
 
-    newNode->student = stdnt;
-    newNode->next = NULL;
+    if(newNode) {
+        newNode->student = stdnt;
+        newNode->next = NULL;
+    }
 
     return newNode;
 }
@@ -469,6 +473,100 @@ void updateCourse(Student *stdnt) {
     stdnt->course = strcpy(realloc(stdnt->course, (sizeof(strlen(str))+1)), str);
 
     printf("\n>Course sucessfully updated!\n");
+}
+
+// DELETE FUNCTIONS //
+
+void delet(List *list) {
+    Student *student;
+    char c;
+
+    while((c = deleteMenu())) {
+        switch (c) {
+        case '?':
+            showHelpDelete();
+            break;
+        case 'F':
+            student = findStudent(list);
+            break;
+        case 'S':
+            printStudent(student);
+            break;
+        case 'D':
+            deleteEntry(list, student);
+            break;
+        default:
+            return;
+            break;
+        }
+        confirm();
+        if(student) {
+            cls();
+            printStudent(student);
+        }
+    }
+}
+
+char deleteMenu() {
+    char cmd;
+
+    cls();
+    printf("Delete menu: \n\n");
+    printf(">Type in a command: ");
+    scanf("%c", &cmd);
+    fflush(stdin);
+
+    while(!isValidDelete(toupper(cmd))) {
+        cls();
+        printf("Delete menu: \n\n");
+        printf(">Invalid command!\n");
+        printf("(?) -> Shows help\n");
+        printf(">Type in a new command: ");
+
+        scanf("%c", &cmd);
+        fflush(stdin);
+    }
+
+    return toupper(cmd);
+}
+
+int isValidDelete(char c) {
+    int i, present;
+    char validCmds[MAX] = "FSDE?";
+
+    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
+        ;
+
+    return present;
+}
+
+void showHelpDelete() {
+    cls();
+    printf("Update menu: \n\n");
+    printf("(F) -> Find entry\n");
+    printf("(S) -> Show entry\n");
+    printf("(D) -> Delete entry\n");
+    printf("(E) -> Exit\n");
+    printf("(?) -> Shows help\n");
+    confirm();
+    cls();
+}
+
+void deleteEntry(List *list, Student* student) {
+    Node **tracer, *old;
+    char present = 0;
+
+    if(!list || isEmpty(list->head)) return;
+
+    for(tracer = &list->head; *tracer && !(present = ((*tracer)->student->ID == student->ID)); tracer = &(*tracer)->next)
+        ;
+
+    if(present) {
+        old = *tracer;
+        *tracer = (*tracer)->next;
+        free(old->student);
+        free(old);
+    }
 }
 
 // HELPER FUNCIONS //
