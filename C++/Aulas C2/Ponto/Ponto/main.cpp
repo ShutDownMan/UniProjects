@@ -1,22 +1,21 @@
-#include <iostream>
-#include <ponto.h>
-#include <circulo.h>
+#include "ponto.h"
+#include "circulo.h"
 
+#include <iostream>
 using namespace std;
 
-int main(int argc, char *argv[])
-{
-    Ponto* ponto1 = new Ponto(10, 2.5);
+int main(void) {
+    Ponto *ponto1 = new Ponto(10, 2.5);
     //ponto1->setX(1);
 
     ponto1->show();
 
-    Circulo* circulo1 = new Circulo(15, 11.3, 3.14);
+    Circulo *circulo1 = new Circulo(15, 11.3, 3.14);
 
     circulo1->mover(1.5, 1.1);
     circulo1->show();
 
-    circulo1->mover(*ponto1);   // *ponto1 cria uma cópia q após usada chama automaticamente seu destructor
+    circulo1->mover(ponto1);
     circulo1->show();
 
     circulo1->aumentar();

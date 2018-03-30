@@ -10,7 +10,7 @@ class Circulo:Ponto {
     public:
         Circulo(double x, double y, double r);
         void mover(double x, double y);
-        void mover(Ponto p);
+        void mover(Ponto *p);
         void show(void);
         void aumentar(void);
         void diminuir(void);

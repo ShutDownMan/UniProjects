@@ -4,9 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    circulo.cpp \
-    ponto.cpp
+    pessoa.cpp \
+    funcionario.cpp
 
 HEADERS += \
-    circulo.h \
-    ponto.h
+    pessoa.h \
+    funcionario.h

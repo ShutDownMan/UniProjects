@@ -41,6 +41,22 @@ List* insert(List *list, int val) {
     return list;
 }
 
+List* insert_apos(List *list, int val, int x) {
+    struct knot **tracer;
+
+    if(isEmpty(list)) {
+        return NULL;
+    }
+
+    for(tracer = &list; *tracer && !(((*tracer)->val == x)); tracer = &(*tracer)->next)
+        ;
+
+    *tracer = createKnot(val);
+
+    return list;
+}
+
+
 List* remove(List *list, int val) {
     struct knot* old;
     struct knot** tracer;

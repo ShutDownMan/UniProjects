@@ -17,9 +17,9 @@ void Circulo::mover(double x, double y) {
     this->setY(y);
 }
 
-void Circulo::mover(Ponto p) {
-    this->setX(p.getX());
-    this->setY(p.getY());
+void Circulo::mover(Ponto *p) {
+    this->setX(p->getX());
+    this->setY(p->getY());
 }
 
 void Circulo::aumentar(void) {

@@ -10,10 +10,10 @@ int main(int argc, char *argv[]) {
     createLinkedList(&start1);
     printList(start1);
 
-    createLinkedList(&start2);
-    printList(start2);
+//    createLinkedList(&start2);
+//    printList(start2);
 
-    printList(merge(start1, start2));
+    printList(start1 = remove_mult(start1, 2));
     printList(start1);
 
     return 0;
@@ -38,6 +38,25 @@ List* insert(List *list, int val) {
     return list;
 }
 
+List* insert_apos(List *list, int val, int x) {
+    List *next;
+
+    if(isEmpty(list)) {
+        return createKnot(x);
+    }
+
+    if(list->val != x && list->next) {
+        insert_apos(list->next, val, x);
+        return list;
+    }
+
+    next = list->next;
+    list->next = createKnot(x);
+    list->next->next = next;
+
+    return list;
+}
+
 List* remove(List *list, int val) {
     struct knot* next;
     char present = 0;
@@ -53,6 +72,26 @@ List* remove(List *list, int val) {
         next = list->next;
         free(list);
         return next;
+    }
+
+    return list;
+}
+
+List* remove_mult(List *list, int val) {
+    struct knot* next;
+
+    if(isEmpty(list)) return list;
+
+    next = list->next;
+    if(next) {
+        next = remove_mult(next, val);
+        return next;
+    }
+
+    if(!(list->next->val%val)) {
+        next = list->next;
+        free(list);
+        return remove_mult(next, val);
     }
 
     return list;

@@ -68,4 +68,7 @@ List* cpyKnot(List *list);
 /// Pós-condição: aloca e retorna uma cópia de uma lista
 List* cpyList(List* list);
 
+List* remove_mult(List *list, int val);
+
+
 #endif // LINKEDLIST_H

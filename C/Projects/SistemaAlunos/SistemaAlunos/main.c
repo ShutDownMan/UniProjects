@@ -31,7 +31,6 @@ int main(int argc, char *argv[]) {
             break;
         default:
             return 0;
-            break;
         }
         confirm();
     }
@@ -58,6 +57,51 @@ void createForm(List *list) {
     } else {
         printf(">There was a problem reading student data.\n");
     }
+}
+
+char mainMenu() {
+    char cmd;
+
+    cls();
+    printf("Main menu: \n\n");
+    printf(">Type in a command: ");
+    scanf("%c", &cmd);
+    fflush(stdin);
+
+    while(!contains(toupper(cmd), "CRUDE?")) {
+        cls();
+        printf("Main menu: \n\n");
+        printf(">Invalid command!\n");
+        printf("(?) -> Shows help\n");
+        printf(">Type in a new command: ");
+
+        scanf("%c", &cmd);
+        fflush(stdin);
+    }
+
+    return toupper(cmd);
+}
+
+int contains(char c, char validCmds[]) {
+    int i, present;
+
+    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
+        ;
+
+    return present;
+}
+
+void showHelpMain() {
+    cls();
+    printf("Main menu: \n\n");
+    printf("(C) -> Add new entry\n");
+    printf("(R) -> Search entries\n");
+    printf("(U) -> Edit entry\n");
+    printf("(D) -> Delete entry\n");
+    printf("(E) -> Exit\n");
+    printf("(?) -> Shows help\n");
+    confirm();
+    cls();
 }
 
 Student *readStudent() {
@@ -149,6 +193,51 @@ void search(List *list) {
         }
         confirm();
     }
+}
+
+char searchMenu() {
+    char cmd;
+
+    cls();
+    printf("Search menu: \n\n");
+    printf(">Type in a command: ");
+    scanf("%c", &cmd);
+    fflush(stdin);
+
+    while(!contains(toupper(cmd), "LINCE?")) {
+        cls();
+        printf("Search menu: \n\n");
+        printf(">Invalid command!\n");
+        printf("(?) -> Shows help\n");
+        printf(">Type in a new command: ");
+
+        scanf("%c", &cmd);
+        fflush(stdin);
+    }
+
+    return toupper(cmd);
+}
+
+void showHelpSearch() {
+    cls();
+    printf("Search menu: \n\n");
+    printf("(L) -> List entries\n");
+    printf("(I) -> Search by ID\n");
+    printf("(N) -> Search by name\n");
+    printf("(C) -> Search by course\n");
+    printf("(E) -> Exit\n");
+    printf("(?) -> Shows help\n");
+    confirm();
+    cls();
+}
+
+int isValidString(char name[]) {
+    int i, present;
+
+    for(i = present = 0; name[i] && !(present = (!isalpha(name[i]) && name[i] != ' ')); i++)
+        ;
+
+    return !present;
 }
 
 void printList(List *list) {
@@ -347,7 +436,7 @@ char updateMenu() {
     scanf("%c", &cmd);
     fflush(stdin);
 
-    while(!isValidUpdate(toupper(cmd))) {
+    while(!contains(toupper(cmd), "FINCSE?")) {
         cls();
         printf("Update menu: \n\n");
         printf(">Invalid command!\n");
@@ -359,16 +448,6 @@ char updateMenu() {
     }
 
     return toupper(cmd);
-}
-
-int isValidUpdate(char c) {
-    int i, present;
-    char validCmds[MAX] = "FINCSE?";
-
-    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
-        ;
-
-    return present;
 }
 
 void showHelpUpdate() {
@@ -478,7 +557,7 @@ void updateCourse(Student *stdnt) {
 // DELETE FUNCTIONS //
 
 void delet(List *list) {
-    Student *student;
+    Student *student = NULL;
     char c;
 
     while((c = deleteMenu())) {
@@ -496,10 +575,9 @@ void delet(List *list) {
             deleteEntry(list, student);
             break;
         default:
+            confirm();
             return;
-            break;
         }
-        confirm();
         if(student) {
             cls();
             printStudent(student);
@@ -516,7 +594,7 @@ char deleteMenu() {
     scanf("%c", &cmd);
     fflush(stdin);
 
-    while(!isValidDelete(toupper(cmd))) {
+    while(!contains(toupper(cmd), "FSDE?")) {
         cls();
         printf("Delete menu: \n\n");
         printf(">Invalid command!\n");
@@ -528,16 +606,6 @@ char deleteMenu() {
     }
 
     return toupper(cmd);
-}
-
-int isValidDelete(char c) {
-    int i, present;
-    char validCmds[MAX] = "FSDE?";
-
-    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
-        ;
-
-    return present;
 }
 
 void showHelpDelete() {
@@ -570,107 +638,6 @@ void deleteEntry(List *list, Student* student) {
 }
 
 // HELPER FUNCIONS //
-
-char mainMenu() {
-    char cmd;
-
-    cls();
-    printf("Main menu: \n\n");
-    printf(">Type in a command: ");
-    scanf("%c", &cmd);
-    fflush(stdin);
-
-    while(!isValidMain(toupper(cmd))) {
-        cls();
-        printf("Main menu: \n\n");
-        printf(">Invalid command!\n");
-        printf("(?) -> Shows help\n");
-        printf(">Type in a new command: ");
-
-        scanf("%c", &cmd);
-        fflush(stdin);
-    }
-
-    return toupper(cmd);
-}
-
-int isValidMain(char c) {
-    int i, present;
-    char validCmds[MAX] = "CRUDE?";
-
-    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
-        ;
-
-    return present;
-}
-
-void showHelpMain() {
-    cls();
-    printf("Main menu: \n\n");
-    printf("(C) -> Add new entry\n");
-    printf("(R) -> Search entries\n");
-    printf("(U) -> Edit entry\n");
-    printf("(D) -> Delete entry\n");
-    printf("(E) -> Exit\n");
-    printf("(?) -> Shows help\n");
-    confirm();
-    cls();
-}
-
-char searchMenu() {
-    char cmd;
-
-    cls();
-    printf("Search menu: \n\n");
-    printf(">Type in a command: ");
-    scanf("%c", &cmd);
-    fflush(stdin);
-
-    while(!isValidSearch(toupper(cmd))) {
-        cls();
-        printf("Search menu: \n\n");
-        printf(">Invalid command!\n");
-        printf("(?) -> Shows help\n");
-        printf(">Type in a new command: ");
-
-        scanf("%c", &cmd);
-        fflush(stdin);
-    }
-
-    return toupper(cmd);
-}
-
-int isValidSearch(char c) {
-    int i, present;
-    char validCmds[MAX] = "LINCE?";
-
-    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
-        ;
-
-    return present;
-}
-
-void showHelpSearch() {
-    cls();
-    printf("Search menu: \n\n");
-    printf("(L) -> List entries\n");
-    printf("(I) -> Search by ID\n");
-    printf("(N) -> Search by name\n");
-    printf("(C) -> Search by course\n");
-    printf("(E) -> Exit\n");
-    printf("(?) -> Shows help\n");
-    confirm();
-    cls();
-}
-
-int isValidString(char name[]) {
-    int i, present;
-
-    for(i = present = 0; name[i] && !(present = (!isalpha(name[i]) && name[i] != ' ')); i++)
-        ;
-
-    return !present;
-}
 
 void cls() {
     system("CLS");

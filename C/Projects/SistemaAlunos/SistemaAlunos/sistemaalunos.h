@@ -25,11 +25,6 @@ typedef struct List {
 /// Pós-condição: printa na saida padrão o menu principal
 char mainMenu();
 
-/// Entrada: um char c
-/// Pré-condição: nenhuma
-/// Pós-condição: retorna se c é um comando válido
-int isValidMain(char c);
-
 /// Entrada: nenhuma
 /// Pré-condição: nenhuma
 /// Pós-condição: printa na saida padrão comandos válidos
@@ -89,11 +84,6 @@ void printStudent(Student *stdnt);
 /// Entrada: nenhuma
 /// Pré-condição: nenhuma
 /// Pós-condição: nenhuma
-int isValidSearch(char c);
-
-/// Entrada: nenhuma
-/// Pré-condição: nenhuma
-/// Pós-condição: nenhuma
 void showHelpSearch();
 
 /// Entrada: nenhuma
@@ -142,11 +132,6 @@ void update(List *list);
 /// Pré-condição: nenhuma
 /// Pós-condição: nenhuma
 char updateMenu();
-
-/// Entrada: nenhuma
-/// Pré-condição: nenhuma
-/// Pós-condição: nenhuma
-int isValidUpdate(char c);
 
 /// Entrada: nenhuma
 /// Pré-condição: nenhuma
@@ -201,6 +186,11 @@ void showHelpDelete();
 void deleteEntry(List *list, Student* student);
 
 // HELPER FUNCIONS //
+
+/// Entrada: nenhuma
+/// Pré-condição: nenhuma
+/// Pós-condição: nenhuma
+int contains(char c, char validCmds[]);
 
 /// Entrada: nenhuma
 /// Pré-condição: nenhuma
