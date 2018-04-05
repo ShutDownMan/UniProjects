@@ -13,7 +13,7 @@ class Ponto {
         double getX(void);
         double getY(void);
         void show(void);
-        ~Ponto(void);
+        virtual ~Ponto(void);
 };
 
 #endif // PONTO_H

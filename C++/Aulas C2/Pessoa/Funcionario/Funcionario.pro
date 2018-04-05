@@ -10,3 +10,6 @@ SOURCES += main.cpp \
 HEADERS += \
     pessoa.h \
     funcionario.h
+
+DISTFILES += \
+    Funcionario.pro.user

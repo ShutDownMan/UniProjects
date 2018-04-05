@@ -40,6 +40,10 @@ public:
     void multiply(Matrix &other);
     void copy(Matrix &other);
 
+    Matrix operator +(Matrix &other);
+    Matrix operator -(Matrix &other);
+    Matrix operator*(Matrix &other);
+
     void show();
 };
 

@@ -9,7 +9,7 @@ Contador::Contador() {
 }
 
 Contador::~Contador() {
-    cout << "(Contador) Liberando memória" << endl;
+    cout << "(Contador) Liberando memoria" << endl;
 }
 
 void Contador::increment() {
@@ -19,4 +19,3 @@ void Contador::increment() {
 int Contador::getTime() {
     return this->timer;
 }
-

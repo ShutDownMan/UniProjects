@@ -24,9 +24,7 @@ int main(int argc, char *argv[]) {
     m2->show();
     cout << "-------------" << endl;
 
-    m1->multiply(*m2);
-
-    m1->show();
+    ((*m1) - (*m2)).show();
     cout << "-------------" << endl;
 
     delete m1;

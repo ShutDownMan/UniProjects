@@ -47,7 +47,7 @@ Student *readStudent();
 /// Entrada: uma lista encadeada e um estudante
 /// Pré-condição: nenhuma
 /// Pós-condição: auxilia na inserção estudante na lista encadeada
-int insert(List *list, Student *stdnt);
+void insert(List *list, Student *stdnt);
 
 /// Entrada: um nó e um estudante
 /// Pré-condição: nenhuma

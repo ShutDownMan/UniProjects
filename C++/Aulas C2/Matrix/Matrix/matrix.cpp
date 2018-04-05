@@ -195,6 +195,19 @@ void Matrix::sum(Matrix &other) {
     }
 }
 
+Matrix Matrix::operator+(Matrix &other) {
+    Matrix* res = new Matrix(this->getHeight(), this->getWidth());
+    if(!this->checkDim(other)) return *res;
+
+    for(int row = 0; row < this->getHeight(); row++) {
+        for(int col = 0; col < this->getWidth(); col++) {
+            res->setElem(col, row, this->getElem(col, row) + other.getElem(col, row));
+        }
+    }
+
+    return *res;
+}
+
 void Matrix::subtraction(Matrix &other) {
     if(!this->checkDim(other)) return;
 
@@ -203,6 +216,19 @@ void Matrix::subtraction(Matrix &other) {
             this->setElem(col, row, this->getElem(col, row) - other.getElem(col, row));
         }
     }
+}
+
+Matrix Matrix::operator-(Matrix &other) {
+    Matrix* res = new Matrix(this->getHeight(), this->getWidth());
+    if(!this->checkDim(other)) return *res;
+
+    for(int row = 0; row < this->getHeight(); row++) {
+        for(int col = 0; col < this->getWidth(); col++) {
+            res->setElem(col, row, this->getElem(col, row) - other.getElem(col, row));
+        }
+    }
+
+    return *res;
 }
 
 void Matrix::multiply(Matrix &other) {
@@ -224,6 +250,25 @@ void Matrix::multiply(Matrix &other) {
     this->copy(*r);
 
     delete r;
+}
+
+Matrix Matrix::operator*(Matrix &other) {
+    Matrix* res = new Matrix(this->getHeight(), this->getWidth());
+
+    if(this->getWidth() != other.getHeight()) {
+        this->empty();
+        return *res;
+    }
+
+    for(int row = 0; row < this->getHeight(); row++) {
+        for(int col = 0; col < other.getWidth(); col++) {
+            for(int k = 0; k < this->getWidth(); k++) {
+                res->setElem(col, row, res->getElem(col, row) + this->getElem(k, row) * other.getElem(col, k));
+            }
+        }
+    }
+
+    return *res;
 }
 
 void Matrix::copy(Matrix &other) {

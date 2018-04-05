@@ -40,24 +40,8 @@ int main(int argc, char *argv[]) {
 
 // CRUD //
 
-void createForm(List *list) {
-    Student *newStudent;
+// CREATE FUNCTIONS //
 
-    if((newStudent = readStudent())) {
-        newStudent->ID = list->length++;
-
-        printf("\n>Student data sucessfully stored.\n");
-        printf(">Adding student data to list.\n\n");
-
-        if(insert(list, newStudent)) {
-            printf(">Student entry sucessfully added to list.\n");
-        } else {
-            printf(">There was a problem adding entry to list.\n");
-        }
-    } else {
-        printf(">There was a problem reading student data.\n");
-    }
-}
 
 char mainMenu() {
     char cmd;
@@ -82,15 +66,6 @@ char mainMenu() {
     return toupper(cmd);
 }
 
-int contains(char c, char validCmds[]) {
-    int i, present;
-
-    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
-        ;
-
-    return present;
-}
-
 void showHelpMain() {
     cls();
     printf("Main menu: \n\n");
@@ -104,6 +79,23 @@ void showHelpMain() {
     cls();
 }
 
+void createForm(List *list) {
+    Student *newStudent;
+
+    if((newStudent = readStudent())) {
+        newStudent->ID = list->length++;
+
+        printf("\n>Student data sucessfully stored.\n");
+        printf(">Adding student data to list.\n\n");
+
+		insert(list, newStudent);
+
+        printf(">Student entry sucessfully added to list.\n");
+    } else {
+        printf(">There was a problem reading student data.\n");
+    }
+}
+
 Student *readStudent() {
     Student *newStudent = malloc(sizeof(Student));
     char str[MAX];
@@ -111,13 +103,15 @@ Student *readStudent() {
     cls();
     printf(">Type in student data: \n");
 
+    //getString(str, "Name");
+
     printf("Name: ");
     scanf("%[^\n]%*c", str);
     while(!isValidString(str)) {
         printf("Name: ");
         scanf("%[^\n]%*c", str);
     }
-    newStudent->name = strcpy(malloc(sizeof(strlen(str))+1), str);
+    newStudent->name = strcpy(malloc(sizeof(char)*(strlen(str)+1)), str);
 
     printf("Course: ");
     scanf("%[^\n]%*c", str);
@@ -125,20 +119,19 @@ Student *readStudent() {
         printf("Course: ");
         scanf("%[^\n]%*c", str);
     }
-    newStudent->course = strcpy(malloc(sizeof(strlen(str))+1), str);
+    newStudent->course = strcpy(malloc(sizeof(char)*(strlen(str)+1)), str);
 
     return newStudent;
 }
 
-int insert(List *list, Student *stdnt) {
+void insert(List *list, Student *stdnt) {
     if(isEmpty(list->head)) {
         list->head = createNode(stdnt);
-        return 1;
+        return;
     }
 
-    list->tail = createNode(stdnt);
+    //list->tail = createNode(stdnt);
     insertNode(list->head, stdnt);
-    return 1;
 }
 
 Node *insertNode(Node *node, Student *stdnt) {
@@ -258,7 +251,7 @@ void printStudent(Student *stdnt) {
 }
 
 Student *searchID(List *list) {
-    Student *foundStudent;
+    Student *foundStudent = NULL;
     int id;
 
     cls();
@@ -275,8 +268,7 @@ Student *searchID(List *list) {
     }
 
     cls();
-    foundStudent = findFromID(list, id);
-    if(foundStudent) {
+    if(foundStudent = findFromID(list, id)) {
         printf(">ID (%04d) have been found\n", id);
         printStudent(foundStudent);
     } else {
@@ -296,7 +288,10 @@ Student *findFromID(List *list, int id) {
     for(tracer = list->head; tracer && !(present = (tracer->student->ID == id)); tracer = tracer->next)
         ;
 
-    return tracer->student;
+    if(present)
+	    return tracer->student;
+
+	return NULL;
 }
 
 Student *searchName(List *list) {
@@ -340,6 +335,7 @@ Student *findFromName(List *list, char name[]) {
 
     if(present)
         return tracer->student;
+
     return NULL;
 }
 
@@ -391,7 +387,7 @@ List *findFromCourse(List *list, char course[]) {
 // UPDATE FUNCTIONS //
 
 void update(List *list) {
-    Student *student;
+    Student *student = NULL;
     char c;
 
     while((c = updateMenu())) {
@@ -412,8 +408,10 @@ void update(List *list) {
             updateCourse(student);
             break;
         case 'S':
-            cls();
-            printStudent(student);
+	        if(student) {
+	            cls();
+	            printStudent(student);
+	        }
             break;
         default:
             return;
@@ -650,6 +648,15 @@ void confirm() {
 
 int isEmpty(Node *node) {
     return !node;
+}
+
+int contains(char c, char validCmds[]) {
+    int i, present;
+
+    for(i = present = 0; validCmds[i] && !(present = (validCmds[i] == c)); i++)
+        ;
+
+    return present;
 }
 
 List *createList() {
