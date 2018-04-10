@@ -10,7 +10,7 @@ int main(void) {
     printList(list1);
 
     removeNodes(list1, 1);
-    printList(list1);
+    printListRev(list1);
 
     return 0;
 }
@@ -38,7 +38,7 @@ List *insertOnHead(List *list, ItemType val) {
 }
 
 List *insertOnTail(List *list, ItemType val) {
-    Node *newNode;
+    Node *newNode, *tail;
 
     if(isEmpty(list)) {
         list->head = createNode(val);
@@ -47,8 +47,12 @@ List *insertOnTail(List *list, ItemType val) {
     }
 
     newNode = createNode(val);
+    tail = list->tail;
+
     insertNodeOnTail(list->head, newNode);
+
     list->tail = newNode;
+    list->tail->prev = tail;
 
     return list;
 }
@@ -70,6 +74,10 @@ void removeNodes(List *list, ItemType val) {
             next = (*tracer)->next->next;
             free((*tracer)->next);
             (*tracer)->next = next;
+
+            if(next) {
+                next->prev = *tracer;
+            }
         } else {
             tracer = &(*tracer)->next;
         }
@@ -79,6 +87,11 @@ void removeNodes(List *list, ItemType val) {
         next = list->head->next;
         free(list->head);
         list->head = next;
+
+        if(next) {
+            next->prev = NULL;
+            tracer = &next;
+        }
     }
 
     list->tail = *tracer;
@@ -121,6 +134,20 @@ void printList(List *list) {
     printf("(!);\n");
 }
 
+void printListRev(List *list) {
+    Node **tracer;
+    char format[MAX];
+
+    sprintf(format, "(%s)-> ", ItemFormat);
+
+    printf("Lista Encadeada {(%p)-> ... (%p)}: ", list->head, list->tail);
+    for(tracer = &list->tail; *tracer; tracer = &(*tracer)->prev) {
+        printf(format, (*tracer)->info);
+    }
+
+    printf("(!);\n");
+}
+
 List *createList() {
     List *newList = malloc(sizeof(List));
 
@@ -135,6 +162,7 @@ Node *createNode(ItemType val) {
 
     newNode->info = val;
     newNode->next = NULL;
+    newNode->prev = NULL;
 
     return newNode;
 }

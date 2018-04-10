@@ -41,10 +41,20 @@ long long int catalan(int n);
 /// Pós-condição: retorna se o vetor de char fornecido é palindromo
 int isPalim(char* str, int length);
 
-/// Entrada: um vetor de char com os simbotos originais, um de buffer e um inteiro indicando nível
+/// Entrada: um vetor de char com os simbolos originais
 /// Pré-condição: nenhuma
 /// Pós-condição: printa na saída de dados padrão todos os subsets dentro do set fornecido
-void printSubsets(char base[], char subset[], int level);
+void printSubsets(char base[]);
+
+/// Entrada: um vetor de char com os simbolos originais, um de buffer e um inteiro indicando nível
+/// Pré-condição: nenhuma
+/// Pós-condição: printa na saída de dados padrão todos os subsets dentro do set fornecido
+void printSubsetsTree(char base[], char subset[], int level);
+
+/// Entrada: um vetor de char com os simbolos originais e um inteiro indicando subconjunto atual
+/// Pré-condição: nenhuma
+/// Pós-condição: printa na saída de dados padrão todos os subsets dentro do set fornecido
+void printSubsetsBinary(char base[], int n);
 
 /// Entrada: dois inteiros (m e n)
 /// Pré-condição: nenhuma

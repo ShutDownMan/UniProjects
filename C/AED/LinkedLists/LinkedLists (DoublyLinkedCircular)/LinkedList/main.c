@@ -8,6 +8,7 @@ int main(void) {
 
     list1 = readList();
     printList(list1);
+    printListRev(list1);
 
     removeNodes(list1, 1);
     printList(list1);
@@ -34,11 +35,16 @@ List *insertOnHead(List *list, ItemType val) {
     list->head = createNode(val);
     list->head->next = next;
 
+    next->prev = list->head;
+
+    list->head->prev = list->tail;
+    list->tail->next = list->head;
+
     return list;
 }
 
 List *insertOnTail(List *list, ItemType val) {
-    Node *newNode;
+    Node *newNode, *tail;
 
     if(isEmpty(list)) {
         list->head = createNode(val);
@@ -47,29 +53,34 @@ List *insertOnTail(List *list, ItemType val) {
     }
 
     newNode = createNode(val);
-    insertNodeOnTail(list->head, newNode);
+
+    tail = list->tail;
+    tail->next = newNode;
+
     list->tail = newNode;
+    list->tail->prev = tail;
+
+    list->tail->next = list->head;
+
+    list->head->prev = list->tail;
 
     return list;
-}
-
-Node *insertNodeOnTail(Node *node, Node *newNode) {
-    if(!node) return newNode;
-
-    node->next = insertNodeOnTail(node->next, newNode);
-
-    return node;
 }
 
 void removeNodes(List *list, ItemType val) {
     Node **tracer, *next;
     if(isEmpty(list)) return;
 
-    for(tracer = &list->head; (*tracer) && (*tracer)->next; ) {
+    for(tracer = &list->head; (*tracer) && (*tracer)->next && (*tracer)->next != list->tail; ) {
         if((*tracer)->next->info == val) {
+
             next = (*tracer)->next->next;
             free((*tracer)->next);
             (*tracer)->next = next;
+
+            if(next) {
+                next->prev = *tracer;
+            }
         } else {
             tracer = &(*tracer)->next;
         }
@@ -79,6 +90,11 @@ void removeNodes(List *list, ItemType val) {
         next = list->head->next;
         free(list->head);
         list->head = next;
+
+        if(next) {
+            next->prev = list->tail;
+            tracer = &next;
+        }
     }
 
     list->tail = *tracer;
@@ -114,7 +130,29 @@ void printList(List *list) {
     sprintf(format, "(%s)-> ", ItemFormat);
 
     printf("Lista Encadeada {(%p)-> ... (%p)}: ", list->head, list->tail);
-    for(tracer = &list->head; *tracer; tracer = &(*tracer)->next) {
+    for(tracer = &list->head; *tracer && (*tracer) != list->tail; tracer = &(*tracer)->next) {
+        printf(format, (*tracer)->info);
+    }
+
+    if(list->tail) {
+        printf(format, (*tracer)->info);
+    }
+
+    printf("(!);\n");
+}
+
+void printListRev(List *list) {
+    Node **tracer;
+    char format[MAX];
+
+    sprintf(format, "(%s)-> ", ItemFormat);
+
+    printf("Lista Encadeada {(%p)-> ... (%p)}: ", list->head, list->tail);
+    for(tracer = &list->tail; *tracer && (*tracer) != list->head; tracer = &(*tracer)->prev) {
+        printf(format, (*tracer)->info);
+    }
+
+    if(list->head) {
         printf(format, (*tracer)->info);
     }
 
@@ -134,7 +172,8 @@ Node *createNode(ItemType val) {
     Node *newNode = malloc(sizeof(Node));
 
     newNode->info = val;
-    newNode->next = NULL;
+    newNode->next = newNode;
+    newNode->prev = newNode;
 
     return newNode;
 }

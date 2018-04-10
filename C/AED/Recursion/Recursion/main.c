@@ -13,7 +13,6 @@ int main(int argc, char *argv[]) {
     char str[MAX] = "";
     char set[MAX];
 
-    readNum(&n);
 //    readNum(&m);
 //    printf("Type in any number (n): \n");
 //    scanf("%d", &n);
@@ -25,8 +24,8 @@ int main(int argc, char *argv[]) {
 //    readVet(&length, vet);
 //    printVet(length, vet);
 
-//    readSet(set);
-//    printSet(set);
+    readSet(set);
+    printSet(set);
 
 //    1.
 //    printToN(n);
@@ -46,14 +45,14 @@ int main(int argc, char *argv[]) {
 //    printf("Exponential factorial of N is: %lld\n", expFac(n));
 
 //    6.
-    printf("Catalan function of N is: %lld\n", catalan(n));
+//    printf("Catalan function of N is: %lld\n", catalan(n));
 
 //    7.
 //    printf("Is '%s' a palindrom: %s\n", str, isPalim(str, (int)strlen(str)) ? "yes" : "no");
 
 //    8.
-//    printf("Subsets: \n");
-//    printSubsets(set, str, 0);
+    printf("Subsets: \n");
+    printSubsets(set);
 
 //    9.
 //    invertVet(length, vet);
@@ -130,7 +129,14 @@ int isPalim(char* str, int length) {
     return 0;
 }
 
-void printSubsets(char base[], char subset[], int level) {
+void printSubsets(char base[]) {
+    char str[MAX] = {0};
+
+    printSubsetsBinary(base, pow(2, strlen(base))-1);
+}
+
+
+void printSubsetsTree(char base[], char subset[], int level) {
     int length;
     char newSubset[MAX];
 
@@ -146,8 +152,27 @@ void printSubsets(char base[], char subset[], int level) {
         return;
     }
 
-    printSubsets(base, subset, level+1);
-    printSubsets(base, newSubset, level+1);
+    printSubsetsTree(base, subset, level+1);
+    printSubsetsTree(base, newSubset, level+1);
+}
+
+void printSubsetsBinary(char base[], int n) {
+    char subset[MAX] = {0};
+    int i, acc, length;
+
+    if(n < 0) return;
+
+    acc = n;
+    for(i = length = 0; acc; ++i) {
+        if(acc & 1) {
+            subset[length++] = base[i];
+        }
+        acc = acc >> 1;
+    }
+
+    printSet(subset);
+
+    printSubsetsBinary(base, --n);
 }
 
 long long int ackerman(int m, int n) {
@@ -189,12 +214,12 @@ char* readSet(char set[]) {
     char c;
 
     printf("Type in a symbol to be added to the set: ");
-    scanf("%c", &c);
+    scanf("%c%*c", &c);
     for(i = 0;!isspace(c);i++) {
         set[i] = c;
 
         printf("Type in a new symbol to be added to the set: ");
-        scanf("%*c%c", &c);
+        scanf("%c%*c", &c);
     }
     printf("\n");
 
@@ -246,6 +271,6 @@ void swap(int *a, int *b) {
 }
 
 void readNum(int *num) {
-        printf("Type in any number: \n");
-        scanf("%d", &num);
+    printf("Type in any number: \n");
+    scanf("%d", num);
 }
