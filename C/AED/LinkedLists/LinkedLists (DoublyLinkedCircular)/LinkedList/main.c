@@ -69,35 +69,34 @@ List *insertOnTail(List *list, ItemType val) {
 
 void removeNodes(List *list, ItemType val) {
     Node **tracer, *next;
+
     if(isEmpty(list)) return;
 
-    for(tracer = &list->head; (*tracer) && (*tracer)->next && (*tracer)->next != list->tail; ) {
-        if((*tracer)->next->info == val) {
+    for(tracer = &list->head; (*tracer) != list->tail; ) {
 
+        if((*tracer)->next->info == val) {
             next = (*tracer)->next->next;
             free((*tracer)->next);
             (*tracer)->next = next;
-
-            if(next) {
-                next->prev = *tracer;
-            }
+            next->prev = *tracer;
         } else {
             tracer = &(*tracer)->next;
         }
     }
 
-    if(list->head && list->head->info == val) {
-        next = list->head->next;
-        free(list->head);
-        list->head = next;
+    if(*tracer)
+        list->tail = (*tracer);
 
-        if(next) {
-            next->prev = list->tail;
-            tracer = &next;
-        }
-    }
+//    if(list->head && list->head->info == val) {
+//        next = list->head->next;
+//        free(list->head);
+//        list->head = next;
 
-    list->tail = *tracer;
+//        if(next) {
+//            next->prev = list->tail;
+//            tracer = &next;
+//        }
+//    }
 }
 
 // HELPER FUNCTIONS //
@@ -127,9 +126,11 @@ void printList(List *list) {
     Node **tracer;
     char format[MAX];
 
-    sprintf(format, "(%s)-> ", ItemFormat);
+    if(isEmpty(list)) return NULL;
 
-    printf("Lista Encadeada {(%p)-> ... (%p)}: ", list->head, list->tail);
+    sprintf(format, "(%s)<->", ItemFormat);
+
+    printf("Lista Encadeada {(%d)-> ... (%d)}: ", list->head->info, list->tail->info);
     for(tracer = &list->head; *tracer && (*tracer) != list->tail; tracer = &(*tracer)->next) {
         printf(format, (*tracer)->info);
     }
@@ -145,9 +146,11 @@ void printListRev(List *list) {
     Node **tracer;
     char format[MAX];
 
-    sprintf(format, "(%s)-> ", ItemFormat);
+    if(isEmpty(list)) return NULL;
 
-    printf("Lista Encadeada {(%p)-> ... (%p)}: ", list->head, list->tail);
+    sprintf(format, "(%s)<->", ItemFormat);
+
+    printf("Lista Encadeada {(%d)-> ... (%d)}: ", list->head->info, list->tail->info);
     for(tracer = &list->tail; *tracer && (*tracer) != list->head; tracer = &(*tracer)->prev) {
         printf(format, (*tracer)->info);
     }

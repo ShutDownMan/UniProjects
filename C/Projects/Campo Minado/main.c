@@ -66,7 +66,6 @@ void criarCampo(int campo[MAXROW][MAXCOL], int nRow, int nCol) {
 	int i, j;
 
 	for (i = 0; i < nRow; ++i) {
-		
 		for (j = 0; j < nCol; ++j) {
 			campo[i][j] = -((rand() / (double)RAND_MAX) < MINEPROBABILITY);
 		}

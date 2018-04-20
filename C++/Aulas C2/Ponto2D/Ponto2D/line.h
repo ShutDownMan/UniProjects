@@ -1,7 +1,7 @@
 #ifndef LINE_H
 #define LINE_H
 
-#include <ponto2d.h>
+#include "ponto2d.h"
 
 class Line {
 private:
@@ -10,7 +10,7 @@ private:
 public:
     Line();
     Line(double ca, double cl);
-    Line(Point2D &a, Point2D &b);
+    Line(Point2D &p1, Point2D &p2);
     ~Line();
     void show();
     bool contains(Point2D &p);

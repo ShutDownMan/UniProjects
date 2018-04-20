@@ -1,5 +1,5 @@
-#include <Ponto2D.h>
-#include <Line.h>
+#include "ponto2d.h"
+#include "line.h"
 
 #include <iostream>
 

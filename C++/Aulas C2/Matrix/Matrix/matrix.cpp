@@ -1,7 +1,6 @@
 #include "matrix.h"
 
 #include <iostream>
-
 using namespace std;
 
 Matrix::Matrix() {
@@ -28,9 +27,11 @@ int Matrix::getWidth() {
     return this->width;
 }
 
-int Matrix::getElem(int x, int y) {
-    if(x < this->getWidth() && y < this->getHeight())
-        return this->mArray[y][x];
+int Matrix::getElem(int row, int col) {
+    if(row < this->getHeight() && col < this->getWidth()) {
+        return this->mArray[row][col];
+    }
+
     return 0;
 }
 
@@ -42,24 +43,22 @@ void Matrix::setWidth(int d) {
     this->width = d;
 }
 
-void Matrix::setElem(int x, int y, int d) {
-    if(x < this->getWidth() && y < this->getHeight())
-        this->mArray[y][x] = d;
+void Matrix::setElem(int row, int col, int d) {
+    if(row < this->getWidth() && col < this->getHeight())
+        this->mArray[row][col] = d;
 }
 
-bool Matrix::checkDim(Matrix &other) {
-    if(this->getHeight() != other.getHeight() ||
-            this->getWidth() != other.getWidth())
-        return false;
-    return true;
+bool Matrix::sizeEquals(Matrix *other) {
+    return (this->getHeight() == other->getHeight() &&
+            this->getWidth() == other->getWidth());
 }
 
-bool Matrix::equals(Matrix &other) {
-    if(!this->checkDim(other)) return false;
+bool Matrix::equals(Matrix *other) {
+    if(!this->sizeEquals(other)) return false;
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            if(this->getElem(col, row) != other.getElem(col, row)) {
+            if(this->getElem(row, col) != other->getElem(row, col)) {
                 return false;
             }
         }
@@ -67,36 +66,36 @@ bool Matrix::equals(Matrix &other) {
     return true;
 }
 
-Matrix* Matrix::transpose() {
-    Matrix* t = new Matrix(this->getWidth(), this->getHeight());
+Matrix *Matrix::transpose() {
+    Matrix *newMat = new Matrix(this->getWidth(), this->getHeight());
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            t->setElem(col, row, this->getElem(row, col));
+            newMat->setElem(row, col, this->getElem(col, row));
         }
     }
 
-    return t;
+    return newMat;
 }
 
-Matrix* Matrix::negative() {
-    Matrix* n = new Matrix(this->getHeight(), this->getWidth());
+Matrix *Matrix::negative() {
+    Matrix *n = new Matrix(this->getHeight(), this->getWidth());
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            n->setElem(col, row, -this->getElem(col, row));
+            n->setElem(row, col, -this->getElem(row, col));
         }
     }
 
     return n;
 }
 
-Matrix* Matrix::clone() {
-    Matrix* m = new Matrix(this->getHeight(), this->getWidth());
+Matrix *Matrix::clone() {
+    Matrix *m = new Matrix(this->getHeight(), this->getWidth());
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            m->setElem(col, row, this->getElem(col, row));
+            m->setElem(row, col, this->getElem(row, col));
         }
     }
 
@@ -106,19 +105,25 @@ Matrix* Matrix::clone() {
 void Matrix::empty() {
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            this->setElem(col, row, 0);
+            this->setElem(row, col, 0);
         }
     }
 }
 
+bool Matrix::isSquare() {
+    return (this->getHeight() == this->getWidth());
+}
+
 bool Matrix::isIdentity() {
+	if(!this->isSquare()) return false;
+
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
             if(row == col) {
-                if(this->getElem(col, row) != 1)
+                if(this->getElem(row, col) != 1)
                     return false;
             } else {
-                if(this->getElem(col, row))
+                if(this->getElem(row, col))
                     return false;
             }
         }
@@ -128,13 +133,15 @@ bool Matrix::isIdentity() {
 }
 
 bool Matrix::isDiagonal() {
+	if(!this->isSquare()) return false;
+
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
             if(row == col) {
-                if(!this->getElem(col, row))
+                if(!this->getElem(row, col))
                     return false;
             } else {
-                if(this->getElem(col, row))
+                if(this->getElem(row, col))
                     return false;
             }
         }
@@ -144,28 +151,23 @@ bool Matrix::isDiagonal() {
 }
 
 bool Matrix::isSingular() {
-    int d = this->getElem(0, 0);
+    if(!this->isSingular()) return false;
 
-    for(int row = 0; row < this->getHeight(); row++) {
-        for(int col = 1; col < this->getWidth(); col++) {
-            if(row == col) {
-                if(this->getElem(col, row) != d)
-                    return false;
-            } else {
-                if(this->getElem(col, row))
-                    return false;
-            }
-        }
+    for(int i = 1; i < this->getHeight(); i++) {
+    	if(this->getElem(i, i) != this->getElem(i-1, i-1)) {
+    		return false;
+    	}
     }
 
     return true;
 }
 
 bool Matrix::isSymmetric() {
+	if(!this->isSquare()) return false;
 
     for(int row = 0; row < this->getHeight()/2; row++) {
         for(int col = 0; col < this->getWidth()/2; col++) {
-            if(this->getElem(col, row) != this->getElem(row, col))
+            if(this->getElem(row, col) != this->getElem(col, row))
                 return false;
         }
     }
@@ -177,7 +179,7 @@ bool Matrix::isSkewSymmetric() {
     for(int row = 0; row < this->getHeight()/2; row++) {
         for(int col = 0; col < this->getWidth()/2; col++) {
             if(row != col)
-                if(-(this->getElem(col, row)) != this->getElem(row, col))
+                if(-(this->getElem(row, col)) != this->getElem(col, row))
                     return false;
         }
     }
@@ -185,96 +187,98 @@ bool Matrix::isSkewSymmetric() {
     return true;
 }
 
-void Matrix::sum(Matrix &other) {
-    if(!this->checkDim(other)) return;
+void Matrix::sum(Matrix *other) {
+    if(!this->sizeEquals(other)) return;
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            this->setElem(col, row, this->getElem(col, row) + other.getElem(col, row));
+            this->setElem(row, col, this->getElem(row, col) + other->getElem(row, col));
         }
     }
 }
 
-Matrix Matrix::operator+(Matrix &other) {
-    Matrix* res = new Matrix(this->getHeight(), this->getWidth());
-    if(!this->checkDim(other)) return *res;
+Matrix *Matrix::operator+(Matrix &other) {
+    Matrix *res = new Matrix(this->getHeight(), this->getWidth());
+    if(!this->sizeEquals(&other)) return res;
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            res->setElem(col, row, this->getElem(col, row) + other.getElem(col, row));
+            res->setElem(row, col, this->getElem(row, col) + other.getElem(row, col));
         }
     }
 
-    return *res;
+    return res;
 }
 
-void Matrix::subtraction(Matrix &other) {
-    if(!this->checkDim(other)) return;
+void Matrix::subtraction(Matrix *other) {
+    if(!this->sizeEquals(other)) return;
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            this->setElem(col, row, this->getElem(col, row) - other.getElem(col, row));
+            this->setElem(row, col, this->getElem(row, col) - other->getElem(row, col));
         }
     }
 }
 
-Matrix Matrix::operator-(Matrix &other) {
-    Matrix* res = new Matrix(this->getHeight(), this->getWidth());
-    if(!this->checkDim(other)) return *res;
+Matrix *Matrix::operator-(Matrix &other) {
+    Matrix *res = new Matrix(this->getHeight(), this->getWidth());
+    if(!this->sizeEquals(&other)) return res;
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            res->setElem(col, row, this->getElem(col, row) - other.getElem(col, row));
+            res->setElem(row, col, this->getElem(row, col) - other.getElem(row, col));
         }
     }
 
-    return *res;
+    return res;
 }
 
-void Matrix::multiply(Matrix &other) {
-    if(this->getWidth() != other.getHeight()) {
-        this->empty();
-        return;
-    }
+void Matrix::multiply(Matrix *other) {
+    if(!this->isSquare()) return;
 
-    Matrix* r = new Matrix(this->getHeight(), this->getWidth());
+    Matrix *r = new Matrix(this->getHeight(), this->getWidth());
 
     for(int row = 0; row < this->getHeight(); row++) {
-        for(int col = 0; col < other.getWidth(); col++) {
+        for(int col = 0; col < other->getWidth(); col++) {
             for(int k = 0; k < this->getWidth(); k++) {
-                r->setElem(col, row, r->getElem(col, row) + this->getElem(k, row) * other.getElem(col, k));
+                r->setElem(row, col, r->getElem(row, col) + this->getElem(k, row) * other->getElem(col, k));
             }
         }
     }
 
-    this->copy(*r);
+    this->copy(r);
 
     delete r;
 }
 
-Matrix Matrix::operator*(Matrix &other) {
-    Matrix* res = new Matrix(this->getHeight(), this->getWidth());
+Matrix *Matrix::operator*(Matrix &other) {
+    Matrix *res = new Matrix(this->getHeight(), this->getWidth());
 
     if(this->getWidth() != other.getHeight()) {
         this->empty();
-        return *res;
+        return res;
     }
 
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < other.getWidth(); col++) {
+            res->setElem(row, col, 0);
             for(int k = 0; k < this->getWidth(); k++) {
-                res->setElem(col, row, res->getElem(col, row) + this->getElem(k, row) * other.getElem(col, k));
+                res->setElem(row, col, res->getElem(row, col) + this->getElem(row, k) * other.getElem(k, col));
             }
         }
     }
 
-    return *res;
+    return res;
 }
 
-void Matrix::copy(Matrix &other) {
+int *Matrix::operator[] (int ind) {
+    return this->mArray[ind];
+}
+
+void Matrix::copy(Matrix *other) {
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            this->setElem(col, row, other.getElem(col, row));
+            this->setElem(row, col, other->getElem(row, col));
         }
     }
 }
@@ -282,7 +286,7 @@ void Matrix::copy(Matrix &other) {
 void Matrix::show() {
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            cout << this->getElem(col, row) << " ";
+            cout << this->getElem(row, col) << " ";
         }
         cout << endl;
     }

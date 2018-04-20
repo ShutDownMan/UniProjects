@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 //    printf("Catalan function of N is: %lld\n", catalan(n));
 
 //    7.
-//    printf("Is '%s' a palindrom: %s\n", str, isPalim(str, (int)strlen(str)) ? "yes" : "no");
+//    printf("Is '%s' a palindrom: %s\n",    str, isPalim(str, (int)strlen(str)) ? "yes" : "no");
 
 //    8.
     printf("Subsets: \n");
@@ -251,6 +251,9 @@ void readVet(int *length, int vet[]) {
         printf("[%d] = ", i);
         scanf("%d", &vet[i]);
     }
+
+    *length = i;
+
     return;
 }
 

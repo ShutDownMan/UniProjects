@@ -14,12 +14,9 @@ Line::Line(double ca, double cl) {
     this->cl = cl;
 }
 
-Line::Line(Point2D &a, Point2D &b) {
-    this->ca =
-            (b.getY()-a.getY())/
-            (b.getX()-a.getX());
-    this->cl = a.getY() -
-            this->ca*a.getX();
+Line::Line(Point2D &p1, Point2D &p2) {
+    this->ca = (p2.getY()-p1.getY()) / (p2.getX()-p1.getX());
+    this->cl = p1.getY() - this->ca*p1.getX();
 }
 
 Line::~Line() {

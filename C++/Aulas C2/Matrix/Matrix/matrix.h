@@ -21,28 +21,31 @@ public:
     void setWidth(int d);
     void setElem(int x, int y, int d);
 
-    bool checkDim(Matrix &other);
+    bool sizeEquals(Matrix *other);
 
-    bool equals(Matrix &other);
+    bool equals(Matrix *other);
     Matrix* transpose();
     Matrix* negative();
     Matrix* clone();
     void empty();
 
+    bool isSquare();
     bool isIdentity();
     bool isDiagonal();
     bool isSingular();
     bool isSymmetric();
     bool isSkewSymmetric();
 
-    void sum(Matrix &other);
-    void subtraction(Matrix &other);
-    void multiply(Matrix &other);
-    void copy(Matrix &other);
+    void sum(Matrix *other);
+    void subtraction(Matrix *other);
+    void multiply(Matrix *other);
+    void copy(Matrix *other);
 
-    Matrix operator +(Matrix &other);
-    Matrix operator -(Matrix &other);
-    Matrix operator*(Matrix &other);
+    Matrix *operator+(Matrix &other);
+    Matrix *operator-(Matrix &other);
+    Matrix *operator*(Matrix &other);
+
+    int *operator[] (int ind);
 
     void show();
 };
