@@ -1,7 +1,7 @@
 #ifndef FREECELL
 #define FREECELL
 
-char suits[4] = {'c', 'd', 'h', 's'};
+char suits[4] = {'c', 'o', 'e', 'p'};
 char ranks[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
 
 typedef struct Card {
@@ -31,12 +31,6 @@ typedef struct table {
 Table *createTable();
 
 ///
-/// \brief createHeap, inicializa pilha
-/// \return pilha inicializada
-///
-Heap *createHeap();
-
-///
 /// \brief startGame, prepara cartas para iniciar o jogo
 /// \param table, mesa de jogo
 ///
@@ -57,10 +51,10 @@ void createDeck(Card *deck[]);
 Card *createCard(int suitInd, int rankInd);
 
 ///
-/// \brief distributeCards, distribui as cartas na mesa
-/// \param tableau, mesa do jogo
+/// \brief shuffleCards, embaralha as cartas do baralho fornecido
+/// \param deck, baralho a ser embaralhado
 ///
-void distributeCards(Heap *tableau[]);
+void shuffleCards(Card *deck[]);
 
 ///
 /// \brief printTable, printa na saida padrão o estado atual da mesa
@@ -68,7 +62,19 @@ void distributeCards(Heap *tableau[]);
 ///
 void printTable(Table *table);
 
+///
+/// \brief freeList, libera espaço da memória usado para lista
+/// \param node, cabeça atual da lista
+///
+void freeList(Node *node);
+
 // HEAP FUNCTIONS //
+
+///
+/// \brief createHeap, inicializa pilha
+/// \return pilha inicializada
+///
+Heap *createHeap();
 
 ///
 /// \brief insertCard, insere na pilha a carta indicada
@@ -85,6 +91,21 @@ Heap *insertCard(Heap *heap, Card *card);
 /// \return primeira pilha
 ///
 Heap *concatHeap(Heap *heap1, Heap *heap2);
+
+///
+/// \brief reverseHeap, inverte uma cópia
+/// \param node, cabeça atual da lista
+/// \return
+///
+Node *reverseHeap(Node *node);
+
+///
+/// \brief insertNodeOnTail, insere nó no final da lista fornecida
+/// \param list, lista a ser modificada
+/// \param card, carta a ser adicionada
+/// \return
+///
+Node *insertNodeOnTail(Node *list, Card *card);
 
 ///
 /// \brief createNode, inicializa nó

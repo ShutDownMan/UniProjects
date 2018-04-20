@@ -1,8 +1,10 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 
 #include "freecell.h"
+
+#define MAXCARDS 52
 
 int main(void) {
     Table *table = createTable();
@@ -32,36 +34,23 @@ Table *createTable() {
     return newTable;
 }
 
-Heap *createHeap() {
-    Heap *newHeap = (Heap*)malloc(sizeof(Heap));
-
-    newHeap->start = NULL;
-    newHeap->end = NULL;
-
-    return newHeap;
-}
-
 void startGame(Table *table) {
-    int i, ind;
-    Card *deck[52];
-
+    int i;
+    Card *deck[MAXCARDS] = {NULL};
 
     createDeck(deck);
 
-    for(i = 0; i < 52; ++i) {
-        ind = rand() % 8;
-        table->tableau[ind] = insertCard(table->tableau[ind], deck[i]);
+    for(i = 0; i < MAXCARDS; ++i) {
+        table->tableau[i%8] = insertCard(table->tableau[i%8], deck[i]);
     }
-
-    distributeCards(table->tableau);
 }
 
 void createDeck(Card *deck[]) {
-    int suitNum, rankNum;
+    int suitInd, rankNum;
 
-    for(suitNum = 0; suitNum < 4; ++suitNum) {
+    for(suitInd = 0; suitInd < 4; ++suitInd) {
         for(rankNum = 0; rankNum < 13; ++rankNum) {
-            deck[suitNum*13 + rankNum] = createCard(suitNum, rankNum);
+            deck[suitInd*13 + rankNum] = createCard(suitInd, rankNum);
         }
     }
 }
@@ -75,12 +64,17 @@ Card *createCard(int suitInd, int rankInd) {
     return newCard;
 }
 
-void distributeCards(Heap *tableau[]) {
-    int i;
-    Heap *rndHeap = NULL;
+void shuffleCards(Card* deck[]) {
+    int i, ind;
+    Heap *rndHeap = NULL, *tableau[16] = {NULL};
     Node **tracer, **aux;
 
-    for(i = 0; i < 8; ++i) {
+    for(i = 0; i < 52; ++i) {
+        ind = rand() % 16;
+        tableau[ind] = insertCard(tableau[ind], deck[i]);
+    }
+
+    for(i = 0; i < 16; ++i) {
         if(tableau[i]) {
             rndHeap = concatHeap(rndHeap, tableau[i]);
         }
@@ -88,28 +82,25 @@ void distributeCards(Heap *tableau[]) {
 
     tracer = &rndHeap->start;
     for(i = 0; *tracer; ++i) {
-//        printf("[%c,%c]\n", (*tracer)->card->rank, (*tracer)->card->suit);
-        insertCard(tableau[i%8], (*tracer)->card);
+        deck[i] = (*tracer)->card;
         aux = tracer;
         tracer = &(*tracer)->next;
         free(aux);
     }
-    printf("\n");
 }
 
 void printTable(Table *table) {
     int i;
     int finished = 0;
     char suit, rank;
-    Node *current[8];
+    Node *current[8] = {NULL}, *reverseHeaps[8] = {NULL};
 
     for(i = 0; i < 4; ++i) {
         if(table->freeCells[i]) {
             suit = table->freeCells[i]->suit;
             rank = table->freeCells[i]->rank;
         } else {
-            suit = ' ';
-            rank = ' ';
+            suit = rank = ' ';
         }
 
         printf("[%c,%c] ", suit, rank);
@@ -122,8 +113,7 @@ void printTable(Table *table) {
             suit = table->homeCells[i]->end->card->suit;
             rank = table->homeCells[i]->end->card->rank;
         } else {
-            suit = ' ';
-            rank = ' ';
+            suit = rank = ' ';
         }
 
         printf("[%c,%c] ", suit, rank);
@@ -133,7 +123,10 @@ void printTable(Table *table) {
 
 
     for(i = 0; i < 8; ++i) {
-        current[i] = table->tableau[i]->start;
+        if(table->tableau[i]) {
+            reverseHeaps[i] = reverseHeap(table->tableau[i]->start);
+            current[i] = reverseHeaps[i];
+        }
     }
 
     while(!finished) {
@@ -145,20 +138,37 @@ void printTable(Table *table) {
                 rank = current[i]->card->rank;
                 current[i] = current[i]->next;
                 finished = 0;
+                printf("[%c,%c] ", suit, rank);
             } else {
-                suit = ' ';
-                rank = ' ';
+                printf("      ");
             }
-
-            printf("[%c,%c] ", suit, rank);
         }
         printf("\n");
+    }
 
+    for(i = 0; i < 8; ++i) {
+        freeList(reverseHeaps[i]);
     }
 
 }
 
+void freeList(Node *node) {
+    if(!node) return;
+
+    freeList(node->next);
+    free(node);
+}
+
 // HEAP FUNCTIONS //
+
+Heap *createHeap() {
+    Heap *newHeap = (Heap*)malloc(sizeof(Heap));
+
+    newHeap->start = NULL;
+    newHeap->end = NULL;
+
+    return newHeap;
+}
 
 Heap *insertCard(Heap *heap, Card *card) {
     Node *aux;
@@ -200,6 +210,15 @@ Heap *concatHeap(Heap *heap1, Heap *heap2) {
     return heap1;
 }
 
+Node *reverseHeap(Node *node) {
+    return !node ? NULL : insertNodeOnTail(reverseHeap(node->next), node->card);
+}
+
+Node *insertNodeOnTail(Node *list, Card *card) {
+    if(!list) return createNode(card);
+    list->next = insertNodeOnTail(list->next, card);
+    return list;
+}
 
 Node *createNode(Card *card) {
     Node *newNode = (Node*)malloc(sizeof(Node));
