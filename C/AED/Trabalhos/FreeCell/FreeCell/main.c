@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <conio.h>
 #include <time.h>
 
 #include "freecell.h"
@@ -14,8 +15,11 @@ int main(void) {
     startGame(table);
 
     printTable(table);
+    while(1) {
+        inputCmd(table);
 
-    inputCmd(table);
+        printTable(table);
+    }
 
     return 0;
 }
@@ -32,6 +36,8 @@ Table *createTable() {
         newTable->homeCells[i] = NULL;
         newTable->freeCells[i] = NULL;
     }
+
+    newTable->freeCellsQnt = 4;
 
     return newTable;
 }
@@ -99,6 +105,7 @@ void printTable(Table *table) {
     char suit, rank;
     Node *current[8] = {NULL}, *reverseHeaps[8] = {NULL};
 
+    system("CLS");
     printf("    ");
     for(i = 0; i < 4; ++i) {
         if(table->freeCells[i]) {
@@ -169,23 +176,43 @@ void freeList(Node *node) {
 // Move col to col: A1 > B
 void inputCmd(Table *table) {
     char cmd[MAXSTR], cmdType;
+    char colFrom = 0, colTo = 0;
+    int cardQnt = 0;
 
     printf("\nDigite um comando: ");
     readLine(cmd);
     while(!(cmdType = getCmdType(cmd))) {
-
+        fflush(stdin);
         printf("(?) -> Ajuda.\n");
         printf("\nDigite um comando v%clido: ", 160);
         readLine(cmd);
     }
 
-    printf("Td certim.\n");
-
+    // parse and execute command
     switch(cmdType) {
-
+    case MOVETOFREECELLS:
+        readCmd1(cmd, &colFrom, &colTo);
+        printf("From col: %c | To col: %c\n", colFrom, colTo);
+        moveToFreeCell(table, colFrom, colTo);
+        break;
+    case MOVETOHOMECELLS:
+        readCmd2(cmd, &colFrom);
+        printf("From col: %c\n", colFrom);
+        break;
+    case MOVEFROMFREECELLS:
+        readCmd3(cmd, &colFrom, &colTo);
+        printf("From col: %c | To col: %c\n", colFrom, colTo);
+        break;
+    case MOVECOLTOCOL:
+        readCmd4(cmd, &colFrom, &cardQnt, &colTo);
+        printf("From col: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
+        break;
+    default:
+        // Help.
+        break;
     }
 
-    // execute command...
+    getch();
 }
 
 void readLine(char str[]) {
@@ -193,40 +220,39 @@ void readLine(char str[]) {
 }
 
 int getCmdType(char cmd[]) {
-    int i = 0;
+    int i = 0, valid = 0;
 
     if(!cmd[i]) return 0;
 
-    if(cmd[i] == '?') return -1;
+    if(cmd[i] == '?') return HELP;
 
-    for(i = 0; cmd[i++]; cmd[i] = toupper(cmd[i]))
+    for(i = -1; cmd[++i]; cmd[i] = toupper(cmd[i]))
         ;
 
     i = 0;
+    i += skipSpaces(cmd);
     if(cmd[i] == '^') {
         i++;
         if(!cmd[i]) return 0;
-        return (cmd[i] >= 'A' && cmd[i] <= 'H') * 2;
+        return (cmd[i] >= 'A' && cmd[i] <= 'H') * MOVETOFREECELLS;
     }
 
     if(cmd[i] == '*') {
         i++;
         if(!cmd[i]) return 0;
-        return (cmd[i] >= 'A' && cmd[i] <= 'H') * 3;
+        return (cmd[i] >= 'A' && cmd[i] <= 'H') * MOVETOHOMECELLS;
     }
 
-    if(cmd[i] == 'v') {
+    if(cmd[i] == 'V') {
         i++;
         if(!cmd[i]) return 0;
 
         if(cmd[i] >= 'A' && cmd[i] <= 'D') {
             i++;
-            for(; cmd[i] == ' '; i++)
-                ;
+            i += skipSpaces(cmd + i);
             if(cmd[i++] == '>') {
-                for(; cmd[i] == ' '; i++)
-                    ;
-                return (cmd[i] >= 'A' && cmd[i] <= 'H') * 3;
+                i += skipSpaces(cmd + i);
+                return (cmd[i] >= 'A' && cmd[i] <= 'H') * MOVEFROMFREECELLS;
             }
         }
     }
@@ -235,19 +261,111 @@ int getCmdType(char cmd[]) {
         i++;
         if(!cmd[i]) return 0;
 
-        if(cmd[i] >= 'A' && cmd[i] <= 'H') {
-            i++;
-            for(; cmd[i] == ' '; i++)
-                ;
-            if(cmd[i++] == '>') {
-                for(; cmd[i] == ' '; i++)
-                    ;
-                return (cmd[i] >= 'A' && cmd[i] <= 'H') * 4;
-            }
+        // read numbers
+        for(valid = 0; cmd[i] && cmd[i] >= '0' && cmd[i] <= '9'; valid += ++i)
+            ;
+        if(!valid) return 0;
+
+        i += skipSpaces(cmd + i);
+        if(cmd[i++] == '>') {
+            i += skipSpaces(cmd + i);
+            return (cmd[i] >= 'A' && cmd[i] <= 'H') * MOVECOLTOCOL;
         }
     }
 
     return 0;
+}
+
+int skipSpaces(char str[]) {
+   int i;
+   for(i = 0; str[i] == ' '; i++)
+       ;
+   return i;
+}
+
+void readCmd1(char cmd[], char *colFrom, char *colTo) {
+    int i = 0;
+
+    i += skipSpaces(cmd);
+    *colFrom = cmd[++i];
+    i++;
+    i += skipSpaces(cmd + i);
+
+    if(cmd[i++] == '>') {
+        i += skipSpaces(cmd + i);
+        if(cmd[i] >= 'A' && cmd[i] <= 'D') {
+            *colTo = cmd[i];
+        }
+    }
+}
+
+void readCmd2(char cmd[], char *colFrom) {
+    int i = 0;
+
+    i += skipSpaces(cmd);
+    *colFrom = cmd[++i];
+}
+
+void readCmd3(char cmd[], char *colFrom, char *colTo) {
+    int i = 0;
+
+    i += skipSpaces(cmd);
+    *colFrom = cmd[++i];
+    i++;
+
+    i += skipSpaces(cmd + i);
+    i++; // >
+    i += skipSpaces(cmd + i);
+
+    *colTo = cmd[i];
+}
+
+void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo) {
+    int i = 0;
+
+    i += skipSpaces(cmd);
+    *colFrom = cmd[i];
+    i++;
+
+    // read num
+    for(*cardQnt = 0; cmd[i] >= '0' && cmd[i] <= '9'; ++i) {
+        *cardQnt = (*cardQnt * 10) + (cmd[i] - '0');
+    }
+
+    i += skipSpaces(cmd + i);
+    i++; // >
+    i += skipSpaces(cmd + i);
+
+    *colTo = cmd[i];
+}
+
+void moveToFreeCell(Table *table, char colFrom, char colTo) {
+    Card *card;
+    Node *node;
+    int colFromInd = colFrom - 'A';
+    int colToInd = colTo - 'A';
+
+    if(colFromInd >= 0 && colFromInd < 8) {
+        if(table->freeCellsQnt > 0) {
+            if(table->tableau[colFromInd] && table->tableau[colFromInd]->start) {
+                if(colToInd < 0 || colToInd >= 4) {
+                    for(colToInd = 0; colToInd < 4 && table->freeCells[colToInd]; ++colToInd)
+                        ;
+                }
+                node = pop(table->tableau[colFromInd]);
+                card = node->card;
+                table->freeCells[colToInd] = card;
+                table->freeCellsQnt--;
+                free(node);
+            } else {
+                printf("Column (%c) doesn't have any cards!\n", colFrom);
+            }
+        } else {
+            printf("The are no free spaces!\n");
+        }
+    } else {
+        printf("Column (%c) doesn't exist!\n", colFrom);
+    }
 }
 
 // HEAP FUNCTIONS //
@@ -318,6 +436,23 @@ Node *insertNodeOnTail(Node *list, Card *card) {
     list->next = insertNodeOnTail(list->next, card);
     return list;
 }
+
+Node *pop(Heap *heap) {
+    Node *aux;
+
+    if(!heap || !heap->start) return NULL;
+
+    aux = heap->start;
+    if(heap->start == heap->end) {
+        heap->start = heap->end = NULL;
+    } else {
+        heap->start = heap->start->next;
+    }
+    aux->next = NULL;
+
+    return aux;
+}
+
 
 Node *createNode(Card *card) {
     Node *newNode = (Node*)malloc(sizeof(Node));

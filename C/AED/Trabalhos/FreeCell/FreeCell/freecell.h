@@ -4,6 +4,13 @@
 #define MAXCARDS 52
 #define MAXSTR 64
 
+#define HELP -1
+#define MOVETOFREECELLS 1
+#define MOVETOHOMECELLS 2
+#define MOVEFROMFREECELLS 3
+#define MOVECOLTOCOL 4
+
+// copas, ouros, espadas, paus
 char suits[4] = {'c', 'o', 'e', 'p'};
 char ranks[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
 
@@ -22,6 +29,7 @@ typedef struct heap {
 } Heap;
 
 typedef struct table {
+    int freeCellsQnt;
     Card *freeCells[4];
     Heap *homeCells[4], *tableau[8];
 } Table;
@@ -72,11 +80,71 @@ void printTable(Table *table);
 ///
 void freeList(Node *node);
 
+///
+/// \brief inputCmd, lê da entrada padrão um comando e o executa
+/// \param table, mesa de jogo que o comando sera executado
+///
 void inputCmd(Table *table);
 
+///
+/// \brief skipSpaces, pula espaços de dada string
+/// \param str, string a ser lida
+/// \return quantidade de espaços a ser pulada
+///
+int skipSpaces(char str[]);
+
+///
+/// \brief readLine, lê da entrada padrão uma linha
+/// \param str, armazena linha lida
+///
 void readLine(char str[]);
 
+///
+/// \brief getCmdType, lê comando e determina seu tipo
+/// \param cmd, string a ser lida
+/// \return tipo do comando
+///
 int getCmdType(char cmd[]);
+
+///
+/// \brief readCmd1, executa parse em comando de (mover para free cells)
+/// \param cmd, string a ser parseada
+/// \param colFrom, armazena primeira coluna lida
+/// \param colTo, armazena segunda coluna lida
+///
+void readCmd1(char cmd[], char *colFrom, char *colTo);
+
+///
+/// \brief readCmd1, executa parse em comando de (mover para home cells)
+/// \param cmd, string a ser parseada
+/// \param colFrom, armazena primeira coluna lida
+///
+void readCmd2(char cmd[], char *colFrom);
+
+///
+/// \brief readCmd1, executa parse em comando de (mover das free cells)
+/// \param cmd, string a ser parseada
+/// \param colFrom, armazena primeira coluna lida
+/// \param colTo, armazena segunda coluna lida
+///
+void readCmd3(char cmd[], char *colFrom, char *colTo);
+
+///
+/// \brief readCmd1, executa parse em comando de (mover coluna para coluna)
+/// \param cmd, string a ser parseada
+/// \param colFrom, armazena primeira coluna lida
+/// \param cardQnt, armazena quantidade de cartas lida
+/// \param colTo, armazena segunda coluna lida
+///
+void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo);
+
+///
+/// \brief moveToFreeCell, executa comando de mover para free cells
+/// \param table, mesa de jogo a ser executado o comando
+/// \param colFrom, coluna que parte a carta
+/// \param colTo, coluna que recebe a carta
+///
+void moveToFreeCell(Table *table, char colFrom, char colTo);
 
 // HEAP FUNCTIONS //
 
@@ -116,6 +184,13 @@ Node *reverseHeap(Node *node);
 /// \return
 ///
 Node *insertNodeOnTail(Node *list, Card *card);
+
+///
+/// \brief pop, retira a cabeça de uma pilha e a retorna
+/// \param heap, pilha a ser modificada
+/// \return
+///
+Node *pop(Heap *heap);
 
 ///
 /// \brief createNode, inicializa nó

@@ -45,7 +45,7 @@ List *List::insertOnTail(List *&list, int val) {
         list = new List(val);
         return list;
     }
-    list->setNext(List::insertOnTail(*list->getNextPtr(), val));
+    list->setNext(insertOnTail(*list->getNextPtr(), val));
     return list;
 }
 

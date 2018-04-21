@@ -19,7 +19,7 @@ List* insert(List* list, int val);
 /// Entrada: lista encadeada, valor inteiro
 /// Pré-condição: nenhuma
 /// Pós-condição: remove valor da lista se este for encontrado
-List* remove(List* list, int val);
+//List* remove(List *list, int val);
 
 /// Entrada: lista encadeada
 /// Pré-condição: nenhuma
@@ -70,5 +70,6 @@ List* cpyList(List* list);
 
 List* remove_mult(List *list, int val);
 
+List *remove_repetido(List *list);
 
 #endif // LINKEDLIST_H

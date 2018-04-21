@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 //    createLinkedList(&start2);
 //    printList(start2);
 
-    printList(start1 = remove_mult(start1, 2));
+    remove_repetido(start1);
     printList(start1);
 
     return 0;
@@ -57,25 +57,25 @@ List* insert_apos(List *list, int val, int x) {
     return list;
 }
 
-List* remove(List *list, int val) {
-    struct knot* next;
-    char present = 0;
+//List* remove(List *list, int val) {
+//    struct knot* next;
+//    char present = 0;
 
-    if(isEmpty(list)) return NULL;
+//    if(isEmpty(list)) return NULL;
 
-    if(list->next && !(present = (list->val == val))) {
-        list->next = remove(list->next, val);
-        return list;
-    }
+//    if(list->next && !(present = (list->val == val))) {
+//        list->next = remove(list->next, val);
+//        return list;
+//    }
 
-    if(present) {
-        next = list->next;
-        free(list);
-        return next;
-    }
+//    if(present) {
+//        next = list->next;
+//        free(list);
+//        return next;
+//    }
 
-    return list;
-}
+//    return list;
+//}
 
 List* remove_mult(List *list, int val) {
     struct knot* next;
@@ -202,4 +202,21 @@ List* cpyList(List* list) {
     head->next = cpyList(head->next);
 
     return head;
+}
+
+List *remove_repetido(List *list) {
+    List *aux;
+    if(!list) return NULL;
+
+    if(list->next) {
+        if(list->val == list->next->val) {
+            aux = list->next->next;
+            free(list->next);
+            list->next = aux;
+            remove_repetido(list);
+        } else {
+            remove_repetido(list->next);
+        }
+    }
+    return list;
 }
