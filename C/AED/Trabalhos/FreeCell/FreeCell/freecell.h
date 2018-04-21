@@ -10,12 +10,12 @@
 #define MOVEFROMFREECELLS 3
 #define MOVECOLTOCOL 4
 
-// copas, ouros, espadas, paus
+// (v)copas, (v)ouros, (p)espadas, (p)paus
 char suits[4] = {'c', 'o', 'e', 'p'};
 char ranks[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
 
 typedef struct Card {
-    char suit, rank;
+    unsigned char suit, rank;
 } Card;
 
 typedef struct node {
@@ -145,6 +145,13 @@ void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo);
 /// \param colTo, coluna que recebe a carta
 ///
 void moveToFreeCell(Table *table, char colFrom, char colTo);
+
+///
+/// \brief moveToFreeCell, executa comando de mover para home cells
+/// \param table, mesa de jogo a ser executado o comando
+/// \param colFrom, coluna que parte a carta
+///
+void moveToHomeCells(Table *table, char colFrom);
 
 // HEAP FUNCTIONS //
 

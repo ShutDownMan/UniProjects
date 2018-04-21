@@ -68,8 +68,8 @@ void createDeck(Card *deck[]) {
 Card *createCard(int suitInd, int rankInd) {
     Card *newCard = (Card*)malloc(sizeof(Card));
 
-    newCard->suit = suits[suitInd];
-    newCard->rank = ranks[rankInd];
+    newCard->suit = suitInd;
+    newCard->rank = rankInd;
 
     return newCard;
 }
@@ -102,11 +102,17 @@ void shuffleCards(Card* deck[]) {
 void printTable(Table *table) {
     int i;
     int lines;
-    char suit, rank;
+    unsigned char suit, rank;
     Node *current[8] = {NULL}, *reverseHeaps[8] = {NULL};
 
     system("CLS");
+
     printf("    ");
+    for(i = 0; i < 4; ++i) {
+        printf("  %c   ", 'A'+i);
+    }
+
+    printf("\t\n    ");
     for(i = 0; i < 4; ++i) {
         if(table->freeCells[i]) {
             suit = table->freeCells[i]->suit;
@@ -115,20 +121,20 @@ void printTable(Table *table) {
             suit = rank = ' ';
         }
 
-        printf("[%c,%c] ", suit, rank);
+        printf("[%c,%c] ", suits[suit], ranks[rank]);
     }
 
     printf("\t");
 
     for(i = 0; i < 4; ++i) {
-        if(table->homeCells[i] && table->homeCells[i]->end) {
-            suit = table->homeCells[i]->end->card->suit;
-            rank = table->homeCells[i]->end->card->rank;
+        if(table->homeCells[i] && table->homeCells[i]->start) {
+            suit = table->homeCells[i]->start->card->suit;
+            rank = table->homeCells[i]->start->card->rank;
         } else {
             suit = rank = ' ';
         }
 
-        printf("[%c,%c] ", suit, rank);
+        printf("[%c,%c] ", suits[suit], ranks[rank]);
     }
 
     printf("\n");
@@ -151,7 +157,7 @@ void printTable(Table *table) {
                 suit = current[i]->card->suit;
                 rank = current[i]->card->rank;
                 current[i] = current[i]->next;
-                printf("[%c,%c] ", suit, rank);
+                printf("[%c,%c] ", suits[suit], ranks[rank]);
             } else {
                 printf("      ");
             }
@@ -159,8 +165,10 @@ void printTable(Table *table) {
         printf("\n");
     }
 
-    for(i = 0; i < 8; freeList(reverseHeaps[i++]))
-        ;
+    printf("      ");
+    for(i = 0; i < 8; freeList(reverseHeaps[i++])) {
+        printf("  %c   ", 'A' + i);
+    }
 }
 
 void freeList(Node *node) {
@@ -179,12 +187,12 @@ void inputCmd(Table *table) {
     char colFrom = 0, colTo = 0;
     int cardQnt = 0;
 
-    printf("\nDigite um comando: ");
+    printf("\nType in a command: ");
     readLine(cmd);
     while(!(cmdType = getCmdType(cmd))) {
         fflush(stdin);
         printf("(?) -> Ajuda.\n");
-        printf("\nDigite um comando v%clido: ", 160);
+        printf("\nType in a valid command: ");
         readLine(cmd);
     }
 
@@ -198,6 +206,7 @@ void inputCmd(Table *table) {
     case MOVETOHOMECELLS:
         readCmd2(cmd, &colFrom);
         printf("From col: %c\n", colFrom);
+        moveToHomeCells(table, colFrom);
         break;
     case MOVEFROMFREECELLS:
         readCmd3(cmd, &colFrom, &colTo);
@@ -327,7 +336,6 @@ void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo) {
     *colFrom = cmd[i];
     i++;
 
-    // read num
     for(*cardQnt = 0; cmd[i] >= '0' && cmd[i] <= '9'; ++i) {
         *cardQnt = (*cardQnt * 10) + (cmd[i] - '0');
     }
@@ -340,8 +348,8 @@ void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo) {
 }
 
 void moveToFreeCell(Table *table, char colFrom, char colTo) {
-    Card *card;
-    Node *node;
+    Card *card = NULL;
+    Node *node = NULL;
     int colFromInd = colFrom - 'A';
     int colToInd = colTo - 'A';
 
@@ -362,6 +370,33 @@ void moveToFreeCell(Table *table, char colFrom, char colTo) {
             }
         } else {
             printf("The are no free spaces!\n");
+        }
+    } else {
+        printf("Column (%c) doesn't exist!\n", colFrom);
+    }
+}
+
+void moveToHomeCells(Table *table, char colFrom) {
+    Card *card = NULL;
+    Node *node = NULL;
+    int colFromInd = colFrom - 'A';
+
+    if(colFromInd >= 0 && colFromInd < 8) {
+        if(table->tableau[colFromInd] && table->tableau[colFromInd]->start) {
+            card = table->tableau[colFromInd]->start->card;
+
+            if(table->homeCells[card->suit]) {
+                node = table->homeCells[card->suit]->start;
+            }
+            if(!card->rank || (node && node->card->rank == card->rank-1)) {
+                node = pop(table->tableau[colFromInd]);
+                table->homeCells[card->suit] = insertCard(table->homeCells[card->suit], node->card);
+                free(node);
+            } else {
+                printf("Carta [%c,%c] não pode ser descartada!\n", suits[card->suit], ranks[card->rank]);
+            }
+        } else {
+            printf("Column (%c) doesn't have any cards!\n", colFrom);
         }
     } else {
         printf("Column (%c) doesn't exist!\n", colFrom);
