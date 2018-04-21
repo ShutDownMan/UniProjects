@@ -1,6 +1,9 @@
 #ifndef FREECELL
 #define FREECELL
 
+#define MAXCARDS 52
+#define MAXSTR 64
+
 char suits[4] = {'c', 'o', 'e', 'p'};
 char ranks[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
 
@@ -14,6 +17,7 @@ typedef struct node {
 } Node;
 
 typedef struct heap {
+    int length;
     Node *start, *end;
 } Heap;
 
@@ -67,6 +71,12 @@ void printTable(Table *table);
 /// \param node, cabeça atual da lista
 ///
 void freeList(Node *node);
+
+void inputCmd(Table *table);
+
+void readLine(char str[]);
+
+int getCmdType(char cmd[]);
 
 // HEAP FUNCTIONS //
 

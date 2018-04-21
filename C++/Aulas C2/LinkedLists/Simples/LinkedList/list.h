@@ -10,14 +10,17 @@ public:
     List();
     List(int val);
 
-    List *getNext();
+    List **getNextPtr();
 
+    List *getNext();
     void setNext(List* list);
 
     static List *insertOnHead(List *&list, int val);
     static List *insertOnTail(List *&list, int val);
 
-    List *printList();
+    static void print(List *list);
+
+    static void freeList(List *list);
 
     ~List();
 };

@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 #include <time.h>
 
 #include "freecell.h"
-
-#define MAXCARDS 52
 
 int main(void) {
     Table *table = createTable();
@@ -14,6 +14,8 @@ int main(void) {
     startGame(table);
 
     printTable(table);
+
+    inputCmd(table);
 
     return 0;
 }
@@ -39,6 +41,8 @@ void startGame(Table *table) {
     Card *deck[MAXCARDS] = {NULL};
 
     createDeck(deck);
+
+    shuffleCards(deck);
 
     for(i = 0; i < MAXCARDS; ++i) {
         table->tableau[i%8] = insertCard(table->tableau[i%8], deck[i]);
@@ -91,10 +95,11 @@ void shuffleCards(Card* deck[]) {
 
 void printTable(Table *table) {
     int i;
-    int finished = 0;
+    int lines;
     char suit, rank;
     Node *current[8] = {NULL}, *reverseHeaps[8] = {NULL};
 
+    printf("    ");
     for(i = 0; i < 4; ++i) {
         if(table->freeCells[i]) {
             suit = table->freeCells[i]->suit;
@@ -122,22 +127,23 @@ void printTable(Table *table) {
     printf("\n");
 
 
-    for(i = 0; i < 8; ++i) {
+    for(i = lines = 0; i < 8; ++i) {
         if(table->tableau[i]) {
+            if(table->tableau[i]->length > lines) {
+                lines = table->tableau[i]->length;
+            }
             reverseHeaps[i] = reverseHeap(table->tableau[i]->start);
             current[i] = reverseHeaps[i];
         }
     }
 
-    while(!finished) {
-        finished = 1;
-        printf("    ");
+    while(lines) {
+        printf("%2d    ", lines--);
         for(i = 0; i < 8; ++i) {
             if(current[i]) {
                 suit = current[i]->card->suit;
                 rank = current[i]->card->rank;
                 current[i] = current[i]->next;
-                finished = 0;
                 printf("[%c,%c] ", suit, rank);
             } else {
                 printf("      ");
@@ -146,10 +152,8 @@ void printTable(Table *table) {
         printf("\n");
     }
 
-    for(i = 0; i < 8; ++i) {
-        freeList(reverseHeaps[i]);
-    }
-
+    for(i = 0; i < 8; freeList(reverseHeaps[i++]))
+        ;
 }
 
 void freeList(Node *node) {
@@ -159,11 +163,99 @@ void freeList(Node *node) {
     free(node);
 }
 
+// Send to free cells: ^A
+// Retrieve from free cells: vA > A
+// Move to home cells: *A
+// Move col to col: A1 > B
+void inputCmd(Table *table) {
+    char cmd[MAXSTR], cmdType;
+
+    printf("\nDigite um comando: ");
+    readLine(cmd);
+    while(!(cmdType = getCmdType(cmd))) {
+
+        printf("(?) -> Ajuda.\n");
+        printf("\nDigite um comando v%clido: ", 160);
+        readLine(cmd);
+    }
+
+    printf("Td certim.\n");
+
+    switch(cmdType) {
+
+    }
+
+    // execute command...
+}
+
+void readLine(char str[]) {
+    scanf("%[^\n]%*c", str);
+}
+
+int getCmdType(char cmd[]) {
+    int i = 0;
+
+    if(!cmd[i]) return 0;
+
+    if(cmd[i] == '?') return -1;
+
+    for(i = 0; cmd[i++]; cmd[i] = toupper(cmd[i]))
+        ;
+
+    i = 0;
+    if(cmd[i] == '^') {
+        i++;
+        if(!cmd[i]) return 0;
+        return (cmd[i] >= 'A' && cmd[i] <= 'H') * 2;
+    }
+
+    if(cmd[i] == '*') {
+        i++;
+        if(!cmd[i]) return 0;
+        return (cmd[i] >= 'A' && cmd[i] <= 'H') * 3;
+    }
+
+    if(cmd[i] == 'v') {
+        i++;
+        if(!cmd[i]) return 0;
+
+        if(cmd[i] >= 'A' && cmd[i] <= 'D') {
+            i++;
+            for(; cmd[i] == ' '; i++)
+                ;
+            if(cmd[i++] == '>') {
+                for(; cmd[i] == ' '; i++)
+                    ;
+                return (cmd[i] >= 'A' && cmd[i] <= 'H') * 3;
+            }
+        }
+    }
+
+    if(cmd[i] >= 'A' && cmd[i] <= 'H') {
+        i++;
+        if(!cmd[i]) return 0;
+
+        if(cmd[i] >= 'A' && cmd[i] <= 'H') {
+            i++;
+            for(; cmd[i] == ' '; i++)
+                ;
+            if(cmd[i++] == '>') {
+                for(; cmd[i] == ' '; i++)
+                    ;
+                return (cmd[i] >= 'A' && cmd[i] <= 'H') * 4;
+            }
+        }
+    }
+
+    return 0;
+}
+
 // HEAP FUNCTIONS //
 
 Heap *createHeap() {
     Heap *newHeap = (Heap*)malloc(sizeof(Heap));
 
+    newHeap->length = 0;
     newHeap->start = NULL;
     newHeap->end = NULL;
 
@@ -177,6 +269,7 @@ Heap *insertCard(Heap *heap, Card *card) {
 
     if(!heap) {
         Heap *newHeap = createHeap();
+        newHeap->length++;
         newHeap->start = createNode(card);
         newHeap->end = newHeap->start;
         return newHeap;
@@ -185,6 +278,7 @@ Heap *insertCard(Heap *heap, Card *card) {
     aux = heap->start;
     heap->start = createNode(card);
     heap->start->next = aux;
+    heap->length++;
 
     return heap;
 }
@@ -203,15 +297,20 @@ Heap *concatHeap(Heap *heap1, Heap *heap2) {
             heap1->end = heap2->end;
         }
 
+        heap1->length += heap2->length;
+
         heap2->start = NULL;
         heap2->end = NULL;
+        heap2->length = 0;
     }
 
     return heap1;
 }
 
 Node *reverseHeap(Node *node) {
-    return !node ? NULL : insertNodeOnTail(reverseHeap(node->next), node->card);
+    if(!node) return NULL;
+
+    return insertNodeOnTail(reverseHeap(node->next), node->card);
 }
 
 Node *insertNodeOnTail(Node *list, Card *card) {
