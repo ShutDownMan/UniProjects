@@ -78,7 +78,7 @@ Card *createCard(int suitInd, int rankInd) {
 void shuffleCards(Card* deck[]) {
     int i, ind;
     Heap *rndHeap = NULL, *tableau[16] = {NULL};
-    Node **tracer, **aux;
+    Node **tracer = NULL, *aux = NULL;
 
     for(i = 0; i < 52; ++i) {
         ind = rand() % 16;
@@ -94,10 +94,12 @@ void shuffleCards(Card* deck[]) {
     tracer = &rndHeap->start;
     for(i = 0; *tracer; ++i) {
         deck[i] = (*tracer)->card;
-        aux = tracer;
+        aux = *tracer;
         tracer = &(*tracer)->next;
-        free(aux);
     }
+
+    freeList(rndHeap->start);
+    free(rndHeap);
 }
 
 // STRING MANIPULATION //
@@ -501,12 +503,10 @@ Heap *concatHeap(Heap *heap1, Heap *heap2) {
             heap1->end = heap2->end;
         } else {
             // can fuck up
-            if(heap1->start) {
-                heap2->end->next = heap1->start;
-                heap2->end = heap1->end;
-                heap1->start = heap2->start;
-                heap1->end = heap2->end;
-            }
+            heap2->end->next = heap1->start;
+            heap2->end = heap1->end;
+            heap1->start = heap2->start;
+            heap1->end = heap2->end;
         }
 
         heap1->length += heap2->length;
