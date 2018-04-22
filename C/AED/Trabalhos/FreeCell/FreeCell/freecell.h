@@ -10,8 +10,8 @@
 #define MOVEFROMFREECELLS 3
 #define MOVECOLTOCOL 4
 
-// (v)copas, (v)ouros, (p)paus, (p)espadas
-char suits[4] = {'c', 'o', 'p', 'e'};
+// (v)copas, (p)espadas, (p)paus, (v)ouros,
+char suits[4] = {'c', 'e', 'p', 'o'};
 char ranks[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
 
 typedef struct Card {
@@ -29,7 +29,7 @@ typedef struct heap {
 } Heap;
 
 typedef struct table {
-    int freeCellsQnt;
+    int freeCellsQnt, freeHeapsQnt;
     Card *freeCells[4];
     Heap *homeCells[4], *tableau[8];
 } Table;
@@ -68,6 +68,8 @@ Card *createCard(int suitInd, int rankInd);
 ///
 void shuffleCards(Card *deck[]);
 
+// STRING MANIPULATION //
+
 ///
 /// \brief printTable, printa na saida padrão o estado atual da mesa
 /// \param table, mesa a ser printada
@@ -75,16 +77,17 @@ void shuffleCards(Card *deck[]);
 void printTable(Table *table);
 
 ///
-/// \brief freeList, libera espaço da memória usado para lista
-/// \param node, cabeça atual da lista
-///
-void freeList(Node *node);
-
-///
 /// \brief inputCmd, lê da entrada padrão um comando e o executa
 /// \param table, mesa de jogo que o comando sera executado
 ///
 void inputCmd(Table *table);
+
+///
+/// \brief getCmdType, lê comando e determina seu tipo
+/// \param cmd, string a ser lida
+/// \return tipo do comando
+///
+int getCmdType(char cmd[]);
 
 ///
 /// \brief skipSpaces, pula espaços de dada string
@@ -99,12 +102,15 @@ int skipSpaces(char str[]);
 ///
 void readLine(char str[]);
 
-///
-/// \brief getCmdType, lê comando e determina seu tipo
-/// \param cmd, string a ser lida
-/// \return tipo do comando
-///
-int getCmdType(char cmd[]);
+void strToUpper(char str[]);
+
+int testCmdMoveToFreeCells(char cmd[]);
+
+int testCmdMoveToHomeCells(char cmd[]);
+
+int testCmdMoveFromFreeCells(char cmd[]);
+
+int testCmdMoveColToCol(char cmd[]);
 
 ///
 /// \brief readCmd1, executa parse em comando de (mover para free cells)
@@ -138,6 +144,8 @@ void readCmd3(char cmd[], char *colFrom, char *colTo);
 ///
 void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo);
 
+// MOVE MAKING //
+
 ///
 /// \brief moveToFreeCell, executa comando de mover para free cells
 /// \param table, mesa de jogo a ser executado o comando
@@ -153,6 +161,12 @@ void moveToFreeCell(Table *table, char colFrom, char colTo);
 ///
 void moveToHomeCells(Table *table, char colFrom);
 
+///
+/// \brief moveToFreeCell, executa comando de mover das free cells
+/// \param table, mesa de jogo a ser executado o comando
+/// \param colFrom, coluna que parte a carta
+/// \param colTo, coluna que recebe a carta
+///
 void moveFromFreeCells(Table *table, char colFrom, char colTo);
 
 // HEAP FUNCTIONS //
@@ -207,5 +221,11 @@ Node *pop(Heap *heap);
 /// \return nó inicializado
 ///
 Node *createNode(Card *card);
+
+///
+/// \brief freeList, libera espaço da memória usado para lista
+/// \param node, cabeça atual da lista
+///
+void freeList(Node *node);
 
 #endif // FREECELL
