@@ -10,8 +10,8 @@
 #define MOVEFROMFREECELLS 3
 #define MOVECOLTOCOL 4
 
-// (v)copas, (v)ouros, (p)espadas, (p)paus
-char suits[4] = {'c', 'o', 'e', 'p'};
+// (v)copas, (v)ouros, (p)paus, (p)espadas
+char suits[4] = {'c', 'o', 'p', 'e'};
 char ranks[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
 
 typedef struct Card {
@@ -152,6 +152,8 @@ void moveToFreeCell(Table *table, char colFrom, char colTo);
 /// \param colFrom, coluna que parte a carta
 ///
 void moveToHomeCells(Table *table, char colFrom);
+
+void moveFromFreeCells(Table *table, char colFrom, char colTo);
 
 // HEAP FUNCTIONS //
 

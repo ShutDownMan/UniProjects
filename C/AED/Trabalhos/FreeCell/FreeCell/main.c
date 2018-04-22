@@ -178,9 +178,9 @@ void freeList(Node *node) {
     free(node);
 }
 
-// Send to free cells: ^A
-// Retrieve from free cells: vA > A
+// Send to free cells: ^A (> B)
 // Move to home cells: *A
+// Retrieve from free cells: vA > B
 // Move col to col: A1 > B
 void inputCmd(Table *table) {
     char cmd[MAXSTR], cmdType;
@@ -211,6 +211,7 @@ void inputCmd(Table *table) {
     case MOVEFROMFREECELLS:
         readCmd3(cmd, &colFrom, &colTo);
         printf("From col: %c | To col: %c\n", colFrom, colTo);
+        moveFromFreeCells(table, colFrom, colTo);
         break;
     case MOVECOLTOCOL:
         readCmd4(cmd, &colFrom, &cardQnt, &colTo);
@@ -393,7 +394,41 @@ void moveToHomeCells(Table *table, char colFrom) {
                 table->homeCells[card->suit] = insertCard(table->homeCells[card->suit], node->card);
                 free(node);
             } else {
-                printf("Carta [%c,%c] não pode ser descartada!\n", suits[card->suit], ranks[card->rank]);
+                printf("Card [%c,%c] cannot be discarded!\n", suits[card->suit], ranks[card->rank]);
+            }
+        } else {
+            printf("Column (%c) doesn't have any cards!\n", colFrom);
+        }
+    } else {
+        printf("Column (%c) doesn't exist!\n", colFrom);
+    }
+}
+
+void moveFromFreeCells(Table *table, char colFrom, char colTo) {
+    Card *cardFrom = NULL, *cardTo = NULL;
+    Node *node = NULL;
+    int colFromInd = colFrom - 'A';
+    int colToInd = colTo - 'A';
+
+    if(colFromInd >= 0 && colFromInd < 4) {
+        if(table->freeCells[colFromInd]) {
+            cardFrom = table->freeCells[colFromInd];
+            if(colFromInd >= 0 && colFromInd < 8) {
+                if(table->tableau[colToInd] && table->tableau[colToInd]->start) {
+                    node = table->tableau[colToInd]->start;
+                    cardTo = node->card;
+                    if((cardFrom->suit < 2 && cardTo->suit > 1) || (cardTo->suit < 2 && cardFrom->suit > 1)) {
+                        if(cardFrom->rank+1 == cardTo->rank) {
+                            table->tableau[colToInd] = insertCard(table->tableau[colToInd], cardFrom);
+                            table->freeCells[colFromInd] = NULL;
+                            table->freeCellsQnt++;
+                        } else {
+                            printf("Card [%c,%c] must have a rank down!\n", suits[cardFrom->suit], ranks[cardFrom->rank]);
+                        }
+                    } else {
+                        printf("Cards must have alternate colors!\n");
+                    }
+                }
             }
         } else {
             printf("Column (%c) doesn't have any cards!\n", colFrom);
@@ -483,6 +518,7 @@ Node *pop(Heap *heap) {
     } else {
         heap->start = heap->start->next;
     }
+    heap->length--;
     aux->next = NULL;
 
     return aux;
