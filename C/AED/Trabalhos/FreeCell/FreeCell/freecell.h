@@ -76,6 +76,10 @@ void shuffleCards(Card *deck[]);
 ///
 void printTable(Table *table);
 
+char getSuitByInd(unsigned char ind);
+
+char getRankByInd(unsigned char ind);
+
 ///
 /// \brief inputCmd, lê da entrada padrão um comando e o executa
 /// \param table, mesa de jogo que o comando sera executado
@@ -102,14 +106,38 @@ int skipSpaces(char str[]);
 ///
 void readLine(char str[]);
 
+///
+/// \brief strToUpper, transforma toda string em letras maiúsculas
+/// \param str, string a ser manipulada
+///
 void strToUpper(char str[]);
 
+///
+/// \brief testCmdMoveToFreeCells, testa se comando é para mover para free cells
+/// \param cmd, comando a ser checkado
+/// \return se comando é válido
+///
 int testCmdMoveToFreeCells(char cmd[]);
 
+///
+/// \brief testCmdMoveToHomeCells, testa se comando é para mover para home cells
+/// \param cmd, comando a ser checkado
+/// \return se comando é válido
+///
 int testCmdMoveToHomeCells(char cmd[]);
 
+///
+/// \brief testCmdMoveFromFreeCells, testa se comando é para mover das free cells
+/// \param cmd, comando a ser checkado
+/// \return se comando é válido
+///
 int testCmdMoveFromFreeCells(char cmd[]);
 
+///
+/// \brief testCmdMoveColToCol, testa se comando é para mover coluna pra coluna
+/// \param cmd, comando a ser checkado
+/// \return se comando é válido
+///
 int testCmdMoveColToCol(char cmd[]);
 
 ///
@@ -121,14 +149,14 @@ int testCmdMoveColToCol(char cmd[]);
 void readCmd1(char cmd[], char *colFrom, char *colTo);
 
 ///
-/// \brief readCmd1, executa parse em comando de (mover para home cells)
+/// \brief readCmd2, executa parse em comando de (mover para home cells)
 /// \param cmd, string a ser parseada
 /// \param colFrom, armazena primeira coluna lida
 ///
 void readCmd2(char cmd[], char *colFrom);
 
 ///
-/// \brief readCmd1, executa parse em comando de (mover das free cells)
+/// \brief readCmd3, executa parse em comando de (mover das free cells)
 /// \param cmd, string a ser parseada
 /// \param colFrom, armazena primeira coluna lida
 /// \param colTo, armazena segunda coluna lida
@@ -136,7 +164,7 @@ void readCmd2(char cmd[], char *colFrom);
 void readCmd3(char cmd[], char *colFrom, char *colTo);
 
 ///
-/// \brief readCmd1, executa parse em comando de (mover coluna para coluna)
+/// \brief readCmd4, executa parse em comando de (mover coluna para coluna)
 /// \param cmd, string a ser parseada
 /// \param colFrom, armazena primeira coluna lida
 /// \param cardQnt, armazena quantidade de cartas lida
@@ -155,19 +183,21 @@ void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo);
 void moveToFreeCell(Table *table, char colFrom, char colTo);
 
 ///
-/// \brief moveToFreeCell, executa comando de mover para home cells
+/// \brief moveToHomeCells, executa comando de mover para home cells
 /// \param table, mesa de jogo a ser executado o comando
 /// \param colFrom, coluna que parte a carta
 ///
 void moveToHomeCells(Table *table, char colFrom);
 
 ///
-/// \brief moveToFreeCell, executa comando de mover das free cells
+/// \brief moveFromFreeCells, executa comando de mover das free cells
 /// \param table, mesa de jogo a ser executado o comando
 /// \param colFrom, coluna que parte a carta
 /// \param colTo, coluna que recebe a carta
 ///
 void moveFromFreeCells(Table *table, char colFrom, char colTo);
+
+void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo);
 
 // HEAP FUNCTIONS //
 

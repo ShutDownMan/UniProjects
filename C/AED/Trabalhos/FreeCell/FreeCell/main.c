@@ -78,7 +78,7 @@ Card *createCard(int suitInd, int rankInd) {
 void shuffleCards(Card* deck[]) {
     int i, ind;
     Heap *rndHeap = NULL, *tableau[16] = {NULL};
-    Node **tracer = NULL, *aux = NULL;
+    Node **tracer = NULL;
 
     for(i = 0; i < 52; ++i) {
         ind = rand() % 16;
@@ -94,7 +94,6 @@ void shuffleCards(Card* deck[]) {
     tracer = &rndHeap->start;
     for(i = 0; *tracer; ++i) {
         deck[i] = (*tracer)->card;
-        aux = *tracer;
         tracer = &(*tracer)->next;
     }
 
@@ -107,7 +106,7 @@ void shuffleCards(Card* deck[]) {
 void printTable(Table *table) {
     int i;
     int lines;
-    char suit, rank;
+    unsigned char suit, rank;
     Node *current[8] = {NULL}, *reverseHeaps[8] = {NULL};
 
     system("CLS");
@@ -120,26 +119,26 @@ void printTable(Table *table) {
     printf("\t\n    ");
     for(i = 0; i < 4; ++i) {
         if(table->freeCells[i]) {
-            suit = suits[table->freeCells[i]->suit];
-            rank = ranks[table->freeCells[i]->rank];
+            suit = table->freeCells[i]->suit;
+            rank = table->freeCells[i]->rank;
         } else {
-            suit = rank = ' ';
+            suit = rank = -2;
         }
 
-        printf("[%c,%c] ", suit, rank);
+        printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
     }
 
     printf("\t");
 
     for(i = 0; i < 4; ++i) {
         if(table->homeCells[i] && table->homeCells[i]->start) {
-            suit = suits[table->homeCells[i]->start->card->suit];
-            rank = ranks[table->homeCells[i]->start->card->rank];
+            suit = table->homeCells[i]->start->card->suit;
+            rank = table->homeCells[i]->start->card->rank;
         } else {
-            suit = rank = ' ';
+            suit = rank = -2;
         }
 
-        printf("[%c,%c] ", suit, rank);
+        printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
     }
 
     printf("\n");
@@ -159,10 +158,10 @@ void printTable(Table *table) {
         printf("%2d    ", lines--);
         for(i = 0; i < 8; ++i) {
             if(current[i]) {
-                suit = suits[current[i]->card->suit];
-                rank = ranks[current[i]->card->rank];
+                suit = current[i]->card->suit;
+                rank = current[i]->card->rank;
                 current[i] = current[i]->next;
-                printf("[%c,%c] ", suit, rank);
+                printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
             } else {
                 printf("      ");
             }
@@ -176,10 +175,20 @@ void printTable(Table *table) {
     }
 }
 
-// Send to free cells: ^A (> B)
-// Move to home cells: *A
-// Retrieve from free cells: vA > B
-// Move col to col: A1 > B
+char getSuitByInd(unsigned char ind) {
+    if(ind < 4) {
+        return suits[ind];
+    }
+    return ' ';
+}
+
+char getRankByInd(unsigned char ind) {
+    if(ind < 13) {
+        return ranks[ind];
+    }
+    return ' ';
+}
+
 void inputCmd(Table *table) {
     char cmd[MAXSTR], cmdType;
     char colFrom = 0, colTo = 0;
@@ -198,22 +207,23 @@ void inputCmd(Table *table) {
     switch(cmdType) {
     case MOVETOFREECELLS:
         readCmd1(cmd, &colFrom, &colTo);
-        printf("From col: %c | To col: %c\n", colFrom, colTo);
+//        printf("From col: %c | To col: %c\n", colFrom, colTo);
         moveToFreeCell(table, colFrom, colTo);
         break;
     case MOVETOHOMECELLS:
         readCmd2(cmd, &colFrom);
-        printf("From col: %c\n", colFrom);
+//        printf("From col: %c\n", colFrom);
         moveToHomeCells(table, colFrom);
         break;
     case MOVEFROMFREECELLS:
         readCmd3(cmd, &colFrom, &colTo);
-        printf("From col: %c | To col: %c\n", colFrom, colTo);
+//        printf("From col: %c | To col: %c\n", colFrom, colTo);
         moveFromFreeCells(table, colFrom, colTo);
         break;
     case MOVECOLTOCOL:
         readCmd4(cmd, &colFrom, &cardQnt, &colTo);
-        printf("From col: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
+//        printf("From col: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
+        moveColToCol(table, colFrom, cardQnt, colTo);
         break;
     default:
         // Help.
@@ -459,6 +469,61 @@ void moveFromFreeCells(Table *table, char colFrom, char colTo) {
     }
 }
 
+void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
+    Node *nodeFrom = NULL, *nodeTo = NULL;
+    Card *cardFrom = NULL, *cardTo = NULL;
+    int colFromInd = colFrom - 'A';
+    int colToInd = colTo - 'A';
+    int i, valid;
+
+    if(table->tableau[colFromInd]->start) {
+        if(cardQnt <= table->freeCellsQnt + table->freeHeapsQnt + 1) {
+            nodeFrom = table->tableau[colFromInd]->start;
+            for(i = valid = 1; i < cardQnt && valid; ++i) {
+                if(nodeFrom && nodeFrom->next) {
+                    if(nodeFrom->card->suit%2 == nodeFrom->next->card->suit%2) {
+                        valid = 0;
+                        printf("Sequence must have alternate colors!\n");
+                    }
+                    if(nodeFrom->card->rank - nodeFrom->next->card->rank != -1) {
+                        valid = 0;
+                        printf("Sequence must be ranking down!\n");
+                    }
+                } else {
+                    valid = 0;
+                    printf("There are not %d card%s to be moved!\n", cardQnt, (cardQnt == 1) ? "" : "s");
+                }
+                nodeFrom = nodeFrom->next;
+            }
+            if(valid) {
+                cardFrom = nodeFrom->card;
+                nodeTo = table->tableau[colToInd]->start;
+                if(nodeTo) {
+                    cardTo = table->tableau[colToInd]->start->card;
+                }
+                if(!nodeTo || cardFrom->suit%2 != cardTo->suit%2) {
+                    if(!nodeTo || cardFrom->rank - cardTo->rank == -1) {
+                        for(i = 0; i < cardQnt; ++i) {
+                            nodeTo = pop(table->tableau[colFromInd]);
+                            table->tableau[colToInd] = insertCard(table->tableau[colToInd], nodeTo->card);
+                            free(nodeTo);
+                        }
+                    } else {
+                        printf("Cards must have a rank down!\n");
+                    }
+                } else {
+                    printf("Cards must have alternate colors!\n");
+                }
+            }
+        } else {
+            printf("You can only move %d cards now!\n", table->freeCellsQnt + table->freeHeapsQnt + 1);
+        }
+    } else {
+        printf("Column (%c) doesn't have any cards!\n", colFrom);
+    }
+
+}
+
 // HEAP FUNCTIONS //
 
 Heap *createHeap() {
@@ -502,7 +567,6 @@ Heap *concatHeap(Heap *heap1, Heap *heap2) {
             heap1->start = heap2->start;
             heap1->end = heap2->end;
         } else {
-            // can fuck up
             heap2->end->next = heap1->start;
             heap2->end = heap1->end;
             heap1->start = heap2->start;
@@ -547,7 +611,6 @@ Node *pop(Heap *heap) {
 
     return aux;
 }
-
 
 Node *createNode(Card *card) {
     Node *newNode = (Node*)malloc(sizeof(Node));
