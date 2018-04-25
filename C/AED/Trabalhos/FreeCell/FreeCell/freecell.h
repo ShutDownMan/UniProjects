@@ -9,13 +9,14 @@
 #define MOVETOHOMECELLS 2
 #define MOVEFROMFREECELLS 3
 #define MOVECOLTOCOL 4
+#define FINDCARD 5
 
 // (v)copas, (p)espadas, (p)paus, (v)ouros,
 char suits[4] = {'c', 'e', 'p', 'o'};
 char ranks[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
 
 typedef struct Card {
-    unsigned char suit, rank;
+    unsigned char suit, rank, hint;
 } Card;
 
 typedef struct node {
@@ -76,8 +77,18 @@ void shuffleCards(Card *deck[]);
 ///
 void printTable(Table *table);
 
+///
+/// \brief getSuitByInd, pega código char do naipe a partir do indice
+/// \param ind, indice do naipe
+/// \return char correspondente ao indice do naipe
+///
 char getSuitByInd(unsigned char ind);
 
+///
+/// \brief getRankByInd, pega código char da ordem a partir do indice
+/// \param ind, indice da ordem
+/// \return char correspondente ao indice da ordem
+///
 char getRankByInd(unsigned char ind);
 
 ///
@@ -140,6 +151,12 @@ int testCmdMoveFromFreeCells(char cmd[]);
 ///
 int testCmdMoveColToCol(char cmd[]);
 
+int testCmdFindCard(char cmd[]);
+
+int getIndBySuit(char suit);
+
+int getIndByRank(char rank);
+
 ///
 /// \brief readCmd1, executa parse em comando de (mover para free cells)
 /// \param cmd, string a ser parseada
@@ -172,6 +189,14 @@ void readCmd3(char cmd[], char *colFrom, char *colTo);
 ///
 void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo);
 
+///
+/// \brief !!, executa parse em comando de (mover das free cells)
+/// \param cmd, string a ser parseada
+/// \param colFrom, armazena primeira coluna lida
+/// \param colTo, armazena segunda coluna lida
+///
+void readCmd5(char cmd[], char *suit, char *rank);
+
 // MOVE MAKING //
 
 ///
@@ -197,7 +222,17 @@ void moveToHomeCells(Table *table, char colFrom);
 ///
 void moveFromFreeCells(Table *table, char colFrom, char colTo);
 
+
+///
+/// \brief moveColToCol, executa comando de mover coluna para coluna
+/// \param table, mesa de jogo a ser executado o comando
+/// \param colFrom, coluna que parte a carta
+/// \param cardQnt, quantidade de cartas a serem movidas
+/// \param colTo, coluna que recebe a carta
+///
 void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo);
+
+void findCard(Table *table, char suit, char rank);
 
 // HEAP FUNCTIONS //
 

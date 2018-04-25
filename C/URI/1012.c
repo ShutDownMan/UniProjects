@@ -5,7 +5,7 @@ int main() {
 	double a, b, c, pi;
 
 	pi = 3.14159;
- 
+
 	scanf("%lf %lf %lf", &a, &b, &c);
 
 	double areaTriangle = (a*c)/2;

@@ -1,4 +1,4 @@
-#include "list.h"
+#include "ListOO.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -49,24 +49,20 @@ List *List::insertOnTail(List *&list, int val) {
     return list;
 }
 
-void List::print(List *list) {
-    List **tracer;
+void List::print() {
 
-    if(list) {
-        for(tracer = &list; *tracer; tracer = (*tracer)->getNextPtr()) {
-            printf("(%d)->", (*tracer)->info);
-        }
+    printf("(%d)->", this->info);
+    if(this->next) {
+        this->next->print();
+    } else {
         printf("(!);\n");
     }
 }
 
-void List::freeList(List *list) {
-    if(!list) return;
-
-    freeList(list->getNext());
-    delete list;
-}
-
 List::~List() {
     printf("Liberando mem%cria (%d).\n", 162, this->info);
+
+    if(this->next) {
+        delete this->next;
+    }
 }

@@ -71,6 +71,7 @@ Card *createCard(int suitInd, int rankInd) {
 
     newCard->suit = suitInd;
     newCard->rank = rankInd;
+    newCard->hint = 0;
 
     return newCard;
 }
@@ -106,7 +107,7 @@ void shuffleCards(Card* deck[]) {
 void printTable(Table *table) {
     int i;
     int lines;
-    unsigned char suit, rank;
+    unsigned char suit, rank, hint;
     Node *current[8] = {NULL}, *reverseHeaps[8] = {NULL};
 
     system("CLS");
@@ -121,11 +122,18 @@ void printTable(Table *table) {
         if(table->freeCells[i]) {
             suit = table->freeCells[i]->suit;
             rank = table->freeCells[i]->rank;
+            hint = table->freeCells[i]->hint;
         } else {
             suit = rank = -2;
+            hint = 0;
         }
 
-        printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+        if(hint) {
+            printf("%c%c,%c%c ", '{', getSuitByInd(suit), getRankByInd(rank), '}');
+        } else {
+            printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+        }
+
     }
 
     printf("\t");
@@ -134,11 +142,17 @@ void printTable(Table *table) {
         if(table->homeCells[i] && table->homeCells[i]->start) {
             suit = table->homeCells[i]->start->card->suit;
             rank = table->homeCells[i]->start->card->rank;
+            hint = table->homeCells[i]->start->card->hint;
         } else {
             suit = rank = -2;
+            hint = 0;
         }
 
-        printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+        if(hint) {
+            printf("%c%c,%c%c ", '{', getSuitByInd(suit), getRankByInd(rank), '}');
+        } else {
+            printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+        }
     }
 
     printf("\n");
@@ -160,8 +174,13 @@ void printTable(Table *table) {
             if(current[i]) {
                 suit = current[i]->card->suit;
                 rank = current[i]->card->rank;
+                hint = current[i]->card->hint;
                 current[i] = current[i]->next;
-                printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+                if(hint) {
+                    printf("%c%c,%c%c ", 219, getSuitByInd(suit), getRankByInd(rank), 219);
+                } else {
+                    printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+                }
             } else {
                 printf("      ");
             }
@@ -192,6 +211,7 @@ char getRankByInd(unsigned char ind) {
 void inputCmd(Table *table) {
     char cmd[MAXSTR], cmdType;
     char colFrom = 0, colTo = 0;
+    char suit = 0, rank = 0;
     int cardQnt = 0;
 
     printf("\nType in a command: ");
@@ -207,23 +227,28 @@ void inputCmd(Table *table) {
     switch(cmdType) {
     case MOVETOFREECELLS:
         readCmd1(cmd, &colFrom, &colTo);
-//        printf("From col: %c | To col: %c\n", colFrom, colTo);
+//        printf("fromcol: %c | To col: %c\n", colFrom, colTo);
         moveToFreeCell(table, colFrom, colTo);
         break;
     case MOVETOHOMECELLS:
         readCmd2(cmd, &colFrom);
-//        printf("From col: %c\n", colFrom);
+//        printf("fromcol: %c\n", colFrom);
         moveToHomeCells(table, colFrom);
         break;
     case MOVEFROMFREECELLS:
         readCmd3(cmd, &colFrom, &colTo);
-//        printf("From col: %c | To col: %c\n", colFrom, colTo);
+//        printf("fromcol: %c | To col: %c\n", colFrom, colTo);
         moveFromFreeCells(table, colFrom, colTo);
         break;
     case MOVECOLTOCOL:
         readCmd4(cmd, &colFrom, &cardQnt, &colTo);
-//        printf("From col: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
+//        printf("fromcol: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
         moveColToCol(table, colFrom, cardQnt, colTo);
+        break;
+    case FINDCARD:
+        readCmd5(cmd, &suit, &rank);
+        printf("suit: %c | rank: %c\n", suit, rank);
+        findCard(table, suit, rank);
         break;
     default:
         // Help.
@@ -252,6 +277,8 @@ int getCmdType(char cmd[]) {
 
     if(testCmdMoveColToCol(cmd)) return MOVECOLTOCOL;
 
+    if(testCmdFindCard(cmd)) return FINDCARD;
+
     return 0;
 }
 
@@ -266,8 +293,17 @@ int testCmdMoveToFreeCells(char cmd[]) {
     i += skipSpaces(cmd);
     if(cmd[i] == '^') {
         i++;
-        if(!cmd[i]) return 0;
-        return (cmd[i] >= 'A' && cmd[i] <= 'H');
+        if(cmd[i] >= 'A' && cmd[i] <= 'H') {
+            i++;
+            i += skipSpaces(cmd + i);
+            if(cmd[i] == '>') {
+                i++;
+                i += skipSpaces(cmd + i);
+                return (cmd[i] >= 'A' && cmd[i] <= 'D') * MOVETOFREECELLS;
+            }
+            i += skipSpaces(cmd + i);
+            return (!cmd[i]) * MOVETOFREECELLS;
+        }
     }
     return 0;
 }
@@ -301,23 +337,70 @@ int testCmdMoveFromFreeCells(char cmd[]) {
 }
 
 int testCmdMoveColToCol(char cmd[]) {
-    int i = 0, valid = 0;
+    int i = 0, hasNum = 0, numQnt;
     if(cmd[i] >= 'A' && cmd[i] <= 'H') {
         i++;
         if(!cmd[i]) return 0;
 
         // read numbers
-        for(valid = 0; cmd[i] && cmd[i] >= '0' && cmd[i] <= '9'; valid += ++i)
-            ;
-        if(!valid) return 0;
+        for(hasNum = numQnt = 0; cmd[i] && cmd[i] >= '0' && cmd[i] <= '9'; hasNum = ++i) {
+            numQnt = numQnt*10 + cmd[i]-'0';
+        }
+        if(hasNum && numQnt == 0) return 0;
 
         i += skipSpaces(cmd + i);
-        if(cmd[i++] == '>') {
+        if(cmd[i] == '>') {
+            i++;
             i += skipSpaces(cmd + i);
             return (cmd[i] >= 'A' && cmd[i] <= 'H') * MOVECOLTOCOL;
         }
     }
     return 0;
+}
+
+int testCmdFindCard(char cmd[]) {
+    int i = 0;
+    i += skipSpaces(cmd);
+    if(cmd[i] == '&') {
+        i++;
+        if(cmd[i] == '(' || cmd[i] == '[') {
+            i++;
+            if(getIndBySuit(cmd[i]) != -1) {
+                i++;
+                if(cmd[i] == ',') {
+                    i++;
+                    i += skipSpaces(cmd + i);
+                    if(getIndByRank(cmd[i]) != -1) {
+                        i++;
+                        return (cmd[i] == ')' || cmd[i] == ']');
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+int getIndBySuit(char suit) {
+    int i;
+    for(i = 0; i < 4; ++i) {
+        // compare suits
+        if(toupper(getSuitByInd(i)) == toupper(suit)) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int getIndByRank(char rank) {
+    int i;
+    for(i = 0; i < 13; ++i) {
+        // compare ranks
+        if(toupper(getRankByInd(i)) == toupper(rank)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 int skipSpaces(char str[]) {
@@ -382,6 +465,18 @@ void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo) {
     *colTo = cmd[i];
 }
 
+void readCmd5(char cmd[], char *suit, char *rank) {
+    int i = 0;
+
+    i += skipSpaces(cmd);
+    i++;
+    *suit = cmd[++i];
+    i += 2;
+    i += skipSpaces(cmd + i);
+    *rank = cmd[i];
+}
+
+
 // MOVE MAKING //
 
 void moveToFreeCell(Table *table, char colFrom, char colTo) {
@@ -396,19 +491,22 @@ void moveToFreeCell(Table *table, char colFrom, char colTo) {
                 for(colToInd = 0; colToInd < 4 && table->freeCells[colToInd]; ++colToInd)
                     ;
             }
+            if(!table->freeCells[colToInd]) {
+                node = pop(table->tableau[colFromInd]);
+                card = node->card;
+                table->freeCells[colToInd] = card;
 
-            node = pop(table->tableau[colFromInd]);
-            card = node->card;
-            table->freeCells[colToInd] = card;
-
-            table->freeCellsQnt--;
-            table->freeHeapsQnt += (!table->tableau[colFromInd]);
-            free(node);
+                table->freeCellsQnt--;
+                table->freeHeapsQnt += (!table->tableau[colFromInd]);
+                free(node);
+            } else {
+                printf("There's already a card on that spot!%c\n", 7);
+            }
         } else {
-            printf("Column (%c) doesn't have any cards!\n", colFrom);
+            printf("Column (%c) doesn't have any cards!%c\n", colFrom, 7);
         }
     } else {
-        printf("The are no free spaces!\n");
+        printf("The are no free spaces!%c\n", 7);
     }
 }
 
@@ -431,10 +529,10 @@ void moveToHomeCells(Table *table, char colFrom) {
                 table->freeHeapsQnt += (!table->tableau[colFromInd]->length);
                 free(node);
             } else {
-                printf("Card [%c,%c] cannot be discarded!\n", suits[card->suit], ranks[card->rank]);
+                printf("Card [%c,%c] cannot be discarded!%c\n", suits[card->suit], ranks[card->rank], 7);
             }
         } else {
-            printf("Column (%c) doesn't have any cards!\n", colFrom);
+            printf("Column (%c) doesn't have any cards!%c\n", colFrom, 7);
         }
     }
 }
@@ -459,19 +557,20 @@ void moveFromFreeCells(Table *table, char colFrom, char colTo) {
                 table->freeCellsQnt++;
                 table->freeHeapsQnt -= (!node);
             } else {
-                printf("Card [%c,%c] must have a rank down!\n", suits[cardFrom->suit], ranks[cardFrom->rank]);
+                printf("Card [%c,%c] must have a rank down!%c\n", suits[cardFrom->suit], ranks[cardFrom->rank], 7);
             }
         } else {
-            printf("Cards must have alternate colors!\n");
+            printf("Cards must have alternate colors!%c\n", 7);
         }
     } else {
-        printf("Column (%c) doesn't have any cards!\n", colFrom);
+        printf("Column (%c) doesn't have any cards!%c\n", colFrom, 7);
     }
 }
 
 void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
     Node *nodeFrom = NULL, *nodeTo = NULL;
     Card *cardFrom = NULL, *cardTo = NULL;
+    Heap *heap;
     int colFromInd = colFrom - 'A';
     int colToInd = colTo - 'A';
     int i, valid;
@@ -479,19 +578,22 @@ void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
     if(table->tableau[colFromInd]->start) {
         if(cardQnt <= table->freeCellsQnt + table->freeHeapsQnt + 1) {
             nodeFrom = table->tableau[colFromInd]->start;
+            if(cardQnt < 1) {
+                cardQnt = 1;
+            }
             for(i = valid = 1; i < cardQnt && valid; ++i) {
                 if(nodeFrom && nodeFrom->next) {
                     if(nodeFrom->card->suit%2 == nodeFrom->next->card->suit%2) {
                         valid = 0;
-                        printf("Sequence must have alternate colors!\n");
+                        printf("Sequence must have alternate colors!%c\n", 7);
                     }
                     if(nodeFrom->card->rank - nodeFrom->next->card->rank != -1) {
                         valid = 0;
-                        printf("Sequence must be ranking down!\n");
+                        printf("Sequence must be ranking down!%c\n", 7);
                     }
                 } else {
                     valid = 0;
-                    printf("There are not %d card%s to be moved!\n", cardQnt, (cardQnt == 1) ? "" : "s");
+                    printf("There are not %d card%s to be moved!%c\n", cardQnt, (cardQnt == 1) ? "" : "s", 7);
                 }
                 nodeFrom = nodeFrom->next;
             }
@@ -503,25 +605,80 @@ void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
                 }
                 if(!nodeTo || cardFrom->suit%2 != cardTo->suit%2) {
                     if(!nodeTo || cardFrom->rank - cardTo->rank == -1) {
+                        heap = createHeap();
                         for(i = 0; i < cardQnt; ++i) {
                             nodeTo = pop(table->tableau[colFromInd]);
+                            heap = insertCard(heap, nodeTo->card);
+                            free(nodeTo);
+                        }
+                        for(i = 0; i < cardQnt; ++i) {
+                            nodeTo = pop(heap);
                             table->tableau[colToInd] = insertCard(table->tableau[colToInd], nodeTo->card);
                             free(nodeTo);
                         }
                     } else {
-                        printf("Cards must have a rank down!\n");
+                        printf("Cards must have a rank down!%c\n", 7);
                     }
                 } else {
-                    printf("Cards must have alternate colors!\n");
+                    printf("Cards must have alternate colors!%c\n", 7);
                 }
             }
         } else {
-            printf("You can only move %d cards now!\n", table->freeCellsQnt + table->freeHeapsQnt + 1);
+            printf("You can only move %d cards now!%c\n", table->freeCellsQnt + table->freeHeapsQnt + 1, 7);
         }
     } else {
-        printf("Column (%c) doesn't have any cards!\n", colFrom);
+        printf("Column (%c) doesn't have any cards!%c\n", colFrom, 7);
     }
+}
 
+void findCard(Table *table, char suit, char rank) {
+    int i;
+    int rankInd, suitInd, found;
+    Node *node = NULL;
+    Card *foundCard = NULL;
+
+    suitInd = getIndBySuit(suit);
+    rankInd = getIndByRank(rank);
+    found = 0;
+
+    for(i = 0; i < 4 && !found; ++i) {
+        if(table->freeCells[i]) {
+            if(table->freeCells[i]->rank == rankInd && table->freeCells[i]->suit == suitInd) {
+                table->freeCells[i]->hint = 1;
+                found = 1;
+                foundCard = table->freeCells[i];
+            }
+        }
+        if(table->homeCells[i]->start) {
+            node = table->homeCells[i]->start;
+            while(node && !found) {
+                if(node->card->rank == rankInd && node->card->suit == suitInd) {
+                    node->card->hint = 1;
+                    found = 1;
+                    foundCard = node->card;
+                }
+                node = node->next;
+            }
+        }
+    }
+    for(i = 0; i < 8 && !found; ++i) {
+        if(table->tableau[i]->start) {
+            node = table->tableau[i]->start;
+            while(node && !found) {
+                if(node->card->rank == rankInd && node->card->suit == suitInd) {
+                    node->card->hint = 1;
+                    found = 1;
+                    foundCard = node->card;
+                }
+                node = node->next;
+            }
+        }
+    }
+    if(found) {
+        printTable(table);
+        printf("\n");
+        foundCard->hint = 0;
+    }
 }
 
 // HEAP FUNCTIONS //

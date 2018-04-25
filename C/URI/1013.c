@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <math.h>
 
-// Function to get the greatest of 2 numbers 
-int greaterThan(int a, int b){
+// Function to get the greatest of 2 numbers
+int greaterThan(int a, int b) {
 	return ((a+b+abs(a-b))/2);
 }
 
 int main() { // Função principal.
 
-	// Input/Output variables 
+	// Input/Output variables
 	int a, b, c, gNum;
 
 	// get a, b, c

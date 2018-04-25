@@ -7,8 +7,7 @@ int main() {
 
 	scanf("%d", &inputVal);
 
-	for(i = 6; i >= 0; --i)
-	{
+	for(i = 6; i >= 0; --i) {
 		printf("%d nota(s) de R$ %d,00\n", inputVal/notas[i], notas[i]);
 		inputVal %= notas[i];
 	}

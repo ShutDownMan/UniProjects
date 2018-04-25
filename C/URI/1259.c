@@ -18,7 +18,6 @@ Node *insert(Node *node, int val) {
 
 	if(!node) return createNode(val);
 
-
 	if(!node->next || node->next->val > val) {
 
 		if(node->val > val) {

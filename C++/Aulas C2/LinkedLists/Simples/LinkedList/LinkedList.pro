@@ -10,5 +10,6 @@ include(deployment.pri)
 qtcAddDeployment()
 
 HEADERS += \
-    list.h
+    ListStructured.h \
+    ListOO.h
 

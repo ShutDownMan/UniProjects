@@ -6,7 +6,7 @@ int main() {
 
 	// Get total seconds
 	scanf("%d", &inputVal);
-	
+
 	totalSecs = inputVal;
 
 	hours = totalSecs / 3600;
@@ -14,7 +14,7 @@ int main() {
 
 	mins = totalSecs / 60;
 	totalSecs -= (mins*60);
-	
+
 	secs = totalSecs;
 
 	printf("%d:%d:%d\n", hours, mins, secs);
