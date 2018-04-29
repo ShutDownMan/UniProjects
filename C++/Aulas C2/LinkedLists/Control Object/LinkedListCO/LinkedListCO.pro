@@ -3,16 +3,14 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += \
-    main.c \
-    heap.c \
-    stringmanipulation.c
+SOURCES += main.cpp \
+    list.cpp \
+    node.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
 
 HEADERS += \
-    main.h \
-    heap.h \
-    stringmanipulation.h
+    list.h \
+    node.h
 

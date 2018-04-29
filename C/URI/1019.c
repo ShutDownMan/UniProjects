@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main() {
+int main(void) {
 	// Initialize Input/Output
 	int inputVal, totalSecs, secs, mins, hours;
 
@@ -19,4 +19,5 @@ int main() {
 
 	printf("%d:%d:%d\n", hours, mins, secs);
 
+	return 0;
 }
