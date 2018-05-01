@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 //    createLinkedList(&start2);
 //    printList(start2);
 
-    remove_repetido(start1);
+    start1 = remove_mult(start1, 1);
     printList(start1);
 
     return 0;
@@ -57,42 +57,67 @@ List* insert_apos(List *list, int val, int x) {
     return list;
 }
 
-//List* remove(List *list, int val) {
-//    struct knot* next;
-//    char present = 0;
-
-//    if(isEmpty(list)) return NULL;
-
-//    if(list->next && !(present = (list->val == val))) {
-//        list->next = remove(list->next, val);
-//        return list;
-//    }
-
-//    if(present) {
-//        next = list->next;
-//        free(list);
-//        return next;
-//    }
-
-//    return list;
-//}
-
-List* remove_mult(List *list, int val) {
+/*List* remove(List *list, int val) {
     struct knot* next;
+    char present = 0;
 
-    if(isEmpty(list)) return list;
+    if(isEmpty(list)) return NULL;
 
-    next = list->next;
-    if(next) {
-        next = remove_mult(next, val);
+    if(list->next && !(present = (list->val == val))) {
+        list->next = remove(list->next, val);
+        return list;
+    }
+
+    if(present) {
+        next = list->next;
+        free(list);
         return next;
     }
 
-    if(!(list->next->val%val)) {
-        next = list->next;
-        free(list);
-        return remove_mult(next, val);
+    return list;
+}*/
+
+List* insere_ordered(List *li, int val){
+    List* newNode = NULL, *aux = NULL;
+
+    if(!li || li->val > val) {
+        newNode = (List *) malloc(sizeof(List));
+        newNode->val = val;
+        newNode->next = li;
+        return newNode;
     }
+
+    if(!li->next || li->next->val > val) {
+        newNode = (List *) malloc(sizeof(List));
+        newNode->val = val;
+        aux = li->next;
+        li->next = newNode;
+        newNode->next = aux;
+    } else {
+        li->next = insere_ordered(li->next, val);
+    }
+
+    return li;
+}
+
+List* remove_mult(List *list, int val) {
+    struct knot* aux;
+
+    if(isEmpty(list)) return NULL;
+
+    if(list->val == val) {
+        aux = list->next;
+        free(list);
+        return remove_mult(aux, val);
+    }
+
+    if(list->next && list->next->val == val) {
+        aux = list->next->next;
+        free(list->next);
+        list->next = aux;
+    }
+
+    list->next = remove_mult(list->next, val);
 
     return list;
 }
@@ -150,7 +175,7 @@ void createLinkedList(List **head) {
     printf("Type in a new value to be added: ");
     scanf("%d", &val);
     while(val >= 0) {
-        insert(*head, val);
+        *head = insere_ordered(*head, val);
 
         printf("Type in a new value to be added: ");
         scanf("%d", &val);
@@ -220,3 +245,28 @@ List *remove_repetido(List *list) {
     }
     return list;
 }
+
+
+// HELP ME //
+
+/*Lista* remover(Lista* l, int info){
+    Lista* aux = NULL;
+
+    if(!l) return NULL;
+
+    if(l->info == info) {
+        aux = l->prox;
+        free(l);
+        return aux;
+    }
+
+    if(l->prox && l->prox->info == info) {
+        aux = l->prox->prox;
+        free(l->prox);
+        l->prox = aux;
+    } else {
+        l->prox = remover(l->prox, info);
+    }
+
+    return l;
+}*/

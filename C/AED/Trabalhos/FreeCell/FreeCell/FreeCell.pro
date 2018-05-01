@@ -6,7 +6,8 @@ CONFIG -= qt
 SOURCES += \
     main.c \
     heap.c \
-    stringmanipulation.c
+    stringmanipulation.c \
+    filemanipulation.c
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -14,5 +15,6 @@ qtcAddDeployment()
 HEADERS += \
     main.h \
     heap.h \
-    stringmanipulation.h
+    stringmanipulation.h \
+    filemanipulation.h
 

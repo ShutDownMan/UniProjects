@@ -15,11 +15,17 @@ int main(void) {
 
     startGame(table);
 
+//    loadGame(table);
+
+    saveGame(table);
+
     printTable(table);
     while(1) {
         inputCmd(table);
 
         printTable(table);
+
+        saveGame(table);
     }
 
     return 0;
@@ -452,4 +458,80 @@ void findCard(Table *table, char suit, char rank) {
         printf("Card found!\n");
         foundCard->hint = 0;
     }
+}
+
+void saveGame(Table *table) {
+    FILE *f = openBinaryFile("gamesave.bin", "wb+");
+    Node *aux = NULL;
+    int i;
+
+    createEmptyList(f);
+
+    for(i = 0; i < 4; ++i) {
+        if(table->freeCells[i]) {
+            insertNodeOnFreeCell(f, i, *table->freeCells[i]);
+        }
+
+//        for(aux = table->homeCells[i]->start; aux; aux = aux->next) {
+//            insertNodeOnHomeCell(f, i, *aux->card);
+//        }
+    }
+
+//    for(i = 0; i < 8; ++i) {
+//        for(aux = table->tableau[i]->start; aux; aux = aux->next) {
+//            insertNodeOnTableau(f, i, *aux->card);
+//        }
+//    }
+
+    fclose(f);
+}
+
+void loadGame(Table *table) {
+    FILE *f = openBinaryFile("gamesavetest.bin", "rb");
+    Header *header = readHeader(f);
+    FileNode *aux = NULL;
+    Card card = {.suit = -1, .rank = -1};
+    int i, next = 0;
+
+    for(i = 0; i < 4; ++i) {
+//        printf("FREE[%d] = %d\n", i, header->freeCellsHeads[i]);
+//        if(header->freeCellsHeads[i] != -1) {
+//            aux = readFileNode(f, header->freeCellsHeads[i]);
+//            card = aux->val;
+//            printf("[%c, %c]\n", getSuitByInd(card.suit), getRankByInd(card.suit));
+//            table->freeCells[i] = createCard(card.suit, card.suit);
+//            table->freeCellsQnt--;
+//            free(aux);
+//        }
+
+//        printf(">HOME[%d] = %d\n", i, header->homeCellsHeads[i]);
+//        if(header->homeCellsHeads[i] != -1) {
+//            next = 0;
+//            for(aux = readFileNode(f, header->homeCellsHeads[i]); next != -1; aux = readFileNode(f, next)) {
+//                card = aux->val;
+//                table->homeCells[i] = insertCard(table->homeCells[i], &card);
+
+//                next = aux->next;
+//                free(aux);
+//            }
+//        }
+    }
+
+    for(i = 0; i < 8; ++i) {
+        printf(">TABLEAU[%d] = %d\n", i, header->tableauHeads[i]);
+        if(header->tableauHeads[i] != -1) {
+            next = 0;
+            for(aux = readFileNode(f, header->tableauHeads[i]); next != -1; aux = readFileNode(f, next)) {
+                printf(">\tTABLEAU[%d] = %d\n", i, next);
+                card = aux->val;
+                table->tableau[i] = insertCard(table->tableau[i], createCard(card.suit, card.suit));
+
+                next = aux->next;
+                free(aux);
+            }
+        }
+    }
+
+    fclose(f);
+    getch();
 }

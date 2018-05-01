@@ -3,9 +3,16 @@
 
 #include "heap.h"
 #include "stringmanipulation.h"
+#include "filemanipulation.h"
 
 #define MAXCARDS 52
 #define MAXSTR 64
+
+typedef struct table {
+    int freeCellsQnt, freeHeapsQnt;
+    Card *freeCells[4];
+    Heap *homeCells[4], *tableau[8];
+} Table;
 
 // MAIN FUNCTIONS //
 
@@ -78,7 +85,6 @@ void moveToHomeCells(Table *table, char colFrom);
 ///
 void moveFromFreeCells(Table *table, char colFrom, char colTo);
 
-
 ///
 /// \brief moveColToCol, executa comando de mover coluna para coluna
 /// \param table, mesa de jogo a ser executado o comando
@@ -95,5 +101,9 @@ void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo);
 /// \param rank, ordem
 ///
 void findCard(Table *table, char suit, char rank);
+
+void saveGame(Table *table);
+
+void loadGame(Table *table);
 
 #endif // MAIN

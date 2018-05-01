@@ -72,4 +72,7 @@ List* remove_mult(List *list, int val);
 
 List *remove_repetido(List *list);
 
+List* insere_ordered(List *li, int val);
+
+
 #endif // LINKEDLIST_H

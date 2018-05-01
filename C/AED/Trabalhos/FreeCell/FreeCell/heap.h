@@ -15,12 +15,6 @@ typedef struct heap {
     Node *start, *end;
 } Heap;
 
-typedef struct table {
-    int freeCellsQnt, freeHeapsQnt;
-    Card *freeCells[4];
-    Heap *homeCells[4], *tableau[8];
-} Table;
-
 // HEAP FUNCTIONS //
 
 ///
