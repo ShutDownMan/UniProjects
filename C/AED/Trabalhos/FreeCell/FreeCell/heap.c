@@ -62,10 +62,10 @@ Heap *concatHeap(Heap *heap1, Heap *heap2) {
     return heap1;
 }
 
-Node *reverseHeap(Node *node) {
+Node *reverseList(Node *node) {
     if(!node) return NULL;
 
-    return insertNodeOnTail(reverseHeap(node->next), node->card);
+    return insertNodeOnTail(reverseList(node->next), node->card);
 }
 
 Node *insertNodeOnTail(Node *list, Card *card) {

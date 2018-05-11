@@ -44,7 +44,7 @@ Heap *concatHeap(Heap *heap1, Heap *heap2);
 /// \param node, cabeça atual da lista
 /// \return
 ///
-Node *reverseHeap(Node *node);
+Node *reverseList(Node *node);
 
 ///
 /// \brief insertNodeOnTail, insere nó no final da lista fornecida

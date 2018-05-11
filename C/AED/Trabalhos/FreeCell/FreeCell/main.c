@@ -13,9 +13,9 @@ int main(void) {
     srand(time(NULL));
     setlocale(LC_ALL, "Portuguese");
 
-    startGame(table);
+//    startGame(table);
 
-//    loadGame(table);
+    loadGame(table);
 
     saveGame(table);
 
@@ -45,22 +45,24 @@ Table *createTable() {
     }
 
     newTable->freeCellsQnt = 4;
-    newTable->freeHeapsQnt = 0;
+    newTable->freeHeapsQnt = 8;
 
     return newTable;
 }
 
 void startGame(Table *table) {
     int i;
-    Card *deck[MAXCARDS] = {NULL};
+    Card *deck[CARDSQNT] = {NULL};
 
     createDeck(deck);
 
     shuffleCards(deck);
 
-    for(i = 0; i < MAXCARDS; ++i) {
+    for(i = 0; i < CARDSQNT; ++i) {
         table->tableau[i%8] = insertCard(table->tableau[i%8], deck[i]);
     }
+
+    table->freeHeapsQnt = 0;
 }
 
 void createDeck(Card *deck[]) {
@@ -113,9 +115,57 @@ void printTable(Table *table) {
     int i;
     int lines;
     unsigned char suit, rank, hint;
-    Node *current[8] = {NULL}, *reverseHeaps[8] = {NULL};
+    Node *current[8] = {NULL}, *reversedHeaps[8] = {NULL};
 
     system("CLS");
+
+    printTop(table);
+
+    reverseTableauHeaps(table->tableau, reversedHeaps, &lines);
+    for(i = 0; i < 8; ++i) {
+        current[i] = reversedHeaps[i];
+    }
+
+    while(lines--) {
+        printf("      ");
+        for(i = 0; i < 8; ++i) {
+            if(current[i]) {
+                suit = current[i]->card->suit; rank = current[i]->card->rank; hint = current[i]->card->hint;
+                current[i] = current[i]->next;
+                if(hint) {
+                    printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
+                } else {
+                    printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+                }
+            } else {
+                printf("      ");
+            }
+        }
+        printf("\n");
+    }
+
+    printf("      ");
+    for(i = 0; i < 8; ++i) {
+        freeList(reversedHeaps[i]);
+        printf("  %c   ", 'A' + i);
+    }
+    printf("\n");
+}
+
+void printTop(Table *table) {
+    printTopCols();
+
+    printFreeCells(table);
+
+    printf("\t");
+
+    printHomeCells(table);
+
+    printf("\n");
+}
+
+void printTopCols() {
+    int i;
 
     printf("    ");
     for(i = 0; i < 4; ++i) {
@@ -127,6 +177,11 @@ void printTable(Table *table) {
     for(i = 0; i < 4; ++i) {
         printf("  %c   ", getSuitByInd(i));
     }
+}
+
+void printFreeCells(Table *table) {
+    int i;
+    unsigned char suit, rank, hint;
 
     printf("\n    ");
     for(i = 0; i < 4; ++i) {
@@ -144,19 +199,17 @@ void printTable(Table *table) {
         } else {
             printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
         }
-
     }
+}
 
-    printf("\t");
+void printHomeCells(Table *table) {
+    int i;
+    unsigned char suit, rank, hint;
 
     for(i = 0; i < 4; ++i) {
+        suit = rank = -2; hint = 0;
         if(table->homeCells[i] && table->homeCells[i]->start) {
-            suit = table->homeCells[i]->start->card->suit;
-            rank = table->homeCells[i]->start->card->rank;
-            hint = table->homeCells[i]->start->card->hint;
-        } else {
-            suit = rank = -2;
-            hint = 0;
+            suit = table->homeCells[i]->start->card->suit; rank = table->homeCells[i]->start->card->rank; hint = table->homeCells[i]->start->card->hint;
         }
 
         if(hint) {
@@ -165,45 +218,19 @@ void printTable(Table *table) {
             printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
         }
     }
+}
 
-    printf("\n");
+void reverseTableauHeaps(Heap *tableau[], Node *reversedHeaps[], int *lines) {
+    int i;
 
-
-    for(i = lines = 0; i < 8; ++i) {
-        if(table->tableau[i]) {
-            if(table->tableau[i]->length > lines) {
-                lines = table->tableau[i]->length;
+    for(i = *lines = 0; i < 8; ++i) {
+        if(tableau[i]) {
+            if(tableau[i]->length > *lines) {
+                *lines = tableau[i]->length;
             }
-            reverseHeaps[i] = reverseHeap(table->tableau[i]->start);
-            current[i] = reverseHeaps[i];
+            reversedHeaps[i] = reverseList(tableau[i]->start);
         }
     }
-
-    while(lines--) {
-        printf("      ");
-        for(i = 0; i < 8; ++i) {
-            if(current[i]) {
-                suit = current[i]->card->suit;
-                rank = current[i]->card->rank;
-                hint = current[i]->card->hint;
-                current[i] = current[i]->next;
-                if(hint) {
-                    printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
-                } else {
-                    printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
-                }
-            } else {
-                printf("      ");
-            }
-        }
-        printf("\n");
-    }
-
-    printf("      ");
-    for(i = 0; i < 8; freeList(reverseHeaps[i++])) {
-        printf("  %c   ", 'A' + i);
-    }
-    printf("\n");
 }
 
 void inputCmd(Table *table) {
@@ -225,22 +252,22 @@ void inputCmd(Table *table) {
     switch(cmdType) {
     case MOVETOFREECELLS:
         readCmd1(cmd, &colFrom, &colTo);
-//        printf("fromcol: %c | To col: %c\n", colFrom, colTo);
+        printf("From col: %c | To col: %c\n", colFrom, colTo);
         moveToFreeCell(table, colFrom, colTo);
         break;
     case MOVETOHOMECELLS:
         readCmd2(cmd, &colFrom);
-//        printf("fromcol: %c\n", colFrom);
+        printf("From col: %c\n", colFrom);
         moveToHomeCells(table, colFrom);
         break;
     case MOVEFROMFREECELLS:
         readCmd3(cmd, &colFrom, &colTo);
-//        printf("fromcol: %c | To col: %c\n", colFrom, colTo);
+        printf("From col: %c | To col: %c\n", colFrom, colTo);
         moveFromFreeCells(table, colFrom, colTo);
         break;
     case MOVECOLTOCOL:
         readCmd4(cmd, &colFrom, &cardQnt, &colTo);
-//        printf("fromcol: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
+        printf("From col: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
         moveColToCol(table, colFrom, cardQnt, colTo);
         break;
     case FINDCARD:
@@ -462,76 +489,79 @@ void findCard(Table *table, char suit, char rank) {
 
 void saveGame(Table *table) {
     FILE *f = openBinaryFile("gamesave.bin", "wb+");
-    Node *aux = NULL;
+    Card *card = NULL;
+    Node *tracer = NULL;
     int i;
 
     createEmptyList(f);
 
     for(i = 0; i < 4; ++i) {
         if(table->freeCells[i]) {
-            insertNodeOnFreeCell(f, i, *table->freeCells[i]);
+            card = table->freeCells[i];
+            insertNodeOnFreeCell(f, i, card->suit*13 + card->rank);
         }
 
-//        for(aux = table->homeCells[i]->start; aux; aux = aux->next) {
-//            insertNodeOnHomeCell(f, i, *aux->card);
-//        }
+        for(tracer = table->homeCells[i]->start; tracer; tracer = tracer->next) {
+            card = tracer->card;
+            insertNodeOnHomeCell(f, i, card->suit*13 + card->rank);
+        }
     }
 
-//    for(i = 0; i < 8; ++i) {
-//        for(aux = table->tableau[i]->start; aux; aux = aux->next) {
-//            insertNodeOnTableau(f, i, *aux->card);
-//        }
-//    }
+    for(i = 0; i < 8; ++i) {
+        for(tracer = table->tableau[i]->start; tracer; tracer = tracer->next) {
+            card = tracer->card;
+            insertNodeOnTableau(f, i, card->suit*13 + card->rank);
+        }
+    }
 
     fclose(f);
 }
 
 void loadGame(Table *table) {
-    FILE *f = openBinaryFile("gamesavetest.bin", "rb");
+    FILE *f = openBinaryFile("gamesave.bin", "rb");
     Header *header = readHeader(f);
-    FileNode *aux = NULL;
-    Card card = {.suit = -1, .rank = -1};
+    FileNode *tracer = NULL;
+    Card *card;
     int i, next = 0;
 
     for(i = 0; i < 4; ++i) {
-//        printf("FREE[%d] = %d\n", i, header->freeCellsHeads[i]);
-//        if(header->freeCellsHeads[i] != -1) {
-//            aux = readFileNode(f, header->freeCellsHeads[i]);
-//            card = aux->val;
-//            printf("[%c, %c]\n", getSuitByInd(card.suit), getRankByInd(card.suit));
-//            table->freeCells[i] = createCard(card.suit, card.suit);
-//            table->freeCellsQnt--;
-//            free(aux);
-//        }
+        printf("FREE[%d] = %d\n", i, header->freeCellsHeads[i]);
+        if(header->freeCellsHeads[i] != -1) {
+            tracer = readFileNode(f, header->freeCellsHeads[i]);
+            card = createCard(tracer->val/13, tracer->val%13);
+            printf("[%c, %c]\n", getSuitByInd(card->suit), getRankByInd(card->suit));
+            table->freeCells[i] = card;
+            table->freeCellsQnt--;
+            free(tracer);
+        }
 
-//        printf(">HOME[%d] = %d\n", i, header->homeCellsHeads[i]);
-//        if(header->homeCellsHeads[i] != -1) {
-//            next = 0;
-//            for(aux = readFileNode(f, header->homeCellsHeads[i]); next != -1; aux = readFileNode(f, next)) {
-//                card = aux->val;
-//                table->homeCells[i] = insertCard(table->homeCells[i], &card);
+        printf(">HOME[%d] = %d\n", i, header->homeCellsHeads[i]);
+        if(header->homeCellsHeads[i] != -1) {
+            next = 0;
+            for(tracer = readFileNode(f, header->homeCellsHeads[i]); next != -1; tracer = readFileNode(f, next)) {
+                card = createCard(tracer->val/13, tracer->val%13);
+                table->homeCells[i] = insertCard(table->homeCells[i], card);
 
-//                next = aux->next;
-//                free(aux);
-//            }
-//        }
+                next = tracer->next;
+                free(tracer);
+            }
+        }
     }
 
     for(i = 0; i < 8; ++i) {
         printf(">TABLEAU[%d] = %d\n", i, header->tableauHeads[i]);
         if(header->tableauHeads[i] != -1) {
+            table->freeHeapsQnt--;
             next = 0;
-            for(aux = readFileNode(f, header->tableauHeads[i]); next != -1; aux = readFileNode(f, next)) {
-                printf(">\tTABLEAU[%d] = %d\n", i, next);
-                card = aux->val;
-                table->tableau[i] = insertCard(table->tableau[i], createCard(card.suit, card.suit));
+            for(tracer = readFileNode(f, header->tableauHeads[i]); next != -1; tracer = readFileNode(f, next)) {
+                card = createCard(tracer->val/13, tracer->val%13);
+                table->tableau[i] = insertCard(table->tableau[i], card);
 
-                next = aux->next;
-                free(aux);
+                next = tracer->next;
+                free(tracer);
             }
         }
     }
 
     fclose(f);
-    getch();
 }

@@ -1,11 +1,7 @@
 #include "filemanipulation.h"
 
 FILE *openBinaryFile(char fileName[], char mode[]) {
-    FILE *newFile = NULL;
-
-    newFile = fopen(fileName, mode);
-
-    return newFile;
+    return fopen(fileName, mode);
 }
 
 void createEmptyList(FILE *f) {
@@ -40,7 +36,7 @@ void writeHeaderToFile(FILE *f, Header *header) {
 }
 
 void writeNodeToFile(FILE *f, FileNode *toWrite, int pos) {
-    fseek(f, sizeof(Header) + pos*sizeof(FileNode), SEEK_SET);
+    fseek(f, sizeof(Header) + sizeof(FileNode)*pos, SEEK_SET);
     fwrite(toWrite, sizeof(FileNode), 1, f);
 }
 

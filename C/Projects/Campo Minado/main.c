@@ -39,7 +39,7 @@ int main(int argc, char const *argv[]) {
 	while(!gameState) {
 		fprintf(stdout, "Digite a coordenada a ser revelada: ");
 		fscanf(stdin, "%d%c", &number, &letter);
-	
+
 		gameState = revelar(campoEscondido, campoRevelado, nRow, nCol, number-1, letter-'A');
 
 		printarGraphics(campoRevelado, nRow, nCol);
@@ -149,7 +149,7 @@ int revelarVizinhos(int campoEscondido[][MAXCOL], int campoRevelado[][MAXCOL], i
 					if(campoEscondido[i][j] == 0 && abs(row-i) + abs(col-j) == 1) {
 						revelarVizinhos(campoEscondido, campoRevelado, nRow, nCol, i, j);
 						revelados++;
-					} 
+					}
 				}
 			}
 		}

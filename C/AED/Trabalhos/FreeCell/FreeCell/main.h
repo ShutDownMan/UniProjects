@@ -5,7 +5,7 @@
 #include "stringmanipulation.h"
 #include "filemanipulation.h"
 
-#define MAXCARDS 52
+#define CARDSQNT 52
 #define MAXSTR 64
 
 typedef struct table {
@@ -53,6 +53,16 @@ void shuffleCards(Card *deck[]);
 /// \param table, mesa a ser printada
 ///
 void printTable(Table *table);
+
+void printTopCols();
+
+void printTop(Table *table);
+
+void printFreeCells(Table *table);
+
+void printHomeCells(Table *table);
+
+void reverseTableauHeaps(Heap *tableau[], Node *reversedHeaps[], int *lines);
 
 ///
 /// \brief inputCmd, lê da entrada padrão um comando e o executa

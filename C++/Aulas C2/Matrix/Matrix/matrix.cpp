@@ -275,6 +275,26 @@ int *Matrix::operator[] (int ind) {
     return this->mArray[ind];
 }
 
+Matrix *Matrix::triangulate() {
+    Matrix *newMat = new Matrix(this->getHeight(), this->getWidth());
+    int pivot, row, col;
+    double m;
+
+    if(!this->isSquare()) return NULL;
+
+    newMat->copy(this);
+
+    for(pivot = 0; pivot < newMat->getWidth(); ++pivot) {
+        for(row = 1+pivot; row < newMat->getHeight(); ++row) {
+            m = ((double)(*newMat)[row][pivot])/((*newMat)[pivot][pivot]);
+            for(col = 0; col < newMat->getWidth(); ++col) {
+                (*newMat)[row][col] -= m * ((*newMat)[pivot][col]);
+            }
+        }
+    }
+    return newMat;
+}
+
 void Matrix::copy(Matrix *other) {
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
@@ -286,8 +306,8 @@ void Matrix::copy(Matrix *other) {
 void Matrix::show() {
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            cout << this->getElem(row, col) << " ";
+            printf("%4d ", (*this)[row][col]);
         }
-        cout << endl;
+        printf("\n");
     }
 }

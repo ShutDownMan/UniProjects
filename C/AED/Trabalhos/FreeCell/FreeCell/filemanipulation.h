@@ -6,7 +6,7 @@
 
 #include "heap.h"
 
-typedef Card ItemType;
+typedef int ItemType;
 
 typedef struct header {
     int freeCellsHeads[4];

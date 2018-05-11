@@ -1,8 +1,7 @@
 #include<stdio.h>
 
-int main(int argc, char const *argv[])
-{
-	
+int main(int argc, char const *argv[]) {
+
 	int A,B,C,D;
 
 	scanf ("%d %d %d %d",&A,&B,&C,&D);
@@ -19,7 +18,7 @@ int main(int argc, char const *argv[])
 			}
 		}
 	}
-	
+
 	printf("Valores nao aceitos\n");
 
 	return 0;

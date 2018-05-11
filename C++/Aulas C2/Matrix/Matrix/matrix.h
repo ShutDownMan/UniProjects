@@ -47,6 +47,9 @@ public:
 
     int *operator[] (int ind);
 
+    Matrix *triangulate();
+    double getDeterminant();
+
     void show();
 };
 

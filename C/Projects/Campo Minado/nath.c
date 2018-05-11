@@ -91,7 +91,6 @@ void calcCampo(int campo[][MAXCOL]) {
 		for (j = 0; j < MAXCOL; ++j) {
 
 			if(campo[i][j] != -1) {
-				
 				campo[i][j] = 0;
 				for (x = j-1; x <= j+1; ++x) {
 					for (y = i-1; y <= i+1; ++y) {

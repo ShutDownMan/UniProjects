@@ -5,9 +5,9 @@
 
 class Line {
 private:
-    double ca, cl;
     Point2D p1, p2;
 public:
+    double ca, cl;
     Line();
     Line(double ca, double cl);
     Line(Point2D &p1, Point2D &p2);

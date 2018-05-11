@@ -54,95 +54,63 @@ void strToUpper(char str[]) {
 }
 
 int testCmdMoveToFreeCells(char cmd[]) {
-    int i = 0;
-    i += skipSpaces(cmd);
-    if(cmd[i] == '^') {
-        i++;
-        if(cmd[i] >= 'A' && cmd[i] <= 'H') {
-            i++;
-            i += skipSpaces(cmd + i);
-            if(cmd[i] == '>') {
-                i++;
-                i += skipSpaces(cmd + i);
-                return (cmd[i] >= 'A' && cmd[i] <= 'D') * MOVETOFREECELLS;
-            }
-            i += skipSpaces(cmd + i);
-            return (!cmd[i]) * MOVETOFREECELLS;
-        }
+    char colFrom = 0, colTo = 0;
+
+    sscanf(cmd, " ^%c > %c ", &colFrom, &colTo);
+
+    if(colFrom >= 'A' && colFrom <= 'H') {
+        return (!colTo || (colTo >= 'A' && colTo <= 'H'));
     }
+
     return 0;
 }
 
 int testCmdMoveToHomeCells(char cmd[]) {
-    int i = 0;
-    if(cmd[i] == '*') {
-        i++;
-        if(!cmd[i]) return 0;
-        return (cmd[i] >= 'A' && cmd[i] <= 'H');
-    }
-    return 0;
+    char colFrom = 0;
+
+    sscanf(cmd, " *%c ", &colFrom);
+
+    return (colFrom >= 'A' && colFrom <= 'H');
 }
 
 int testCmdMoveFromFreeCells(char cmd[]) {
-    int i = 0;
-    if(cmd[i] == 'V') {
-        i++;
-        if(!cmd[i]) return 0;
+    char colFrom = 0, colTo = 0;
 
-        if(cmd[i] >= 'A' && cmd[i] <= 'D') {
-            i++;
-            i += skipSpaces(cmd + i);
-            if(cmd[i++] == '>') {
-                i += skipSpaces(cmd + i);
-                return (cmd[i] >= 'A' && cmd[i] <= 'H');
-            }
-        }
+    sscanf(cmd, " V%c > %c ", &colFrom, &colTo);
+
+    if(colFrom >= 'A' && colFrom <= 'H') {
+        return (!colTo || (colTo >= 'A' && colTo <= 'D'));
     }
+
     return 0;
 }
 
 int testCmdMoveColToCol(char cmd[]) {
-    int i = 0, hasNum = 0, numQnt;
-    if(cmd[i] >= 'A' && cmd[i] <= 'H') {
-        i++;
-        if(!cmd[i]) return 0;
+    char colFrom = 0, colTo = 0;
+    int cardQnt = 0, i = 0, j = 0;
 
-        // read numbers
-        for(hasNum = numQnt = 0; cmd[i] && cmd[i] >= '0' && cmd[i] <= '9'; hasNum = ++i) {
-            numQnt = numQnt*10 + cmd[i]-'0';
-        }
-        if(hasNum && numQnt == 0) return 0;
+    sscanf(cmd, " %c%n", &colFrom, &i);
+    sscanf(cmd+i, "%d%n", &cardQnt, &j);
+    sscanf(cmd+i+j, " > %c ", &colTo);
 
-        i += skipSpaces(cmd + i);
-        if(cmd[i] == '>') {
-            i++;
-            i += skipSpaces(cmd + i);
-            return (cmd[i] >= 'A' && cmd[i] <= 'H') * MOVECOLTOCOL;
-        }
+    printf("From col: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
+
+    if(colFrom >= 'A' && colFrom <= 'H') {
+        return (colTo >= 'A' && colTo <= 'H');
     }
+
     return 0;
 }
 
 int testCmdFindCard(char cmd[]) {
-    int i = 0;
-    i += skipSpaces(cmd);
-    if(cmd[i] == '&') {
-        i++;
-        if(cmd[i] == '(' || cmd[i] == '[') {
-            i++;
-            if(getIndBySuit(cmd[i]) != -1) {
-                i++;
-                if(cmd[i] == ',') {
-                    i++;
-                    i += skipSpaces(cmd + i);
-                    if(getIndByRank(cmd[i]) != -1) {
-                        i++;
-                        return (cmd[i] == ')' || cmd[i] == ']');
-                    }
-                }
-            }
-        }
+    char fromCol = 0, toCol = 0;
+
+    sscanf(cmd, " ( %c , %c ) ", &fromCol, &toCol);
+
+    if(getIndBySuit(fromCol) != -1) {
+        return (getIndByRank(toCol) != -1);
     }
+
     return 0;
 }
 
@@ -168,75 +136,25 @@ int getIndByRank(char rank) {
     return -1;
 }
 
-int skipSpaces(char str[]) {
-    int i;
-    for(i = 0; str[i] == ' '; i++)
-        ;
-    return i;
-}
-
 void readCmd1(char cmd[], char *colFrom, char *colTo) {
-    int i = 0;
-
-    i += skipSpaces(cmd);
-    *colFrom = cmd[++i];
-    i++;
-    i += skipSpaces(cmd + i);
-
-    if(cmd[i++] == '>') {
-        i += skipSpaces(cmd + i);
-        if(cmd[i] >= 'A' && cmd[i] <= 'D') {
-            *colTo = cmd[i];
-        }
-    }
+    sscanf(cmd, " ^%c > %c ", colFrom, colTo);
 }
 
 void readCmd2(char cmd[], char *colFrom) {
-    int i = 0;
-
-    i += skipSpaces(cmd);
-    *colFrom = cmd[++i];
+    sscanf(cmd, " *%c ", colFrom);
 }
 
 void readCmd3(char cmd[], char *colFrom, char *colTo) {
-    int i = 0;
-
-    i += skipSpaces(cmd);
-    *colFrom = cmd[++i];
-    i++;
-
-    i += skipSpaces(cmd + i);
-    i++; // >
-    i += skipSpaces(cmd + i);
-
-    *colTo = cmd[i];
+    sscanf(cmd, " V%c > %c ", colFrom, colTo);
 }
 
 void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo) {
-    int i = 0;
-
-    i += skipSpaces(cmd);
-    *colFrom = cmd[i];
-    i++;
-
-    for(*cardQnt = 0; cmd[i] >= '0' && cmd[i] <= '9'; ++i) {
-        *cardQnt = (*cardQnt * 10) + (cmd[i] - '0');
-    }
-
-    i += skipSpaces(cmd + i);
-    i++; // >
-    i += skipSpaces(cmd + i);
-
-    *colTo = cmd[i];
+    int i = 0, j = 0;
+    sscanf(cmd, " %c%n", colFrom, &i);
+    sscanf(cmd+i, "%d%n", cardQnt, &j);
+    sscanf(cmd+i+j, " > %c ", colTo);
 }
 
 void readCmd5(char cmd[], char *suit, char *rank) {
-    int i = 0;
-
-    i += skipSpaces(cmd);
-    i++;
-    *suit = cmd[++i];
-    i += 2;
-    i += skipSpaces(cmd + i);
-    *rank = cmd[i];
+    sscanf(cmd, " ( %c , %c ) ", suit, rank);
 }

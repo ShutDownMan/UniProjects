@@ -61,6 +61,7 @@ Node *insertNodeOnTail(Node *node, Node *newNode) {
     if(!node) return newNode;
 
     node->next = insertNodeOnTail(node->next, newNode);
+    node->next->prev = node;
 
     return node;
 }

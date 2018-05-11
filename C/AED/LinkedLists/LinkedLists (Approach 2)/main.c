@@ -111,12 +111,6 @@ List* remove_mult(List *list, int val) {
         return remove_mult(aux, val);
     }
 
-    if(list->next && list->next->val == val) {
-        aux = list->next->next;
-        free(list->next);
-        list->next = aux;
-    }
-
     list->next = remove_mult(list->next, val);
 
     return list;
