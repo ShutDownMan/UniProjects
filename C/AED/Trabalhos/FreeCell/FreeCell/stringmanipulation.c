@@ -32,8 +32,6 @@ int getCmdType(char cmd[]) {
 
     if(cmd[0] == '?') return HELP;
 
-    strToUpper(cmd);
-
     if(testCmdMoveToFreeCells(cmd)) return MOVETOFREECELLS;
 
     if(testCmdMoveToHomeCells(cmd)) return MOVETOHOMECELLS;
@@ -44,13 +42,9 @@ int getCmdType(char cmd[]) {
 
     if(testCmdFindCard(cmd)) return FINDCARD;
 
-    return 0;
-}
+    if(testCmdSaveGame(cmd)) return SAVEGAME;
 
-void strToUpper(char str[]) {
-    int i;
-    for(i = -1; str[++i]; str[i] = toupper(str[i]))
-        ;
+    return 0;
 }
 
 int testCmdMoveToFreeCells(char cmd[]) {
@@ -58,7 +52,7 @@ int testCmdMoveToFreeCells(char cmd[]) {
 
     sscanf(cmd, " ^%c > %c ", &colFrom, &colTo);
 
-    if(colFrom >= 'A' && colFrom <= 'H') {
+    if(toupper(colFrom) >= 'A' && toupper(colFrom) <= 'H') {
         return (!colTo || (colTo >= 'A' && colTo <= 'H'));
     }
 
@@ -70,15 +64,15 @@ int testCmdMoveToHomeCells(char cmd[]) {
 
     sscanf(cmd, " *%c ", &colFrom);
 
-    return (colFrom >= 'A' && colFrom <= 'H');
+    return (toupper(colFrom) >= 'A' && toupper(colFrom) <= 'H');
 }
 
 int testCmdMoveFromFreeCells(char cmd[]) {
     char colFrom = 0, colTo = 0;
 
-    sscanf(cmd, " V%c > %c ", &colFrom, &colTo);
+    sscanf(cmd, " v%c > %c ", &colFrom, &colTo);
 
-    if(colFrom >= 'A' && colFrom <= 'H') {
+    if(toupper(colFrom) >= 'A' && toupper(colFrom) <= 'H') {
         return (!colTo || (colTo >= 'A' && colTo <= 'D'));
     }
 
@@ -93,9 +87,7 @@ int testCmdMoveColToCol(char cmd[]) {
     sscanf(cmd+i, "%d%n", &cardQnt, &j);
     sscanf(cmd+i+j, " > %c ", &colTo);
 
-    printf("From col: %c | Card qnt: %d | To col: %c\n", colFrom, cardQnt, colTo);
-
-    if(colFrom >= 'A' && colFrom <= 'H') {
+    if(toupper(colFrom) >= 'A' && toupper(colFrom) <= 'H') {
         return (colTo >= 'A' && colTo <= 'H');
     }
 
@@ -136,16 +128,44 @@ int getIndByRank(char rank) {
     return -1;
 }
 
+int testCmdSaveGame(char cmd[]) {
+    char fileName[64] = {0};
+
+    sscanf(cmd, " save \"%[^\"]\"", fileName);
+    printf("%s\n", fileName);
+
+    return isValidFileName(fileName);
+}
+
+int isValidFileName(char str[]) {
+    int i;
+
+    for(i = 0; str[i]; ++i) {
+        if(!isalpha(str[i])) {
+            if(str[i] != '.' && str[i] != '_') {
+                return 0;
+            }
+        }
+    }
+
+    return 1;
+}
+
 void readCmd1(char cmd[], char *colFrom, char *colTo) {
     sscanf(cmd, " ^%c > %c ", colFrom, colTo);
+    *colFrom = toupper(*colFrom);
+    *colTo = toupper(*colTo);
 }
 
 void readCmd2(char cmd[], char *colFrom) {
     sscanf(cmd, " *%c ", colFrom);
+    *colFrom = toupper(*colFrom);
 }
 
 void readCmd3(char cmd[], char *colFrom, char *colTo) {
-    sscanf(cmd, " V%c > %c ", colFrom, colTo);
+    sscanf(cmd, " v%c > %c ", colFrom, colTo);
+    *colFrom = toupper(*colFrom);
+    *colTo = toupper(*colTo);
 }
 
 void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo) {
@@ -157,4 +177,9 @@ void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo) {
 
 void readCmd5(char cmd[], char *suit, char *rank) {
     sscanf(cmd, " ( %c , %c ) ", suit, rank);
+    *suit = tolower(*suit);
+}
+
+void readCmd6(char cmd[], char fileName[]) {
+    sscanf(cmd, " save \"%[^\"]\"", fileName);
 }

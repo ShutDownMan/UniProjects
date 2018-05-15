@@ -9,9 +9,6 @@ SOURCES += \
     stringmanipulation.c \
     filemanipulation.c
 
-include(deployment.pri)
-qtcAddDeployment()
-
 HEADERS += \
     main.h \
     heap.h \

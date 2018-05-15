@@ -54,7 +54,7 @@ double pow(double n, unsigned int exp){
     }
 }
 
-double rad(double degrees) {   
+double rad(double degrees) {
     return (degrees * PI) / 180;
 }
 
@@ -73,7 +73,7 @@ double cos(double x){
 }
 
 double newSen(double x){
-    float s = 0, t = 0;
+    float s = 0, t = 1;
 
     s += x;
 
@@ -97,9 +97,9 @@ double newSen(double x){
 }
 
 double newCos(double x){
-    float s = 0, t = 0;
+    float s = 0, t = 1;
 
-    s += -1;
+    s += 1;
 
     t *= -pow(x, 2)/2*1;
 
@@ -117,5 +117,5 @@ double newCos(double x){
 
     s += t;
 
-    return -s;
+    return s;
 }

@@ -7,25 +7,23 @@
 
 #include "main.h"
 
-int main(void) {
+int main(int argc, char const *argv[]) {
     Table *table = createTable();
 
     srand(time(NULL));
     setlocale(LC_ALL, "Portuguese");
 
-//    startGame(table);
-
-    loadGame(table);
-
-    saveGame(table);
+    if(argc == 1) {
+        startGame(table);
+    } else {
+        loadGame(table, (char*)argv[1]);
+    }
 
     printTable(table);
     while(1) {
         inputCmd(table);
 
         printTable(table);
-
-        saveGame(table);
     }
 
     return 0;
@@ -234,7 +232,7 @@ void reverseTableauHeaps(Heap *tableau[], Node *reversedHeaps[], int *lines) {
 }
 
 void inputCmd(Table *table) {
-    char cmd[MAXSTR], cmdType;
+    char cmd[MAXSTR], fileName[MAXSTR], cmdType;
     char colFrom = 0, colTo = 0;
     char suit = 0, rank = 0;
     int cardQnt = 0;
@@ -274,6 +272,11 @@ void inputCmd(Table *table) {
         readCmd5(cmd, &suit, &rank);
         printf("suit: %c | rank: %c\n", suit, rank);
         findCard(table, suit, rank);
+        break;
+    case SAVEGAME:
+        readCmd6(cmd, fileName);
+        printf("Save game!\n");
+        saveGame(table, fileName);
         break;
     default:
         // Help.
@@ -487,8 +490,8 @@ void findCard(Table *table, char suit, char rank) {
     }
 }
 
-void saveGame(Table *table) {
-    FILE *f = openBinaryFile("gamesave.bin", "wb+");
+void saveGame(Table *table, char fileName[]) {
+    FILE *f = openBinaryFile(fileName, "wb+");
     Card *card = NULL;
     Node *tracer = NULL;
     int i;
@@ -517,8 +520,8 @@ void saveGame(Table *table) {
     fclose(f);
 }
 
-void loadGame(Table *table) {
-    FILE *f = openBinaryFile("gamesave.bin", "rb");
+void loadGame(Table *table, char fileName[]) {
+    FILE *f = openBinaryFile(fileName, "rb");
     Header *header = readHeader(f);
     FileNode *tracer = NULL;
     Card *card;
@@ -535,7 +538,7 @@ void loadGame(Table *table) {
             free(tracer);
         }
 
-        printf(">HOME[%d] = %d\n", i, header->homeCellsHeads[i]);
+        printf("HOME[%d] = %d\n", i, header->homeCellsHeads[i]);
         if(header->homeCellsHeads[i] != -1) {
             next = 0;
             for(tracer = readFileNode(f, header->homeCellsHeads[i]); next != -1; tracer = readFileNode(f, next)) {
@@ -563,5 +566,9 @@ void loadGame(Table *table) {
         }
     }
 
+    printf("------------\n");
+    printf("Game loaded!\n");
+
     fclose(f);
+    getch();
 }

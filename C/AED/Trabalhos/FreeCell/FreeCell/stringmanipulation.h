@@ -1,12 +1,15 @@
 #ifndef STRINGMANIPULATION_H
 #define STRINGMANIPULATION_H
 
+#define MAXSTR 64
+
 #define HELP -1
 #define MOVETOFREECELLS 1
 #define MOVETOHOMECELLS 2
 #define MOVEFROMFREECELLS 3
 #define MOVECOLTOCOL 4
 #define FINDCARD 5
+#define SAVEGAME 6
 
 // STRING MANIPULATION //
 
@@ -84,6 +87,10 @@ int getIndBySuit(char suit);
 
 int getIndByRank(char rank);
 
+int testCmdSaveGame(char cmd[]);
+
+int isValidFileName(char str[]);
+
 ///
 /// \brief readCmd1, executa parse em comando de (mover para free cells)
 /// \param cmd, string a ser parseada
@@ -124,5 +131,7 @@ void readCmd4(char cmd[], char *colFrom, int *cardQnt, char *colTo);
 ///
 void readCmd5(char cmd[], char *suit, char *rank);
 
+
+void readCmd6(char cmd[], char fileName[]);
 
 #endif // STRINGMANIPULATION_H

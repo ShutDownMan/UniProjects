@@ -6,7 +6,6 @@
 #include "filemanipulation.h"
 
 #define CARDSQNT 52
-#define MAXSTR 64
 
 typedef struct table {
     int freeCellsQnt, freeHeapsQnt;
@@ -112,8 +111,8 @@ void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo);
 ///
 void findCard(Table *table, char suit, char rank);
 
-void saveGame(Table *table);
+void saveGame(Table *table, char fileName[]);
 
-void loadGame(Table *table);
+void loadGame(Table *table, char fileName[]);
 
 #endif // MAIN
