@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <time.h>
 #include <locale.h>
+#include <windows.h>
 
 #include "main.h"
 

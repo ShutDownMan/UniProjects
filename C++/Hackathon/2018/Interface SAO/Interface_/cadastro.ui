@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Cadastro</class>
+ <widget class="QWidget" name="Cadastro">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>442</width>
+    <height>498</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Cadastrar Ofício</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>421</width>
+     <height>441</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>40</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Código do ofício:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Entre com as informações do ofício:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>40</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Data do ofício:</string>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="dateEdit">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>40</y>
+      <width>110</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tipo do ofício:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>80</y>
+      <width>311</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Alvará</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Comunicação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Jurídico</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Patrocínio</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Precatório</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Requerimento</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Rogatória</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Solicitação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Outros</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Setor remetente:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>130</y>
+      <width>291</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>ACESC</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Agência do Trabalhador</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Departamento de Recursos Humanos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Divisão de Desenvolvimento de Pessoal</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Divisão de Folha, Registro e Cadastro</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Divisão de Medicina e Segurança do Trabalho</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>FUNDETEC</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Guarda Patrimonial</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Ação Comunitária</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Administração</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Agricultura</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Assistência Social</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Assuntos Jurídicos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Cultura</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Desenvolvimento Econômico</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Educação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Esporte e Lazer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Finanças</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Governo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Obras Públicas</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Planejamento</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Saúde</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria do Meio Ambiente</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="pb_findOficio">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>330</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Procurar arquivo</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>330</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Selecionar o ofício digitalizado:</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>240</y>
+      <width>391</width>
+      <height>71</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Setor(es) destinatário(s):</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_3">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>180</y>
+      <width>251</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>ACESC</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Agência do Trabalhador</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Departamento de Recursos Humanos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Divisão de Desenvolvimento de Pessoal</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Divisão de Folha, Registro e Cadastro</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Divisão de Medicina e Segurança do Trabalho</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>FUNDETEC</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Guarda Patrimonial</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Ação Comunitária</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Administração</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Agricultura</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Assistência Social</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Assuntos Jurídicos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Cultura</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Desenvolvimento Econômico</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Educação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Esporte e Lazer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Finanças</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Governo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Obras Públicas</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Planejamento</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria de Saúde</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Secretaria do Meio Ambiente</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>210</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Adicionar setor</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>370</y>
+      <width>211</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Este ofício é uma resposta à outro ofício?</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>370</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sim</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_2">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>370</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Não</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>410</y>
+      <width>111</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ofício pendente.</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>460</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancelar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>460</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cadastrar</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

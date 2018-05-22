@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>SAO_BG.jpg</file>
+        <file>unnamed.ico</file>
+        <file>add.ico</file>
+        <file>pendente.ico</file>
+        <file>search.ico</file>
+    </qresource>
+    <qresource prefix="/ico"/>
+</RCC>

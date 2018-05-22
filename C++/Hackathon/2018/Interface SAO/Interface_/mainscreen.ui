@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainScreen</class>
+ <widget class="QMainWindow" name="MainScreen">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1284</width>
+    <height>722</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/img/unnamed.ico</normaloff>:/img/unnamed.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>1251</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="pb_Cadastro">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>12</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Cadastrar Ofício</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/img/add.ico</normaloff>:/img/add.ico</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_BuscarOficio">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>12</y>
+       <width>121</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Buscar Ofício</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/img/search.ico</normaloff>:/img/search.ico</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_Pendentes">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>12</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ofício(s) Pendente(s)</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/img/pendente.ico</normaloff>:/img/pendente.ico</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_Sair">
+     <property name="geometry">
+      <rect>
+       <x>1170</x>
+       <y>12</y>
+       <width>75</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Sair</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pb_Logoff">
+     <property name="geometry">
+      <rect>
+       <x>1080</x>
+       <y>10</y>
+       <width>75</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Logoff</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QTableView" name="Tabela">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>100</y>
+      <width>1241</width>
+      <height>550</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1284</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSistema">
+    <property name="title">
+     <string>Sistema</string>
+    </property>
+    <addaction name="actionLogoff"/>
+    <addaction name="separator"/>
+    <addaction name="actionSair"/>
+   </widget>
+   <widget class="QMenu" name="menuOf_cios">
+    <property name="title">
+     <string>Ofícios</string>
+    </property>
+    <addaction name="actionCadastrar_of_cio"/>
+    <addaction name="actionBuscar_Of_cio_s"/>
+    <addaction name="actionOf_cio_s_Pendente_s"/>
+   </widget>
+   <widget class="QMenu" name="menuUsu_rio">
+    <property name="title">
+     <string>Usuário</string>
+    </property>
+    <addaction name="actionTrocar_senha"/>
+    <addaction name="actionTrocar_email"/>
+    <addaction name="actionEditar_dados_pessoais"/>
+   </widget>
+   <addaction name="menuSistema"/>
+   <addaction name="menuOf_cios"/>
+   <addaction name="menuUsu_rio"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLogoff">
+   <property name="text">
+    <string>Logoff</string>
+   </property>
+  </action>
+  <action name="actionSair">
+   <property name="text">
+    <string>Sair</string>
+   </property>
+  </action>
+  <action name="actionCadastrar_of_cio">
+   <property name="text">
+    <string>Cadastrar Ofício</string>
+   </property>
+  </action>
+  <action name="actionBuscar_Of_cio_s">
+   <property name="text">
+    <string>Buscar Ofício(s)</string>
+   </property>
+  </action>
+  <action name="actionOf_cio_s_Pendente_s">
+   <property name="text">
+    <string>Ofício(s) Pendente(s)</string>
+   </property>
+  </action>
+  <action name="actionTrocar_senha">
+   <property name="text">
+    <string>Trocar senha</string>
+   </property>
+  </action>
+  <action name="actionTrocar_email">
+   <property name="text">
+    <string>Trocar email</string>
+   </property>
+  </action>
+  <action name="actionEditar_dados_pessoais">
+   <property name="text">
+    <string>Editar dados pessoais</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

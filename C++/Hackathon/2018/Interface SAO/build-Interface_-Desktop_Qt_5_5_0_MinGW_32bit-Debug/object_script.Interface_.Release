@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\loginscreen.o
+./release\mainscreen.o
+./release\cadastro.o
+./release\busca.o
+./release\qrc_resources.o
+./release\moc_loginscreen.o
+./release\moc_mainscreen.o
+./release\moc_cadastro.o
+./release\moc_busca.o
+);

@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>busca</class>
+ <widget class="QWidget" name="busca">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>440</width>
+    <height>287</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Buscar Ofício</string>
+  </property>
+  <widget class="QPushButton" name="pb_cancelar">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>250</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Cancelar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>10</y>
+     <width>321</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string> Preencha uma ou mais opções de busca:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Código do ofício:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>50</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>53</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Data:</string>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="dateEdit">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>50</y>
+     <width>110</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>92</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Tipo:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>90</y>
+     <width>371</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Alvará</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Comunicação</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Jurídico</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Patrimônio</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Precatório</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Requerimento</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Rogatória</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Outros</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Setor remetente:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_2">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>130</y>
+     <width>311</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>ACESC</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Agência do Trabalhador</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Departamento de Recursos Humanos</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Divisão de Desenvolvimento de Pessoal</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Divisão de Folha, Registro e Cadastro</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Divisão de Medicina e Segurança do Trabalho</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>FUNDETEC</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Guarda Patrimonial</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Ação Comunitária</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Administração</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Agricultura</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Assistência Social</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Assuntos Jurídicos</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Cultura</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Desenvolvimento Econômico</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Educação</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Esporte e Lazer</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Finanças</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Governo</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Obras Públicas</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Planejamento</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Saúde</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria do Meio Ambiente</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Setor destinatário:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_3">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>170</y>
+     <width>301</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>ACESC</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Agência do Trabalhador</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Departamento de Recursos Humanos</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Divisão de Desenvolvimento de Pessoal</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Divisão de Folha, Registro e Cadastro</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Divisão de Medicina e Segurança do Trabalho</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>FUNDETEC</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Guarda Patrimonial</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Ação Comunitária</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Administração</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Agricultura</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Assistência Social</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Assuntos Jurídicos</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Cultura</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Desenvolvimento Econômico</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Educação</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Esporte e Lazer</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Finanças</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Governo</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Obras Públicas</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Planejamento</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria de Saúde</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Secretaria do Meio Ambiente</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QCheckBox" name="checkBox">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>211</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ofício resposta.</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>210</y>
+     <width>111</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ofício pendente.</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_3">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>210</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ofício concluído.</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>250</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Buscar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>203</x>
+     <y>250</y>
+     <width>121</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Limpar campos</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
