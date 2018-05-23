@@ -24,11 +24,19 @@ char getSuitByInd(unsigned char ind);
 
 ///
 /// \brief  getRankByInd, pega código char da ordem a partir do indice
- /// \return char correspondente ao indice da ordem               Z
+/// \return char correspondente ao indice da ordem               Z
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
 char getRankByInd(unsigned char ind);
+
+///
+/// \brief  readLine, lê da entrada padrão uma linha
+/// \param  str, armazena linha lida
+/// \pre    nenhuma
+/// \post   linha é lida e armazenada em str
+///
+void readLine(char str[]);
 
 ///
 /// \brief  getCmdType, lê comando e determina seu tipo
@@ -38,14 +46,6 @@ char getRankByInd(unsigned char ind);
 /// \post   nenhuma
 ///
 int getCmdType(char cmd[]);
-
-///
-/// \brief  readLine, lê da entrada padrão uma linha
-/// \param  str, armazena linha lida
-/// \pre    nenhuma
-/// \post   linha é lida e armazenada em str
-///
-void readLine(char str[]);
 
 ///
 /// \brief  strToUpper, transforma toda string em letras maiúsculas

@@ -418,6 +418,9 @@ int inputCmd(Table *table) {
         printf("Save game!\n");
         saveGame(table, fileName);
         break;
+    case HELP:
+        // show help
+        break;
     default:
         return 1;
     }
