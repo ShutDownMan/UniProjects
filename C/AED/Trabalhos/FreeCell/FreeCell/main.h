@@ -107,7 +107,7 @@ void reverseTableauHeaps(Heap *tableau[], Node *reversedHeaps[], int *lines);
 /// \pre    nenhuma
 /// \post   movimento é executado
 ///
-void inputCmd(Table *table);
+int inputCmd(Table *table);
 
 // MOVE MAKING //
 

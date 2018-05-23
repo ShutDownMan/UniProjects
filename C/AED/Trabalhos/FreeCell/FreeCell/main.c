@@ -421,6 +421,7 @@ int inputCmd(Table *table) {
     }
 
     getch();
+    return 0;
 }
 
 // MOVE MAKING //
