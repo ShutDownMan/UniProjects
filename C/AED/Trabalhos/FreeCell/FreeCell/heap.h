@@ -37,9 +37,9 @@ typedef struct table {
 
 ///
 /// \brief  createHeap, inicializa pilha
-/// \return pilha inicializada
+/// \return memória alocada para pilha inicializada
 /// \pre    nenhuma
-/// \post   retorna memória alocada para pilha inicializada
+/// \post   nenhuma
 ///
 Heap *createHeap();
 

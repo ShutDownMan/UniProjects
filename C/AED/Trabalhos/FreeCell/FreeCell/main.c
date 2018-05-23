@@ -46,6 +46,8 @@ int main(int argc, char const *argv[]) {
         printTable(table);
     }
 
+//    liberar memória da mesa
+
     return 0;
 }
 
