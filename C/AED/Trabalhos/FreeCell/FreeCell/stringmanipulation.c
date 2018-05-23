@@ -130,11 +130,15 @@ int getIndByRank(char rank) {
 
 int testCmdSaveGame(char cmd[]) {
     char fileName[64] = {0};
+    int n = 0;
 
-    sscanf(cmd, " save \"%[^\"]\"", fileName);
-    printf("%s\n", fileName);
+    sscanf(cmd, " save \"%[^\"]\"%n", fileName, &n);
 
-    return isValidFileName(fileName);
+    if(n) {
+        printf("%s\n", fileName);
+        return isValidFileName(fileName);
+    }
+    return 0;
 }
 
 int isValidFileName(char str[]) {

@@ -7,19 +7,13 @@
 
 #define CARDSQNT 52
 
-typedef struct table {
-    int freeCellsQnt, freeHeapsQnt;
-    Card *freeCells[4];
-    Heap *homeCells[4], *tableau[8];
-} Table;
-
 // MAIN FUNCTIONS //
 
 ///
 /// \brief  createTable, incializa mesa de jogo
 /// \return mesa inicializada
 /// \pre    nenhuma
-/// \post   mesa é alocada e retornada
+/// \post   nenhuma
 ///
 Table *createTable();
 
@@ -35,7 +29,7 @@ void startGame(Table *table);
 /// \brief  createDeck, incializa todas as possiveis cartas
 /// \param  deck, vetor de cartas
 /// \pre    nenhuma
-/// \post   nenhuma
+/// \post   cartas são alocadas e distribuidas no vetor
 ///
 void createDeck(Card *deck[]);
 
@@ -53,7 +47,7 @@ Card *createCard(int suitInd, int rankInd);
 /// \brief  shuffleCards, embaralha as cartas do baralho fornecido
 /// \param  deck, baralho a ser embaralhado
 /// \pre    baralho tem que estar inicializado
-/// \post   nenhuma
+/// \post   cartas no vetor são embaralhadas
 ///
 void shuffleCards(Card *deck[]);
 
@@ -109,6 +103,7 @@ void reverseTableauHeaps(Heap *tableau[], Node *reversedHeaps[], int *lines);
 ///
 /// \brief  inputCmd, lê da entrada padrão um comando e o executa
 /// \param  table, mesa de jogo que o comando sera executado
+/// \return se é pra sair do jogo
 /// \pre    nenhuma
 /// \post   movimento é executado
 ///
@@ -121,7 +116,7 @@ void inputCmd(Table *table);
 /// \param  table, mesa de jogo a ser executado o comando
 /// \param  colFrom, coluna que parte a carta
 /// \param  colTo, coluna que recebe a carta
-/// \pre    nenhuma
+/// \pre    pilha de saida  não pode ser nula
 /// \post   mesa é manipulada
 ///
 void moveToFreeCell(Table *table, char colFrom, char colTo);
@@ -130,7 +125,7 @@ void moveToFreeCell(Table *table, char colFrom, char colTo);
 /// \brief  moveToHomeCells, executa comando de mover para home cells
 /// \param  table, mesa de jogo a ser executado o comando
 /// \param  colFrom, coluna que parte a carta
-/// \pre    nenhuma
+/// \pre    pilha de saida e pilha de fundação não podem ser nulas
 /// \post   mesa é manipulada
 ///
 void moveToHomeCells(Table *table, char colFrom);
@@ -140,7 +135,7 @@ void moveToHomeCells(Table *table, char colFrom);
 /// \param  table, mesa de jogo a ser executado o comando
 /// \param  colFrom, coluna que parte a carta
 /// \param  colTo, coluna que recebe a carta
-/// \pre    nenhuma
+/// \pre    célula de saida  não pode ser nula
 /// \post   mesa é manipulada
 ///
 void moveFromFreeCells(Table *table, char colFrom, char colTo);
@@ -151,7 +146,7 @@ void moveFromFreeCells(Table *table, char colFrom, char colTo);
 /// \param  colFrom, coluna que parte a carta
 /// \param  cardQnt, quantidade de cartas a serem movidas
 /// \param  colTo, coluna que recebe a carta
-/// \pre    nenhuma
+/// \pre    pilha de saida e pilha de entrada não podem ser nulas
 /// \post   mesa é manipulada
 ///
 void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo);
@@ -179,9 +174,10 @@ void saveGame(Table *table, char fileName[]);
 /// \brief  loadGame, carrega jogo a partir de arquivo binário
 /// \param  table, mesa de jogo
 /// \param  fileName, nome do arquivo a ser carregado
+/// \return se arquivo foi carregado corretamente
 /// \pre    mesa de jogo não pode estar inicializada
 /// \post   jogo é carregado a memória
 ///
-void loadGame(Table *table, char fileName[]);
+int loadGame(Table *table, char fileName[]);
 
 #endif // MAIN

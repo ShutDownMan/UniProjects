@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <math.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <conio.h>
@@ -8,22 +9,40 @@
 
 #include "main.h"
 
+///
+/// \brief  main, função principal
+/// \param  argc, número de argumentos passados
+/// \param  argv, vetor de argumentos passados
+/// \return se programa foi executado corretamente
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 int main(int argc, char const *argv[]) {
     Table *table = createTable();
+    int exit = 0;
 
+    /// setup de rand e locale
     srand(time(NULL));
     setlocale(LC_ALL, "Portuguese");
 
+    /// teste se é pra carregar de arquivo
     if(argc == 1) {
+        /// se não é, começa novo jogo
         startGame(table);
     } else {
-        loadGame(table, (char*)argv[1]);
+        /// se é tenta carregar
+        if(loadGame(table, (char*)argv[1])) {
+            return 0;
+        }
     }
 
+    /// printa mesa na tela
     printTable(table);
-    while(1) {
-        inputCmd(table);
+    while(!exit) {
+        /// lê e executa comando da entrada
+        exit = inputCmd(table);
 
+        /// printa mesa na tela
         printTable(table);
     }
 
@@ -32,10 +51,17 @@ int main(int argc, char const *argv[]) {
 
 // MAIN FUNCTIONS //
 
+///
+/// \brief  createTable, incializa mesa de jogo
+/// \return mesa inicializada
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 Table *createTable() {
     int i;
     Table *newTable = (Table*)malloc(sizeof(Table));
 
+    /// inicializa todas as pilhas da mesa
     for(i = 0; i < 4; ++i) {
         newTable->tableau[i] = createHeap();
         newTable->tableau[i+4] = createHeap();
@@ -43,94 +69,152 @@ Table *createTable() {
         newTable->freeCells[i] = NULL;
     }
 
+    /// inicializa quantidade de células e pilhas livres
     newTable->freeCellsQnt = 4;
     newTable->freeHeapsQnt = 8;
 
+    /// retorna mesa inicializada
     return newTable;
 }
 
+///
+/// \brief  startGame, prepara cartas para iniciar o jogo
+/// \param  table, mesa de jogo
+/// \pre    table e seus atributos tem que estar alocada corretamente
+/// \post   cartas inicializadas e distribuidas em table
+///
 void startGame(Table *table) {
     int i;
     Card *deck[CARDSQNT] = {NULL};
 
+    /// cria baralho
     createDeck(deck);
 
+    /// embaralha baralho
     shuffleCards(deck);
 
+    /// distribui cartas nas pilhas
     for(i = 0; i < CARDSQNT; ++i) {
         table->tableau[i%8] = insertCard(table->tableau[i%8], deck[i]);
     }
 
+    /// inicializa quantidades de pilhas livres para 0
     table->freeHeapsQnt = 0;
 }
 
+///
+/// \brief  createDeck, incializa todas as possiveis cartas
+/// \param  deck, vetor de cartas
+/// \pre    nenhuma
+/// \post   cartas são alocadas e distribuidas no vetor
+///
 void createDeck(Card *deck[]) {
     int suitInd, rankNum;
 
+    /// itera sobre os naipes
     for(suitInd = 0; suitInd < 4; ++suitInd) {
+        /// itera sobre as ordens
         for(rankNum = 0; rankNum < 13; ++rankNum) {
+            /// coloca carta em sua determinada posição no baralho
             deck[suitInd*13 + rankNum] = createCard(suitInd, rankNum);
         }
     }
 }
 
+///
+/// \brief  createCard, inicializa carta de acordo com naipe e rank
+/// \param  suitInd, naipe da carta
+/// \param  rankInd, rank da carta
+/// \return carta inicializada
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 Card *createCard(int suitInd, int rankInd) {
+    /// aloca memória para carta
     Card *newCard = (Card*)malloc(sizeof(Card));
 
+    /// inicializa naipe e ordem da carta
     newCard->suit = suitInd;
     newCard->rank = rankInd;
     newCard->hint = 0;
 
+    /// retorna nova carta
     return newCard;
 }
 
+///
+/// \brief  shuffleCards, embaralha as cartas do baralho fornecido
+/// \param  deck, baralho a ser embaralhado
+/// \pre    baralho tem que estar inicializado
+/// \post   cartas no vetor são embaralhadas
+///
 void shuffleCards(Card* deck[]) {
     int i, ind;
     Heap *rndHeap = NULL, *tableau[16] = {NULL};
     Node **tracer = NULL;
 
+    /// para cada carta
     for(i = 0; i < 52; ++i) {
+        /// escolhe um número aleatório de 0 a 15
         ind = rand() % 16;
+        // coloca na correspondente pilha
         tableau[ind] = insertCard(tableau[ind], deck[i]);
     }
 
+    /// para cada pilha
     for(i = 0; i < 16; ++i) {
         if(tableau[i]) {
+            /// concatena pilha com as outras
             rndHeap = concatHeap(rndHeap, tableau[i]);
         }
     }
 
+    /// volta as cartas para o baralho
     tracer = &rndHeap->start;
     for(i = 0; *tracer; ++i) {
         deck[i] = (*tracer)->card;
         tracer = &(*tracer)->next;
     }
 
+    /// libera memória das pilhas usadas
     freeList(rndHeap->start);
     free(rndHeap);
 }
 
+///
+/// \brief  printTable, printa na saida padrão o estado atual da mesa
+/// \param  table, mesa a ser printada
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 void printTable(Table *table) {
     int i;
     int lines;
     unsigned char suit, rank, hint;
     Node *current[8] = {NULL}, *reversedHeaps[8] = {NULL};
 
+    /// limpa tela
     system("CLS");
 
+    /// printa na tela a parte de cima da mesa
     printTop(table);
 
+    /// inverte as pilhas para printar
     reverseTableauHeaps(table->tableau, reversedHeaps, &lines);
     for(i = 0; i < 8; ++i) {
         current[i] = reversedHeaps[i];
     }
 
+    /// euquanto tiver linhas pra printar
     while(lines--) {
         printf("      ");
+        /// para cada pilha
         for(i = 0; i < 8; ++i) {
+            /// se nó atual existe
             if(current[i]) {
                 suit = current[i]->card->suit; rank = current[i]->card->rank; hint = current[i]->card->hint;
                 current[i] = current[i]->next;
+                /// se é pra pra mostrar carta como dica
                 if(hint) {
                     printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
                 } else {
@@ -144,6 +228,7 @@ void printTable(Table *table) {
     }
 
     printf("      ");
+    /// libera memória utilizada por cada pilha invertida
     for(i = 0; i < 8; ++i) {
         freeList(reversedHeaps[i]);
         printf("  %c   ", 'A' + i);
@@ -151,21 +236,36 @@ void printTable(Table *table) {
     printf("\n");
 }
 
+///
+/// \brief  printTopCols, printa na saida padrão as primeiras colunas guias
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 void printTop(Table *table) {
+    /// printa a primeira linha
     printTopCols();
 
+    /// printa as free cells
     printFreeCells(table);
 
     printf("\t");
 
+    /// printa as home cells
     printHomeCells(table);
 
     printf("\n");
 }
 
+///
+/// \brief  printTop, printa na saida padrão as free e home cells
+/// \param  table, mesa de jogo
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 void printTopCols() {
     int i;
 
+    /// printa A-D
     printf("    ");
     for(i = 0; i < 4; ++i) {
         printf("  %c   ", 'A'+i);
@@ -173,26 +273,34 @@ void printTopCols() {
 
     printf("\t");
 
+    /// printa os naipes
     for(i = 0; i < 4; ++i) {
         printf("  %c   ", getSuitByInd(i));
     }
 }
 
+///
+/// \brief  printFreeCells, printa na saida padrão as free cells
+/// \param  table, mesa de jogo
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 void printFreeCells(Table *table) {
     int i;
     unsigned char suit, rank, hint;
 
+    /// para cada free cell
     printf("\n    ");
     for(i = 0; i < 4; ++i) {
+        /// se célula existe
         if(table->freeCells[i]) {
-            suit = table->freeCells[i]->suit;
-            rank = table->freeCells[i]->rank;
-            hint = table->freeCells[i]->hint;
+            suit = table->freeCells[i]->suit; rank = table->freeCells[i]->rank; hint = table->freeCells[i]->hint;
         } else {
             suit = rank = -2;
             hint = 0;
         }
 
+        /// se a carta é pra ser printado como dica
         if(hint) {
             printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
         } else {
@@ -201,16 +309,25 @@ void printFreeCells(Table *table) {
     }
 }
 
+///
+/// \brief  printHomeCells, printa na saida padrão as home cells
+/// \param  table, mesa de jogo
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 void printHomeCells(Table *table) {
     int i;
     unsigned char suit, rank, hint;
 
+    /// para cada home cell
     for(i = 0; i < 4; ++i) {
         suit = rank = -2; hint = 0;
+        /// se pilha não está vazia
         if(table->homeCells[i] && table->homeCells[i]->start) {
             suit = table->homeCells[i]->start->card->suit; rank = table->homeCells[i]->start->card->rank; hint = table->homeCells[i]->start->card->hint;
         }
 
+        /// se carta é para ser exibida como dica
         if(hint) {
             printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
         } else {
@@ -219,25 +336,45 @@ void printHomeCells(Table *table) {
     }
 }
 
+///
+/// \brief  reverseTableauHeaps, inverte as pilhas de cartas dispostas na mesa
+/// \param  tableau, pilhas de cartas
+/// \param  reversedHeaps, pilhas invertidas
+/// \param  lines, número de cartas da maior pilha
+/// \pre    pilhas tem que estar inicializadas
+/// \post   nenhuma
+///
 void reverseTableauHeaps(Heap *tableau[], Node *reversedHeaps[], int *lines) {
     int i;
 
+    /// para cada pilha na mesa
     for(i = *lines = 0; i < 8; ++i) {
+        /// se pilha existe
         if(tableau[i]) {
+            /// se maior número de nós é menor que o da pilha atual
             if(tableau[i]->length > *lines) {
                 *lines = tableau[i]->length;
             }
+            /// inverte pilha atual
             reversedHeaps[i] = reverseList(tableau[i]->start);
         }
     }
 }
 
-void inputCmd(Table *table) {
+///
+/// \brief  inputCmd, lê da entrada padrão um comando e o executa
+/// \param  table, mesa de jogo que o comando sera executado
+/// \return se é pra sair do jogo
+/// \pre    nenhuma
+/// \post   movimento é executado
+///
+int inputCmd(Table *table) {
     char cmd[MAXSTR], fileName[MAXSTR], cmdType;
     char colFrom = 0, colTo = 0;
     char suit = 0, rank = 0;
     int cardQnt = 0;
 
+    /// enquanto comando for inválido
     printf("\nType in a command: ");
     readLine(cmd);
     while(!(cmdType = getCmdType(cmd))) {
@@ -247,7 +384,7 @@ void inputCmd(Table *table) {
         readLine(cmd);
     }
 
-    // parse and execute command
+    /// parseia e executa comando
     switch(cmdType) {
     case MOVETOFREECELLS:
         readCmd1(cmd, &colFrom, &colTo);
@@ -280,8 +417,7 @@ void inputCmd(Table *table) {
         saveGame(table, fileName);
         break;
     default:
-        // Help.
-        break;
+        return 1;
     }
 
     getch();
@@ -289,23 +425,36 @@ void inputCmd(Table *table) {
 
 // MOVE MAKING //
 
+///
+/// \brief  inputCmd, lê da entrada padrão um comando e o executa
+/// \param  table, mesa de jogo que o comando sera executado
+/// \pre    pilha de saida  não pode ser nula
+/// \post   movimento é executado
+///
 void moveToFreeCell(Table *table, char colFrom, char colTo) {
     Card *card = NULL;
     Node *node = NULL;
     int colFromInd = colFrom - 'A';
     int colToInd = colTo - 'A';
 
+    /// se tem células livres
     if(table->freeCellsQnt > 0) {
+        /// se tem cartas na pilha de saida
         if(table->tableau[colFromInd]->start) {
+            /// se indice da célula livre não é válido
             if(colToInd < 0 || colToInd >= 4) {
+                /// escolhe a primeira livre
                 for(colToInd = 0; colToInd < 4 && table->freeCells[colToInd]; ++colToInd)
                     ;
             }
+            /// se já não tem nenhuma carta na célula
             if(!table->freeCells[colToInd]) {
+                /// tira nó da pilha e coloca na pilha
                 node = pop(table->tableau[colFromInd]);
                 card = node->card;
                 table->freeCells[colToInd] = card;
 
+                /// atualiza valores de quantidade e libera nó
                 table->freeCellsQnt--;
                 table->freeHeapsQnt += (!table->tableau[colFromInd]);
                 free(node);
@@ -320,52 +469,74 @@ void moveToFreeCell(Table *table, char colFrom, char colTo) {
     }
 }
 
+///
+/// \brief  moveToHomeCells, executa comando de mover para home cells
+/// \param  table, mesa de jogo a ser executado o comando
+/// \param  colFrom, coluna que parte a carta
+/// \pre    pilha de saida e pilha de fundação não podem ser nulas
+/// \post   mesa é manipulada
+///
 void moveToHomeCells(Table *table, char colFrom) {
     Card *card = NULL;
     Node *node = NULL;
     int colFromInd = colFrom - 'A';
 
-    if(colFromInd >= 0 && colFromInd < 8) {
-        if(table->tableau[colFromInd]->start) {
-            card = table->tableau[colFromInd]->start->card;
+    /// se pilha tem cartas
+    if(table->tableau[colFromInd]->start) {
+        /// pega carta mais ao topo da pilha de saida
+        card = table->tableau[colFromInd]->start->card;
 
-            if(table->homeCells[card->suit]) {
-                node = table->homeCells[card->suit]->start;
-            }
-            if(!card->rank || (node && node->card->rank == card->rank-1)) {
-                node = pop(table->tableau[colFromInd]);
-                table->homeCells[card->suit] = insertCard(table->homeCells[card->suit], node->card);
+        /// pega nó mais ao topo da pilha de fundação
+        node = table->homeCells[card->suit]->start;
 
-                table->freeHeapsQnt += (!table->tableau[colFromInd]->length);
-                free(node);
-            } else {
-                printf("Card [%c,%c] cannot be discarded!%c\n", getSuitByInd(card->suit), getRankByInd(card->rank), 7);
-            }
+        /// se é um As ou carta de fundação é uma sequência abaixo
+        if(!card->rank || (node && node->card->rank == card->rank-1)) {
+            /// retira carta da pilha de saída e coloca na fundação
+            node = pop(table->tableau[colFromInd]);
+            table->homeCells[card->suit] = insertCard(table->homeCells[card->suit], node->card);
+
+            /// atualiza quantidade de pilhas livres e libera nó
+            table->freeHeapsQnt += (!table->tableau[colFromInd]->length);
+            free(node);
         } else {
-            printf("Column (%c) doesn't have any cards!%c\n", colFrom, 7);
+            printf("Card [%c,%c] cannot be discarded!%c\n", getSuitByInd(card->suit), getRankByInd(card->rank), 7);
         }
+    } else {
+        printf("Column (%c) doesn't have any cards!%c\n", colFrom, 7);
     }
 }
 
+///
+/// \brief  moveFromFreeCells, executa comando de mover das free cells
+/// \param  table, mesa de jogo a ser executado o comando
+/// \param  colFrom, coluna que parte a carta
+/// \param  colTo, coluna que recebe a carta
+/// \pre    célula de saida  não pode ser nula
+/// \post   mesa é manipulada
+///
 void moveFromFreeCells(Table *table, char colFrom, char colTo) {
     Card *cardFrom = NULL, *cardTo = NULL;
     Node *node = NULL;
     int colFromInd = colFrom - 'A';
     int colToInd = colTo - 'A';
 
+    /// se tem carta pra ser retirada da célula
     if(table->freeCells[colFromInd]) {
         cardFrom = table->freeCells[colFromInd];
-        if(table->tableau[colToInd]->start) {
-            node = table->tableau[colToInd]->start;
-            cardTo = node->card;
-        }
+        node = table->tableau[colToInd]->start;
+        cardTo = node->card;
+
+        /// se pilha de entrada esta vazia ou as cartas tem cores alternadas
         if(!node || (cardFrom->suit%2 != cardTo->suit%2)) {
+            /// se pilha de entrada esta vazia ou a carta de saída é uma sequência maior
             if(!node || (cardFrom->rank - cardTo->rank == -1)) {
+                /// insere carta na pilha de entrada
                 table->tableau[colToInd] = insertCard(table->tableau[colToInd], cardFrom);
                 table->freeCells[colFromInd] = NULL;
 
+                /// atualiza quantidade de células e pilhas livres
                 table->freeCellsQnt++;
-                table->freeHeapsQnt -= (!node);
+                table->freeHeapsQnt -= !(node);
             } else {
                 printf("Card [%c,%c] must have a rank down!%c\n", getSuitByInd(cardFrom->suit), getRankByInd(cardFrom->rank), 7);
             }
@@ -377,6 +548,15 @@ void moveFromFreeCells(Table *table, char colFrom, char colTo) {
     }
 }
 
+///
+/// \brief  moveColToCol, executa comando de mover coluna para coluna
+/// \param  table, mesa de jogo a ser executado o comando
+/// \param  colFrom, coluna que parte a carta
+/// \param  cardQnt, quantidade de cartas a serem movidas
+/// \param  colTo, coluna que recebe a carta
+/// \pre    pilha de saida e pilha de entrada não podem ser nulas
+/// \post   mesa é manipulada
+///
 void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
     Node *nodeFrom = NULL, *nodeTo = NULL;
     Card *cardFrom = NULL, *cardTo = NULL;
@@ -385,18 +565,25 @@ void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
     int colToInd = colTo - 'A';
     int i, valid;
 
+    /// se tem cartas na pilha de saída
     if(table->tableau[colFromInd]->start) {
-        if(cardQnt <= table->freeCellsQnt + table->freeHeapsQnt + 1) {
+        /// se da pra mover quantidade de cartas fornecida
+        if(cardQnt <= (table->freeCellsQnt + 1) * pow(2, table->freeHeapsQnt)) {
             nodeFrom = table->tableau[colFromInd]->start;
-            if(cardQnt < 1) {
-                cardQnt = 1;
-            }
+
+            /// se nenhuma carta foi pedida pra ser movida
+            if(!cardQnt) return;
+
+            /// para cada carta na pilha de saída
             for(i = valid = 1; i < cardQnt && valid; ++i) {
+                /// se pilha tem cartas suficientes que a quantidade fornecida
                 if(nodeFrom && nodeFrom->next) {
+                    /// se cartas tem mesma cor
                     if(nodeFrom->card->suit%2 == nodeFrom->next->card->suit%2) {
                         valid = 0;
                         printf("Sequence must have alternate colors!%c\n", 7);
                     }
+                    /// se cartas não estão na sequência correta
                     if(nodeFrom->card->rank - nodeFrom->next->card->rank != -1) {
                         valid = 0;
                         printf("Sequence must be ranking down!%c\n", 7);
@@ -407,25 +594,33 @@ void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
                 }
                 nodeFrom = nodeFrom->next;
             }
+            /// se sequência de saída é válida
             if(valid) {
                 cardFrom = nodeFrom->card;
                 nodeTo = table->tableau[colToInd]->start;
-                if(nodeTo) {
-                    cardTo = table->tableau[colToInd]->start->card;
-                }
+                cardTo = table->tableau[colToInd]->start->card;
+
+                /// se pilha de entrada estiver vazia ou carta de entrada tem cor alternada
                 if(!nodeTo || cardFrom->suit%2 != cardTo->suit%2) {
+                    /// se pilha de entrada estiver vazia ou carta de entrada esta na sequência correta
                     if(!nodeTo || cardFrom->rank - cardTo->rank == -1) {
                         heap = createHeap();
+                        /// para cada carta na pilha de saída
                         for(i = 0; i < cardQnt; ++i) {
+                            /// adiciona-se a uma pilha auxiliar
                             nodeTo = pop(table->tableau[colFromInd]);
                             heap = insertCard(heap, nodeTo->card);
                             free(nodeTo);
                         }
+                        /// para cada carta na pilha auxiliar
                         for(i = 0; i < cardQnt; ++i) {
+                            /// adiciona-se a pilha de entrada
                             nodeTo = pop(heap);
                             table->tableau[colToInd] = insertCard(table->tableau[colToInd], nodeTo->card);
                             free(nodeTo);
                         }
+                        /// libera espaço da pilha auxiliar
+                        free(heap);
                     } else {
                         printf("Cards must have a rank down!%c\n", 7);
                     }
@@ -441,28 +636,45 @@ void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
     }
 }
 
+///
+/// \brief  findCard, procura carta indicada na mesa de jogo
+/// \param  table, mesa de jogo
+/// \param  suit, naipe
+/// \param  rank, ordem
+/// \pre    nenhuma
+/// \post   nenhuma
+///
 void findCard(Table *table, char suit, char rank) {
     int i;
     int rankInd, suitInd, found;
     Node *node = NULL;
     Card *foundCard = NULL;
 
+    /// pega naipe e ordem da carta a ser procurada
     suitInd = getIndBySuit(suit);
     rankInd = getIndByRank(rank);
     found = 0;
 
+    /// para cada free e home cell
     for(i = 0; i < 4 && !found; ++i) {
+        /// se tem carta na célula
         if(table->freeCells[i]) {
+            /// se carta bate com a procura
             if(table->freeCells[i]->rank == rankInd && table->freeCells[i]->suit == suitInd) {
+                /// marca a carta e para a pesquisa
                 table->freeCells[i]->hint = 1;
                 found = 1;
                 foundCard = table->freeCells[i];
             }
         }
+        /// se tem cartas na pilha de fundação
         if(table->homeCells[i]->start) {
             node = table->homeCells[i]->start;
+            /// enquanto não estiver no final da pilha
             while(node && !found) {
+                /// se carta bate com a pesquisa
                 if(node->card->rank == rankInd && node->card->suit == suitInd) {
+                    /// marca a carta e para a pesquisa
                     table->homeCells[i]->start->card->hint = 1;
                     found = 1;
                     foundCard = table->homeCells[i]->start->card;
@@ -471,11 +683,16 @@ void findCard(Table *table, char suit, char rank) {
             }
         }
     }
+    /// para pilha no tableau
     for(i = 0; i < 8 && !found; ++i) {
+        /// se tem cartas na pilha
         if(table->tableau[i]->start) {
             node = table->tableau[i]->start;
+            /// enqaunto não estiver no final da pilha
             while(node && !found) {
+                /// se carta bate com a pesquisa
                 if(node->card->rank == rankInd && node->card->suit == suitInd) {
+                    /// marca a carta e para a pesquisa
                     node->card->hint = 1;
                     found = 1;
                     foundCard = node->card;
@@ -484,53 +701,86 @@ void findCard(Table *table, char suit, char rank) {
             }
         }
     }
+    /// se carta foi achada
     if(found) {
+        /// printa mesa e desmarca a carta
         printTable(table);
         printf("Card found!\n");
         foundCard->hint = 0;
     }
 }
 
+///
+/// \brief  saveGame, jogo é salvo em arquivo binário
+/// \param  table, mesa de jogo
+/// \param  fileName, nome do arquivo a ser salvo
+/// \pre    nenhuma
+/// \post   jogo é salvo
+///
 void saveGame(Table *table, char fileName[]) {
     FILE *f = openBinaryFile(fileName, "wb+");
     Card *card = NULL;
     Node *tracer = NULL;
     int i;
 
+    /// inicializa pilhas no arquivo
     createEmptyList(f);
 
+    /// para cada free e home cell
     for(i = 0; i < 4; ++i) {
+        /// se tem carta na free cell
         if(table->freeCells[i]) {
+            /// transforma carta em número e adiciona ao arquivo
             card = table->freeCells[i];
             insertNodeOnFreeCell(f, i, card->suit*13 + card->rank);
         }
 
+        /// para cada nó na pilha de fundação
         for(tracer = table->homeCells[i]->start; tracer; tracer = tracer->next) {
+            /// transforma carta em número e adiciona ao arquivo
             card = tracer->card;
             insertNodeOnHomeCell(f, i, card->suit*13 + card->rank);
         }
     }
 
+    /// para cada pilha no tableau
     for(i = 0; i < 8; ++i) {
+        /// para cada nó na pilha
         for(tracer = table->tableau[i]->start; tracer; tracer = tracer->next) {
+            /// transforma carta em número e adiciona ao arquivo
             card = tracer->card;
             insertNodeOnTableau(f, i, card->suit*13 + card->rank);
         }
     }
 
+    /// fecha arquivo
     fclose(f);
 }
 
-void loadGame(Table *table, char fileName[]) {
+///
+/// \brief  loadGame, carrega jogo a partir de arquivo binário
+/// \param  table, mesa de jogo
+/// \param  fileName, nome do arquivo a ser carregado
+/// \return se arquivo foi carregado corretamente
+/// \pre    mesa de jogo não pode estar inicializada
+/// \post   jogo é carregado a memória
+///
+int loadGame(Table *table, char fileName[]) {
     FILE *f = openBinaryFile(fileName, "rb");
     Header *header = readHeader(f);
     FileNode *tracer = NULL;
     Card *card;
     int i, next = 0;
 
+    /// se arquivo não foi aberto
+    if(!f) return 1;
+
+    /// para cada free e home cell
     for(i = 0; i < 4; ++i) {
+        /// se tem carta na free cell
         printf("FREE[%d] = %d\n", i, header->freeCellsHeads[i]);
         if(header->freeCellsHeads[i] != -1) {
+            /// lê nó e adiciona a mesa
             tracer = readFileNode(f, header->freeCellsHeads[i]);
             card = createCard(tracer->val/13, tracer->val%13);
             printf("[%c, %c]\n", getSuitByInd(card->suit), getRankByInd(card->suit));
@@ -539,10 +789,13 @@ void loadGame(Table *table, char fileName[]) {
             free(tracer);
         }
 
+        /// se tem cartas na pilha
         printf("HOME[%d] = %d\n", i, header->homeCellsHeads[i]);
         if(header->homeCellsHeads[i] != -1) {
+            /// para cada nó na pilha
             next = 0;
             for(tracer = readFileNode(f, header->homeCellsHeads[i]); next != -1; tracer = readFileNode(f, next)) {
+                /// lê nó e adiciona a mesa
                 card = createCard(tracer->val/13, tracer->val%13);
                 table->homeCells[i] = insertCard(table->homeCells[i], card);
 
@@ -552,12 +805,16 @@ void loadGame(Table *table, char fileName[]) {
         }
     }
 
+    /// para cada pilha na tableau
     for(i = 0; i < 8; ++i) {
+        /// se tem cartas na pilha
         printf(">TABLEAU[%d] = %d\n", i, header->tableauHeads[i]);
         if(header->tableauHeads[i] != -1) {
+            /// para cada nó na pilha
             table->freeHeapsQnt--;
             next = 0;
             for(tracer = readFileNode(f, header->tableauHeads[i]); next != -1; tracer = readFileNode(f, next)) {
+                /// lê nó e adiciona a mesa
                 card = createCard(tracer->val/13, tracer->val%13);
                 table->tableau[i] = insertCard(table->tableau[i], card);
 
@@ -570,6 +827,8 @@ void loadGame(Table *table, char fileName[]) {
     printf("------------\n");
     printf("Game loaded!\n");
 
+    /// fecha arquivo
     fclose(f);
     getch();
+    return 0;
 }
