@@ -1,17 +1,25 @@
 #ifndef HEAP
 #define HEAP
 
+/// estrutura da carta
 typedef struct Card {
+    /// naipe, ordem e flag de dica
     unsigned char suit, rank, hint;
 } Card;
 
+/// estrutura do nó
 typedef struct node {
+    /// ponteiro de carta
     Card *card;
+    /// ponteiro para próximo
     struct node *next;
 } Node;
 
+/// estrutura da pilha
 typedef struct heap {
+    /// tamanho da pilha
     int length;
+    /// começo e final da pilha
     Node *start, *end;
 } Heap;
 
