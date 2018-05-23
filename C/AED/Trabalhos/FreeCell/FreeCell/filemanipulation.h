@@ -6,16 +6,24 @@
 
 #include "heap.h"
 
+/// define tipo para salvar como inteiro
 typedef int ItemType;
 
+/// estrutura do cabeçalho
 typedef struct header {
+    /// cabeças das pilhas de células livres
     int freeCellsHeads[4];
+    /// cabeças das pilhas de fundação e tableau
     int homeCellsHeads[4], tableauHeads[8];
+    /// indice do final do arquivo
     int topPos;
 } Header;
 
+/// estrutura do nó em arquivo
 typedef struct fileNode {
+    /// info que cada nó carrega
     ItemType val;
+    /// indice do proximo nó
     int next;
 } FileNode;
 
@@ -113,13 +121,5 @@ void insertNodeOnHomeCell(FILE *f, int index, ItemType val);
 /// \post   nó é inserido
 ///
 void insertNodeOnTableau(FILE *f, int index, ItemType val);
-
-///
-/// \brief  freeFileNode, libera espaço em memória utilizado para os nós em arquivo
-/// \param  node, nó a ser liberado
-/// \pre    nenhuma
-/// \post   espaço de memória do nó é liberado
-///
-void freeFileNode(FileNode *node);
 
 #endif // FILEMANIPULATION_H
