@@ -192,7 +192,6 @@ void shuffleCards(Card* deck[]) {
 void printTable(Table *table) {
     int i;
     int lines;
-    unsigned char suit, rank, hint;
     Node *current[8] = {NULL}, *reversedHeaps[8] = {NULL};
 
     /// limpa tela
@@ -214,14 +213,8 @@ void printTable(Table *table) {
         for(i = 0; i < 8; ++i) {
             /// se nó atual existe
             if(current[i]) {
-                suit = current[i]->card->suit; rank = current[i]->card->rank; hint = current[i]->card->hint;
+                printCard(current[i]->card);
                 current[i] = current[i]->next;
-                /// se é pra pra mostrar carta como dica
-                if(hint) {
-                    printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
-                } else {
-                    printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
-                }
             } else {
                 printf("      ");
             }
@@ -236,6 +229,30 @@ void printTable(Table *table) {
         printf("  %c   ", 'A' + i);
     }
     printf("\n");
+}
+
+///
+/// \brief  printCard, printa carta na tela
+/// \param  card, carta
+/// \pre    nenhuma
+/// \post   nenhuma
+///
+void printCard(Card *card) {
+    unsigned char suit, rank, hint;
+
+    if(card) {
+        suit = card->suit; rank = card->rank; hint = card->hint;
+    } else {
+        suit = rank = -2;
+        hint = 0;
+    }
+
+    /// se é pra pra mostrar carta como dica
+    if(hint) {
+        printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
+    } else {
+        printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+    }
 }
 
 ///
@@ -289,25 +306,11 @@ void printTopCols() {
 ///
 void printFreeCells(Table *table) {
     int i;
-    unsigned char suit, rank, hint;
 
     /// para cada free cell
     printf("\n    ");
     for(i = 0; i < 4; ++i) {
-        /// se célula existe
-        if(table->freeCells[i]) {
-            suit = table->freeCells[i]->suit; rank = table->freeCells[i]->rank; hint = table->freeCells[i]->hint;
-        } else {
-            suit = rank = -2;
-            hint = 0;
-        }
-
-        /// se a carta é pra ser printado como dica
-        if(hint) {
-            printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
-        } else {
-            printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
-        }
+        printCard(table->freeCells[i]);
     }
 }
 
@@ -319,21 +322,12 @@ void printFreeCells(Table *table) {
 ///
 void printHomeCells(Table *table) {
     int i;
-    unsigned char suit, rank, hint;
 
     /// para cada home cell
     for(i = 0; i < 4; ++i) {
-        suit = rank = -2; hint = 0;
         /// se pilha não está vazia
-        if(table->homeCells[i] && table->homeCells[i]->start) {
-            suit = table->homeCells[i]->start->card->suit; rank = table->homeCells[i]->start->card->rank; hint = table->homeCells[i]->start->card->hint;
-        }
-
-        /// se carta é para ser exibida como dica
-        if(hint) {
-            printf("%c%c,%c%c ", 166, getSuitByInd(suit), getRankByInd(rank), 166);
-        } else {
-            printf("%c%c,%c%c ", (suit%2) ? '(' : '[', getSuitByInd(suit), getRankByInd(rank), (suit%2) ? ')' : ']');
+        if(table->homeCells[i]) {
+            printCard(table->homeCells[i]->start->card);
         }
     }
 }

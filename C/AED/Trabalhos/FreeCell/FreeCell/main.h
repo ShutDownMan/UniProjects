@@ -60,6 +60,14 @@ void shuffleCards(Card *deck[]);
 void printTable(Table *table);
 
 ///
+/// \brief  printCard, printa carta na tela
+/// \param  card, carta
+/// \pre    nenhuma
+/// \post   nenhuma
+///
+void printCard(Card *card);
+
+///
 /// \brief  printTopCols, printa na saida padrão as primeiras colunas guias
 /// \pre    nenhuma
 /// \post   nenhuma
