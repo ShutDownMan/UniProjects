@@ -25,7 +25,7 @@ Node<T> *Node<T>::getNext() {
 }
 
 template <class T>
-Node<T> *Node<T>::insertOnHead(Node<T> *&node, T const& info) {
+Node<T> *Node<T>::insertOnHead(Node<T> *&node, T const &info) {
     if(!node) {
         node = new Node<T>(info);
         return node;
@@ -39,7 +39,7 @@ Node<T> *Node<T>::insertOnHead(Node<T> *&node, T const& info) {
 }
 
 template <class T>
-Node<T> *Node<T>::insertOnTail(Node<T> *&node, T const& info) {
+Node<T> *Node<T>::insertOnTail(Node<T> *&node, T const &info) {
     if(!node) {
         node = new Node<T>(info);
         return node;
@@ -80,6 +80,17 @@ void Node<T>::removeTail(Node *&node) {
     } else {
         delete aux;
     }
+}
+
+template <class T>
+Node<T> *Node<T>::revert(Node<T> *node) {
+    Node<T> *aux = NULL;
+
+    if(!node) return NULL;
+
+    aux = revert(node->next);
+
+    return insertOnTail(aux, node->info);
 }
 
 template <class T>

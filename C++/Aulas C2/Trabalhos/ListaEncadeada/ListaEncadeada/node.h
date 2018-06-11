@@ -3,6 +3,10 @@
 
 #include <stdio.h>
 
+
+/**
+ * @brief A classe Node
+ */
 template <class T> class Node {
 private:
     T info;
@@ -15,13 +19,19 @@ public:
     T getInfo();
     Node *getNext();
 
+    /**
+     * @brief getInfoPtr
+     * @return
+     */
     T *getInfoPtr();
 
-    static Node *insertOnHead(Node *&, T const&);
-    static Node *insertOnTail(Node *&, T const&);
+    static Node *insertOnHead(Node *&, T const &);
+    static Node *insertOnTail(Node *&, T const &);
 
     static void removeHead(Node *&);
     static void removeTail(Node *&);
+
+    static Node *revert(Node<T> *);
 
     int getLength();
     Node *getNodePos(int);

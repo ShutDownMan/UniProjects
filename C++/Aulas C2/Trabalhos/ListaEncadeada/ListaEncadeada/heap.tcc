@@ -25,6 +25,15 @@ T *Heap<T>::top() {
 }
 
 template <class T>
+Heap<T> *Heap<T>::revert() {
+    Heap<T> *reverted = new Heap<T>();
+
+    reverted->head = Node<T>::revert(this->head);
+
+    return reverted;
+}
+
+template <class T>
 bool Heap<T>::isEmpty() {
     return (this->head == NULL);
 }

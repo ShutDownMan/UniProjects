@@ -16,6 +16,8 @@ public:
 
     T *top();
 
+    Heap *revert();
+
     bool isEmpty();
 
     void show();

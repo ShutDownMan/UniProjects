@@ -7,18 +7,18 @@ Queue<T>::Queue() {
 }
 
 template <class T>
-void Queue<T>::enqueue(const T &info) {
+void Queue<T>::enqueue(T const &info) {
     Node<T>::insertOnTail(this->head, info);
 
     if(!this->tail) {
         this->tail = this->head;
     } else {
-        this->tail = this->tail->next;
+        this->tail = this->tail->getNext();
     }
 }
 
 template <class T>
-void Queue<T>::dequeue(const T &) {
+void Queue<T>::dequeue() {
     Node<T> *tracer;
 
     Node<T>::removeTail(this->head);
@@ -41,6 +41,21 @@ T *Queue<T>::pop() {
 template <class T>
 T *Queue<T>::top() {
     return this->head->getInfoPtr();
+}
+
+template <class T>
+Queue<T> *Queue<T>::revert() {
+    Queue<T> *reverted = new Queue<T>();
+    Node<T> *tracer = NULL;
+
+    reverted->head = Node<T>::revert(this->head);
+
+    for(tracer = this->head; tracer && tracer->getNext(); tracer = tracer->getNext())
+        ;
+
+    this->tail = tracer;
+
+    return reverted;
 }
 
 template <class T>

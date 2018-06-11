@@ -13,11 +13,13 @@ private:
 public:
     Queue();
 
-    void enqueue(T const&);
-    void dequeue(T const&);
+    void enqueue(T const &);
+    void dequeue();
 
     T *pop();
     T *top();
+
+    Queue *revert();
 
     bool isEmpty();
 
