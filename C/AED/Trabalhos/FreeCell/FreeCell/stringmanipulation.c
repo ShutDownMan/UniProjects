@@ -3,8 +3,8 @@
 
 #include "stringmanipulation.h"
 
-// (v)copas, (p)espadas, (p)paus, (v)ouros,
-char suits[4] = {'c', 'e', 'p', 'o'};
+// (v)copas, (p)espadas, (v)ouros, (p)paus
+char suits[4] = {'c', 'e', 'o', 'p'};
 char ranks[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
 
 // STRING MANIPULATION //

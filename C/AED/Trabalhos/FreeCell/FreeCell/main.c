@@ -256,7 +256,8 @@ void printCard(Card *card) {
 }
 
 ///
-/// \brief  printTopCols, printa na saida padrão as primeiras colunas guias
+/// \brief  printTop, printa na saida padrão as free e home cells
+/// \param  table, mesa de jogo
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
@@ -276,8 +277,7 @@ void printTop(Table *table) {
 }
 
 ///
-/// \brief  printTop, printa na saida padrão as free e home cells
-/// \param  table, mesa de jogo
+/// \brief  printTopCols, printa na saida padrão as primeiras colunas guias
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
@@ -326,8 +326,10 @@ void printHomeCells(Table *table) {
     /// para cada home cell
     for(i = 0; i < 4; ++i) {
         /// se pilha não está vazia
-        if(table->homeCells[i]) {
+        if(table->homeCells[i]->start) {
             printCard(table->homeCells[i]->start->card);
+        } else {
+            printCard(NULL);
         }
     }
 }

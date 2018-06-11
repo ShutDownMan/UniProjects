@@ -68,19 +68,19 @@ void printTable(Table *table);
 void printCard(Card *card);
 
 ///
-/// \brief  printTopCols, printa na saida padrão as primeiras colunas guias
-/// \pre    nenhuma
-/// \post   nenhuma
-///
-void printTopCols();
-
-///
 /// \brief  printTop, printa na saida padrão as free e home cells
 /// \param  table, mesa de jogo
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
 void printTop(Table *table);
+
+///
+/// \brief  printTopCols, printa na saida padrão as primeiras colunas guias
+/// \pre    nenhuma
+/// \post   nenhuma
+///
+void printTopCols();
 
 ///
 /// \brief  printFreeCells, printa na saida padrão as free cells
