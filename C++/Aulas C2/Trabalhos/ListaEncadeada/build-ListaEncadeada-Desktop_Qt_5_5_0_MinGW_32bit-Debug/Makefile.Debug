@@ -112,7 +112,9 @@ compiler_clean:
 debug/main.o: ../ListaEncadeada/main.cpp ../ListaEncadeada/node.h \
 		../ListaEncadeada/node.tcc \
 		../ListaEncadeada/heap.h \
-		../ListaEncadeada/heap.tcc
+		../ListaEncadeada/heap.tcc \
+		../ListaEncadeada/queue.h \
+		../ListaEncadeada/queue.tcc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\ListaEncadeada\main.cpp
 
 ####### Install
