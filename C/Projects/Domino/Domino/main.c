@@ -60,33 +60,33 @@ Domino *createDomino(int x, int y) {
     return newDomino;
 }
 
-List *insertOnHead(List *inList, ItemType info) {
+List *insertOnHead(List *aList, ItemType info) {
     Node *newNode = createNode(info);
 
-    newNode->next = inList->head;
-    inList->head = newNode;
+    newNode->next = aList->head;
+    aList->head = newNode;
 
-    if(inList->tail == NULL) inList->tail = newNode;
+    if(aList->tail == NULL) aList->tail = newNode;
 
-    inList->length++;
-    return inList;
+    aList->length++;
+    return aList;
 }
 
-List *insertOnTail(List *inList, ItemType info) {
+List *insertOnTail(List *aList, ItemType info) {
     Node *newNode = createNode(info);
 
-    if(!inList->head) {
-        inList->head = newNode;
-        inList->tail = newNode;
-        inList->length++;
-        return inList;
+    if(!aList->head) {
+        aList->head = newNode;
+        aList->tail = newNode;
+        aList->length++;
+        return aList;
     }
 
-    inList->tail->next = newNode;
-    inList->tail = newNode;
-    inList->length++;
+    aList->tail->next = newNode;
+    aList->tail = newNode;
+    aList->length++;
 
-    return inList;
+    return aList;
 }
 
 Node *createNode(ItemType info) {
@@ -109,44 +109,44 @@ void printSet(List *set) {
     printf("\n");
 }
 
-void freeList(List *rList) {
+void freeList(List *aList) {
     Node *tracer, *aux;
 
-    for(tracer = rList->head; tracer; ) {
+    for(tracer = aList->head; tracer; ) {
         aux = tracer->next;
         free(tracer);
         tracer = aux;
     }
 
-    rList->head = NULL;
-    rList->tail = NULL;
-    rList->length = 0;
+    aList->head = NULL;
+    aList->tail = NULL;
+    aList->length = 0;
 }
 
-void freeListInfo(List *rList) {
+void freeListInfo(List *aList) {
     Node *tracer, *aux;
 
-    for(tracer = rList->head; tracer; ) {
+    for(tracer = aList->head; tracer; ) {
         aux = tracer->next;
         free(tracer->info);
         free(tracer);
         tracer = aux;
     }
 
-    rList->head = NULL;
-    rList->tail = NULL;
-    rList->length = 0;
+    aList->head = NULL;
+    aList->tail = NULL;
+    aList->length = 0;
 }
 
-int isPossibleGame(List *inSet, List *gameSet) {
+int isPossibleGame(List *aList, List *gameSet) {
     int i, isPossible;
     List *available = createList();
     Domino *pivot;
 
-    cpyList(available, inSet);
+    cpyList(available, aList);
 
     isPossible = 0;
-    for(i = 0; i < inSet->length && !isPossible; ++i) {
+    for(i = 0; i < aList->length && !isPossible; ++i) {
         pivot = pop(available);
 
         if(isPossiblePivot(pivot, available, gameSet)) {
@@ -171,7 +171,7 @@ int isPossibleGame(List *inSet, List *gameSet) {
     return isPossible;
 }
 
-int isPossiblePivot(ItemType pivot, List *inSet, List *gameSet) {
+int isPossiblePivot(ItemType pivot, List *aList, List *gameSet) {
     int matching, isPossible;
     Node *tracer;
     Domino *newPivot;
@@ -179,11 +179,11 @@ int isPossiblePivot(ItemType pivot, List *inSet, List *gameSet) {
 
     isPossible = 0;
 
-    cpyList(available, inSet);
+    cpyList(available, aList);
 
     if(!available->length) isPossible = 1;
 
-    for(tracer = inSet->head; tracer && !isPossible;) {
+    for(tracer = aList->head; tracer && !isPossible;) {
         matching = 0;
         if(pivot->y == tracer->info->x) {
             matching = 1;
@@ -224,71 +224,71 @@ void cpyList(List *dest, List *from) {
     dest->length = from->length;
 }
 
-void removeNode(List *rList, ItemType info) {
+void removeNode(List *aList, ItemType info) {
     Node *tracer, *aux;
 
-    if(!rList->head) return;
+    if(!aList->head) return;
 
-    if(rList->head->info == info) {
-        aux = rList->head;
-        rList->head = rList->head->next;
-        if(!rList->head) rList->tail = NULL;
+    if(aList->head->info == info) {
+        aux = aList->head;
+        aList->head = aList->head->next;
+        if(!aList->head) aList->tail = NULL;
         free(aux);
-        rList->length--;
+        aList->length--;
         return;
     }
 
-    for(tracer = rList->head; tracer->next; ) {
+    for(tracer = aList->head; tracer->next; ) {
         if(tracer->next->info == info) {
             aux = tracer->next;
             tracer->next = aux->next;
-            if(aux == rList->tail) {
-                rList->tail = tracer;
+            if(aux == aList->tail) {
+                aList->tail = tracer;
             }
             free(aux);
-            rList->length--;
+            aList->length--;
         } else {
             tracer = tracer->next;
         }
     }
 }
 
-ItemType pop(List *rList) {
+ItemType pop(List *aList) {
     Node *aux;
     ItemType res;
 
-    if(!rList->length) return NULL;
+    if(!aList->length) return NULL;
 
-    aux = rList->head;
-    rList->head = rList->head->next;
+    aux = aList->head;
+    aList->head = aList->head->next;
 
-    if(!rList->head) rList->tail = NULL;
+    if(!aList->head) aList->tail = NULL;
 
     res = aux->info;
     free(aux);
-    rList->length--;
+    aList->length--;
 
     return res;
 }
 
-ItemType popNodePos(List *rList, int n) {
+ItemType popNodePos(List *aList, int n) {
     Node *tracer, *aux;
     ItemType res;
 
-    if(!rList->length) return NULL;
+    if(!aList->length) return NULL;
 
-    if(!n) return pop(rList);
+    if(!n) return pop(aList);
 
-    for(tracer = rList->head; tracer->next; tracer = tracer->next) {
+    for(tracer = aList->head; tracer->next; tracer = tracer->next) {
         if(!(n--)) {
             aux = tracer->next;
             tracer->next = tracer->next->next;
-            if(aux == rList->tail) {
-                rList->tail = tracer;
+            if(aux == aList->tail) {
+                aList->tail = tracer;
             }
             res = aux->info;
             free(aux);
-            rList->length--;
+            aList->length--;
             return res;
         }
     }
