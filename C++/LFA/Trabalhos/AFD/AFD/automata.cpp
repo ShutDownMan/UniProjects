@@ -170,4 +170,3 @@ void Automata::printGrammarLines(map<string*, char> *nonTerminals) {
         cout << endl;
     }
 }
-

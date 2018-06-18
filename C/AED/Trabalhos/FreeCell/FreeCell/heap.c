@@ -11,9 +11,9 @@
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
-Heap *createHeap() {
+Stack *createHeap() {
     /// aloca memória para pilha
-    Heap *newHeap = (Heap*)malloc(sizeof(Heap));
+    Stack *newHeap = (Stack*)malloc(sizeof(Stack));
 
     /// incializa campos da estrutura
     newHeap->length = 0;
@@ -32,7 +32,7 @@ Heap *createHeap() {
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
-Heap *insertCard(Heap *heap, Card *card) {
+Stack *insertCard(Stack *heap, Card *card) {
     Node *aux;
 
     /// se carta é nula, nada é inserido
@@ -41,7 +41,7 @@ Heap *insertCard(Heap *heap, Card *card) {
     /// se pilha é nula
     if(!heap) {
         /// cria uma pilha e a retorna
-        Heap *newHeap = createHeap();
+        Stack *newHeap = createHeap();
         newHeap->length++;
         newHeap->start = createNode(card);
         newHeap->end = newHeap->start;
@@ -66,7 +66,7 @@ Heap *insertCard(Heap *heap, Card *card) {
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
-Heap *concatHeap(Heap *heap1, Heap *heap2) {
+Stack *concatHeap(Stack *heap1, Stack *heap2) {
     /// se primeira pilha é nula
     if(!heap1) {
         /// inicializa a primeira pilha
@@ -143,7 +143,7 @@ Node *insertNodeOnTail(Node *list, Card *card) {
 /// \pre    nenhuma
 /// \post   pilha perde a cabeça
 ///
-Node *pop(Heap *heap) {
+Node *pop(Stack *heap) {
     Node *aux;
 
     /// se pilha é nula ou vazia, nada a ser feito

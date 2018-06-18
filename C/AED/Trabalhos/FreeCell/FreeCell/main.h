@@ -106,7 +106,7 @@ void printHomeCells(Table *table);
 /// \pre    pilhas tem que estar inicializadas
 /// \post   nenhuma
 ///
-void reverseTableauHeaps(Heap *tableau[], Node *reversedHeaps[], int *lines);
+void reverseTableauHeaps(Stack *tableau[], Node *reversedHeaps[], int *lines);
 
 ///
 /// \brief  inputCmd, lê da entrada padrão um comando e o executa
@@ -187,5 +187,21 @@ void saveGame(Table *table, char fileName[]);
 /// \post   jogo é carregado a memória
 ///
 int loadGame(Table *table, char fileName[]);
+
+///
+/// \brief  moveFreeToHomeCell, executa comando de mover das free cells para as home cells
+/// \param  table, mesa de jogo a ser executado o comando
+/// \param  colFrom, coluna que parte a carta
+/// \pre    célula de saida  não pode ser nula
+/// \post   mesa é manipulada
+///
+void moveFreeToHomeCell(Table *table, char colFrom);
+
+///
+/// \brief  showHelp, printa na saida padrão os comandos usados para jogar o jogo
+/// \pre    nenhuma
+/// \post   nenhuma
+///
+void showHelp();
 
 #endif // MAIN

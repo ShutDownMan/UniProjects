@@ -414,8 +414,14 @@ int inputCmd(Table *table) {
         printf("Save game!\n");
         saveGame(table, fileName);
         break;
+    case MOVEFROMFREECELLTOHOMECELL:
+        readCmd7(cmd, &colFrom);
+        printf("From col: %c\n", colFrom);
+        moveFreeToHomeCell(table, colFrom);
+        break;
     case HELP:
         // show help
+        showHelp();
         break;
     default:
         return 1;
@@ -833,4 +839,60 @@ int loadGame(Table *table, char fileName[]) {
     fclose(f);
     getch();
     return 0;
+}
+
+
+///
+/// \brief  moveFreeToHomeCell, executa comando de mover das free cells para as home cells
+/// \param  table, mesa de jogo a ser executado o comando
+/// \param  colFrom, coluna que parte a carta
+/// \pre    célula de saida  não pode ser nula
+/// \post   mesa é manipulada
+///
+void moveFreeToHomeCell(Table *table, char colFrom) {
+    Card *card = NULL;
+    Node *node = NULL;
+    int colFromInd = colFrom - 'A';
+
+    /// se tem carta pra ser retirada da célula
+    if(table->freeCells[colFromInd]) {
+        /// pega carta da free cell
+        card = table->freeCells[colFromInd];
+
+        /// pega nó mais ao topo da pilha de fundação
+        node = table->homeCells[card->suit]->start;
+
+        /// se é um As ou carta de fundação é uma sequência abaixo
+        if(!card->rank || (node && node->card->rank == card->rank-1)) {
+            /// retira carta da free cell de saída e coloca na fundação
+            table->freeCells[colFromInd] = NULL;
+            table->homeCells[card->suit] = insertCard(table->homeCells[card->suit], card);
+
+            /// atualiza quantidade de pilhas livres e libera nó
+            table->freeCellsQnt += (!table->tableau[colFromInd]->length);
+            free(node);
+        } else {
+            printf("Card [%c,%c] cannot be discarded!%c\n", getSuitByInd(card->suit), getRankByInd(card->rank), 7);
+        }
+
+    } else {
+        printf("Column (%c) doesn't have any cards!%c\n", colFrom, 7);
+    }
+}
+
+///
+/// \brief  showHelp, printa na saida padrão os comandos usados para jogar o jogo
+/// \pre    nenhuma
+/// \post   nenhuma
+///
+void showHelp() {
+    system("CLS");
+    printf("^A\n  => move coluna 'A' para free cell;\n");
+    printf("^A > B\n  => move coluna 'A' para free cell 'B';\n");
+    printf("*A\n  => move coluna 'A' para fundação;\n");
+    printf("vA\n  => move coluna 'A' da free cell para tableau;\n");
+    printf("v*A\n  => move coluna 'A' da free cell para fundacao;\n");
+    printf("A > B\n  => move coluna 'A' do tableau para coluna 'B';\n");
+    printf("(c,A)\n  => procura por carta As de copas no jogo;\n");
+    printf("save \"nomearquivo.bin\"\n  => salva jogo como arquivo binario;\n");
 }

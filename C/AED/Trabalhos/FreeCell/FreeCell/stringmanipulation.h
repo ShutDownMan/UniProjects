@@ -8,6 +8,7 @@
 #define MOVETOHOMECELLS 2
 #define MOVEFROMFREECELLS 3
 #define MOVECOLTOCOL 4
+#define MOVEFROMFREECELLTOHOMECELL 7
 #define FINDCARD 5
 #define SAVEGAME 6
 
@@ -137,6 +138,15 @@ int testCmdSaveGame(char cmd[]);
 int isValidFileName(char str[]);
 
 ///
+/// \brief  testCmdFromFreeToHomeCells, testa se comando é para mover das free cells para as home cells
+/// \param  cmd, comando a ser checkado
+/// \return se comando é válido
+/// \pre    nenhuma
+/// \post   nenhuma
+///
+int testCmdFromFreeToHomeCells(char cmd[]);
+
+///
 /// \brief  readCmd1, executa parse em comando de (mover para free cells)
 /// \param  cmd, string a ser parseada
 /// \param  colFrom, armazena primeira coluna lida
@@ -193,5 +203,15 @@ void readCmd5(char cmd[], char *suit, char *rank);
 /// \post   nenhuma
 ///
 void readCmd6(char cmd[], char fileName[]);
+
+///
+/// \brief  readCmd7, executa parse em comando de (mover da free cells para home cells)
+/// \param  cmd, string a ser parseada
+/// \param  colFrom, armazena primeira coluna lida
+/// \param  colTo, armazena segunda coluna lida
+/// \pre    nenhuma
+/// \post   colFrom e colTo recebem valores correspondentes
+///
+void readCmd7(char cmd[], char *colFrom);
 
 #endif // STRINGMANIPULATION_H

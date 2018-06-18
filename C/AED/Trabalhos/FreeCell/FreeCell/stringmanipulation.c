@@ -82,6 +82,9 @@ int getCmdType(char cmd[]) {
     /// testa se comando é para salvar o jogo
     if(testCmdSaveGame(cmd)) return SAVEGAME;
 
+    /// testa se comando é para salvar o jogo
+    if(testCmdFromFreeToHomeCells(cmd)) return MOVEFROMFREECELLTOHOMECELL;
+
     /// se nenhuma comando foi lido, retorna 0
     return 0;
 }
@@ -295,6 +298,26 @@ int isValidFileName(char str[]) {
 }
 
 ///
+/// \brief  testCmdFromFreeToHomeCells, testa se comando é para mover das free cells para as home cells
+/// \param  cmd, comando a ser checkado
+/// \return se comando é válido
+/// \pre    nenhuma
+/// \post   nenhuma
+///
+int testCmdFromFreeToHomeCells(char cmd[]) {
+    char colFrom = 0;
+
+    /// lê linha com formato do comando atual
+    sscanf(cmd, " v*%c ", &colFrom);
+
+    /// se coluna de saída é válida
+    return (toupper(colFrom) >= 'A' && toupper(colFrom) <= 'D');
+
+    /// comando é inválido
+    return 0;
+}
+
+///
 /// \brief  readCmd1, executa parse em comando de (mover para free cells)
 /// \param  cmd, string a ser parseada
 /// \param  colFrom, armazena primeira coluna lida
@@ -377,4 +400,18 @@ void readCmd5(char cmd[], char *suit, char *rank) {
 void readCmd6(char cmd[], char fileName[]) {
     /// lê comando e armazena nos argumentos passados
     sscanf(cmd, " save \"%[^\"]\"", fileName);
+}
+
+///
+/// \brief  readCmd7, executa parse em comando de (mover da free cells para home cells)
+/// \param  cmd, string a ser parseada
+/// \param  colFrom, armazena primeira coluna lida
+/// \param  colTo, armazena segunda coluna lida
+/// \pre    nenhuma
+/// \post   colFrom e colTo recebem valores correspondentes
+///
+void readCmd7(char cmd[], char *colFrom) {
+    /// lê comando e armazena nos argumentos passados
+    sscanf(cmd, " v*%c ", colFrom);
+    *colFrom = toupper(*colFrom);
 }
