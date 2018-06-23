@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ListApp</string>
+
+    <string name="list_label_text">Orders history:</string>
+
+    <string name="order_id">Order (%order_id%):</string>
+    <string name="order_qnt">%qnt% items</string>
+    <string name="order_id_extra_key">jedson.gabriel.com.order_id</string>
+    <string name="item_id">%item_id%</string>
+    <string name="item_name">%item_name%</string>
+    <string name="item_qnt">%item_qnt%</string>
+    <string name="order_cost">%order_cost%</string>
+
+</resources>

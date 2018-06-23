@@ -1,0 +1,12 @@
+{
+  "items" : [ {
+    "name" : "NONE",
+    "cost" : 0
+  }, {
+    "name" : "coke",
+    "cost" : 7.99
+  }, {
+    "name" : "ice cream",
+    "cost" : 3.99
+  } ]
+}

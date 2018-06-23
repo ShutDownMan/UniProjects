@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Active</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+
+    <string name="user_name_input_label">Name:</string>
+    <string name="user_name_input_hint">type in your name</string>
+
+    <string name="user_password_input_label">Password:</string>
+    <string name="user_password_input_hint">type in your password</string>
+
+    <string name="user_confirm_button_label">CONFIRM</string>
+
+    <string name="user_greetings_content">Hello %user%,\n\nHow are you doing?\n\nSincerely,\nJedson gabriel.</string>
+
+    <string name="dialog_failed_login_title">LOGIN FAILED!</string>
+
+    <string name="user_name_extra_key">user.jedson.com.user_name</string>
+
+</resources>
