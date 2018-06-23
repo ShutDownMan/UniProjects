@@ -2,7 +2,7 @@
 #define MAIN_H
 
 typedef struct domino {
-    int x, y;
+    int esq, dir;
 } Domino;
 
 typedef Domino *ItemType;

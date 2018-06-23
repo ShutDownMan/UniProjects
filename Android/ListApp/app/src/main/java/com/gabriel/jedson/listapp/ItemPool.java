@@ -13,7 +13,7 @@ public class ItemPool implements Serializable {
         return ourInstance;
     }
 
-    ArrayList<Item> pool;
+    private ArrayList<Item> pool;
 
     private ItemPool() {
         this.pool = new ArrayList<Item>();
