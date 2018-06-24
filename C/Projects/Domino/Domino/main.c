@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]) {
     if(argc == 3) {
         /// se conseguiu abrir arquivo de entrada e saida
         if((inF = fopen(argv[1], "r+")) && (outF = fopen(argv[2], "w+"))) {
-            /// lê do arquivo de entrada a quantidade de dominóes no conjunto
+            /// lê do arquivo de entrada a quantidade de dominós no conjunto
             fscanf(inF, "%d", &setQnt);
             /// para i começando em zero, até quantidade de dominós no conjuunto ser zero
             for(i = 0; setQnt; ++i) {
@@ -29,7 +29,7 @@ int main(int argc, char const *argv[]) {
                 fprintf(outF, "Teste %d\n", i+1);
                 /// se jogo é possível
                 if(isPossibleGame(inputSet, gameSet)) {
-                    /// printa sim, e o conjunto resposta
+                    /// printa sim e o conjunto resposta
                     fprintf(outF, "sim\n");
                     printSet(outF, gameSet);
 
@@ -228,7 +228,7 @@ void freeListInfo(List *aList) {
     /// variável iterador e auxiliar
     Node *tracer, *aux;
 
-    /// para tracer começando no começo da lista e indo até o final
+    /// para tracer começando no inicio da lista e indo até o final
     for(tracer = aList->head; tracer; ) {
         /// auxiliar recebe o próximo do atual
         aux = tracer->next;
@@ -272,7 +272,7 @@ int isPossibleGame(List *inList, List *gameSet) {
 
         /// testa recursivamente se o pivô escolhido forma um jogo válido
         if(isPossiblePivot(pivot, available, gameSet)) {
-            /// flag de resultado verdadeira e insere pivô na cabeça da lista resultado
+            /// flag de resultado recebe verdadeiro e insere pivô na cabeça da lista resultado
             isPossible = 1;
             insertOnHead(gameSet, pivot);
         } else { ///< se lado esquerdo do pivô não forma jogo válido
@@ -281,7 +281,7 @@ int isPossibleGame(List *inList, List *gameSet) {
 
             /// testa recursivamente se o pivô escolhido forma um jogo válido
             if(isPossiblePivot(pivot, available, gameSet)) {
-                /// flag de resultado verdadeira e insere pivô na cabeça da lista resultado
+                /// flag de resultado recebe verdadeiro e insere pivô na cabeça da lista resultado
                 isPossible = 1;
                 insertOnHead(gameSet, pivot);
             } else { //< nenhuma dos lados do pivô formam jogo válido
