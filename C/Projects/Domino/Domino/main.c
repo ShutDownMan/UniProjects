@@ -47,7 +47,7 @@ int main(int argc, char const *argv[]) {
                 fscanf(inF, "%d", &setQnt);
             }
         } else {
-            printf("Erro na abertura do arquivo (%s | %s) de entrada!\n", argv[1], argv[2]);
+            printf("Erro na abertura dos arquivos (%s | %s)!\n", argv[1], argv[2]);
         }
     }
 
