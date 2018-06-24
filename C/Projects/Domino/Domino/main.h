@@ -2,7 +2,7 @@
 #define MAIN_H
 
 typedef struct domino {
-    int x, y;
+    int esq, dir;
 } Domino;
 
 typedef Domino *ItemType;
@@ -23,7 +23,7 @@ typedef struct list {
  * \param inList, lista a ser inserida as peças
  * \param setQnt, quantidade de peças a serem lidas
  */
-void readInputSet(List *inList, int setQnt);
+void readInputSet(FILE *inF, List *inList, int setQnt);
 
 /*!
  * \brief createList, cria uma estrutura de lista encadeada com cabeça e cauda

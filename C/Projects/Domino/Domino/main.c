@@ -2,44 +2,56 @@
 #include <stdlib.h>
 #include "main.h"
 
-int main(void) {
+int main(int argc, char const *argv[]) {
     /// conjunto de dominós de entrada
     List *inputSet = createList();
     /// conjunto de dominós resposta
     List *gameSet = createList();
     /// variáveis de iterador e quantidade de dominós a serem lida
     int i, setQnt;
+    /// variável ponteiro para arquivo de entrada
+    FILE *inF;
 
-    /// lê da entrada padrão a quantidade de dominóes no conjunto
-    scanf("%d", &setQnt);
-    /// para i começando em zero, até quantidade de dominós no conjuunto ser zero
-    for(i = 0; setQnt; ++i) {
-        /// lê da entrada padrão o conjunto de dominós de entrada
-        readInputSet(inputSet, setQnt);
+    /// se argumentos de entrada tem tamanho 2
+    if(argc == 2) {
+        /// se conseguiu abrir arquivo de entrada
+        if((inF = fopen(argv[1], "r+"))) {
+            /// lê da entrada padrão a quantidade de dominóes no conjunto
+            fscanf(inF, "%d", &setQnt);
+            /// para i começando em zero, até quantidade de dominós no conjuunto ser zero
+            for(i = 0; setQnt; ++i) {
+                /// lê da entrada padrão o conjunto de dominós de entrada
+                readInputSet(inF, inputSet, setQnt);
 
-        /// printa na saida padrão o conjunto de dominós de entrada
-        printSet(inputSet);
+                /// printa na saida padrão o conjunto de dominós de entrada
+                printf("Entrada:\n  ");
+                printSet(inputSet);
+                printf("\n");
 
-        printf("Teste %d\n", i+1);
-        /// se jogo é possível
-        if(isPossibleGame(inputSet, gameSet)) {
-            /// printa sim, e o conjunto resposta
-            printf("sim\n");
-            printSet(gameSet);
+                printf("Teste %d\n", i+1);
+                /// se jogo é possível
+                if(isPossibleGame(inputSet, gameSet)) {
+                    /// printa sim, e o conjunto resposta
+                    printf("sim\n");
+                    printSet(gameSet);
 
-            /// libera memória utilizada pelo conjunto resposta
-            freeList(gameSet);
-        } else { //< se jogo não é possível
-            /// printa não na saida padão
-            printf("nao\n");
+                    /// libera memória utilizada pelo conjunto resposta
+                    freeList(gameSet);
+                } else { //< se jogo não é possível
+                    /// printa 'não' na saida padão
+                    printf("nao\n");
+                }
+
+                /// libera memória dos dominós e dos nós utilizados
+                freeListInfo(inputSet);
+
+                /// separador de testes
+                printf("---------------\n");
+                fscanf(inF, "%d", &setQnt);
+            }
+        } else {
+            printf("Erro na abertura do arquivo (%s) de entrada!\n", argv[1]);
         }
-
-        /// libera memória dos dominós e dos nós utilizados
-        freeListInfo(inputSet);
-
-        /// separador de testes
-        printf("---------------\n");
-        scanf("%d", &setQnt);
     }
 
     return 0;
@@ -51,13 +63,13 @@ int main(void) {
  * \param inList, lista a ser inserida as peças
  * \param setQnt, quantidade de peças a serem lidas
  */
-void readInputSet(List *inList, int setQnt) {
+void readInputSet(FILE *inF, List *inList, int setQnt) {
     int i, x, y;
 
     /// para i começando em zero e indo até o tamanho do conjunto
     for(i = 0; i < setQnt; ++i) {
         /// lê da entrada padrão a parte esquerda e direita do dominó
-        scanf("%d %d", &x, &y);
+        fscanf(inF, "%d %d", &x, &y);
         /// insere na cabeça o dominó lido
         insertOnHead(inList, createDomino(x, y));
     }
@@ -361,63 +373,110 @@ int isPossiblePivot(ItemType pivot, List *inList, List *gameSet) {
     return isPossible;
 }
 
+/*!
+ * \brief cpyList, copia elementos da lista from para lista dest
+ * \param dest, lista que recebe elementos
+ * \param from, lista que elementos são copiados
+ */
 void cpyList(List *dest, List *from) {
+    /// variável iteradora
     Node *tracer;
 
+    /// para tracer começando no inicio da lista original e indo até o final
     for(tracer = from->head; tracer; tracer = tracer->next) {
+        /// copia para lista destino o nó atual
         insertOnTail(dest, tracer->info);
     }
-
-    dest->length = from->length;
 }
 
+/*!
+ * \brief removeNode, remove nós na lista com o valor passado
+ * \param aList, lista a ser modificada
+ * \param info, valor a procura
+ */
 void removeNode(List *aList, ItemType info) {
+    /// variável iteradora e auxiliar
     Node *tracer, *aux;
 
+    /// se lista é vazia retorna
     if(!aList->head) return;
 
+    /// se o nó a ser retirado é a cabeça da lista
     if(aList->head->info == info) {
+        /// auxiliar recebe antiga cabeça e atualiza a cabeça da lista
         aux = aList->head;
         aList->head = aList->head->next;
+
+        /// se cabeça se tornou nula, atualiza cauda da lista
         if(!aList->head) aList->tail = NULL;
+
+        /// libera antiga cabeça e atualiza tamanho da lista
         free(aux);
         aList->length--;
         return;
     }
 
+    /// para tracer começando no inicio da lista e indo até o final
     for(tracer = aList->head; tracer->next; ) {
+        /// se (proximo de) nó atual é nó a ser retirado
         if(tracer->next->info == info) {
+            /// auxiliar recebe (proximo de) nó atual e atualiza ponteiro para proximo do nó atual
             aux = tracer->next;
             tracer->next = aux->next;
+
+            /// se nó a ser retirado é cauda da lista
             if(aux == aList->tail) {
+                /// atualiza cauda da lista
                 aList->tail = tracer;
             }
+
+            /// libera nó e atualiza tamanho da lista
             free(aux);
             aList->length--;
-        } else {
+        } else { //<  se (proximo de) nó atual não é nó a ser retirado
+            /// vai para proximo nó
             tracer = tracer->next;
         }
     }
 }
 
+/*!
+ * \brief pop, remove primeiro nó da lista e retorna valor armazenado por ele
+ * \param aList, lista a ser modificada
+ * \return valor armazenado pelo primeiro nó da lista
+ */
 ItemType pop(List *aList) {
+    /// variável auxiliar
     Node *aux;
+    /// variável resultado
     ItemType res;
 
+    /// se tamanho da lista original é 0, retorna nulo
     if(!aList->length) return NULL;
 
+    /// auxiliar recebe cabeça da lista e cabeça da lista é atualizada
     aux = aList->head;
     aList->head = aList->head->next;
 
+    /// se lista se tornou vazia, atualiza a cauda
     if(!aList->head) aList->tail = NULL;
 
+    /// resultado recebe conteúdo do nó antiga cabeça
     res = aux->info;
+
+    /// nó é liberado e tamanho da lista é atualizado
     free(aux);
     aList->length--;
 
+    /// retorna conteúdo do primeiro nó da lista
     return res;
 }
 
+/*!
+ * \brief swap, troca o valor de dois inteiros um pelo outro
+ * \param a, primeiro valor
+ * \param b, segundo valor
+ */
 void swap(int *a, int *b) {
     int tmp = *a;
     *a = *b;
