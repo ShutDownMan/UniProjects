@@ -9,48 +9,45 @@ int main(int argc, char const *argv[]) {
     List *gameSet = createList();
     /// variáveis de iterador e quantidade de dominós a serem lida
     int i, setQnt;
-    /// variável ponteiro para arquivo de entrada
-    FILE *inF;
+    /// variável ponteiro para arquivo de entrada e saída
+    FILE *inF, *outF;
 
     /// se argumentos de entrada tem tamanho 2
-    if(argc == 2) {
-        /// se conseguiu abrir arquivo de entrada
-        if((inF = fopen(argv[1], "r+"))) {
-            /// lê da entrada padrão a quantidade de dominóes no conjunto
+    if(argc == 3) {
+        /// se conseguiu abrir arquivo de entrada e saida
+        if((inF = fopen(argv[1], "r+")) && (outF = fopen(argv[2], "w+"))) {
+            /// lê do arquivo de entrada a quantidade de dominóes no conjunto
             fscanf(inF, "%d", &setQnt);
             /// para i começando em zero, até quantidade de dominós no conjuunto ser zero
             for(i = 0; setQnt; ++i) {
-                /// lê da entrada padrão o conjunto de dominós de entrada
+                /// lê do arquivo de entrada o conjunto de dominós de entrada
                 readInputSet(inF, inputSet, setQnt);
 
-                /// printa na saida padrão o conjunto de dominós de entrada
-                printf("Entrada:\n  ");
-                printSet(inputSet);
-                printf("\n");
+                /// printa no arquivo de saida o conjunto de dominós de entrada
+                printSet(outF, inputSet);
 
-                printf("Teste %d\n", i+1);
+                fprintf(outF, "Teste %d\n", i+1);
                 /// se jogo é possível
                 if(isPossibleGame(inputSet, gameSet)) {
                     /// printa sim, e o conjunto resposta
-                    printf("sim\n");
-                    printSet(gameSet);
+                    fprintf(outF, "sim\n");
+                    printSet(outF, gameSet);
 
                     /// libera memória utilizada pelo conjunto resposta
                     freeList(gameSet);
                 } else { //< se jogo não é possível
                     /// printa 'não' na saida padão
-                    printf("nao\n");
+                    fprintf(outF, "nao\n");
                 }
 
                 /// libera memória dos dominós e dos nós utilizados
                 freeListInfo(inputSet);
 
                 /// separador de testes
-                printf("---------------\n");
                 fscanf(inF, "%d", &setQnt);
             }
         } else {
-            printf("Erro na abertura do arquivo (%s) de entrada!\n", argv[1]);
+            printf("Erro na abertura do arquivo (%s | %s) de entrada!\n", argv[1], argv[2]);
         }
     }
 
@@ -59,7 +56,7 @@ int main(int argc, char const *argv[]) {
 
 
 /*!
- * \brief readInputSet, lê da entrada padrão as peças que serão usadas
+ * \brief readInputSet, lê do arquivo de entrada as peças que serão usadas
  * \param inF, arquivo de entrada
  * \param inList, lista a ser inserida as peças
  * \param setQnt, quantidade de peças a serem lidas
@@ -69,7 +66,7 @@ void readInputSet(FILE *inF, List *inList, int setQnt) {
 
     /// para i começando em zero e indo até o tamanho do conjunto
     for(i = 0; i < setQnt; ++i) {
-        /// lê da entrada padrão a parte esquerda e direita do dominó
+        /// lê do arquivo de entrada a parte esquerda e direita do dominó
         fscanf(inF, "%d %d", &x, &y);
         /// insere na cabeça o dominó lido
         insertOnHead(inList, createDomino(x, y));
@@ -180,22 +177,23 @@ Node *createNode(ItemType info) {
 }
 
 /*!
- * \brief printSet, printa na saida padrão a lista passada
+ * \brief printSet, printa no arquivo de saida a lista passada
+ * \param outF, arquivo de saida
  * \param set, lista a ser printada
  */
-void printSet(List *set) {
+void printSet(FILE *outF, List *set) {
     /// variável de iteração
     Node *tracer;
 
     /// para tracer começando no começo da lista e indo até o final
     for(tracer = set->head; tracer; tracer = tracer->next) {
-        /// printa na saida padrão a parte esquerda e direita do dominó
-        printf("%d %d", tracer->info->esq, tracer->info->dir);
+        /// printa no arquivo de saida a parte esquerda e direita do dominó
+        fprintf(outF, "%d %d", tracer->info->esq, tracer->info->dir);
         /// se o próximo nó existe, printa separador
         if(tracer->next)
-            printf("|");
+            fprintf(outF, "|");
     }
-    printf("\n");
+    fprintf(outF, "\n");
 }
 
 /*!

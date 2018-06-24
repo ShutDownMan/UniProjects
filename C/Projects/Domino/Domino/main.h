@@ -64,10 +64,11 @@ List *insertOnTail(List *aList, ItemType info);
 Node *createNode(ItemType info);
 
 /*!
- * \brief printSet, printa na saida padrão a lista passada
+ * \brief printSet, printa no arquivo de saida a lista passada
+ * \param outF, arquivo de saida
  * \param set, lista a ser printada
  */
-void printSet(List *set);
+void printSet(FILE *outF, List *set);
 
 /*!
  * \brief freeList, libera nós da lista passada
