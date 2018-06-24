@@ -20,6 +20,7 @@ typedef struct list {
 
 /*!
  * \brief readInputSet, lê da entrada padrão as peças que serão usadas
+ * \param inF, arquivo de entrada
  * \param inList, lista a ser inserida as peças
  * \param setQnt, quantidade de peças a serem lidas
  */
