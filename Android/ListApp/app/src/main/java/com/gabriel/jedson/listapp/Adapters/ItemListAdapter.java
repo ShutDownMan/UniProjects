@@ -1,4 +1,4 @@
-package com.gabriel.jedson.listapp;
+package com.gabriel.jedson.listapp.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,15 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.io.Serializable;
+import com.gabriel.jedson.listapp.Classes.Order;
+import com.gabriel.jedson.listapp.R;
+
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.zip.Inflater;
 
 public class ItemListAdapter extends BaseAdapter {
-    Context appContext;
-    LayoutInflater mInflater;
-    ArrayList<Order.Item> items;
+    private Context appContext;
+    private LayoutInflater mInflater;
+    private ArrayList<Order.Item> items;
 
     public ItemListAdapter(Context appContext, ArrayList<Order.Item> items) {
         this.appContext = appContext;
@@ -50,7 +51,7 @@ public class ItemListAdapter extends BaseAdapter {
 
         itemNameTextView.setText(item.getName());
         itemQntTextView.setText(String.format(Locale.US, "x%d", item.getQuantity()));
-        itemCostTextView.setText(String.format(Locale.US, "R$ %.2f", item.getCost()));
+        itemCostTextView.setText(String.format(Locale.US, "$ %.2f", item.getCost()));
 
         return itemView;
     }

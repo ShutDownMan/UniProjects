@@ -1,4 +1,4 @@
-package com.gabriel.jedson.listapp;
+package com.gabriel.jedson.listapp.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.gabriel.jedson.listapp.Classes.Order;
+import com.gabriel.jedson.listapp.R;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -48,7 +51,7 @@ public class OrderListAdapter extends BaseAdapter {
 
         String id = String.format(Locale.US, "%04d", order.getOrderId());
         String quantity = this.appContext.getString(R.string.order_qnt).replaceAll("%qnt%", String.format(Locale.US, "%d", order.getTotalQuantity()));
-        String cost = "R$ " + String.format(Locale.US, "%.2f", order.getTotalCost());
+        String cost = "$ " + String.format(Locale.US, "%.2f", order.getTotalCost());
 
         idTextView.setText(id);
         quantityTextView.setText(quantity);

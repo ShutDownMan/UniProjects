@@ -24,7 +24,7 @@
         android:layout_alignTop="@+id/itemNameTextView"
         android:layout_marginEnd="14dp"
         android:layout_marginRight="14dp"
-        android:text="R$ 1.99"
+        android:text="$ 1.99"
         android:textSize="26sp" />
 
     <TextView

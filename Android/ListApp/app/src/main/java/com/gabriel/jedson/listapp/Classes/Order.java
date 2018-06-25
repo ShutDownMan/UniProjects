@@ -1,4 +1,4 @@
-package com.gabriel.jedson.listapp;
+package com.gabriel.jedson.listapp.Classes;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,13 +7,11 @@ public class Order implements Serializable {
     private int orderId;
     private String orderType;
     private ArrayList<Item> itemsOrdered;
-    ItemPool itemPool;
 
     public Order(int orderID, String orderType, ArrayList<Item> itemsOrdered) {
         this.orderId = orderID;
         this.orderType = orderType;
         this.itemsOrdered = itemsOrdered;
-        this.itemPool = ItemPool.getInstance();
     }
 
     public String getOrderType() {
@@ -52,7 +50,6 @@ public class Order implements Serializable {
         private int quantity;
 
         ItemPool.Item refItem;
-
 
         public Item(ItemPool.Item refItem, int quantity) {
             this.refItem = refItem;

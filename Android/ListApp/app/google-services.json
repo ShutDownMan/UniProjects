@@ -1,10 +1,42 @@
 {
   "project_info": {
-    "project_number": "556200789009",
-    "firebase_url": "https://listapp-17b76.firebaseio.com",
-    "project_id": "listapp-17b76",
-    "storage_bucket": "listapp-17b76.appspot.com"
+    "project_number": "706985831915",
+    "firebase_url": "https://listapp-43c36.firebaseio.com",
+    "project_id": "listapp-43c36",
+    "storage_bucket": "listapp-43c36.appspot.com"
   },
-  "client": [],
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706985831915:android:7a726160bf507d51",
+        "android_client_info": {
+          "package_name": "com.gabriel.jedson.listapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706985831915-gib5s0a1n1dvr6i3qtnvktda5i7nrhj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFtRJJY7rqy_mLjvCwTSOr-aJeCwhKCIc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
   "configuration_version": "1"
 }

@@ -1,9 +1,13 @@
-package com.gabriel.jedson.listapp;
+package com.gabriel.jedson.listapp.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.gabriel.jedson.listapp.Adapters.ItemListAdapter;
+import com.gabriel.jedson.listapp.Classes.Order;
+import com.gabriel.jedson.listapp.R;
 
 import java.util.Locale;
 
@@ -38,7 +42,7 @@ public class OrderDetailActivity extends AppCompatActivity {
             String id = getApplicationContext().getString(R.string.order_id).replaceAll("%order_id%", String.format(Locale.US, "%04d", mOrder.getOrderId()));
             this.orderIdTextView.setText(id);
             this.itemsQntTextView.setText(String.format(Locale.US, "%d items", mOrder.getTotalQuantity()));
-            this.totalCostTextView.setText(String.format(Locale.US, "R$ %.2f", mOrder.getTotalCost()));
+            this.totalCostTextView.setText(String.format(Locale.US, "$ %.2f", mOrder.getTotalCost()));
 
             setupItemListView();
         }
