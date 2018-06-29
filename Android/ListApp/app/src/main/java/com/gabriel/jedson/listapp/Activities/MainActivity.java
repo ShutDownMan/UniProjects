@@ -6,9 +6,11 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.gabriel.jedson.listapp.Adapters.OrderListAdapter;
 import com.gabriel.jedson.listapp.Classes.ItemPool;
@@ -23,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
     ListView ordersListView;
     SwipeRefreshLayout orderListSwipeRefreshLayout;
     FloatingActionButton addNewOrderFloatingActionButton;
+    ProgressBar orderListProgressBar;
 
-    ArrayList<Order> orders;
+    SparseArray<Order> orders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         setupInstances();
         setupViewMethods();
-        setupPlaceHolderItems();
+        setupView();
+//        setupPlaceHolderItems();
 
         addPlaceHolderOrder();
         showOrderList();
@@ -44,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
         this.ordersListView = (ListView)findViewById(R.id.ordersListView);
         this.orderListSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.orderListSwipeRefreshLayout);
         this.addNewOrderFloatingActionButton = (FloatingActionButton)findViewById(R.id.addNewOrderFloatingActionButton);
+        this.orderListProgressBar = (ProgressBar)findViewById(R.id.orderListProgressBar);
 
-        this.orders = new ArrayList<Order>();
+        this.orders = new SparseArray<>();
     }
 
     private void setupViewMethods() {
@@ -71,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void setupView() {
+        this.orderListProgressBar.setVisibility(View.INVISIBLE);
+    }
+
     private void setupPlaceHolderItems() {
         ItemPool itemPool = ItemPool.getInstance();
 
@@ -93,27 +102,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Order findOrderById(long id) {
-        Order foundOrder = null;
-        for (Order order : this.orders) {
-            if (order.getOrderId() == id) {
-                foundOrder = order;
-            }
-        }
-
-        return foundOrder;
+        return this.orders.get((int) id);
     }
 
     private void addPlaceHolderOrder() {
         Random random = new Random();
         ItemPool itemPool = ItemPool.getInstance();
         ArrayList<Order.Item> itemsList = new ArrayList<>();
+        Order newOrder = null;
 
         itemsList.add(new Order.Item(itemPool.findItemById(1), 1+random.nextInt(12)));
         itemsList.add(new Order.Item(itemPool.findItemById(2), 1+random.nextInt(12)));
         itemsList.add(new Order.Item(itemPool.findItemById(3), 1+random.nextInt(12)));
         itemsList.add(new Order.Item(itemPool.findItemById(4), 1+random.nextInt(4)));
+        itemsList.add(new Order.Item(itemPool.findItemById(5), 1));
 
-        this.orders.add(new Order(this.orders.size(), "NONE", itemsList));
+        newOrder = new Order(this.orders.size(), "NONE", itemsList);
+
+        this.orders.put(newOrder.getOrderId(), newOrder);
     }
 
     private void showOrderList() {

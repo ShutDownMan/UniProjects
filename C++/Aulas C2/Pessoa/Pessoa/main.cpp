@@ -1,17 +1,17 @@
 #include <iostream>
-#include <pessoa.h>
+
+#include "pessoa.h"
+#include "date.h"
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
-    Pessoa *p = NULL;
 
-    p = new Pessoa();
+int main() {
+    Person *person = new Person(new string("Alisson"), new Date(12, 9, 1995), 1.66);
 
-    p->setar();
-    p->mostrar();
+    cout << *person->getName() << " is " << person->getAge() << " year(s) old." << endl;
 
-    delete p;
+    person->show();
 
     return 0;
 }

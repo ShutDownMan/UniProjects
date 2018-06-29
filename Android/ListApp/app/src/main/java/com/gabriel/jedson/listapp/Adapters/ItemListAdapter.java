@@ -45,13 +45,18 @@ public class ItemListAdapter extends BaseAdapter {
         Order.Item item = (Order.Item)this.getItem(position);
         View itemView = mInflater.inflate(R.layout.item_listview_detail, null);
 
-        TextView itemNameTextView = itemView.findViewById(R.id.itemNameTextView);
-        TextView itemQntTextView = itemView.findViewById(R.id.itemQntTextView);
-        TextView itemCostTextView = itemView.findViewById(R.id.itemCostTextView);
+        if(item.updateRef()) {
+            TextView itemNameTextView = itemView.findViewById(R.id.itemNameTextView);
+            TextView itemQntTextView = itemView.findViewById(R.id.itemQntTextView);
+            TextView itemCostTextView = itemView.findViewById(R.id.itemCostTextView);
 
-        itemNameTextView.setText(item.getName());
-        itemQntTextView.setText(String.format(Locale.US, "x%d", item.getQuantity()));
-        itemCostTextView.setText(String.format(Locale.US, "$ %.2f", item.getCost()));
+            itemNameTextView.setText(item.getName());
+            itemQntTextView.setText(String.format(Locale.US, "x%d", item.getQuantity()));
+            itemCostTextView.setText(String.format(Locale.US, "$ %.2f", item.getCost()));
+        } else {
+            itemView.setVisibility(View.INVISIBLE);
+            items.remove(item);
+        }
 
         return itemView;
     }

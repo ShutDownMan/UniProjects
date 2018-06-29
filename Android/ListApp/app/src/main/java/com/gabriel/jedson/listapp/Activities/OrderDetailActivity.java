@@ -1,5 +1,6 @@
 package com.gabriel.jedson.listapp.Activities;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -17,6 +18,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     TextView itemsQntTextView;
     TextView totalCostTextView;
     ListView orderItemsListView;
+    SwipeRefreshLayout itemListSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_detail);
 
         setupInstances();
+        setupViewMethods();
         setupViewContent();
     }
 
@@ -35,6 +38,17 @@ public class OrderDetailActivity extends AppCompatActivity {
         this.itemsQntTextView = (TextView)findViewById(R.id.itemsQntTextView);
         this.totalCostTextView = (TextView)findViewById(R.id.totalCostTextView);
         this.orderItemsListView = (ListView)findViewById(R.id.orderItemsListView);
+        this.itemListSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.itemListSwipeRefreshLayout);
+    }
+
+    private void setupViewMethods() {
+        this.itemListSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshListView();
+                itemListSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     private void setupViewContent() {
@@ -44,11 +58,11 @@ public class OrderDetailActivity extends AppCompatActivity {
             this.itemsQntTextView.setText(String.format(Locale.US, "%d items", mOrder.getTotalQuantity()));
             this.totalCostTextView.setText(String.format(Locale.US, "$ %.2f", mOrder.getTotalCost()));
 
-            setupItemListView();
+            refreshListView();
         }
     }
 
-    private void setupItemListView() {
+    private void refreshListView() {
         ItemListAdapter itemListAdapter = new ItemListAdapter(getApplicationContext(), this.mOrder.getItems());
 
         this.orderItemsListView.setAdapter(itemListAdapter);

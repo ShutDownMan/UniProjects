@@ -1,6 +1,7 @@
 package com.gabriel.jedson.listapp.Adapters;
 
 import android.content.Context;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,35 @@ import java.util.Locale;
 public class OrderListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Context appContext;
-    private ArrayList<Order> orders;
+    private SparseArray<Order> orders;
+    private SparseArray<Order> pending;
 
-    public OrderListAdapter(Context appContext, ArrayList<Order> orders) {
-        this.orders = orders;
+    public OrderListAdapter(Context appContext, SparseArray<Order> orders) {
+        this.orders = new SparseArray<>();
+        this.pending = orders;
         this.appContext = appContext;
 
         this.mInflater = (LayoutInflater)this.appContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        initialize();
+    }
+
+    private void initialize() {
+        checkPendingOrders();
+    }
+
+    private void checkPendingOrders() {
+        for(int i = 0; i < this.pending.size();) {
+            int key = this.pending.keyAt(i);
+            Order order = this.pending.get(key);
+
+            if(order.isLoaded()) {
+                this.orders.put(order.getOrderId(), order);
+                this.pending.remove(order.getOrderId());
+            } else {
+                i++;
+            }
+        }
     }
 
     @Override
