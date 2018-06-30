@@ -41,10 +41,10 @@ Arguments *readArguments(int argc, char const *argv[]) {
 
 void sortModeNumeric(Arguments *args) {
 	int *vet = newRandVet(args->numQuantity);
-	int sortType = SORT_TYPE_ALL;
+	int sortType = SORT_TYPE_COMPARE;
 	FILE *outputFile = stdout;
 
-//	fprintVet(stdout, vet, args->numQuantity);
+//	fprintNumericVet(stdout, vet, args->numQuantity);
 
 	if(args->sortName)
 		sortType = getSortType(args->sortName);
@@ -52,43 +52,44 @@ void sortModeNumeric(Arguments *args) {
 		outputFile = fopen(args->outputFileName, "w+");
 
 	switch(sortType) {
-		case SORT_TYPE_ALL: {
-			compareSorts(vet, args->numQuantity);
+		case SORT_TYPE_COMPARE: {
+			compareNumericSorts(vet, args->numQuantity);
 			return;
 		}
+
 		case SORT_TYPE_INSERTION: {
 			fprintf(outputFile, "InsertionSort:\n");
-			selectionSort(vet, args->numQuantity);
+			numericInsertionSort(vet, args->numQuantity);
 			break;
 		}
 
 		case SORT_TYPE_SELECTION: {
-			fprintf(outputFile, "InsertionSort:\n");
-			insertionSort(vet, args->numQuantity);
+			fprintf(outputFile, "SelectionSort:\n");
+			numericSelectionSort(vet, args->numQuantity);
 			break;
 		}
 
 		case SORT_TYPE_QUICKSORT: {
 			fprintf(outputFile, "QuickSort:\n");
-			quickSort(vet, 0, args->numQuantity);
+			numericQuickSort(vet, 0, args->numQuantity-1);
 			break;
 		}
 
 		case SORT_TYPE_MERGE: {
 			fprintf(outputFile, "MergeSort:\n");
-			mergeSort(vet, 0, args->numQuantity);
+			numericMergeSort(vet, 0, args->numQuantity);
 			break;
 		}
 
 		case SORT_TYPE_HEAP: {
 			fprintf(outputFile, "HeapSort:\n");
-			heapSort(vet, args->numQuantity);
+			numericHeapSort(vet-1, args->numQuantity);
 			break;
 		}
 
 		case SORT_TYPE_BUBBLE: {
 			fprintf(outputFile, "BubbleSort:\n");
-			bubbleSort(vet, args->numQuantity);
+			numericBubbleSort(vet, args->numQuantity);
 			break;
 		}
 
@@ -97,7 +98,9 @@ void sortModeNumeric(Arguments *args) {
 			return;
 		}
 	}
-	fprintVet(outputFile, vet, args->numQuantity);
+
+	fprintNumericVet(outputFile, vet, args->numQuantity);
+	free(vet);
 }
 
 int *newRandVet(int length) {
@@ -111,7 +114,7 @@ int *newRandVet(int length) {
 	return newVet;
 }
 
-void fprintVet(FILE *f, int vet[], int length) {
+void fprintNumericVet(FILE *f, int vet[], int length) {
 	int i, j, index;
 
 	for(i = 0; i < ceil((double)length/NUMBERS_PER_LINE); ++i) {
@@ -123,7 +126,7 @@ void fprintVet(FILE *f, int vet[], int length) {
 	}
 }
 
-void compareSorts(int vet[], int length) {
+void compareNumericSorts(int vet[], int length) {
 	double timeTaken;
 
 	timeTaken = getTimeTaken(SORT_TYPE_QUICKSORT, vet, length);
@@ -135,11 +138,11 @@ void compareSorts(int vet[], int length) {
 	timeTaken = getTimeTaken(SORT_TYPE_MERGE, vet, length);
 	printf("MergeSort took		%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTaken(SORT_TYPE_SELECTION, vet, length);
-	printf("SelectionSort took	%.4lf seconds.\n", timeTaken);
-
 	timeTaken = getTimeTaken(SORT_TYPE_INSERTION, vet, length);
 	printf("InsertionSort took	%.4lf seconds.\n", timeTaken);
+
+	timeTaken = getTimeTaken(SORT_TYPE_SELECTION, vet, length);
+	printf("SelectionSort took	%.4lf seconds.\n", timeTaken);
 
 	timeTaken = getTimeTaken(SORT_TYPE_BUBBLE, vet, length);
 	printf("BubbleSort took		%.4lf seconds.\n", timeTaken);
@@ -162,5 +165,125 @@ int getSortType(char *sortName) {
 }
 
 void sortModeString(Arguments *args) {
+	char **vet;
+	int length;
+	int sortType = SORT_TYPE_COMPARE;
+	FILE *outputFile = stdout;
+	FILE *inputFile = stdin;
 
+	if(args->sortName)
+		sortType = getSortType(args->sortName);
+	if(args->inputFileName)
+		inputFile = fopen(args->inputFileName, "r+");
+	if(args->outputFileName)
+		outputFile = fopen(args->outputFileName, "w+");
+
+	vet = readStringsInFile(inputFile, &length);
+
+//	fprintStringVet(stdout, vet, length);
+
+	switch(sortType) {
+		case SORT_TYPE_COMPARE: {
+			compareStringSorts(vet, length);
+			return;
+		}
+
+		case SORT_TYPE_INSERTION: {
+			fprintf(outputFile, "InsertionSort:\n");
+			stringInsertionSort(vet, length);
+			break;
+		}
+
+		case SORT_TYPE_SELECTION: {
+			fprintf(outputFile, "SelectionSort:\n");
+			stringSelectionSort(vet, length);
+			break;
+		}
+
+		case SORT_TYPE_QUICKSORT: {
+			fprintf(outputFile, "QuickSort:\n");
+			stringQuickSort(vet, 0, length-1);
+			break;
+		}
+
+		case SORT_TYPE_MERGE: {
+			fprintf(outputFile, "MergeSort:\n");
+			stringMergeSort(vet, 0, length);
+			break;
+		}
+
+		case SORT_TYPE_HEAP: {
+			fprintf(outputFile, "HeapSort:\n");
+			stringHeapSort(vet-1, length);
+			break;
+		}
+
+		case SORT_TYPE_BUBBLE: {
+			fprintf(outputFile, "BubbleSort:\n");
+			stringBubbleSort(vet, length);
+			break;
+		}
+
+		default: {
+			fprintf(outputFile, "invalid sort name (%s)\n", args->sortName);
+			return;
+		}
+	}
+
+	fprintStringVet(outputFile, vet, length);
+	free(vet);
+}
+
+char **readStringsInFile(FILE *f, int *length) {
+	int i, maxLength;
+	char **newVet;
+	char str[256];
+
+	maxLength = 2;
+	newVet = (char **)malloc(sizeof(char *) * maxLength);
+
+	for(i = 0; !feof(f); ++i) {
+		if(i+1 > maxLength) {
+			maxLength *= 2;
+			newVet = (char **)realloc(newVet, sizeof(char *) * maxLength);
+		}
+		fscanf(f, " %[^\n]%*c", str);
+		newVet[i] = strcpy(malloc(sizeof(char) * strlen(str) + 1), str);
+	}
+
+	maxLength = i;
+	newVet = (char **)realloc(newVet, sizeof(char *) * maxLength);
+
+	*length = maxLength;
+	return newVet;
+}
+
+void fprintStringVet(FILE *f, char *vet[], int length) {
+	int i;
+
+	for(i = 0; i < length; ++i) {
+		fprintf(f, "%s\n", vet[i]);
+	}
+}
+
+void compareStringSorts(char *vet[], int length) {
+	double timeTaken;
+
+	timeTaken = getTimeTakenStr(SORT_TYPE_QUICKSORT, vet, length);
+	printf("QuickSort took 		%.4lf seconds.\n", timeTaken);
+
+	timeTaken = getTimeTakenStr(SORT_TYPE_HEAP, vet, length);
+	printf("HeapSort took		%.4lf seconds.\n", timeTaken);
+
+	timeTaken = getTimeTakenStr(SORT_TYPE_MERGE, vet, length);
+	printf("MergeSort took		%.4lf seconds.\n", timeTaken);
+
+	timeTaken = getTimeTakenStr(SORT_TYPE_INSERTION, vet, length);
+	printf("InsertionSort took	%.4lf seconds.\n", timeTaken);
+
+	timeTaken = getTimeTakenStr(SORT_TYPE_SELECTION, vet, length);
+	printf("SelectionSort took	%.4lf seconds.\n", timeTaken);
+
+	timeTaken = getTimeTakenStr(SORT_TYPE_BUBBLE, vet, length);
+	printf("BubbleSort took		%.4lf seconds.\n", timeTaken);
 }

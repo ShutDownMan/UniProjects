@@ -2,7 +2,7 @@
 #define START_H
 
 #define SORT_TYPE_INVALID -1
-#define SORT_TYPE_ALL 0
+#define SORT_TYPE_COMPARE 0
 #define SORT_TYPE_INSERTION 1
 #define SORT_TYPE_SELECTION 2
 #define SORT_TYPE_QUICKSORT 3
@@ -42,14 +42,21 @@ Arguments *readArguments(int argc, char const *argv[]);
 
 void sortModeNumeric(Arguments *args);
 
-void sortModeString(Arguments *args);
-
-void compareSorts(int vet[], int length);
+void compareNumericSorts(int vet[], int length);
 
 int *newRandVet(int length);
 
-void fprintVet(FILE *f, int vet[], int length);
+void fprintNumericVet(FILE *f, int vet[], int length);
 
 int getSortType(char *sortName);
+
+
+void sortModeString(Arguments *args);
+
+char **readStringsInFile(FILE *f, int *length);
+
+void fprintStringVet(FILE *f, char *vet[], int length);
+
+void compareStringSorts(char *vet[], int length);
 
 #endif // START_H
