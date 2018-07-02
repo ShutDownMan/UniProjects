@@ -113,7 +113,7 @@ void quadraticos() {
 		printf("\n");
 		for (i = 0; i < num-2; ++i){
 			printf("%c", car);
-			printLine(num - 2,'O');
+			printLine(num - 2,' ');
 			printf("%c",car);
 			printf("\n");
 
@@ -147,6 +147,6 @@ int main() {
 //	escravoCriadorDePiramideInv();
 
 	/// 8.
-	quadraticos();
+//	quadraticos();
 
 }

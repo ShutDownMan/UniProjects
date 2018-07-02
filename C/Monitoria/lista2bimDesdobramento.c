@@ -56,6 +56,31 @@ void drawArrow() {
 }
 
 
+/// 5.
+void multNumPow2() {
+	int x, y;
+	int aux, res;
+
+	scanf("%d %d", &x, &y);
+	aux = y;
+	for (res = 0; aux > 1; aux >>= 1) {
+		res += x << 1;
+	}
+
+	printf("%d x %d = %d\n", x, y, res);
+}
+
+void multNum() {
+	int x, y;
+	int i, res;
+
+	scanf("%d %d", &x, &y);
+	for(i = res = 0; i < x; ++i) {
+		res += y;
+	}
+	printf("%d x %d = %d\n", x, y, res);
+}
+
 int main(int argc, char const *argv[]) {
 
 	/// 1.
@@ -64,7 +89,9 @@ int main(int argc, char const *argv[]) {
 	/// 2.
 //	drawArrow();
 
-	/// 3.
+	/// 5.
+//	multNumPow2();
+//	multNum();
 
 	return 0;
 }
