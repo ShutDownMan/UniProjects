@@ -21,7 +21,7 @@ typedef struct heap {
     int length;
     /// começo e final da pilha
     Node *start, *end;
-} Heap;
+} Stack;
 
 // estrutura da mesa de jogo
 typedef struct table {
@@ -30,7 +30,7 @@ typedef struct table {
     // células
     Card *freeCells[4];
     // pilhas e fundações
-    Heap *homeCells[4], *tableau[8];
+    Stack *homeCells[4], *tableau[8];
 } Table;
 
 // HEAP FUNCTIONS //
@@ -41,7 +41,7 @@ typedef struct table {
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
-Heap *createHeap();
+Stack *createHeap();
 
 ///
 /// \brief  insertCard, insere na pilha a carta indicada
@@ -51,7 +51,7 @@ Heap *createHeap();
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
-Heap *insertCard(Heap *heap, Card *card);
+Stack *insertCard(Stack *heap, Card *card);
 
 ///
 /// \brief  concatHeap, concatena duas pilhas
@@ -61,7 +61,7 @@ Heap *insertCard(Heap *heap, Card *card);
 /// \pre    nenhuma
 /// \post   nenhuma
 ///
-Heap *concatHeap(Heap *heap1, Heap *heap2);
+Stack *concatHeap(Stack *heap1, Stack *heap2);
 
 ///
 /// \brief  reverseHeap, inverte uma cópia
@@ -89,7 +89,7 @@ Node *insertNodeOnTail(Node *list, Card *card);
 /// \pre    nenhuma
 /// \post   pilha perde a cabeça
 ///
-Node *pop(Heap *heap);
+Node *pop(Stack *heap);
 
 ///
 /// \brief  createNode, inicializa nó

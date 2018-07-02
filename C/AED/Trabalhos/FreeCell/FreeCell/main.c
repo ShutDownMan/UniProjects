@@ -152,7 +152,7 @@ Card *createCard(int suitInd, int rankInd) {
 ///
 void shuffleCards(Card* deck[]) {
     int i, ind;
-    Heap *rndHeap = NULL, *tableau[16] = {NULL};
+    Stack *rndHeap = NULL, *tableau[16] = {NULL};
     Node **tracer = NULL;
 
     /// para cada carta
@@ -342,7 +342,7 @@ void printHomeCells(Table *table) {
 /// \pre    pilhas tem que estar inicializadas
 /// \post   nenhuma
 ///
-void reverseTableauHeaps(Heap *tableau[], Node *reversedHeaps[], int *lines) {
+void reverseTableauHeaps(Stack *tableau[], Node *reversedHeaps[], int *lines) {
     int i;
 
     /// para cada pilha na mesa
@@ -568,7 +568,7 @@ void moveFromFreeCells(Table *table, char colFrom, char colTo) {
 void moveColToCol(Table *table, char colFrom, int cardQnt, char colTo) {
     Node *nodeFrom = NULL, *nodeTo = NULL;
     Card *cardFrom = NULL, *cardTo = NULL;
-    Heap *heap;
+    Stack *heap;
     int colFromInd = colFrom - 'A';
     int colToInd = colTo - 'A';
     int i, valid;

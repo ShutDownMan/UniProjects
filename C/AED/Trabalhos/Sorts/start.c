@@ -19,20 +19,15 @@ Arguments *readArguments(int argc, char const *argv[]) {
 
 	if(newArgs->sortMode == 'N') {
 		newArgs->numQuantity = atoi(argv[1]);
-		if(argc > 2) {
-			newArgs->sortName = (char*)argv[2];
-			if(argc > 3) {
-				newArgs->outputFileName = (char*)argv[3];
-			}
-		}
 	}
 	if(newArgs->sortMode == 'C') {
 		newArgs->inputFileName = (char*)argv[1];
-		if(argc > 2) {
-			newArgs->sortName = (char*)argv[2];
-			if(argc > 3) {
-				newArgs->outputFileName = (char*)argv[3];
-			}
+	}
+
+	if(argc > 2) {
+		newArgs->sortName = (char*)argv[2];
+		if(argc > 3) {
+			newArgs->outputFileName = (char*)argv[3];
 		}
 	}
 
@@ -43,8 +38,6 @@ void sortModeNumeric(Arguments *args) {
 	int *vet = newRandVet(args->numQuantity);
 	int sortType = SORT_TYPE_COMPARE;
 	FILE *outputFile = stdout;
-
-//	fprintNumericVet(stdout, vet, args->numQuantity);
 
 	if(args->sortName)
 		sortType = getSortType(args->sortName);
@@ -108,7 +101,7 @@ int *newRandVet(int length) {
 	int *newVet = (int *)malloc(sizeof(int) * length);
 
 	for (i = 0; i < length; ++i) {
-		newVet[i] = rand() % 10000;
+		newVet[i] = rand() % MAXRAND;
 	}
 
 	return newVet;
@@ -179,8 +172,6 @@ void sortModeString(Arguments *args) {
 		outputFile = fopen(args->outputFileName, "w+");
 
 	vet = readStringsInFile(inputFile, &length);
-
-//	fprintStringVet(stdout, vet, length);
 
 	switch(sortType) {
 		case SORT_TYPE_COMPARE: {

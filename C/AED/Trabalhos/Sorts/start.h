@@ -1,6 +1,8 @@
 #ifndef START_H
 #define START_H
 
+#define MAXRAND 10000
+
 #define SORT_TYPE_INVALID -1
 #define SORT_TYPE_COMPARE 0
 #define SORT_TYPE_INSERTION 1
@@ -20,7 +22,7 @@ typedef struct arguments {
 	/// quantidade de números a ser ordenada
 	int numQuantity;
 
-	/// nome do algorítimo de ordenação
+	/// nome do algoritimo de ordenação
 	char *sortName;
 
 	/// nome do arquivo de entrada
@@ -39,6 +41,7 @@ typedef struct arguments {
 */
 
 Arguments *readArguments(int argc, char const *argv[]);
+
 
 void sortModeNumeric(Arguments *args);
 

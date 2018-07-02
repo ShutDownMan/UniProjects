@@ -1,20 +1,26 @@
 #include<stdio.h>
 
-int main(){
-	int casos,h,m,s,extra,i;
+int main(void){
+	int casos, h, m, s, extra, i;
+
 	scanf("%d", &casos);
-	for(i=0;i<casos;i++){
+
+	for(i = 0; i < casos; i++) {
 		scanf("%d %d %d",&h,&m,&s);
-		scanf("%d",&extra);
-		s+=extra;
-		if(s>60){
+		scanf("%d", &extra);
+
+		s += extra;
+		while(s >= 60) {
 			s-=60;
-			m+=1;
-		}if(m>60){
-			m-=60;
-			h+=1;
+			m++;
 		}
+		while(m >= 60) {
+			m -= 60;
+			h++;
+		}
+
 		printf("%d %d %d", h, m, s);
-		return 0;
-		}
+	}
+
+	return 0;
 }
