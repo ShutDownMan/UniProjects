@@ -18,16 +18,20 @@ private:
     vector<Transaction*> *transactions;
 
 public:
-    Account();
-    Account(int id, bool special, double limit);
+    Account(int id);
+    Account(int id, double limit);
 
     int getID() const;
     double getBalance() const;
     void setBalance(double value);
     bool isSpecial() const;
     double getLimit() const;
+    bool isActive() const;
+    void setActive(bool value);
+    bool getSpecial() const;
 
     void addTransaction(string *desc, double quant, TransactionType t);
+    void addTransaction(string *desc, double quant);
 
     vector<Transaction *> *getTransactions() const;
 

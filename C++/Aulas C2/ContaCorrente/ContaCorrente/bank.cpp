@@ -4,9 +4,18 @@ Bank::Bank() {
     this->accounts = new vector<Account*>();
 }
 
-Account *Bank::addAccount(bool special, double limit) {
+Account *Bank::addAccount() {
     int id = this->accounts->size();
-    Account *newAccount = new Account(id, special, limit);
+    Account *newAccount = new Account(id);
+
+    this->accounts->push_back(newAccount);
+
+    return newAccount;
+}
+
+Account *Bank::addAccount(double limit) {
+    int id = this->accounts->size();
+    Account *newAccount = new Account(id, limit);
 
     this->accounts->push_back(newAccount);
 
@@ -28,17 +37,18 @@ Account *Bank::findAccountById(int id) {
 void Bank::deleteAccount(int id) {
     Account *foundAccount = findAccountById(id);
 
-    if(foundAccount) foundAccount->active = false;
+    if(foundAccount) foundAccount->setActive(false);
 }
 
 bool Bank::withdraw(int id, double quant, TransactionType t) {
     Account *acc = findAccountById(id);
 
-    char descStr[MAXSTR] = "withdraw of (%lf) from (%d);";
-    string *desc = new string(sscanf(descStr, quant, id));
+    char descStr[MAXSTR];
+    sprintf(descStr, "withdraw of (%lf) from (%d);", quant, id);
+    string *desc = new string(descStr);
 
-    if(acc && acc->active && acc->isSpecial() && t == Credit) {
-        if(acc->getBalance() + acc->limit >= quant) {
+    if(quant >= 0 && acc && acc->isActive() && acc->isSpecial() && t == Credit) {
+        if(acc->getBalance() + acc->getLimit() >= quant) {
             acc->setBalance(acc->getBalance() - quant);
             acc->addTransaction(desc, quant, t);
 
@@ -52,12 +62,13 @@ bool Bank::withdraw(int id, double quant, TransactionType t) {
 bool Bank::deposit(int id, double quant) {
     Account *acc = findAccountById(id);
 
-    char descStr[MAXSTR] = "deposit of (%lf) to (%d);";
-    string *desc = new string(sscanf(descStr, quant, id));
+    char descStr[MAXSTR];
+    sprintf(descStr, "deposit of (%lf) to (%d);", quant, id);
+    string *desc = new string(descStr);
 
-    if(acc) {
+    if(quant >= 0 && acc) {
         acc->setBalance(acc->getBalance() + quant);
-        acc->addTransaction(desc, quant, t);
+        acc->addTransaction(desc, quant);
         return true;
     }
 
@@ -78,14 +89,15 @@ bool Bank::transfer(int idFrom, int idTo, double quant, TransactionType t) {
     Account *accFrom = findAccountById(idFrom);
     Account *accTo = findAccountById(idTo);
 
-    char descStr[MAXSTR] = "transfer from (%d) to (%d) of (%lf);";
-    string *desc = new string(sscanf(descStr, idFrom, idTo, quant));
+    char descStr[MAXSTR];
+    sprintf(descStr, "transfer from (%d) to (%d) of (%lf);", idFrom, idTo, quant);
+    string *desc = new string(descStr);
 
-    if(accFrom && accFrom->active && accTo && accTo->active) {
-        accFrom->setBalance(acc->getBalance() - quant);
+    if(accFrom && accFrom->isActive() && accTo && accTo->isActive()) {
+        accFrom->setBalance(accFrom->getBalance() - quant);
         accFrom->addTransaction(desc, quant, t);
 
-        accTo->setBalance(acc->getBalance() + quant);
+        accTo->setBalance(accTo->getBalance() + quant);
         accTo->addTransaction(desc, quant, t);
     }
 
@@ -102,12 +114,11 @@ void Bank::showAccounts() {
 
         cout << "(" << acc->getID() << ") - " << acc->getBalance() << ";" << endl;
         cout << "\tTransactions:" << endl;
-        for(j = 0; j < acc->getTransactions()->size(); ++j) {
+        for(j = 0; j < (int)acc->getTransactions()->size(); ++j) {
             tran = acc->getTransactions()->at(j);
 
-            cout << *tran->getDescription() << endl;
+            cout << "\t\t" << *tran->getDescription() << endl;
         }
-
     }
 }
 

@@ -1,6 +1,11 @@
 #include "transaction.h"
 
 
+Transaction::Transaction(string *description, double quantity) {
+    this->description = description;
+    this->quantity = quantity;
+}
+
 Transaction::Transaction(string *description, double quantity, TransactionType transactionType) {
     this->description = description;
     this->quantity = quantity;

@@ -1,7 +1,7 @@
 #include "account.h"
 
-
-Account::Account() {
+Account::Account(int id) {
+    this->ID = id;
     this->active = true;
     this->transactions = new vector<Transaction*>();
     this->balance = 0;
@@ -37,8 +37,28 @@ double Account::getLimit() const {
     return limit;
 }
 
+bool Account::isActive() const
+{
+    return active;
+}
+
+void Account::setActive(bool value)
+{
+    active = value;
+}
+
+bool Account::getSpecial() const
+{
+    return special;
+}
+
 void Account::addTransaction(string *desc, double quant, TransactionType t) {
     Transaction *newT = new Transaction(desc, quant, t);
+    this->transactions->push_back(newT);
+}
+
+void Account::addTransaction(string *desc, double quant) {
+    Transaction *newT = new Transaction(desc, quant);
     this->transactions->push_back(newT);
 }
 

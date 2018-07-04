@@ -17,6 +17,7 @@ class Transaction {
     TransactionType transactionType;
 
 public:
+    Transaction(string *description, double quantity);
     Transaction(string *description, double quantity, TransactionType transactionType);
 
     string *getDescription() const;

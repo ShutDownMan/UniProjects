@@ -18,7 +18,8 @@ private:
 public:
     Bank();
 
-    Account *addAccount(bool special, double limit);
+    Account *addAccount();
+    Account *addAccount(double limit);
 
     Account *findAccountById(int id);
 
