@@ -28,7 +28,6 @@ int main(int argc, char const *argv[]) {
     if(argc > 1)
         initializeAutomata(automata, argv[1]);
 
-    // TODO: ler cadeia e testa-la
     automata->testSequence((char*)"ab00cb");
     automata->testSequence((char*)"abbac");
 

@@ -217,15 +217,12 @@ void calcFib() {
 	while(n != -1) {
 		first = second = 1;
 
-		if(n--) printf("%d ", first);
-		if(n--) printf("%d ", second);
-
 		for(i = 0; i < n; ++i) {
+			printf("%d ", second);
+
 			next = first + second;
 			second = first;
 			first = next;
-
-			printf("%d ", first);
 		}
 		printf("\n");
 
@@ -365,7 +362,7 @@ int main(int argc, char const *argv[]) {
 //	encripify();
 
 	/// 12.
-//	calcFib();
+	calcFib();
 
 	/// 13.
 //	getMinDigitSum();
@@ -374,7 +371,7 @@ int main(int argc, char const *argv[]) {
 //	checkPrime();
 
 	/// 15.
-	getPrimeSum();
+//	getPrimeSum();
 
 
 	/// 23.

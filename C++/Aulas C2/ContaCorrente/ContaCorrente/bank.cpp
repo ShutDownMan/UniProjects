@@ -111,11 +111,24 @@ bool Bank::transfer(int idFrom, int idTo, double quant) {
     string *desc = new string(descStr);
 
     if(accFrom && accFrom->isActive() && accTo && accTo->isActive()) {
-        accFrom->setBalance(accFrom->getBalance() - quant);
-        accFrom->addTransaction(desc, quant);
 
-        accTo->setBalance(accTo->getBalance() + quant);
-        accTo->addTransaction(desc, quant);
+        if(accFrom->getBalance() >= quant) {
+            accFrom->setBalance(accFrom->getBalance() - quant);
+            accFrom->addTransaction(desc, quant, Credit);
+
+            accTo->setBalance(accTo->getBalance() + quant);
+            accTo->addTransaction(desc, quant);
+
+            return true;
+        } else if(accFrom->isSpecial() && accFrom->getBalance() + accFrom->getLimit() >= quant){
+            accFrom->setBalance(accFrom->getBalance() - quant);
+            accFrom->addTransaction(desc, quant, Debit);
+
+            accTo->setBalance(accTo->getBalance() + quant);
+            accTo->addTransaction(desc, quant);
+
+            return true;
+        }
     }
 
     return false;

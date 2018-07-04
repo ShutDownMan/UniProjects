@@ -24,13 +24,13 @@ int main() {
     bank->transfer(0, 2, 100);
 
     bank->showBalance(0);
-    bank->showBalance(2);
-    bank->showBalance(3);
-
     bank->showTransactions(0);
+
+    bank->showBalance(2);
     bank->showTransactions(2);
+
+    bank->showBalance(3);
     bank->showTransactions(3);
 
     return 0;
 }
-
