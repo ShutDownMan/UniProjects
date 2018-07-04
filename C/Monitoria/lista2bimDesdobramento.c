@@ -63,7 +63,7 @@ void multNumPow2() {
 
 	scanf("%d %d", &x, &y);
 	aux = y;
-	for (res = 0; aux > 1; aux >>= 1) {
+	for(res = 0; aux > 1; aux >>= 1) {
 		res += x << 1;
 	}
 
