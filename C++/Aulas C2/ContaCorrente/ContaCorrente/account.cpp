@@ -37,18 +37,15 @@ double Account::getLimit() const {
     return limit;
 }
 
-bool Account::isActive() const
-{
+bool Account::isActive() const {
     return active;
 }
 
-void Account::setActive(bool value)
-{
+void Account::setActive(bool value) {
     active = value;
 }
 
-bool Account::getSpecial() const
-{
+bool Account::getSpecial() const {
     return special;
 }
 

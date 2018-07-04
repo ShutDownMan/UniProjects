@@ -20,10 +20,16 @@ int main() {
     bank->deposit(2, 250);
     bank->deposit(3, 25);
 
-    bank->withdraw(0, 250, Debit);
-    bank->transfer(0, 2, 100, Debit);
+    bank->withdraw(0, 250);
+    bank->transfer(0, 2, 100);
 
-    bank->showAccounts();
+    bank->showBalance(0);
+    bank->showBalance(2);
+    bank->showBalance(3);
+
+    bank->showTransactions(0);
+    bank->showTransactions(2);
+    bank->showTransactions(3);
 
     return 0;
 }

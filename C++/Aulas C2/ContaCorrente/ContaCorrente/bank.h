@@ -25,13 +25,15 @@ public:
 
     void deleteAccount(int id);
 
-    bool withdraw(int id, double quant, TransactionType t);
+    bool withdraw(int id, double quant);
 
     bool deposit(int id, double quant);
 
-    double extrato(int id);
+    void showTransactions(int id);
 
-    bool transfer(int idFrom, int idTo, double quant, TransactionType t);
+    void showBalance(int id);
+
+    bool transfer(int idFrom, int idTo, double quant);
 
     void showAccounts();
 
