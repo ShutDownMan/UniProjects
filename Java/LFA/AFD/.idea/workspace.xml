@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f9ba1b-16b7-4aa5-a267-25a06ae89d2d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jedson/afd/Automata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/ContaCorrente.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/ContaCorrente.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/bank.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/bank.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/bank.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/bank.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/LFA/Trabalhos/AFD/AFD/AFD.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/LFA/Trabalhos/AFD/AFD/AFD.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/LFA/Trabalhos/AFD/AFD/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/LFA/Trabalhos/AFD/AFD/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/LFA/Trabalhos/AFD/build-AFD-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/LFA/Trabalhos/AFD/build-AFD-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/Monitoria/lista2bim.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/Monitoria/lista2bim.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/Projects/Domino/Domino/Domino.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/Projects/Domino/Domino/Domino.pro.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/AFD_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/FileScanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main$MenuChoices.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main$MenuChoices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Java/com/jedson/afd/Automata.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Java/com/jedson/afd/FileScanner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Java/com/jedson/afd/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/com/jedson/afd/automata.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,27 +23,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileScanner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="323">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -52,12 +36,30 @@
       <file leaf-file-name="Automata.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="235">
+              <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
               <folding>
-                <element signature="e#124#125#0" expanded="true" />
-                <element signature="e#151#152#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+                <element signature="e#508#509#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileScanner.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="automata.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/automata.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="18" lean-forward="true" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -82,9 +84,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/jedson/afd/Automata.java" />
+        <option value="$PROJECT_DIR$/src/Java/com/jedson/afd/FileScanner.java" />
+        <option value="$PROJECT_DIR$/src/Java/com/jedson/afd/Automata.java" />
+        <option value="$PROJECT_DIR$/src/Java/com/jedson/afd/Main.java" />
         <option value="$PROJECT_DIR$/src/com/jedson/afd/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/jedson/afd/Automata.java" />
+        <option value="$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java" />
       </list>
     </option>
   </component>
@@ -109,12 +114,30 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="AFD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AFD" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AFD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AFD" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AFD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AFD" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AFD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AFD" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
               <item name="AFD" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -133,7 +156,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -141,6 +164,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="ics" />
   </component>
   <component name="RunDashboard">
@@ -159,7 +185,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jedson.afd.Main" />
       <module name="AFD" />
-      <option name="PROGRAM_PARAMETERS" value="automata.txt" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;automata.txt&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -226,11 +252,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530730794369</updated>
       <workItem from="1530730797352" duration="4294000" />
+      <workItem from="1530745490968" duration="7059000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4294000" />
+    <option name="totallyTimeSpent" value="11353000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -243,36 +270,67 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="9" sideWeight="0.4986577" weight="0.23180594" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32884097" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="0" />
-      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5026846" side_tool="true" weight="0.32884097" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.32884097" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49731544" weight="0.16037735" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.18328841" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49731544" weight="0.23584905" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25771812" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="bottom" id="Find" order="4" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.26107383" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
-      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="4" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.32884097" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26107383" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.4986577" weight="0.23180594" />
+      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" weight="0.16037735" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5026846" side_tool="true" weight="0.32884097" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -281,9 +339,19 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
+        <state relative-caret-position="646">
           <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -303,23 +371,143 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Automata.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/com/jedson/afd/automata.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Java/com/jedson/afd/Automata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <folding>
-            <element signature="e#0#299#0" expanded="true" />
-          </folding>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Java/com/jedson/afd/FileScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Java/com/jedson/afd/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+          <folding>
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automata.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" lean-forward="true" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>AFD:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>AFD</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

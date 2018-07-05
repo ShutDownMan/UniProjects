@@ -1,12 +1,8 @@
 package com.jedson.afd;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main {
-
-    private Scanner scanner;
 
     enum MenuChoices {
         TestSequence,
@@ -18,8 +14,10 @@ public class Main {
         MenuChoices choice;
         Automata automata = new Automata();
 
-        if(args.length > 1) {
-            FileScanner.initializeAutomata(automata, args[1]);
+
+        if(args.length >= 1) {
+            System.out.println(String.format("FileName = %s", args[0]));
+            FileScanner.initializeAutomata(automata, args[0]);
         }
 
         choice = menu();
@@ -34,6 +32,8 @@ public class Main {
             }
             choice = menu();
         }
+
+        System.out.println("Exiting program...");
     }
 
     private static String readSequence() {
@@ -42,22 +42,26 @@ public class Main {
     }
 
 
-    static MenuChoices menu() {
+    private static MenuChoices menu() {
         Scanner scanner = new Scanner(System.in);
-        Integer input = scanner.nextInt();
+        Integer input;
 
         System.out.println("(1) -> Test Sequence on AFD");
         System.out.println("(2) -> Show grammar of AFD");
         System.out.println("(3) -> Exit");
 
+        input = scanner.nextInt();
         while(true) {
             switch (input) {
-                case 0:
-                    return MenuChoices.TestSequence;
                 case 1:
+                    return MenuChoices.TestSequence;
+                case 2:
                     return MenuChoices.PrintGrammar;
-                default:
+                case 3:
                     return MenuChoices.Exit;
+                default:
+                    System.out.println("Type in a valid command!");
+                    input = scanner.nextInt();
             }
         }
     }

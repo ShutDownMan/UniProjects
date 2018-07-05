@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="AFD:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AFD_jar</output-path>
+    <root id="archive" name="AFD.jar">
+      <element id="module-output" name="AFD" />
+    </root>
+  </artifact>
+</component>
