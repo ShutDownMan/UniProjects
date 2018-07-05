@@ -48,7 +48,7 @@ public class FileScanner {
                 automata.addSymbol(symbols[i].charAt(0));
                 System.out.println(String.format("Symbol '%c' has been added!", symbols[i].charAt(0)));
             } else {
-                System.out.println(String.format("Symbol '%s' is Invalid!", symbols[i]));
+                System.out.println(String.format("Symbol [%s] is Invalid!", symbols[i]));
             }
         }
     }
@@ -63,7 +63,7 @@ public class FileScanner {
         for (int i = 0; i < stateNames.length; i++) {
             stateNames[i] = stateNames[i].trim();
             automata.addState(stateNames[i]);
-            System.out.println(String.format("State '%s' has been added!", stateNames[i]));
+            System.out.println(String.format("State [%s] has been added!", stateNames[i]));
         }
     }
 
@@ -74,7 +74,7 @@ public class FileScanner {
         initialStateName = line.substring(line.indexOf('=')+1).trim();
 
         automata.setInitialState(initialStateName);
-        System.out.println(String.format("State '%s' is now initial!", initialStateName));
+        System.out.println(String.format("State [%s] is now initial!", initialStateName));
     }
 
     private static void readFinalStates(Automata automata, Scanner fileScanner) {
@@ -87,14 +87,14 @@ public class FileScanner {
         for (int i = 0; i < stateNames.length; i++) {
             stateNames[i] = stateNames[i].trim();
             automata.setFinalState(stateNames[i]);
-            System.out.println(String.format("State '%s' is now final!", stateNames[i]));
+            System.out.println(String.format("State [%s] is now final!", stateNames[i]));
         }
     }
 
     private static void readTransitions(Automata automata, Scanner fileScanner) {
         String line, stateFromSAndymbol;
         String stateNameFrom, stateNameTo;
-        char symbol;
+        Character symbol;
 
         while(fileScanner.hasNextLine()) {
             line = fileScanner.nextLine();
@@ -106,7 +106,7 @@ public class FileScanner {
             stateNameTo = line.substring(line.indexOf('=')+1).trim();
 
             automata.createTransition(stateNameFrom, symbol, stateNameTo);
-            System.out.println(String.format("Transition from '%s', with '%c', to '%s' has been created!", stateNameFrom, symbol, stateNameTo));
+            System.out.println(String.format("Transition from [%s], with '%c', to [%s] has been created!", stateNameFrom, symbol, stateNameTo));
         }
     }
 }
