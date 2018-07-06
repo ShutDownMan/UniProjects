@@ -1,16 +1,20 @@
 #include "account.h"
 
-Account::Account(int id) {
+Account::Account(int id, double dailyLimit) {
     this->ID = id;
     this->active = true;
+    this->dailyLimit = dailyLimit;
+
+    this->special = false;
     this->transactions = new vector<Transaction*>();
     this->balance = 0;
 }
 
-Account::Account(int id, double limit) {
+Account::Account(int id, double dailyLimit, double limit) {
     this->ID = id;
     this->special = true;
     this->limit = limit;
+    this->dailyLimit = dailyLimit;
 
     this->active = true;
     this->transactions = new vector<Transaction*>();
@@ -49,6 +53,19 @@ bool Account::getSpecial() const {
     return special;
 }
 
+void Account::setDailyLimit(double value)
+{
+    dailyLimit = value;
+}
+
+double Account::getDailyWithdraw() const {
+    return dailyWithdraw;
+}
+
+void Account::setDailyWithdraw(double value) {
+    dailyWithdraw = value;
+}
+
 void Account::addTransaction(string *desc, double quant, TransactionType t) {
     Transaction *newT = new Transaction(desc, quant, t);
     this->transactions->push_back(newT);
@@ -61,6 +78,10 @@ void Account::addTransaction(string *desc, double quant) {
 
 vector<Transaction *> *Account::getTransactions() const {
     return transactions;
+}
+
+double Account::getDailyLimit() const {
+    return dailyLimit;
 }
 
 Account::~Account() {

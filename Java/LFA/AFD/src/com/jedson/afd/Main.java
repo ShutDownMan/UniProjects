@@ -16,10 +16,17 @@ public class Main {
         Automata automata = new Automata();
 
         command("cls");
-        if(args.length >= 1) {
+        if(args.length == 1) {
             System.out.println(String.format("FileName = %s", args[0]));
-            FileScanner.initializeAutomata(automata, args[0]);
+            if(!FileScanner.initializeAutomata(automata, args[0])) {
+                command("pause");
+                return;
+            }
             command("pause");
+        } else {
+            System.out.println("Nenhum arquivo de entrada especificado;");
+            command("pause");
+            return;
         }
 
         command("cls");
@@ -85,5 +92,4 @@ public class Main {
         ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", cmd).inheritIO();
         processBuilder.start().waitFor();
     }
-
 }

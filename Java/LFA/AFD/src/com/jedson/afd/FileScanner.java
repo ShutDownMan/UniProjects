@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class FileScanner {
 
-    public static void initializeAutomata(Automata automata, String fileName) {
+    public static boolean initializeAutomata(Automata automata, String fileName) {
         Path filePath = Paths.get(fileName);
         Scanner fileScanner = null;
 
@@ -14,25 +14,25 @@ public class FileScanner {
             fileScanner = new Scanner(filePath);
         } catch (Exception e){
             System.out.println(String.format("Erro na abertura do arquivo (%s);", fileName));
+            return false;
         }
 
-        if(fileScanner != null) {
-            // TODO: Ler alfabeto
-            readAlphabet(automata, fileScanner);
+        // TODO: Ler alfabeto
+        readAlphabet(automata, fileScanner);
 
-            // TODO: Ler estados
-            readStates(automata, fileScanner);
+        // TODO: Ler estados
+        readStates(automata, fileScanner);
 
-            // TODO: Colocar atributos dos estados
-            readInitialState(automata, fileScanner);
-            readFinalStates(automata, fileScanner);
+        // TODO: Colocar atributos dos estados
+        readInitialState(automata, fileScanner);
+        readFinalStates(automata, fileScanner);
 
-            // TODO: Atribuir transições
-            readTransitions(automata, fileScanner);
+        // TODO: Atribuir transições
+        readTransitions(automata, fileScanner);
 
-            fileScanner.close();
-        }
+        fileScanner.close();
 
+        return true;
     }
 
     private static void readAlphabet(Automata automata, Scanner fileScanner) {

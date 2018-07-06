@@ -6,13 +6,15 @@
 
 using namespace std;
 
+vector<Account*> *bancoDedados;
+
 int main() {
     Bank *bank = new Bank();
 
-    bank->addAccount(1000);
-    bank->addAccount();
-    bank->addAccount();
-    bank->addAccount();
+    bank->addAccount(500, 1000);
+    bank->addAccount(500);
+    bank->addAccount(500);
+    bank->addAccount(500);
 
     bank->deleteAccount(1);
 

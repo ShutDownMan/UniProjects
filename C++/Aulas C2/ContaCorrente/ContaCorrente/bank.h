@@ -18,7 +18,7 @@ private:
 public:
     Bank();
 
-    Account *addAccount();
+    Account *addAccount(double limit, double dailyLimit);
     Account *addAccount(double limit);
 
     Account *findAccountById(int id);

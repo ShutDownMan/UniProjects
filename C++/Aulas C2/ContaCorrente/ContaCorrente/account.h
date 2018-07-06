@@ -15,20 +15,28 @@ private:
     double balance;
     bool special;
     double limit;
+    double dailyLimit;
+    double dailyWithdraw;
     vector<Transaction*> *transactions;
 
 public:
-    Account(int id);
-    Account(int id, double limit);
+    Account(int id, double dailyLimit);
+    Account(int id, double dailyLimit, double limit);
 
     int getID() const;
     double getBalance() const;
-    void setBalance(double value);
     bool isSpecial() const;
     double getLimit() const;
     bool isActive() const;
-    void setActive(bool value);
     bool getSpecial() const;
+
+    void setDailyLimit(double value);
+    double getDailyWithdraw() const;
+    double getDailyLimit() const;
+
+    void setBalance(double value);
+    void setActive(bool value);
+    void setDailyWithdraw(double value);
 
     void addTransaction(string *desc, double quant, TransactionType t);
     void addTransaction(string *desc, double quant);

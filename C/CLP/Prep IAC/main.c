@@ -18,9 +18,9 @@ void getDoublePointers();
 
 void showDoublePointers(double x);
 
-void getStrLen();
+void getStrLength();
 
-int showStrLen(char str[]);
+int strlength(char str[]);
 
 void getFirstOcc();
 
@@ -40,11 +40,27 @@ void getOddNSum();
 
 void showOddNSum(int num);
 
+int contaDigitos(int n, int x);
+
+void getIfPermutation();
+
 void getOddEvenQnt();
 
 void oddEvenQnt(int num, int *total, int *oddQnt);
 
 void getHighestTwo();
+
+void getIfEncaixa();
+
+int encaixa(int x, int y);
+
+void getIfPalindrom();
+
+int isPalindrom(char str[]);
+
+void getHHMMSS();
+
+void showHourSum(int h, int m, int s1, int s2);
 
 int main(int argc, char const *argv[]) {
 	/// 1.
@@ -57,7 +73,7 @@ int main(int argc, char const *argv[]) {
 //	getDoublePointers();
 
 	/// 4.
-//	getStrLen();
+//	getStrLength();
 
 	/// 5.
 //	getFirstOcc();
@@ -74,15 +90,28 @@ int main(int argc, char const *argv[]) {
 	/// 9.
 //	getOddNSum();
 
+	/// 10.
+//	getIfPermutation();
+
 	/// 11.
 //	getOddEvenQnt();
 
 	/// 12.
-	getHighestTwo();
+//	getHighestTwo();
+
+	/// 13.
+	getIfEncaixa();
+
+	/// 14.
+//	getIfPalindrom();
+
+	/// 15.
+//	getHHMMSS();
 
 	return 0;
 }
 
+/// 1.
 void convertBin() {
 	int cdt, x;
 
@@ -128,6 +157,7 @@ int getOnBitSum(int binVet[]) {
 	return sum;
 }
 
+/// 2.
 void getIntPointers() {
 	int cdt, x;
 
@@ -146,9 +176,9 @@ void showIntPointers(int x) {
 		ptr = ((char*)&x) + i;
 		printf("[%p] = %02x\n", ptr, *ptr);
 	}
-	printf("\n");
 }
 
+/// 3.
 void getDoublePointers() {
 	int cdt;
 	double x;
@@ -171,24 +201,24 @@ void showDoublePointers(double x) {
 	printf("\n");
 }
 
-void getStrLen() {
+void getStrLength() {
 	int cdt;
 	char str[256];
 
 	scanf("%d", &cdt);
 	while(cdt--) {
 		scanf(" %[^\n]%*c", str);
-		showStrLen(str);
+		printf("strLength(\"%s\") = %d\n", str, strlength(str));
 	}
 }
 
-int showStrLen(char str[]) {
+int strlength(char str[]) {
 	int i;
 
-	for(i = 0; str[i]; i++)
+	for(i = 0; str[i]; ++i)
 		;
 
-	printf("strLen(\"%s\") = %d\n", str, i);
+	return i;
 }
 
 void getFirstOcc() {
@@ -214,6 +244,7 @@ char *findFirstOcc(char c, char str[]) {
 	return NULL;
 }
 
+/// 0.
 void getDigitSum() {
 	int num;
 
@@ -301,6 +332,34 @@ void showOddNSum(int num) {
 	}
 }
 
+int contaDigitos(int n, int x) {
+	int i, sum;
+
+	for (sum = 0; x; x /= 10) {
+		sum += (x%10 == n);
+	}
+
+	return sum;
+}
+
+void getIfPermutation() {
+	int cdt, num;
+	int x, y, aux, currentNum;
+
+	scanf("%d", &cdt);
+	while(cdt--) {
+		scanf("%d %d", &x, &y);
+		for(aux = x; aux; aux /= 10) {
+			currentNum = aux%10;
+			if(contaDigitos(currentNum, x) != contaDigitos(currentNum, y)) {
+				printf("0\n");
+				return;
+			}
+		}
+		printf("1\n");
+	}
+}
+
 void getOddEvenQnt() {
 	int cdt, total, odds, num;
 
@@ -344,4 +403,73 @@ void getHighestTwo() {
 
 	printf("Primeiro maior = %d\n", high);
 	printf("Segundo maior = %d\n", secHigh);
+}
+
+void getIfEncaixa() {
+	int cdt;
+	int x, y;
+
+	scanf("%d", &cdt);
+	while(cdt--) {
+		scanf("%d %d", &x, &y);
+		if(encaixa(x, y)) {
+			printf("encaixa\n");
+		} else {
+			printf("nao encaixa\n");
+		}
+	}
+}
+
+int encaixa(int x, int y) {
+	for(; x && y; x /= 10, y /= 10) {
+		if(x%10 != y%10) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+/// 14.
+void getIfPalindrom() {
+	int cdt;
+	char str[256];
+
+	scanf("%d ", &cdt);
+	while(cdt--) {
+		scanf("%[^\n]%*c", str);
+		if(isPalindrom(str)) {
+			printf("sim\n");
+		} else {
+			printf("nao\n");
+		}
+	}
+}
+
+int isPalindrom(char str[]) {
+	int i, n;
+	n = strlength(str);
+	for(i = 0; i < (n+1)/2; ++i) {
+		if(str[i] != str[n-i-1]) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+/// 15.
+void getHHMMSS() {
+	int cdt, h, m, s1, s2;
+
+	scanf("%d", &cdt);
+	while(cdt--) {
+		scanf("%d %d %d", &h, &m, &s1);
+		scanf("%d", &s2);
+		showHourSum(h, m, s1, s2);
+	}
+}
+
+void showHourSum(int h, int m, int s1, int s2) {
+	int sSum = h*3600 + m*60 + s1 + s2;
+
+	printf("%d:%d:%d\n", sSum/3600, (sSum%3600)/60, ((sSum%3600)%60));
 }

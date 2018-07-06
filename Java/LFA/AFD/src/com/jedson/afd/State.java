@@ -25,7 +25,7 @@ public class State {
 
     public State makeTransition(Character symbol) {
         if(this.transitions.containsKey(symbol)) {
-            return  this.transitions.get(symbol);
+            return this.transitions.get(symbol);
         }
 
         return null;

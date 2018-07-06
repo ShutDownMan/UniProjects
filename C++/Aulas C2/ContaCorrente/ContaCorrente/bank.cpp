@@ -4,18 +4,18 @@ Bank::Bank() {
     this->accounts = new vector<Account*>();
 }
 
-Account *Bank::addAccount() {
+Account *Bank::addAccount(double dailyLimit) {
     int id = this->accounts->size();
-    Account *newAccount = new Account(id);
+    Account *newAccount = new Account(id, dailyLimit);
 
     this->accounts->push_back(newAccount);
 
     return newAccount;
 }
 
-Account *Bank::addAccount(double limit) {
+Account *Bank::addAccount(double limit, double dailyLimit) {
     int id = this->accounts->size();
-    Account *newAccount = new Account(id, limit);
+    Account *newAccount = new Account(id, dailyLimit, limit);
 
     this->accounts->push_back(newAccount);
 
@@ -48,16 +48,20 @@ bool Bank::withdraw(int id, double quant) {
     string *desc = new string(descStr);
 
     if(quant >= 0 && acc && acc->isActive()) {
-        if(acc->getBalance() >= quant) {
-            acc->setBalance(acc->getBalance() - quant);
-            acc->addTransaction(desc, quant, Credit);
+        if(acc->getDailyWithdraw() < acc->getDailyLimit()) {
+            if(acc->getBalance() >= quant) {
+                acc->setBalance(acc->getBalance() - quant);
+                acc->addTransaction(desc, quant, Debit);
+                acc->setDailyWithdraw(acc->getDailyWithdraw() + quant);
 
-            return true;
-        } else if(acc->isSpecial() && acc->getBalance() + acc->getLimit() >= quant){
-            acc->setBalance(acc->getBalance() - quant);
-            acc->addTransaction(desc, quant, Debit);
+                return true;
+            } else if(acc->isSpecial() && acc->getBalance() + acc->getLimit() >= quant){
+                acc->setBalance(acc->getBalance() - quant);
+                acc->addTransaction(desc, quant, Credit);
+                acc->setDailyWithdraw(acc->getDailyWithdraw() + quant);
 
-            return true;
+                return true;
+            }
         }
     }
 
