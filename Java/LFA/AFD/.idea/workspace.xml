@@ -2,23 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f9ba1b-16b7-4aa5-a267-25a06ae89d2d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/account.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/account.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/account.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/account.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/Poligonos.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/circle.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/circle.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/complexpolygon.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/complexpolygon.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/deployment.pri" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/polygon.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Poligonos/polygon.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/Circulo/Circulo/Circulo.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/Circulo/Circulo/Circulo.pro.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/ContaCorrente.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/ContaCorrente.pro.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/bank.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/bank.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/bank.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/bank.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/account.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/account.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/bank.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/bank.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/transaction.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/ContaCorrente/transaction.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/Ponto/Ponto/Ponto.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/Ponto/Ponto/Ponto.pro.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/Aulas C2/Ponto/Ponto/circulo.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Aulas C2/Ponto/Ponto/circulo.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../C++/LFA/Trabalhos/AFD/AFD/AFD.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/LFA/Trabalhos/AFD/AFD/AFD.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/AFD_jar/AFD.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/AFD_jar/AFD.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/FileScanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/FileScanner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jedson/afd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jedson/afd/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jedson/afd/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jedson/afd/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/CLP/Prep IAC/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/CLP/Prep IAC/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/Monitoria/lista2bim.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/Monitoria/lista2bim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/URI/1142.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/URI/1142.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/URI/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/URI/a.exe" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="17">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#MenuChoices#0;class#Main#0" />
@@ -43,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileScanner.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FileScanner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-289">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="323">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -55,7 +59,7 @@
       <file leaf-file-name="Automata.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
+            <state relative-caret-position="1904">
               <caret line="112" column="81" selection-start-line="112" selection-start-column="81" selection-end-line="112" selection-end-column="81" />
             </state>
           </provider>
@@ -74,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/automata.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="8" lean-forward="true" selection-end-line="1" />
+              <caret column="8" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -308,11 +312,12 @@
       <workItem from="1530745490968" duration="14789000" />
       <workItem from="1530802904113" duration="1851000" />
       <workItem from="1530811516932" duration="2740000" />
+      <workItem from="1531245348858" duration="12000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23674000" />
+    <option name="totallyTimeSpent" value="23686000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -349,39 +354,39 @@
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49932885" weight="0.32884097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32884097" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49932885" weight="0.32884097" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32884097" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.18328841" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49932885" weight="0.32884097" />
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26912752" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.4986577" weight="0.23180594" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.18328841" />
+      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.4986577" weight="0.23180594" />
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.32884097" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
-      <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" weight="0.23584905" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5013423" side_tool="true" weight="0.18328841" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
       <window_info id="Capture Tool" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49932885" weight="0.32884097" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info id="Favorites" order="4" side_tool="true" />
     </layout-to-restore>
@@ -393,6 +398,45 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#MenuChoices#0;class#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="112" column="81" selection-start-line="112" selection-start-column="81" selection-end-line="112" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="42" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automata.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" lean-forward="true" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -509,7 +553,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
+        <state relative-caret-position="1904">
           <caret line="112" column="81" selection-start-line="112" selection-start-column="81" selection-end-line="112" selection-end-column="81" />
         </state>
       </provider>
@@ -519,28 +563,28 @@
         <state relative-caret-position="-255" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#MenuChoices#0;class#Main#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/automata.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="8" lean-forward="true" selection-end-line="1" />
+          <caret column="8" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="323">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#MenuChoices#0;class#Main#0" />
+          </folding>
         </state>
       </provider>
     </entry>

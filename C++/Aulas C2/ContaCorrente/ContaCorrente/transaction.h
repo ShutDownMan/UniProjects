@@ -7,6 +7,7 @@
 using namespace std;
 
 enum TransactionType {
+    NONE,
     Debit,
     Credit
 };

@@ -100,7 +100,7 @@ int main(int argc, char const *argv[]) {
 //	getHighestTwo();
 
 	/// 13.
-	getIfEncaixa();
+//	getIfEncaixa();
 
 	/// 14.
 //	getIfPalindrom();
@@ -201,6 +201,7 @@ void showDoublePointers(double x) {
 	printf("\n");
 }
 
+/// 4.
 void getStrLength() {
 	int cdt;
 	char str[256];
@@ -221,6 +222,7 @@ int strlength(char str[]) {
 	return i;
 }
 
+/// 5.
 void getFirstOcc() {
 	int cdt;
 	char str[256];
@@ -244,7 +246,7 @@ char *findFirstOcc(char c, char str[]) {
 	return NULL;
 }
 
-/// 0.
+/// 6.
 void getDigitSum() {
 	int num;
 
@@ -265,6 +267,7 @@ int sumDigit(int num) {
 	return sum;
 }
 
+/// 7.
 void getMinDigitSum() {
 	int num, minSum;
 
@@ -279,6 +282,7 @@ void getMinDigitSum() {
 	}
 }
 
+/// 8.
 void getSuperNext() {
 	int num;
 
@@ -301,6 +305,7 @@ int superNext(int num) {
 	return resNum;
 }
 
+/// 9.
 void getOddNSum() {
 	int cdt, num;
 
@@ -332,6 +337,7 @@ void showOddNSum(int num) {
 	}
 }
 
+/// 10.
 int contaDigitos(int n, int x) {
 	int i, sum;
 
@@ -360,6 +366,7 @@ void getIfPermutation() {
 	}
 }
 
+/// 11.
 void getOddEvenQnt() {
 	int cdt, total, odds, num;
 
@@ -382,6 +389,7 @@ void oddEvenQnt(int num, int *total, int *oddQnt) {
 	}
 }
 
+/// 12.
 void getHighestTwo() {
 	int cdt, num;
 	int high, secHigh;
@@ -405,6 +413,7 @@ void getHighestTwo() {
 	printf("Segundo maior = %d\n", secHigh);
 }
 
+/// 13.
 void getIfEncaixa() {
 	int cdt;
 	int x, y;

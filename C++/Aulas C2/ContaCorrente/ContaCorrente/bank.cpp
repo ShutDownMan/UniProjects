@@ -77,7 +77,7 @@ bool Bank::deposit(int id, double quant) {
 
     if(quant >= 0 && acc) {
         acc->setBalance(acc->getBalance() + quant);
-        acc->addTransaction(desc, quant);
+        acc->addTransaction(desc, quant, NONE);
         return true;
     }
 

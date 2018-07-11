@@ -3,7 +3,7 @@
 
 #include "ponto.h"
 
-class Circulo:Ponto {
+class Circulo : public Ponto {
     protected:
         double raio;
 

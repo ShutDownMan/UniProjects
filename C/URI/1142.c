@@ -1,28 +1,18 @@
 #include <stdio.h>
 
-int main()
-{
-	int iteration, n;
+int main() {
+	int lines;
+	int i, j;
 
-	scanf("%d", &iteration);
+	scanf("%d", &lines);
 
-	for (int i = 0; i < iteration; ++i)
-	{
-		for (int j = 0; j < 4; ++j)
-		{
-			if (j < 3)
-			{
-				printf("%d ", n + 1);
-			}
-			else
-			{
-				printf("PUM\n");
-			}
-			n ++;
-
+	for(i = 0; i < lines; ++i) {
+		for(j = 1; j < 4; ++j) {
+			printf("%d ", i*4 + j);
 		}
+		j++;
+		printf("PUM\n");
 	}
 
 	return 0;
-
 }

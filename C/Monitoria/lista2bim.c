@@ -199,6 +199,7 @@ void encripify() {
 			invNum *= 10;
 			invNum += (num%10);
 		}
+
 		for(; invNum; invNum /= 10) {
 			printf("%c", (invNum%10)+'A');
 		}
@@ -362,7 +363,7 @@ int main(int argc, char const *argv[]) {
 //	encripify();
 
 	/// 12.
-	calcFib();
+//	calcFib();
 
 	/// 13.
 //	getMinDigitSum();
