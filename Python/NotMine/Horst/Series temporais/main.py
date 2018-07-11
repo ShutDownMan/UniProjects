@@ -49,11 +49,15 @@ if __name__ == '__main__':
 	# separa a lista original e guarda em uma lista de listas
 	subsequences_list = separate_subsequences(o_list, M)
 
-	# printa a lista na tela
+	# para cada lista interna na lista de subsequencias
 	for inner_list in subsequences_list:
 		print '----------------'
+		# para cada numero na lista interna
 		for number in inner_list:
+			# mostra na tela
 			print number
 
 	# tamanho da lista original
 	print len(o_list)
+
+	sys.stdin.readline()
