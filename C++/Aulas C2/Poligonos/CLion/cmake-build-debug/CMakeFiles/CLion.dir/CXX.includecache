@@ -1,0 +1,76 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/Rectangle.cpp
+Rectangle.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/Rectangle.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/Rectangle.h
+polygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/Triangle.cpp
+Triangle.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/Triangle.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/Triangle.h
+polygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/circle.cpp
+circle.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/circle.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/circle.h
+cmath
+-
+polygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/complexpolygon.cpp
+cstdarg
+-
+complexpolygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/complexpolygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/complexpolygon.h
+iostream
+-
+vector
+-
+polygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/main.cpp
+iostream
+-
+cmath
+-
+circle.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/circle.h
+triangle.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/triangle.h
+rectangle.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/rectangle.h
+complexpolygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/complexpolygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.cpp
+polygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/rectangle.h
+polygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/triangle.h
+polygon.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Poligonos/CLion/polygon.h
+
