@@ -9,7 +9,7 @@ def parseFile(file_name):
 
 	# para cada lista interna dentro do arquivo
 	for inner_list in mat['ghow1']:
-		# adiciona para cada numero na lista interna
+		# para cada numero na lista interna
 		for number in inner_list:
 			# adiciona na lista auxiliar
 			o_list.append(number);
