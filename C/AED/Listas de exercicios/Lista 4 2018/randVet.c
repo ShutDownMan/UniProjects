@@ -8,7 +8,7 @@ void createRandVet() {
 	int i, num;
 
 	for(i = num = 0; i < MAXNUMBER; ++i) {
-		num += rand()%3;
+		num = rand()%MAXNUMBER;
 		printf("%d\n", num);
 	}
 }

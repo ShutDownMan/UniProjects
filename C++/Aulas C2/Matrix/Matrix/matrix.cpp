@@ -1,8 +1,5 @@
 #include "matrix.h"
 
-#include <iostream>
-using namespace std;
-
 Matrix::Matrix() {
     this->setHeight(0);
     this->setWidth(0);
@@ -27,7 +24,7 @@ int Matrix::getWidth() {
     return this->width;
 }
 
-int Matrix::getElem(int row, int col) {
+double Matrix::getElem(int row, int col) {
     if(row < this->getHeight() && col < this->getWidth()) {
         return this->mArray[row][col];
     }
@@ -43,7 +40,7 @@ void Matrix::setWidth(int d) {
     this->width = d;
 }
 
-void Matrix::setElem(int row, int col, int d) {
+void Matrix::setElem(int row, int col, double d) {
     if(row < this->getWidth() && col < this->getHeight())
         this->mArray[row][col] = d;
 }
@@ -271,28 +268,42 @@ Matrix *Matrix::operator*(Matrix &other) {
     return res;
 }
 
-int *Matrix::operator[] (int ind) {
+double *Matrix::operator[] (int ind) {
     return this->mArray[ind];
 }
 
 Matrix *Matrix::triangulate() {
     Matrix *newMat = new Matrix(this->getHeight(), this->getWidth());
-    int pivot, row, col;
-    double m;
-
-    if(!this->isSquare()) return NULL;
+    int row, col, i;
+    double c;
 
     newMat->copy(this);
 
-    for(pivot = 0; pivot < newMat->getWidth(); ++pivot) {
-        for(row = 1+pivot; row < newMat->getHeight(); ++row) {
-            m = ((double)(*newMat)[row][pivot])/((*newMat)[pivot][pivot]);
-            for(col = 0; col < newMat->getWidth(); ++col) {
-                (*newMat)[row][col] -= m * ((*newMat)[pivot][col]);
+    for(col = 0; col < this->getWidth(); col++) {
+        for(row = 0; row < this->getHeight(); row++) {
+            if(row > col) {
+                c = newMat->getElem(row, col)/newMat->getElem(col, col);
+                for(i = 0; i < this->getWidth(); i++) {
+                    newMat->setElem(row, i, newMat->getElem(row, i) - c*newMat->getElem(col, i));
+                }
             }
         }
     }
+
     return newMat;
+}
+
+void Matrix::sanizite() {
+    int row, col;
+    double num;
+
+    for(col = 0; col < this->getWidth(); col++) {
+        for(row = 0; row < this->getHeight(); row++) {
+            num = this->getElem(row, col);
+            num *= 10e6; num = round(num); num /= 10e6;
+            this->setElem(row, col, num);
+        }
+    }
 }
 
 void Matrix::copy(Matrix *other) {
@@ -306,7 +317,7 @@ void Matrix::copy(Matrix *other) {
 void Matrix::show() {
     for(int row = 0; row < this->getHeight(); row++) {
         for(int col = 0; col < this->getWidth(); col++) {
-            printf("%4d ", (*this)[row][col]);
+            printf("%4.6lf ", (*this)[row][col]);
         }
         printf("\n");
     }

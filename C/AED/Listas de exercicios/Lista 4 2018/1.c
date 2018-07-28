@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAXNUMBER 500
-#define FNUM 101
+#define MAXNUMBER 50
 
-int binarySearch(int vet[], int n, int x) {
+int binaryIndexSearch(int vet[], int n) {
 	int e, m, d;
 	e = -1; d = n;
 
@@ -34,7 +33,7 @@ int main(void) {
 
 	readRandVet(vet);
 
-	foundInd = binarySearch(vet, MAXNUMBER, FNUM);
+	foundInd = binaryIndexSearch(vet, MAXNUMBER);
 
 	if(foundInd < MAXNUMBER) {
 		printf("vet[%d] = %d\n", foundInd, vet[foundInd]);

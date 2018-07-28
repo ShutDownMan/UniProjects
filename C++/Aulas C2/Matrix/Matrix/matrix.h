@@ -4,10 +4,15 @@
 #define MAX_HEIGHT 64
 #define MAX_WIDTH 64
 
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
 class Matrix {
 private:
     int height, width;
-    int mArray[MAX_HEIGHT][MAX_WIDTH];
+    double mArray[MAX_HEIGHT][MAX_WIDTH];
 public:
     Matrix();
     Matrix(int height, int width);
@@ -15,11 +20,11 @@ public:
 
     int getHeight();
     int getWidth();
-    int getElem(int x, int y);
+    double getElem(int x, int y);
 
     void setHeight(int d);
     void setWidth(int d);
-    void setElem(int x, int y, int d);
+    void setElem(int x, int y, double d);
 
     bool sizeEquals(Matrix *other);
 
@@ -45,10 +50,12 @@ public:
     Matrix *operator-(Matrix &other);
     Matrix *operator*(Matrix &other);
 
-    int *operator[] (int ind);
+    double *operator[] (int ind);
 
     Matrix *triangulate();
     double getDeterminant();
+
+    void sanizite();
 
     void show();
 };
