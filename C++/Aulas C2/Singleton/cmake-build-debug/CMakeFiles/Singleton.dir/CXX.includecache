@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Singleton/Logger.cpp
+Logger.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Singleton/Logger.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Singleton/Logger.h
+iostream
+-
+
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Singleton/main.cpp
+iostream
+-
+Logger.h
+D:/Jedson/Documents/GitHub/UniProjects/C++/Aulas C2/Singleton/Logger.h
+

@@ -48,15 +48,14 @@ void printList(Node *listHead) {
 void insertionSort(Node **listHead) {
 	Node *key = NULL;
 	Node *tracer, *next;
-	int foundMin;
 
 	if(!(*listHead)) return;
 
 	for(key = (*listHead)->next; key; key = next) {
 		next = key->next;
-		foundMin = 0;
+
 		/// search for lower num
-		for(tracer = key->prev; tracer && !(foundMin = (key->info > tracer->info)); tracer = tracer->prev)
+		for(tracer = key->prev; tracer && !(key->info > tracer->info); tracer = tracer->prev)
 			;
 
 		/// Disconnecting from prev position
@@ -65,7 +64,7 @@ void insertionSort(Node **listHead) {
 		key->prev->next = key->next;
 
 		/// did not find lower num
-		if(!foundMin) {
+		if(!tracer) {
 			/// insert on head
 			key->next = *listHead;
 			key->prev = NULL;
