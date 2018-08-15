@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAM 1024
+#define TAM 702
+#define HASH_CONST_1 613
+#define HASH_CONST_2 199
 #define MAXSTR 64
 
 typedef int TipoChave;
@@ -30,16 +32,29 @@ int buscar(TabelaHash T, TipoChave key);
 
 void remover(TabelaHash T, TipoChave key);
 
-int hash(int k){
-	return k%TAM;
+
+int hash1(int k) {
+	return k%HASH_CONST_1;
+}
+
+int hash2(int k) {
+	return k%HASH_CONST_2;
+}
+
+int hash(int k, int i){
+	return (hash1(k) + i*hash2(k))%TAM;
 }
 
 void readInput(TabelaHash T);
+
+void printReg(TabelaHash T, int ind);
 
 int main(void) {
 	TabelaHash T;
 
 	readInput(T);
+
+	printReg(T, buscar(T, 757));
 
 	return 0;
 }
@@ -74,18 +89,33 @@ void printReg(TabelaHash T, int ind) {
 }
 
 void inserir(TabelaHash T, TipoChave key, TipoRegistro reg) {
-	int ind = hash(key);
+	int ind, i;
 
-	if(T[ind].ocupado) {
-		printf("+++++++++++++++++\n");
-		printf("Posicao ocupada!\n");
-		printf("+++++++++++++++++\n\n");
-		return;
+	for(i = 0; i < TAM; ++i) {
+		ind = hash(key, i);
+		if(!T[ind].ocupado) {
+			T[ind].key = key;
+			T[ind].reg = reg;
+			T[ind].ocupado = 1;
+//			printReg(T, ind);
+			return;
+		}
 	}
 
-	T[ind].key = key;
-	T[ind].reg = reg;
-	T[ind].ocupado = 1;
+	printf("+++++++++++++++++\n");
+	printf("Hash overflow!\n");
+	printf("+++++++++++++++++\n\n");
+}
 
-	printReg(T, ind);
+int buscar(TabelaHash T, TipoChave key) {
+	int ind, i;
+
+	for(i = 0; i < TAM; ++i) {
+		ind = hash(key, i);
+		if(T[ind].key == key) {
+			return ind;
+		}
+	}
+
+	return -1;
 }
