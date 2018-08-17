@@ -14,9 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
         view/mainwindow.cpp \
-    utils/logger.cpp
+    utils/logger.cpp \
+    view/viewconsultarpessoa.cpp
 
 HEADERS  += view/mainwindow.h \
-    utils/logger.h
+    utils/logger.h \
+    view/viewconsultarpessoa.h
 
-FORMS    += view/mainwindow.ui
+FORMS    += view/mainwindow.ui \
+    view/viewconsultarpessoa.ui

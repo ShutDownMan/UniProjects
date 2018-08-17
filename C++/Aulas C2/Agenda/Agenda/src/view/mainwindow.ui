@@ -53,6 +53,18 @@
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAgenda">
+    <property name="title">
+     <string>Agenda</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuJanela">
+    <property name="title">
+     <string>Janela</string>
+    </property>
+   </widget>
+   <addaction name="menuAgenda"/>
+   <addaction name="menuJanela"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
