@@ -31,6 +31,7 @@ int main(int argc, char const *argv[]) {
 		sortModeString(args);
 	}
 
+	/// libera struct de argumentos
 	free(args);
 
 	return 0;
