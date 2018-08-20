@@ -12,6 +12,15 @@
 #define SORT_TYPE_HEAP 5
 #define SORT_TYPE_BUBBLE 6
 
+typedef enum sortType {
+	Insertion = 1,
+	Selection,
+	Quicksort,
+	Merge,
+	Heap,
+	Bubble
+} SortType;
+
 #define DEFAULT_SORT_TYPE SORT_TYPE_QUICKSORT
 
 #define NUMBERS_PER_LINE 12

@@ -7,109 +7,162 @@
 #include "sorts.h"
 #include "function_clock.h"
 
+/**
+	@brief readArguments lê dos argumentos passado e armazena em uma estrutura
+	@param argc armazena tamanho do vetor de argumentos
+	@param argv vetor de argumentos
+	@return estrutura com os argumentos inicializados
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 Arguments *readArguments(int argc, char const *argv[]) {
+	/// estrutura de argumentos é inicializada
 	Arguments *newArgs = (Arguments *)malloc(sizeof(Arguments));
 
+	/// campos são inicialados
 	newArgs->numQuantity = 0;
 	newArgs->sortName = NULL;
 	newArgs->inputFileName = NULL;
 	newArgs->outputFileName = NULL;
 
+	/// modo de ordenação
 	newArgs->sortMode = argv[0][0];
 
+	/// se for numérico
 	if(newArgs->sortMode == 'N') {
+		/// pega quantidade de números a serem ordenados
 		newArgs->numQuantity = atoi(argv[1]);
 	}
+	/// se for string
 	if(newArgs->sortMode == 'C') {
+		/// armazena nome do arquivo de entrada
 		newArgs->inputFileName = (char*)argv[1];
 	}
 
+	/// se existem mais argumentos
 	if(argc > 2) {
+		/// armazena tipo de ordenação
 		newArgs->sortName = (char*)argv[2];
 		if(argc > 3) {
+			/// armazena nome do arquivo de saída
 			newArgs->outputFileName = (char*)argv[3];
 		}
 	}
 
+	/// retorna estrutura com as informações para execução
 	return newArgs;
 }
 
+/**
+	@brief sortModeNumeric cria e ordena vetor seguindo especificações dadas
+	@param args especificações de execução
+	@precondition args tem que estar alocado e inicializado
+	@postcondition nenhuma
+*/
 void sortModeNumeric(Arguments *args) {
+	/// inicializa um novo vetor desordenado
 	int *vet = newRandVet(args->numQuantity);
+	/// tipo padrão comparação e saida padrão
 	int sortType = SORT_TYPE_COMPARE;
 	FILE *outputFile = stdout;
 
+	/// se tipo de ordenação foi especificado
 	if(args->sortName)
+		/// pega valor numérico do tipo especificado
 		sortType = getSortType(args->sortName);
+	/// se nome do arquivo de saída foi especificado
 	if(args->outputFileName)
+		/// abre arquivo
 		outputFile = fopen(args->outputFileName, "w+");
 
 	switch(sortType) {
 		case SORT_TYPE_COMPARE: {
+			/// compara tempo entre os algoritimos de ordenação
 			compareNumericSorts(vet, args->numQuantity);
 			return;
 		}
 
-		case SORT_TYPE_INSERTION: {
-			fprintf(outputFile, "InsertionSort:\n");
+		case Insertion: {
+			/// ordena vetor pelo algoritimo insertion
 			numericInsertionSort(vet, args->numQuantity);
 			break;
 		}
 
-		case SORT_TYPE_SELECTION: {
-			fprintf(outputFile, "SelectionSort:\n");
+		case Selection: {
+			/// ordena vetor pelo algoritimo selecion
 			numericSelectionSort(vet, args->numQuantity);
 			break;
 		}
 
-		case SORT_TYPE_QUICKSORT: {
-			fprintf(outputFile, "QuickSort:\n");
+		case Quicksort: {
+			/// ordena vetor pelo algoritimo quicksort
 			numericQuickSort(vet, 0, args->numQuantity-1);
 			break;
 		}
 
-		case SORT_TYPE_MERGE: {
-			fprintf(outputFile, "MergeSort:\n");
+		case Merge: {
+			/// ordena vetor pelo algoritimo merge
 			numericMergeSort(vet, 0, args->numQuantity);
 			break;
 		}
 
-		case SORT_TYPE_HEAP: {
-			fprintf(outputFile, "HeapSort:\n");
+		case Heap: {
+			/// ordena vetor pelo algoritimo heap
 			numericHeapSort(vet-1, args->numQuantity);
 			break;
 		}
 
-		case SORT_TYPE_BUBBLE: {
-			fprintf(outputFile, "BubbleSort:\n");
+		case Bubble: {
+			/// ordena vetor pelo algoritimo bubble
 			numericBubbleSort(vet, args->numQuantity);
 			break;
 		}
 
 		default: {
+			/// algoritimo de ordenação inválido
 			fprintf(outputFile, "invalid sort name (%s)\n", args->sortName);
 			return;
 		}
 	}
 
+	/// printa vetor ordenado e libera memória utilizada
 	fprintNumericVet(outputFile, vet, args->numQuantity);
 	free(vet);
 }
 
+/**
+	@brief newRandVet aloca memória, inicializa e retorna um vetor de inteiros desordenado
+	@param length tamanho do vetor a ser criado
+	@return vetor de inteiros desordenado
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 int *newRandVet(int length) {
 	int i;
+	/// aloca memória para um novo vetor
 	int *newVet = (int *)malloc(sizeof(int) * length);
 
+	/// cria um vetor desordenado
 	for (i = 0; i < length; ++i) {
 		newVet[i] = rand() % MAXRAND;
 	}
 
+	/// retorna novo vetor
 	return newVet;
 }
 
+/**
+	@brief fprintNumericVet printa em arquivo um vetor de inteiros
+	@param f é o arquivo de saída
+	@param vet é o vetor de inteiros
+	@param length é o tamanho do vetor
+	@precondition arquivo tem que estar aberto
+	@postcondition nenhuma
+*/
 void fprintNumericVet(FILE *f, int vet[], int length) {
 	int i, j, index;
 
+	/// printa vetor na saida padrão
 	for(i = 0; i < ceil((double)length/NUMBERS_PER_LINE); ++i) {
 		for(j = 0; j < NUMBERS_PER_LINE && i*NUMBERS_PER_LINE + j < length; ++j) {
 			index = i*NUMBERS_PER_LINE + j;
@@ -119,8 +172,17 @@ void fprintNumericVet(FILE *f, int vet[], int length) {
 	}
 }
 
+/**
+	@brief compareNumericSorts compara e mostra os tempos entre os algoritimos
+	@param vet é o vetor de inteiros
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 void compareNumericSorts(int vet[], int length) {
 	double timeTaken;
+
+	/// pega o tempo de execução de cada algoritimo e printa na saida padrão
 
 	timeTaken = getTimeTaken(SORT_TYPE_QUICKSORT, vet, length);
 	printf("QuickSort took 		%.4lf seconds.\n", timeTaken);
@@ -141,22 +203,38 @@ void compareNumericSorts(int vet[], int length) {
 	printf("BubbleSort took		%.4lf seconds.\n", timeTaken);
 }
 
+/**
+	@brief getSortType transforma tipo de ordenação de texto em inteiro
+	@param sortName nome do algoritimo
+	@return inteiro correspondente
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 int getSortType(char *sortName) {
-	if(!strcmp(sortName, "insertionsort")) return SORT_TYPE_INSERTION;
+	/// testa cada nome e retona seu inteiro correspondente
 
-	if(!strcmp(sortName, "selectionsort")) return SORT_TYPE_SELECTION;
+	if(!strcmp(sortName, "insertionsort")) return Insertion;
 
-	if(!strcmp(sortName, "quicksort")) return SORT_TYPE_QUICKSORT;
+	if(!strcmp(sortName, "selectionsort")) return Selection;
 
-	if(!strcmp(sortName, "mergesort")) return SORT_TYPE_MERGE;
+	if(!strcmp(sortName, "quicksort")) return Quicksort;
 
-	if(!strcmp(sortName, "heapsort")) return SORT_TYPE_HEAP;
+	if(!strcmp(sortName, "mergesort")) return Merge;
 
-	if(!strcmp(sortName, "bubblesort")) return SORT_TYPE_BUBBLE;
+	if(!strcmp(sortName, "heapsort")) return Heap;
 
+	if(!strcmp(sortName, "bubblesort")) return Bubble;
+
+	/// nome do algoritimo inválido
 	return SORT_TYPE_INVALID;
 }
 
+/**
+	@brief sortModeString cria e ordena vetor seguindo especificações dadas
+	@param args especificações de execução
+	@precondition args tem que estar alocado e inicializado
+	@postcondition nenhuma
+*/
 void sortModeString(Arguments *args) {
 	char **vet;
 	int length;
@@ -164,13 +242,18 @@ void sortModeString(Arguments *args) {
 	FILE *outputFile = stdout;
 	FILE *inputFile = stdin;
 
+
+	/// pega valor numérico do tipo especificado
 	if(args->sortName)
 		sortType = getSortType(args->sortName);
+		/// abre arquivo de entrada
 	if(args->inputFileName)
 		inputFile = fopen(args->inputFileName, "r+");
+		/// abre arquivo de saída
 	if(args->outputFileName)
 		outputFile = fopen(args->outputFileName, "w+");
 
+	/// lê strings do arquivo
 	vet = readStringsInFile(inputFile, &length);
 
 	switch(sortType) {
@@ -179,37 +262,37 @@ void sortModeString(Arguments *args) {
 			return;
 		}
 
-		case SORT_TYPE_INSERTION: {
+		case Insertion: {
 			fprintf(outputFile, "InsertionSort:\n");
 			stringInsertionSort(vet, length);
 			break;
 		}
 
-		case SORT_TYPE_SELECTION: {
+		case Selection: {
 			fprintf(outputFile, "SelectionSort:\n");
 			stringSelectionSort(vet, length);
 			break;
 		}
 
-		case SORT_TYPE_QUICKSORT: {
+		case Quicksort: {
 			fprintf(outputFile, "QuickSort:\n");
 			stringQuickSort(vet, 0, length-1);
 			break;
 		}
 
-		case SORT_TYPE_MERGE: {
+		case Merge: {
 			fprintf(outputFile, "MergeSort:\n");
 			stringMergeSort(vet, 0, length);
 			break;
 		}
 
-		case SORT_TYPE_HEAP: {
+		case Heap: {
 			fprintf(outputFile, "HeapSort:\n");
 			stringHeapSort(vet-1, length);
 			break;
 		}
 
-		case SORT_TYPE_BUBBLE: {
+		case Bubble: {
 			fprintf(outputFile, "BubbleSort:\n");
 			stringBubbleSort(vet, length);
 			break;
