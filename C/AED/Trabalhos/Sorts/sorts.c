@@ -227,8 +227,8 @@ void stringHeapify(char *vet[], int mid) {
 	char *aux;
 
 	while (f <= mid) {
-		if(f < mid && vet[f] < vet[f+1]) ++f;
-		if(strcmp(vet[f/2], vet[f]) >= 0 ) break;
+		if(f < mid && strcmp(vet[f], vet[f+1]) < 0) ++f;
+		if(strcmp(vet[f/2], vet[f]) >= 0) break;
 		aux = vet[f/2]; vet[f/2] = vet[f]; vet[f] = aux;
 		f *= 2;
 	}

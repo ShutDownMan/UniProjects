@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f9ba1b-16b7-4aa5-a267-25a06ae89d2d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Sorts/out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Sorts/out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Sorts/sorts.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Sorts/sorts.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Sorts/start.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Sorts/start.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Sorts/unsorted-names.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Sorts/unsorted-names.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/IES/Spotifake/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/IES/Spotifake/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/IES/Spotifake/src/start.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/IES/Spotifake/src/start.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/IES/Spotifake/src/start.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/IES/Spotifake/src/start.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/AFD_jar/AFD.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/AFD_jar/AFD.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Automata.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AFD/com/jedson/afd/Automata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jedson/afd/Automata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jedson/afd/Automata.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +27,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+            <state relative-caret-position="242">
+              <caret line="94" column="34" lean-forward="true" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -29,7 +39,7 @@
       <file leaf-file-name="FileScanner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="110">
               <caret line="7" column="50" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
             </state>
           </provider>
@@ -38,8 +48,8 @@
       <file leaf-file-name="Automata.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2068">
-              <caret line="217" selection-start-line="217" selection-end-line="217" />
+            <state relative-caret-position="504">
+              <caret line="307" column="5" selection-start-line="307" selection-start-column="5" selection-end-line="307" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -47,17 +57,8 @@
       <file leaf-file-name="State.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/State.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="22">
               <caret line="74" column="44" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="automata.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/automata.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -93,9 +94,9 @@
         <option value="$PROJECT_DIR$/src/Java/com/jedson/afd/Automata.java" />
         <option value="$PROJECT_DIR$/src/Java/com/jedson/afd/Main.java" />
         <option value="$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java" />
-        <option value="$PROJECT_DIR$/src/com/jedson/afd/Automata.java" />
         <option value="$PROJECT_DIR$/src/com/jedson/afd/State.java" />
         <option value="$PROJECT_DIR$/src/com/jedson/afd/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/jedson/afd/Automata.java" />
         <option value="$PROJECT_DIR$/automata.txt" />
       </list>
     </option>
@@ -121,7 +122,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -189,8 +189,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -201,7 +202,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -224,7 +225,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jedson.afd.Main" />
       <module name="AFD" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;automata.txt&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;afd2.txt&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -303,11 +304,12 @@
       <workItem from="1534295441620" duration="991000" />
       <workItem from="1534357875126" duration="157000" />
       <workItem from="1534359092989" duration="1135000" />
+      <workItem from="1534717143994" duration="1870000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44037000" />
+    <option name="totallyTimeSpent" value="45907000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -320,9 +322,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="9" sideWeight="0.4986577" weight="0.23180594" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49932885" weight="0.32884097" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="0" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -330,11 +334,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.20889488" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.61051214" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49731544" weight="0.23584905" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.22684564" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.23020135" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -344,7 +348,6 @@
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49932885" weight="0.32884097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
@@ -354,28 +357,28 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.18328841" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="3" />
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26912752" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.4986577" weight="0.23180594" />
+      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32884097" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" weight="0.23584905" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5013423" side_tool="true" weight="0.18328841" />
       <window_info id="Capture Tool" order="1" />
-      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.32884097" />
       <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49932885" weight="0.32884097" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info id="Favorites" order="4" side_tool="true" />
@@ -388,13 +391,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/automata.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -719,41 +715,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="74" column="44" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="110">
           <caret line="7" column="50" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/automata.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        <state relative-caret-position="242">
+          <caret line="94" column="34" lean-forward="true" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/automata.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="10" lean-forward="true" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="74" column="44" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/afd2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2068">
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
+        <state relative-caret-position="504">
+          <caret line="307" column="5" selection-start-line="307" selection-start-column="5" selection-end-line="307" selection-end-column="5" />
         </state>
       </provider>
     </entry>

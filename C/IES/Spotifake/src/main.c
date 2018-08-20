@@ -1,14 +1,17 @@
-#include <stdio.h>
+#include <locale.h>
 #include "start.h"
 
 int main(void) {
 	AppDatabase *db = inicializaDB();
 	// inicializa db_musicas
-	db->musicas = novaDBMusica("musicas.txt");
+	db->musicas = novaDBMusicas("musicas.txt");
+	db->playlists = novaDBPlaylists("playlists.txt", db->musicas);
+
+	setlocale(LC_ALL, "Portuguese");
 
 	// TODO: Create
-	adicionaMusica(db->musicas, lerMusicaUI());
-//	adicionaPlaylist(db_playlists, &playlistLength, db_musicas, musicasLength);
+//	adicionaMusica(db->musicas, lerMusicaUI());
+	adicionaPlaylist(db->playlists, lerPlaylistUI(db));
 
 	// TODO: Read
 

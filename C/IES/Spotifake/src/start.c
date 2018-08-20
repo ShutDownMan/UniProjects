@@ -10,20 +10,31 @@ AppDatabase *inicializaDB() {
 	return novaDb;
 }
 
-/// Lê musicas do arquivo
-MusicaDatabase *novaDBMusica(char fileName[]) {
+//- MUSICA -//
+
+/// lê musicas do arquivo
+MusicaDatabase *novaDBMusicas(char fileName[]) {
 	int i;
 	FILE *f = fopen(fileName, "r+");
+	MusicaDatabase *musicas = inicializaMusicaDatabase();
+
+	for(i = 0; !feof(f); ++i) {
+		adicionaMusica(musicas, lerMusica(f));
+	}
+
+	fclose(f);
+
+	return musicas;
+}
+
+/// inicializa MusicaDatabase
+MusicaDatabase *inicializaMusicaDatabase() {
 	MusicaDatabase *musicas = malloc(sizeof(MusicaDatabase));
 
 	musicas->db_musicas = NULL;
 	musicas->tamanho = 0;
 	musicas->espacoAlocado = 0;
-
-	for(i = 0; !feof(f); ++i) {
-		adicionaMusica(musicas, lerMusica(f));
-		printMusica(musicas->db_musicas[i]);
-	}
+	musicas->final = 0;
 
 	return musicas;
 }
@@ -31,7 +42,6 @@ MusicaDatabase *novaDBMusica(char fileName[]) {
 /// lê musica do arquivo
 Musica *lerMusica(FILE *f) {
 	Musica *novaMusica = malloc(sizeof(Musica));
-	char str[STRMAX];
 
 	fscanf(f, " %[^;]; ", novaMusica->titulo);
 	fscanf(f, " %[^;]; ", novaMusica->interprete);
@@ -44,9 +54,8 @@ Musica *lerMusica(FILE *f) {
 	return novaMusica;
 }
 
-/// Adiciona música a database
+/// adiciona música a database
 void adicionaMusica(MusicaDatabase *musicas, Musica *musica) {
-	printf("%d; %d;\n", musicas->tamanho, musicas->espacoAlocado);
 	if(musicas->tamanho+1 > musicas->espacoAlocado) {
 		if(!musicas->espacoAlocado) {
 			musicas->espacoAlocado = 1;
@@ -56,24 +65,16 @@ void adicionaMusica(MusicaDatabase *musicas, Musica *musica) {
 			musicas->db_musicas = realloc(musicas->db_musicas, sizeof(Musica*)*(musicas->espacoAlocado));
 		}
 	}
-	musicas->db_musicas[musicas->tamanho++] = musica;
+	musicas->db_musicas[musicas->final++] = musica;
+	musicas->tamanho++;
 }
 
-void printMusica(Musica *musica) {
-	printf("--------------\n");
-	printf("Titulo: %s\n", musica->titulo);
-	printf("Interprete: %s\n", musica->interprete);
-	printf("Autor: %s\n", musica->autor);
-	printf("Ano: %d\n", musica->ano);
-	printf("Genero: %s\n", musica->genero);
-	printf("duracao: %d:%02d\n", musica->duracao/60, musica->duracao%60);
-	printf("Avaliacao: %d\n", musica->avaliacao);
-}
-
+/// lê nova música da tela
 Musica *lerMusicaUI() {
 	Musica *novaMusica = malloc(sizeof(Musica));
 	char str[STRMAX];
 
+	printf("--------------\n");
 	printf("Titulo: ");
 	scanf(" %[^\n]%*c", novaMusica->titulo);
 
@@ -100,40 +101,98 @@ Musica *lerMusicaUI() {
 	return novaMusica;
 }
 
-/*
-/// lê playlist da tela
-Playlist **adicionaPlaylist(Playlist **playlists, int *lengthPlaylists, Musica **musicas, int lengthMusicas) {
-	(*lengthPlaylists)++;
-	playlists = realloc(playlists, sizeof(Playlist*)*(*lengthPlaylists));
+//- PLAYLIST -//
 
-	playlists[(*lengthPlaylists)-1] = lerPlaylistUI();
+// lê playlists do arquivo
+PlaylistDatabase *novaDBPlaylists(char fileName[], MusicaDatabase *musicas) {
+	int i, j;
+	FILE *f = fopen(fileName, "r+");
+	PlaylistDatabase *playlists = malloc(sizeof(PlaylistDatabase));
+
+	playlists->db_playlists = NULL;
+	playlists->tamanho = 0;
+	playlists->espacoAlocado = 0;
+	playlists->final = 0;
+
+	for(i = 0; !feof(f); ++i) {
+		adicionaPlaylist(playlists, lerPlaylist(f, musicas));
+	}
+
+	fclose(f);
 
 	return playlists;
 }
 
-Playlist *lerPlaylistUI(Musica **musicas, int lengthMusicas) {
+/// lê musica do arquivo
+Playlist *lerPlaylist(FILE *f, MusicaDatabase *musicas) {
+	Playlist *novaPlaylist = malloc(sizeof(Playlist));
+	char str[STRMAX];
+	int i, ind, n;
+
+	fscanf(f, " %[^;]; ", novaPlaylist->titulo);
+	fscanf(f, " %[^;]; ", novaPlaylist->proprietario);
+	fscanf(f, " { %[^}]}; ", str);
+
+	novaPlaylist->musicas = inicializaMusicaDatabase();
+
+	for(i = 0; i < strlen(str); i += n) {
+		sscanf(str+i, " %d ,%n", &ind, &n);
+		printf("%d\n", ind);
+		adicionaMusicaPlaylist(novaPlaylist, musicas->db_musicas[ind]);
+		printMusica(musicas->db_musicas[ind]);
+	}
+
+	return novaPlaylist;
+}
+
+void adicionaMusicaPlaylist(Playlist *playlist, Musica *musica) {
+	if(playlist && musica) {
+		adicionaMusica(playlist->musicas, musica);
+	}
+}
+
+/// adiciona playlista a lista de playlists
+void adicionaPlaylist(PlaylistDatabase *playlists, Playlist *playlist) {
+	if(playlists->tamanho+1 > playlists->espacoAlocado) {
+		if(!playlists->espacoAlocado) {
+			playlists->espacoAlocado = 1;
+			playlists->db_playlists = malloc(sizeof(Playlist*));
+		} else {
+			playlists->espacoAlocado *= 2;
+			playlists->db_playlists = realloc(playlists->db_playlists, sizeof(Playlist*)*(playlists->espacoAlocado));
+		}
+	}
+	playlists->db_playlists[playlists->final++] = playlist;
+	playlists->tamanho++;
+}
+
+/// lê playlist da tela
+Playlist *lerPlaylistUI(AppDatabase *db) {
 	Playlist *novaPlaylist = malloc(sizeof(Playlist));
 	char str[STRMAX];
 
 	printf("Titulo playlist: ");
-	scanf("%[^\n]%*c", &str);
-	printf("Titulo playlist: ");
-	scanf("%[^\n]%*c", &str);
-	while(choice()) {
-		/// TODO: adiciona musica
+	scanf("%[^\n]%*c", novaPlaylist->titulo);
+	printf("Proprietario playlist: ");
+	scanf("%[^\n]%*c", novaPlaylist->proprietario);
 
+	while(escolhaAdicionaMusica()) {
+		Musica *musica = acharMusicaUI(db);
+//		adicionaMusicaPlaylist(novaPlaylist, musica);
 	}
+	adicionaPlaylist(db->playlists, novaPlaylist);
+
+	return novaPlaylist;
 }
 
-char choice() {
-	char choice;
+char escolhaAdicionaMusica() {
+	char escolha;
 
 	printf("Deseja adicionar musica?\n[S] para continuar\n");
-	scanf(" %c ", &choice);
+	scanf(" %c", &escolha);
 	fflush(stdin);
 
-	choice = (toupper(choice) == 'S');
+	escolha = (toupper(escolha) == 'S');
 
-	return choice;
+	return escolha;
 }
-*/

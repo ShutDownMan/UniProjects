@@ -238,7 +238,7 @@ char **readStringsInFile(FILE *f, int *length) {
 			maxLength *= 2;
 			newVet = (char **)realloc(newVet, sizeof(char *) * maxLength);
 		}
-		fscanf(f, " %[^\n]%*c", str);
+		fscanf(f, " %s", str);
 		newVet[i] = strcpy(malloc(sizeof(char) * strlen(str) + 1), str);
 	}
 

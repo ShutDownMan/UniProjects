@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <conio.h>
 
 #define STRMAX 255
 
@@ -18,21 +19,22 @@ typedef struct musica {
 	unsigned char avaliacao;
 } Musica;
 
+struct musicaDatabase;
+
 typedef struct playlist {
-	Musica **listaMusicas;
-	int length;
 	char titulo[STRMAX];
 	char proprietario[STRMAX];
+	struct musicaDatabase *musicas;
 } Playlist;
 
 typedef struct musicaDatabase {
 	Musica **db_musicas;
-	int tamanho, espacoAlocado;
+	int tamanho, espacoAlocado, final;
 } MusicaDatabase;
 
 typedef struct playlistDatabase {
 	Playlist **db_playlists;
-	int tamanho, espacoAlocado;
+	int tamanho, espacoAlocado, final;
 } PlaylistDatabase;
 
 typedef struct appDatabase {
@@ -40,16 +42,34 @@ typedef struct appDatabase {
 	PlaylistDatabase *playlists;
 } AppDatabase;
 
+#include "pesquisa.h"
+
 AppDatabase *inicializaDB();
 
-MusicaDatabase *novaDBMusica(char fileName[]);
+//- MUSICA -//
+
+MusicaDatabase *novaDBMusicas(char fileName[]);
+
+MusicaDatabase *inicializaMusicaDatabase();
 
 void adicionaMusica(MusicaDatabase *musicas, Musica *musica);
-
-void printMusica(Musica *musica);
 
 Musica *lerMusica(FILE *f);
 
 Musica *lerMusicaUI();
+
+//- PLAYLIST -//
+
+PlaylistDatabase *novaDBPlaylists(char fileName[], MusicaDatabase *musicas);
+
+Playlist *lerPlaylist(FILE *f, MusicaDatabase *musicas);
+
+void adicionaMusicaPlaylist(Playlist *playlist, Musica *musica);
+
+void adicionaPlaylist(PlaylistDatabase *playlists, Playlist *playlist);
+
+Playlist *lerPlaylistUI(AppDatabase *db);
+
+char escolhaAdicionaMusica();
 
 #endif // START_H

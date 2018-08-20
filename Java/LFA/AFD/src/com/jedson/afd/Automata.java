@@ -226,7 +226,7 @@ public class Automata {
 
         /// se simbolo é nulo (sequencia acabou) e estado atual é final
         if(symbol == null && this.isFinalState(stateFrom.getName())) return true;
-        /// se palavra não contém ssimbolo
+        /// se palavra não contém simbolo
         if(!this.alphabet.contains(symbol)) return false;
 
         /// testa proxima sequência a partir do estado feita a
@@ -297,11 +297,13 @@ public class Automata {
             }
             /// se estado é final
             if(this.isFinalState(stateName)) {
+                if(transitions.size() > 0) {
+                    System.out.print("|");
+                }
                 /// printa palavra vazia
-                System.out.print("| @");
+                System.out.print(" @");
             }
             System.out.println();
         }
     }
-
 }

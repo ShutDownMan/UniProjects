@@ -6,6 +6,16 @@
 #include "sorts.h"
 #include "start.h"
 
+/**
+	@brief getTimeTaken armazena e retorna o tempo tomado por um
+		determinado método de ordenação em inteiros
+	@param sortType método de ordenação
+	@param vet vetor de inteiros
+	@param length tamanho do vetor
+	@return tempo tomado pelo método em segundos
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 double getTimeTaken(int sortType, int vet[], int length) {
 	clock_t t;
 	double time_taken;
@@ -57,6 +67,14 @@ double getTimeTaken(int sortType, int vet[], int length) {
 	return time_taken;
 }
 
+/**
+	@brief copyVet retorna uma cópia de um vetor de inteiros
+	@param vet vetor de inteiros original
+	@param length tamanho do vetor
+	@return vetor cópia
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 int *copyVet(int vet[], int length) {
 	int i;
 	int *newVet = (int *)malloc(sizeof(int)*length);
@@ -67,7 +85,16 @@ int *copyVet(int vet[], int length) {
 	return newVet;
 }
 
-
+/**
+	@brief getTimeTaken armazena e retorna o tempo tomado por um
+		determinado método de ordenação em strings
+	@param sortType método de ordenação
+	@param vet vetor de strings
+	@param length tamanho do vetor
+	@return tempo tomado pelo método em segundos
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 double getTimeTakenStr(int sortType, char *vet[], int length) {
 	clock_t t;
 	double time_taken;
