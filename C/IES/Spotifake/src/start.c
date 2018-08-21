@@ -46,10 +46,10 @@ Musica *lerMusica(FILE *f) {
 	fscanf(f, " %[^;]; ", novaMusica->titulo);
 	fscanf(f, " %[^;]; ", novaMusica->interprete);
 	fscanf(f, " %[^;]; ", novaMusica->autor);
-	fscanf(f, " %d; ", &novaMusica->ano);
+	fscanf(f, " %d ; ", &novaMusica->ano);
 	fscanf(f, " %[^;]; ", novaMusica->genero);
-	fscanf(f, " %d; ", &novaMusica->duracao);
-	fscanf(f, " %d; ", &novaMusica->avaliacao);
+	fscanf(f, " %d ; ", &novaMusica->duracao);
+	fscanf(f, " %d ; ", &novaMusica->avaliacao);
 
 	novaMusica->ativo = 1;
 
@@ -175,24 +175,30 @@ Playlist *lerPlaylistUI(AppDatabase *db) {
 	Playlist *novaPlaylist = malloc(sizeof(Playlist));
 	char str[STRMAX];
 
+	novaPlaylist->musicas = inicializaMusicaDatabase();
+
 	printf("Titulo playlist: ");
 	scanf("%[^\n]%*c", novaPlaylist->titulo);
 	printf("Proprietario playlist: ");
 	scanf("%[^\n]%*c", novaPlaylist->proprietario);
 
-	while(escolhaAdicionaMusica()) {
+	while(escolhaAdicionaMusica(novaPlaylist)) {
 		Musica *musica = acharMusicaUI(db);
-//		adicionaMusicaPlaylist(novaPlaylist, musica);
+		adicionaMusicaPlaylist(novaPlaylist, musica);
 	}
 	adicionaPlaylist(db->playlists, novaPlaylist);
 
 	return novaPlaylist;
 }
 
-char escolhaAdicionaMusica() {
+char escolhaAdicionaMusica(Playlist *novaPlaylist) {
 	char escolha;
 
-	printf("Deseja adicionar musica?\n[S] para continuar\n");
+	system("cls");
+	printf("Titulo playlist: %s\n", novaPlaylist->titulo);
+	printf("Proprietario playlist: %s\n\n", novaPlaylist->proprietario);
+
+	printf("Deseja adicionar uma nova musica a Playlist?\n[S] para continuar\n");
 	scanf(" %c", &escolha);
 	fflush(stdin);
 

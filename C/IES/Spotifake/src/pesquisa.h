@@ -50,11 +50,11 @@ void escolhaModificarFiltrosMusicaMenu(PesquisarMusicaFiltros filtros[]);
 
 PesquisarMusicaOpcoes acharMusicaOpcoesMenu();
 
-void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordenacao);
+void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordInfo);
 
 Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *info);
 
-void printaPesquisa(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *ordInfo);
+void printaPesquisa(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo);
 
 void ordenarListaMusica(OrdenacaoVet *listaMusica, int inverter);
 
@@ -68,7 +68,7 @@ char **separarTags(char str[], int *tam);
 
 MusicaDatabase *pesquisarTodasMusicasComTags(MusicaDatabase *musicas, char *tags[], int tagsTam, PesquisarMusicaFiltros filtros[]);
 
-Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordenacao);
+Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo);
 
 
 void printMusica(Musica *musica);

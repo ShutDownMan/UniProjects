@@ -26,11 +26,11 @@ Musica *acharMusicaUI(AppDatabase *db) {
 				break;
 			default: break;
 		}
-	} while(escolha != SairMusicaOpcoes);
+	} while(escolha != SairMusicaOpcoes && !musicaEcontrada);
 
 
 	if(!musicaEcontrada)
-		printf("Música não encontrada.\n");
+		printf("Musica nao encontrada.\n");
 
 	free(filtros);
 	free(ordenacao);
@@ -107,13 +107,13 @@ PesquisarMusicaOpcoes acharMusicaOpcoesMenu() {
 	return SairMusicaOpcoes;
 }
 
-void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordenacao) {
+void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordInfo) {
 	int num;
 	char escolha;
 
 	do {
 		system("cls");
-		printf("Tipo escolhido: (%d) %s\n", ordenacao->tipo+1, ordenacao->ehCrescente ? "crescente" : "decrescente");
+		printf("Tipo escolhido: (%d) %s\n", ordInfo->tipo+1, ordInfo->ehCrescente ? "crescente" : "decrescente");
 		printf("Opcoes: \n");
 		printf("(1)-> Ano\n");
 		printf("(2)-> Duracao\n");
@@ -131,8 +131,8 @@ void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordenacao) {
 			scanf(" %c", &escolha);
 			fflush(stdin);
 
-			ordenacao->ehCrescente = (toupper(escolha) == 'S');
-			ordenacao->tipo = (PesquisarMusicaOrdenacao)(num-1);
+			ordInfo->ehCrescente = (toupper(escolha) == 'S');
+			ordInfo->tipo = (PesquisarMusicaOrdenacao)(num-1);
 
 			num = 0;
 		}
@@ -153,10 +153,8 @@ Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[
 	tags = separarTags(str, &tagsTam);
 	listaMusicas = pesquisarTodasMusicasComTags(musicas, tags, tagsTam, filtros);
 
-	printaPesquisa(listaMusicas, filtros, ordInfo);
-	getch();
-	musicaEcontrada = pesquisaPorListaMusica(listaMusicas, ordInfo);
-
+	if(listaMusicas->tamanho > 0)
+		musicaEcontrada = pesquisaPorListaMusica(listaMusicas, ordInfo);
 
 	for(i = 0; i < tagsTam; ++i) {
 		free(tags[i]);
@@ -167,7 +165,7 @@ Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[
 	return musicaEcontrada;
 }
 
-void printaPesquisa(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *ordInfo) {
+void printaPesquisa(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo) {
 	int i;
 	OrdenacaoVet *listaMusicaOrdenada;
 
@@ -176,6 +174,7 @@ void printaPesquisa(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], O
 	ordenarListaMusica(listaMusicaOrdenada, !ordInfo->ehCrescente);
 
 	for(i = 0; i < listaMusicaOrdenada->tamanho; ++i) {
+		printf("Musica [%d]:\n", i+1);
 		if(listaMusicaOrdenada->musicas[i]->ativo) {
 			printMusica(listaMusicaOrdenada->musicas[i]);
 		}
@@ -311,12 +310,36 @@ MusicaDatabase *pesquisarTodasMusicasComTags(MusicaDatabase *musicas, char *tags
 	return musicasEncontradas;
 }
 
-Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordenacao) {
+Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo) {
+	int escolha;
 
+	do {
+		printaPesquisa(musicas, ordInfo);
+		printf("Digite o indice de uma musica\n");
+		printf("(0) -> Voltar\n");
+		printf("tam = %d\n", musicas->tamanho);
+		scanf(" %d", &escolha);
+
+
+		if(escolha < 0 || escolha > musicas->tamanho) {
+			printf("Digite um numero valido!\n");
+			getch();
+		}
+
+	} while(escolha < 0 || escolha > musicas->tamanho);
+
+	if(escolha) {
+		system("cls");
+		printf("Musica escolhida:\n\n");
+		printMusica(musicas->db_musicas[escolha-1]);
+		getch();
+		return musicas->db_musicas[escolha-1];
+	}
+
+	return NULL;
 }
 
 void printMusica(Musica *musica) {
-	printf("--------------\n");
 	printf("Titulo: %s\n", musica->titulo);
 	printf("Interprete: %s\n", musica->interprete);
 	printf("Autor: %s\n", musica->autor);
@@ -325,3 +348,13 @@ void printMusica(Musica *musica) {
 	printf("duracao: %d:%02d\n", musica->duracao/60, musica->duracao%60);
 	printf("Avaliacao: %d\n\n", musica->avaliacao);
 }
+
+//- PROCURAR PLAYLISTS -//
+
+
+
+//- DELETAR MUSICAS -//
+
+
+
+//- DELETAR PLAYLISTS -//

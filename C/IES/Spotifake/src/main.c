@@ -14,6 +14,8 @@ int main(void) {
 	adicionaPlaylist(db->playlists, lerPlaylistUI(db));
 
 	// TODO: Read
+	acharMusicaUI(db);
+	//acharPlaylistUI(db);
 
 	// TODO: Delete
 

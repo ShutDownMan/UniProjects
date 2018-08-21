@@ -70,6 +70,6 @@ void adicionaPlaylist(PlaylistDatabase *playlists, Playlist *playlist);
 
 Playlist *lerPlaylistUI(AppDatabase *db);
 
-char escolhaAdicionaMusica();
+char escolhaAdicionaMusica(Playlist *novaPlaylist);
 
 #endif // START_H
