@@ -5,6 +5,13 @@
 
 // NUMERIC SORTING //
 
+/**
+	@brief ordena inteiros pelo método Selection
+	@param vet vetor de inteiros
+	@param length tamanho do vetortamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
+*/
 void numericSelectionSort(int vet[], int length) {
 	int i, j, min, x;
 	for (i = 0; i < length-1; i++) {
@@ -15,6 +22,13 @@ void numericSelectionSort(int vet[], int length) {
 	}
 }
 
+/**
+	@brief ordena inteiros pelo método Insertion
+	@param vet vetor de inteiros
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
+*/
 void numericInsertionSort(int vet[], int length) {
 	int i, j, aux;
 	for (j = 1; j < length; j++) {
@@ -25,6 +39,14 @@ void numericInsertionSort(int vet[], int length) {
 	}
 }
 
+/**
+	@brief ordena inteiros pelo método QuickSort
+	@param vet vetor de inteiros
+	@param left limite esquerdo do vetor
+	@param right limite direito do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
+*/
 void numericQuickSort(int vet[], int left, int right) {
 	int j;
 	if(left < right) {
@@ -34,6 +56,14 @@ void numericQuickSort(int vet[], int left, int right) {
 	}
 }
 
+/**
+	@brief função auxiliar de QuickSort
+	@param vet vetor de inteiros
+	@param left limite esquerdo
+	@param right limite direito
+	@precondition nenhuma
+	@postcondition vetor é manipulado com referência a um pivô
+*/
 int numericSeparate(int vet[], int left, int right) {
 	int pivo, j, k, temp;
 
@@ -48,6 +78,14 @@ int numericSeparate(int vet[], int left, int right) {
 	return j;
 }
 
+/**
+	@brief ordena inteiros pelo método MergeSort
+	@param vet vetor de inteiros
+	@param left limite esquerdo do vetor
+	@param right limite direito do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
+*/
 void numericMergeSort(int vet[], int left, int right) {
 	int mid;
 	if(left < right-1) {
@@ -59,6 +97,15 @@ void numericMergeSort(int vet[], int left, int right) {
 	}
 }
 
+/**
+	@brief função auxiliar de mergesort
+	@param vet vetor de inteiros
+	@param left limite esquerdo
+	@param mid meio
+	@param right limite direito
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 void numericMerge(int vet[], int left, int mid, int right) {
 	int i, j, k, *vetAux;
 	vetAux = malloc((right-left)*sizeof(int));
@@ -79,6 +126,13 @@ void numericMerge(int vet[], int left, int mid, int right) {
 	free(vetAux);
 }
 
+/**
+	@brief ordena inteiros pelo método HeapSort
+	@param vet vetor de inteiros
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
+*/
 void numericHeapSort(int vet[], int length) {
 	int mid;
 	for(mid = 1; mid < length; mid++)
@@ -89,6 +143,13 @@ void numericHeapSort(int vet[], int length) {
 	}
 }
 
+/**
+	@brief função auxiliar de HeapSort
+	@param vet vetor de inteiros
+	@param mid meio
+	@precondition nenhuma
+	@postcondition elementos são ordenados em forma de heap
+*/
 void numericInsertHeap(int vet[], int mid) {
 	int f = mid+1;
 	while (f > 1 && vet[f/2] < vet[f]) {
@@ -97,6 +158,13 @@ void numericInsertHeap(int vet[], int mid) {
 	}
 }
 
+/**
+	@brief fução auxiliar de HeapSort
+	@param vet vetor de inteiros
+	@param mid meio
+	@precondition nenhuma
+	@postcondition vetor é organizado para satisfazer as propriedades heap
+*/
 void numericHeapify(int vet[], int mid) {
 	int aux, f = 2;
 
@@ -108,6 +176,13 @@ void numericHeapify(int vet[], int mid) {
 	}
 }
 
+/**
+	@brief ordena inteiros pelo método BubbleSort
+	@param vet vetor de inteiros
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
+*/
 void numericBubbleSort(int vet[], int length) {
 	int i, j, aux;
 
@@ -124,6 +199,13 @@ void numericBubbleSort(int vet[], int length) {
 
 // STRING SORTING //
 
+/**
+	@brief ordena strings pelo método Selection
+	@param vet vetor de strings
+	@param length tamanho do vetortamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
+*/
 void stringSelectionSort(char *vet[], int length) {
 	int i, j, min;
 	char *x;
@@ -135,6 +217,13 @@ void stringSelectionSort(char *vet[], int length) {
 	}
 }
 
+/**
+	@brief ordena strings pelo método Insertion
+	@param vet vetor de strings
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
+*/
 void stringInsertionSort(char *vet[], int length) {
 	int i, j;
 	char *aux;
@@ -146,6 +235,14 @@ void stringInsertionSort(char *vet[], int length) {
 	}
 }
 
+/**
+	@brief ordena strings pelo método QuickSort
+	@param vet vetor de strings
+	@param left limite esquerdo do vetor
+	@param right limite direito do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
+*/
 void stringQuickSort(char *vet[], int left, int right) {
 	int j;
 	if(left < right) {
@@ -155,6 +252,14 @@ void stringQuickSort(char *vet[], int left, int right) {
 	}
 }
 
+/**
+	@brief função auxiliar de QuickSort
+	@param vet vetor de strings
+	@param left limite esquerdo
+	@param right limite direito
+	@precondition nenhuma
+	@postcondition vetor é manipulado com referência a um pivô
+*/
 int stringSeparate(char *vet[], int left, int right) {
 	int j, k;
 	char *temp, *pivot;
@@ -171,6 +276,14 @@ int stringSeparate(char *vet[], int left, int right) {
 	return j;
 }
 
+/**
+	@brief ordena strings pelo método MergeSort
+	@param vet vetor de strings
+	@param left limite esquerdo do vetor
+	@param right limite direito do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
+*/
 void stringMergeSort(char *vet[], int left, int right) {
 	int mid;
 	if(left < right-1) {
@@ -182,6 +295,15 @@ void stringMergeSort(char *vet[], int left, int right) {
 	}
 }
 
+/**
+	@brief função auxiliar de MergeSort
+	@param vet vetor de strings
+	@param left limite esquerdo
+	@param mid meio
+	@param right limite direito
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 void stringMerge(char *vet[], int left, int mid, int right) {
 	int i, j, k;
 	char **vetAux;
@@ -204,6 +326,13 @@ void stringMerge(char *vet[], int left, int mid, int right) {
 	free(vetAux);
 }
 
+/**
+	@brief ordena strings pelo método HeapSort
+	@param vet vetor de strings
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
+*/
 void stringHeapSort(char *vet[], int length) {
 	int mid;
 	for(mid = 1; mid < length; mid++)
@@ -214,6 +343,14 @@ void stringHeapSort(char *vet[], int length) {
 	}
 }
 
+
+/**
+	@brief função auxiliar de HeapSort
+	@param vet vetor de strings
+	@param mid meio
+	@precondition nenhuma
+	@postcondition elementos são ordenados em forma de heap
+*/
 void stringInsertHeap(char *vet[], int mid) {
 	int f = mid+1;
 	while (f > 1 && strcmp(vet[f/2], vet[f]) < 0) {
@@ -222,6 +359,13 @@ void stringInsertHeap(char *vet[], int mid) {
 	}
 }
 
+/**
+	@brief fução auxiliar de HeapSort
+	@param vet vetor de strings
+	@param mid meio
+	@precondition nenhuma
+	@postcondition vetor é organizado para satisfazer as propriedades heap
+*/
 void stringHeapify(char *vet[], int mid) {
 	int f = 2;
 	char *aux;
@@ -234,6 +378,13 @@ void stringHeapify(char *vet[], int mid) {
 	}
 }
 
+/**
+	@brief ordena inteiros pelo método BubbleSort
+	@param vet vetor de strings
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
+*/
 void stringBubbleSort(char *vet[], int length) {
 	int i, j;
 	char *aux;

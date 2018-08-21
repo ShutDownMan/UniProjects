@@ -32,6 +32,12 @@ typedef struct ordenacaoInfo {
 	int ehCrescente;
 } OrdenacaoInfo;
 
+typedef struct ordenacaoVet {
+	Musica **musicas;
+	int *valores;
+	int tamanho;
+} OrdenacaoVet;
+
 //- READ -//
 
 Musica *acharMusicaUI(AppDatabase *db);
@@ -48,12 +54,24 @@ void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordenacao);
 
 Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *info);
 
+void printaPesquisa(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *ordInfo);
+
+void ordenarListaMusica(OrdenacaoVet *listaMusica, int inverter);
+
+void quickSort(OrdenacaoVet *listaMusica, int left, int right);
+
+int ordenarHelper(OrdenacaoVet *listaMusica, int left, int right);
+
+OrdenacaoVet *criaListaPorAtributo(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo);
+
 char **separarTags(char str[], int *tam);
 
+MusicaDatabase *pesquisarTodasMusicasComTags(MusicaDatabase *musicas, char *tags[], int tagsTam, PesquisarMusicaFiltros filtros[]);
+
+Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordenacao);
 
 
 void printMusica(Musica *musica);
-
 
 
 #endif // PESQUISA_H

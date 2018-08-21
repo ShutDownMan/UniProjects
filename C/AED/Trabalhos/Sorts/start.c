@@ -166,7 +166,7 @@ void fprintNumericVet(FILE *f, int vet[], int length) {
 	for(i = 0; i < ceil((double)length/NUMBERS_PER_LINE); ++i) {
 		for(j = 0; j < NUMBERS_PER_LINE && i*NUMBERS_PER_LINE + j < length; ++j) {
 			index = i*NUMBERS_PER_LINE + j;
-			fprintf(f, "%4d ", vet[index]);
+			fprintf(f, "%5d ", vet[index]);
 		}
 		fprintf(f, "\n");
 	}
@@ -184,22 +184,22 @@ void compareNumericSorts(int vet[], int length) {
 
 	/// pega o tempo de execução de cada algoritimo e printa na saida padrão
 
-	timeTaken = getTimeTaken(SORT_TYPE_QUICKSORT, vet, length);
+	timeTaken = getTimeTaken(Quicksort, vet, length);
 	printf("QuickSort took 		%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTaken(SORT_TYPE_HEAP, vet, length);
+	timeTaken = getTimeTaken(Heap, vet, length);
 	printf("HeapSort took		%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTaken(SORT_TYPE_MERGE, vet, length);
+	timeTaken = getTimeTaken(Merge, vet, length);
 	printf("MergeSort took		%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTaken(SORT_TYPE_INSERTION, vet, length);
+	timeTaken = getTimeTaken(Insertion, vet, length);
 	printf("InsertionSort took	%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTaken(SORT_TYPE_SELECTION, vet, length);
+	timeTaken = getTimeTaken(Selection, vet, length);
 	printf("SelectionSort took	%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTaken(SORT_TYPE_BUBBLE, vet, length);
+	timeTaken = getTimeTaken(Bubble, vet, length);
 	printf("BubbleSort took		%.4lf seconds.\n", timeTaken);
 }
 
@@ -237,7 +237,7 @@ int getSortType(char *sortName) {
 */
 void sortModeString(Arguments *args) {
 	char **vet;
-	int length;
+	int i, length;
 	int sortType = SORT_TYPE_COMPARE;
 	FILE *outputFile = stdout;
 	FILE *inputFile = stdin;
@@ -263,101 +263,151 @@ void sortModeString(Arguments *args) {
 		}
 
 		case Insertion: {
+			/// ordena vetor de strings pelo algoritimo insertion
 			fprintf(outputFile, "InsertionSort:\n");
 			stringInsertionSort(vet, length);
 			break;
 		}
 
 		case Selection: {
+			/// ordena vetor de strings pelo algoritimo selection
 			fprintf(outputFile, "SelectionSort:\n");
 			stringSelectionSort(vet, length);
 			break;
 		}
 
 		case Quicksort: {
+			/// ordena vetor de strings pelo algoritimo quicksort
 			fprintf(outputFile, "QuickSort:\n");
 			stringQuickSort(vet, 0, length-1);
 			break;
 		}
 
 		case Merge: {
+			/// ordena vetor de strings pelo algoritimo mergesort
 			fprintf(outputFile, "MergeSort:\n");
 			stringMergeSort(vet, 0, length);
 			break;
 		}
 
 		case Heap: {
+			/// ordena vetor de strings pelo algoritimo heapsort
 			fprintf(outputFile, "HeapSort:\n");
 			stringHeapSort(vet-1, length);
 			break;
 		}
 
 		case Bubble: {
+			/// ordena vetor de strings pelo algoritimo bubblesort
 			fprintf(outputFile, "BubbleSort:\n");
 			stringBubbleSort(vet, length);
 			break;
 		}
 
 		default: {
+			/// tipo inválido de ordenação
 			fprintf(outputFile, "invalid sort name (%s)\n", args->sortName);
 			return;
 		}
 	}
 
+	/// printa vetor de strigs no arquivo de saída
 	fprintStringVet(outputFile, vet, length);
+	/// libera todas strings no vetor
+	for(i = 0; i < length; ++i) {
+		free(vet[i]);
+	}
+	/// libera memória utilizada pelo vetor
 	free(vet);
 }
 
+/**
+	@brief readStringsInFile lê cadeias de caractéres separadas por espaços ou nova linha
+	@param f é o arquivo a ser lido
+	@param length é o tamanho que o vetor de strings terá
+	@return vetor de strings
+	@precondition arquivo tem que estar aberto
+	@postcondition length é atualizado para tamanho do vetor
+*/
 char **readStringsInFile(FILE *f, int *length) {
 	int i, maxLength;
 	char **newVet;
 	char str[256];
 
-	maxLength = 2;
+	/// estrutura de vetor dinâmico
+
+	/// é alocado 1 espaço de memória para o vetor inicialmente
+	maxLength = 1;
 	newVet = (char **)malloc(sizeof(char *) * maxLength);
 
+	/// enquanto arquivo ainda possui linhas
 	for(i = 0; !feof(f); ++i) {
+		/// se tamanho alocado não foi estourado
 		if(i+1 > maxLength) {
+			/// dobra de tamanho alocado
 			maxLength *= 2;
+			/// realoca todo vetor
 			newVet = (char **)realloc(newVet, sizeof(char *) * maxLength);
 		}
+		/// lê string no arquivo de entrada
 		fscanf(f, " %s", str);
+		/// aloca espaço para a string e armazena no vetor
 		newVet[i] = strcpy(malloc(sizeof(char) * strlen(str) + 1), str);
 	}
 
+	/// realoca vetor para o tamanho final
 	maxLength = i;
 	newVet = (char **)realloc(newVet, sizeof(char *) * maxLength);
 
 	*length = maxLength;
+	/// retorna vetor
 	return newVet;
 }
 
+/**
+	@brief fprintStringVet printa em arquivo um vetor de strings
+	@param f é o arquivo de saída
+	@param vet é o vetor de strings
+	@param length é o tamanho do vetor
+	@precondition arquivo tem que estar aberto
+	@postcondition nenhuma
+*/
 void fprintStringVet(FILE *f, char *vet[], int length) {
 	int i;
 
+	/// para cada string no vetor
 	for(i = 0; i < length; ++i) {
 		fprintf(f, "%s\n", vet[i]);
 	}
 }
 
+/**
+	@brief compareStringSorts compara e mostra os tempos entre os algoritimos
+	@param vet é o vetor de strings
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition nenhuma
+*/
 void compareStringSorts(char *vet[], int length) {
 	double timeTaken;
 
-	timeTaken = getTimeTakenStr(SORT_TYPE_QUICKSORT, vet, length);
+	/// pega o tempo de execução de cada algoritimo e printa na saida padrão
+
+	timeTaken = getTimeTakenStr(Quicksort, vet, length);
 	printf("QuickSort took 		%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTakenStr(SORT_TYPE_HEAP, vet, length);
+	timeTaken = getTimeTakenStr(Heap, vet, length);
 	printf("HeapSort took		%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTakenStr(SORT_TYPE_MERGE, vet, length);
+	timeTaken = getTimeTakenStr(Merge, vet, length);
 	printf("MergeSort took		%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTakenStr(SORT_TYPE_INSERTION, vet, length);
+	timeTaken = getTimeTakenStr(Insertion, vet, length);
 	printf("InsertionSort took	%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTakenStr(SORT_TYPE_SELECTION, vet, length);
+	timeTaken = getTimeTakenStr(Selection, vet, length);
 	printf("SelectionSort took	%.4lf seconds.\n", timeTaken);
 
-	timeTaken = getTimeTakenStr(SORT_TYPE_BUBBLE, vet, length);
+	timeTaken = getTimeTakenStr(Bubble, vet, length);
 	printf("BubbleSort took		%.4lf seconds.\n", timeTaken);
 }

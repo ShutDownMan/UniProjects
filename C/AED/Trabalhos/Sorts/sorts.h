@@ -50,148 +50,146 @@ int numericSeparate(int vet[], int left, int right);
 void numericMergeSort(int vet[], int left, int right);
 
 /**
-	@brief função auxiliar de 
+	@brief função auxiliar de mergesort
 	@param vet vetor de inteiros
-	@param left 
-	@param mid 
-	@param right 
-	@precondition 
-	@postcondition 
+	@param left limite esquerdo
+	@param mid meio
+	@param right limite direito
+	@precondition nenhuma
+	@postcondition nenhuma
 */
 void numericMerge(int vet[], int left, int mid, int right);
 
 /**
-	@brief 
+	@brief ordena inteiros pelo método HeapSort
 	@param vet vetor de inteiros
 	@param length tamanho do vetor
-	@precondition 
-	@postcondition 
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
 */
 void numericHeapSort(int vet[], int length);
 
 /**
-	@brief 
+	@brief função auxiliar de HeapSort
 	@param vet vetor de inteiros
-	@param mid 
-	@precondition 
-	@postcondition 
+	@param mid meio
+	@precondition nenhuma
+	@postcondition elementos são ordenados em forma de heap
 */
 void numericInsertHeap(int vet[], int mid);
 
 /**
-	@brief 
+	@brief fução auxiliar de HeapSort
 	@param vet vetor de inteiros
-	@param mid 
-	@precondition 
-	@postcondition 
+	@param mid meio
+	@precondition nenhuma
+	@postcondition vetor é organizado para satisfazer as propriedades heap
 */
 void numericHeapify(int vet[], int mid);
 
 /**
-	@brief 
+	@brief ordena inteiros pelo método BubbleSort
 	@param vet vetor de inteiros
 	@param length tamanho do vetor
-	@precondition 
-	@postcondition 
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
 */
 void numericBubbleSort(int vet[], int length);
 
 // STRING SORTING //
 
 /**
-	@brief 
+	@brief ordena strings pelo método Selection
 	@param vet vetor de strings
-	@param length tamanho do vetor
-	@precondition 
-	@postcondition 
+	@param length tamanho do vetortamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
 */
 void stringSelectionSort(char *vet[], int length);
 
 /**
-	@brief 
+	@brief ordena strings pelo método Insertion
 	@param vet vetor de strings
 	@param length tamanho do vetor
-	@precondition 
-	@postcondition 
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
 */
 void stringInsertionSort(char *vet[], int length);
 
 /**
-	@brief 
+	@brief ordena strings pelo método QuickSort
 	@param vet vetor de strings
-	@param left 
-	@param right 
-	@precondition 
-	@postcondition 
+	@param left limite esquerdo do vetor
+	@param right limite direito do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
 */
 void stringQuickSort(char *vet[], int left, int right);
 
 /**
-	@brief 
+	@brief função auxiliar de QuickSort
 	@param vet vetor de strings
-	@param left 
-	@param right 
-	@precondition 
-	@postcondition 
+	@param left limite esquerdo
+	@param right limite direito
+	@precondition nenhuma
+	@postcondition vetor é manipulado com referência a um pivô
 */
 int stringSeparate(char *vet[], int left, int right);
 
 /**
-	@brief 
+	@brief ordena strings pelo método MergeSort
 	@param vet vetor de strings
-	@param left 
-	@param right 
-	@precondition 
-	@postcondition 
+	@param left limite esquerdo do vetor
+	@param right limite direito do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
 */
 void stringMergeSort(char *vet[], int left, int right);
 
 /**
-	@brief 
+	@brief função auxiliar de MergeSort
 	@param vet vetor de strings
-	@param left 
-	@param mid 
-	@param right 
-	@precondition 
-	@postcondition 
+	@param left limite esquerdo
+	@param mid meio
+	@param right limite direito
+	@precondition nenhuma
+	@postcondition nenhuma
 */
 void stringMerge(char *vet[], int left, int mid, int right);
 
 /**
-	@brief 
+	@brief ordena strings pelo método HeapSort
 	@param vet vetor de strings
-	@param left 
-	@param mid 
-	@param right 
-	@precondition 
-	@postcondition 
+	@param length tamanho do vetor
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem alfabética
 */
 void stringHeapSort(char *vet[], int length);
 
 /**
-	@brief 
+	@brief função auxiliar de HeapSort
 	@param vet vetor de strings
-	@param mid 
-	@precondition 
-	@postcondition 
+	@param mid meio
+	@precondition nenhuma
+	@postcondition elementos são ordenados em forma de heap
 */
 void stringInsertHeap(char *vet[], int mid);
 
 /**
-	@brief 
+	@brief fução auxiliar de HeapSort
 	@param vet vetor de strings
-	@param mid 
-	@precondition 
-	@postcondition 
+	@param mid meio
+	@precondition nenhuma
+	@postcondition vetor é organizado para satisfazer as propriedades heap
 */
 void stringHeapify(char *vet[], int mid);
 
 /**
-	@brief 
+	@brief ordena inteiros pelo método BubbleSort
 	@param vet vetor de strings
 	@param length tamanho do vetor
-	@precondition 
-	@postcondition 
+	@precondition nenhuma
+	@postcondition vetor é ordenado em ordem crescente
 */
 void stringBubbleSort(char *vet[], int length);
 

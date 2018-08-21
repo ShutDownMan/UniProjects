@@ -68,7 +68,7 @@ void escolhaModificarFiltrosMusicaMenu(PesquisarMusicaFiltros filtros[]) {
 		printf("  (2)-> [%c]Interprete\n", filtros[1] ? 'X' : ' ');
 		printf("  (3)-> [%c]Autor", filtros[2] ? 'X' : ' ');
 		printf("   (4)-> [%c]Genero\n", filtros[3] ? 'X' : ' ');
-		printf("  (0)-> [%c]Sair\n\n");
+		printf("  (0)-> [%c]Voltar\n\n");
 
 		printf("comando: ");
 		fflush(stdin);
@@ -91,7 +91,7 @@ PesquisarMusicaOpcoes acharMusicaOpcoesMenu() {
 		printf("(1)-> Modificar Filtros\n");
 		printf("(2)-> Modificar Ordenacao\n");
 		printf("(3)-> Fazer Pesquisa\n");
-		printf("(0)-> Sair\n");
+		printf("(0)-> Voltar\n");
 
 		printf("comando: ");
 		fflush(stdin);
@@ -120,8 +120,8 @@ void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordenacao) {
 		printf("(3)-> Avaliacao\n");
 
 		printf("comando: ");
+		scanf(" %d", &num);
 		fflush(stdin);
-		scanf("%d", &num);
 		if(num <= 0 || num > SairMusicaOpcoes) {
 			printf("Digite um comando valido!\n");
 			num = 1;
@@ -139,24 +139,24 @@ void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordenacao) {
 	} while(num);
 }
 
-Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *info) {
+Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *ordInfo) {
+	Musica *musicaEcontrada = NULL;
 	MusicaDatabase *listaMusicas = inicializaMusicaDatabase();
 	char str[STRMAX], sair = 0;
 	char **tags = NULL;
 	int i, tagsTam = 0;
 
 	printf("Digite sua pesquisa: ");
-	fflush(stdin);
 	scanf(" %[^\n]%*c", str);
-	listaMusicas = pesquisarTodasMusicasComTags(musicas, tags, filtros);
-	do {
-		printaPesquisa(listaMusicas, filtros, ordenacao);
-		pesquisaPorListaMusica(listaMusicas, ordenacao);
-		tags = separarTags(str, &tagsTam);
+	fflush(stdin);
 
+	tags = separarTags(str, &tagsTam);
+	listaMusicas = pesquisarTodasMusicasComTags(musicas, tags, tagsTam, filtros);
 
-		getch();
-	} while(!sair && listaMusicas->tamanho > 1);
+	printaPesquisa(listaMusicas, filtros, ordInfo);
+	getch();
+	musicaEcontrada = pesquisaPorListaMusica(listaMusicas, ordInfo);
+
 
 	for(i = 0; i < tagsTam; ++i) {
 		free(tags[i]);
@@ -164,17 +164,104 @@ Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[
 	free(tags);
 	free(listaMusicas);
 
+	return musicaEcontrada;
 }
 
-void printaPesquisa(MusicaDatabase *musicas) {
+void printaPesquisa(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *ordInfo) {
 	int i;
+	OrdenacaoVet *listaMusicaOrdenada;
 
-	for(i = 0; i < musicas->tamanho; ++i) {
-		if(musicas->db_musicas[i]) {
-			printMusica(musicas->db_musicas[i]);
+	listaMusicaOrdenada = criaListaPorAtributo(musicas, ordInfo);
+
+	ordenarListaMusica(listaMusicaOrdenada, !ordInfo->ehCrescente);
+
+	for(i = 0; i < listaMusicaOrdenada->tamanho; ++i) {
+		if(listaMusicaOrdenada->musicas[i]->ativo) {
+			printMusica(listaMusicaOrdenada->musicas[i]);
 		}
 	}
+
+	free(listaMusicaOrdenada->musicas);
+	free(listaMusicaOrdenada->valores);
+	free(listaMusicaOrdenada);
 }
+
+OrdenacaoVet *criaListaPorAtributo(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo) {
+	OrdenacaoVet *listaMusicaOrdenada = malloc(sizeof(OrdenacaoVet));
+	int i, inicio, fim, dir;
+
+	listaMusicaOrdenada->tamanho = musicas->tamanho;
+	listaMusicaOrdenada->musicas = malloc(sizeof(Musica*)*musicas->tamanho);
+	listaMusicaOrdenada->valores = malloc(sizeof(int)*musicas->tamanho);
+
+	for(i = 0; i < musicas->tamanho; ++i) {
+		listaMusicaOrdenada->musicas[i] = musicas->db_musicas[i];
+		switch(ordInfo->tipo) {
+			case Ano:
+				listaMusicaOrdenada->valores[i] = musicas->db_musicas[i]->ano;
+				break;
+			case Duracao:
+				listaMusicaOrdenada->valores[i] = musicas->db_musicas[i]->duracao;
+				break;
+			case Avaliacao:
+				listaMusicaOrdenada->valores[i] = musicas->db_musicas[i]->avaliacao;
+				break;
+			default: break;
+		}
+	}
+
+	return listaMusicaOrdenada;
+}
+
+void ordenarListaMusica(OrdenacaoVet *listaMusica, int inverter) {
+	int i;
+
+	quickSort(listaMusica, 0, listaMusica->tamanho-1);
+
+	if(inverter) {
+		/// inverte vetor
+		for(i = 0; i < listaMusica->tamanho/2; ++i) {
+			Musica *tempM, **musicasL;
+			int temp, *valoresL;
+
+			musicasL = listaMusica->musicas;
+			valoresL = listaMusica->valores;
+
+			temp = valoresL[i]; valoresL[i] = valoresL[listaMusica->tamanho-i-1]; valoresL[listaMusica->tamanho-i-1] = temp;
+			tempM = musicasL[i]; musicasL[i] = musicasL[listaMusica->tamanho-i-1]; musicasL[listaMusica->tamanho-i-1] = tempM;
+			printf("%d and %d\n", i, listaMusica->tamanho-i-1);
+		}
+	}
+
+}
+
+void quickSort(OrdenacaoVet *listaMusica, int left, int right) {
+	int j;
+	if(left < right) {
+		j = ordenarHelper(listaMusica, left, right);
+		quickSort(listaMusica, left, j-1);
+		quickSort(listaMusica, j+1, right);
+	}
+}
+
+int ordenarHelper(OrdenacaoVet *listaMusica, int left, int right) {
+	int pivo, j, k, temp;
+	Musica *pivoM, *tempM;
+
+	pivo = listaMusica->valores[right]; j = left;
+	pivoM = listaMusica->musicas[right];
+	for(k = left; k < right; k++) {
+		if(listaMusica->valores[k] <= pivo) {
+			temp = listaMusica->valores[j]; listaMusica->valores[j] = listaMusica->valores[k]; listaMusica->valores[k] = temp;
+			tempM = listaMusica->musicas[j]; listaMusica->musicas[j] = listaMusica->musicas[k]; listaMusica->musicas[k] = tempM;
+			j++;
+		}
+	}
+	listaMusica->valores[right] = listaMusica->valores[j]; listaMusica->valores[j] = pivo;
+	listaMusica->musicas[right] = listaMusica->musicas[j]; listaMusica->musicas[j] = pivoM;
+	return j;
+}
+
 
 char **separarTags(char str[], int *tam) {
 	int i, offs, n;
@@ -200,15 +287,31 @@ char **separarTags(char str[], int *tam) {
 	return novaLista;
 }
 
-MusicaDatabase *pesquisarTodasMusicasComTags(MusicaDatabase *musicas, char *tags[], PesquisarMusicaFiltros filtros[]) {
+MusicaDatabase *pesquisarTodasMusicasComTags(MusicaDatabase *musicas, char *tags[], int tagsTam, PesquisarMusicaFiltros filtros[]) {
+	MusicaDatabase *musicasEncontradas = inicializaMusicaDatabase();
+	Musica *musicaAtual = NULL;
+	int i, j, k, adiciona;
+	char *tagAtual;
 
+	for(i = 0; i < musicas->tamanho; ++i) {
+		musicaAtual = musicas->db_musicas[i];
+		if(musicaAtual->ativo) {
+			adiciona = 1;
+			for(j = 0; j < tagsTam; ++j) {
+				if(filtros[0] && strstr(musicaAtual->titulo, tags[j])) { //< Titulo
+				} else if(filtros[1] && strstr(musicaAtual->interprete, tags[j])) { //< Interprete
+				} else if(filtros[2] && strstr(musicaAtual->autor, tags[j])) { //< Autor
+				} else if(filtros[3] && strstr(musicaAtual->genero, tags[j])) { //< Genero
+				} else adiciona = 0;
+			}
+			if(adiciona) adicionaMusica(musicasEncontradas, musicaAtual);
+		}
+	}
+
+	return musicasEncontradas;
 }
 
-void printaPesquisa() {
-
-}
-
-void pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordenacao) {
+Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordenacao) {
 
 }
 

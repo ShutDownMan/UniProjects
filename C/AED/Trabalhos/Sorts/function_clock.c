@@ -26,37 +26,37 @@ double getTimeTaken(int sortType, int vet[], int length) {
 	t = clock();
 	switch(sortType) {
 		/// ordena vetor pelo método selection
-		case SORT_TYPE_INSERTION: {
+		case Insertion: {
 			numericInsertionSort(vetCpy, length);
 			break;
 		}
 
 		/// ordena vetor pelo método insertion
-		case SORT_TYPE_SELECTION: {
+		case Selection: {
 			numericSelectionSort(vetCpy, length);
 			break;
 		}
 
 		/// ordena vetor pelo método quicksort
-		case SORT_TYPE_QUICKSORT: {
+		case Quicksort: {
 			numericQuickSort(vetCpy, 0, length-1);
 			break;
 		}
 
 		/// ordena vetor pelo método merge
-		case SORT_TYPE_MERGE: {
+		case Merge: {
 			numericMergeSort(vetCpy, 0, length);
 			break;
 		}
 
 		/// ordena vetor pelo método heap
-		case SORT_TYPE_HEAP: {
+		case Heap: {
 			numericHeapSort(vetCpy-1, length);
 			break;
 		}
 
 		/// ordena vetor pelo método bubble
-		case SORT_TYPE_BUBBLE: {
+		case Bubble: {
 			numericBubbleSort(vetCpy, length);
 			break;
 		}
@@ -121,37 +121,37 @@ double getTimeTakenStr(int sortType, char *vet[], int length) {
 	t = clock();
 	switch(sortType) {
 		/// ordena vetor pelo método selection
-		case SORT_TYPE_INSERTION: {
+		case Insertion: {
 			stringSelectionSort(vetCpy, length);
 			break;
 		}
 
 		/// ordena vetor pelo método insertion
-		case SORT_TYPE_SELECTION: {
+		case Selection: {
 			stringInsertionSort(vetCpy, length);
 			break;
 		}
 
 		/// ordena vetor pelo método quicksort
-		case SORT_TYPE_QUICKSORT: {
+		case Quicksort: {
 			stringQuickSort(vetCpy, 0, length-1);
 			break;
 		}
 
 		/// ordena vetor pelo método merge
-		case SORT_TYPE_MERGE: {
+		case Merge: {
 			stringMergeSort(vetCpy, 0, length);
 			break;
 		}
 
 		/// ordena vetor pelo método heap
-		case SORT_TYPE_HEAP: {
+		case Heap: {
 			stringHeapSort(vetCpy-1, length);
 			break;
 		}
 
 		/// ordena vetor pelo método bubble
-		case SORT_TYPE_BUBBLE: {
+		case Bubble: {
 			stringBubbleSort(vetCpy, length);
 			break;
 		}

@@ -51,6 +51,8 @@ Musica *lerMusica(FILE *f) {
 	fscanf(f, " %d; ", &novaMusica->duracao);
 	fscanf(f, " %d; ", &novaMusica->avaliacao);
 
+	novaMusica->ativo = 1;
+
 	return novaMusica;
 }
 
@@ -97,6 +99,8 @@ Musica *lerMusicaUI() {
 	scanf(" %d", &novaMusica->avaliacao);
 
 	printf("\n");
+
+	novaMusica->ativo = 1;
 
 	return novaMusica;
 }

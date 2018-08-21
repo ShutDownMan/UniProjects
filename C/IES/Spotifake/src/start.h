@@ -16,7 +16,7 @@ typedef struct musica {
 	char genero[STRMAX];
 	int ano;
 	int duracao;
-	unsigned char avaliacao;
+	unsigned char avaliacao, ativo;
 } Musica;
 
 struct musicaDatabase;
