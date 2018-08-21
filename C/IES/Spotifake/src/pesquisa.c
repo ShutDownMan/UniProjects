@@ -22,7 +22,7 @@ Musica *acharMusicaUI(AppDatabase *db) {
 				escolhaModificarOrdenacaoMusicaMenu(ordenacao);
 				break;
 			case FazerPesquisa:
-				musicaEcontrada = pesquisarMusica(db->musicas, filtros, ordenacao);
+				musicaEcontrada = pesquisarMusicaUI(db->musicas, filtros, ordenacao);
 				break;
 			default: break;
 		}
@@ -94,8 +94,8 @@ PesquisarMusicaOpcoes acharMusicaOpcoesMenu() {
 		printf("(0)-> Voltar\n");
 
 		printf("comando: ");
+		scanf(" %d", &num);
 		fflush(stdin);
-		scanf("%d", &num);
 		if(num < 0 || num > SairMusicaOpcoes) {
 			printf("Digite um comando valido!\n");
 			getch();
@@ -139,7 +139,7 @@ void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordInfo) {
 	} while(num);
 }
 
-Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *ordInfo) {
+Musica *pesquisarMusicaUI(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *ordInfo) {
 	Musica *musicaEcontrada = NULL;
 	MusicaDatabase *listaMusicas = inicializaMusicaDatabase();
 	char str[STRMAX], sair = 0;
@@ -355,6 +355,15 @@ void printMusica(Musica *musica) {
 
 //- DELETAR MUSICAS -//
 
+void deletarMusicaUI(AppDatabase *db) {
+	printf("Pesquise pela musica que deseja deletar.\n");
+	printf("Pressione qualquer tecla para continuar...\n");
+	getch();
+	Musica *musicaEcontrada = acharMusicaUI(db);
 
+	if(musicaEcontrada) {
+		musicaEcontrada->ativo = 0;
+	}
+}
 
 //- DELETAR PLAYLISTS -//

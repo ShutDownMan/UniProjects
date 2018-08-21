@@ -52,7 +52,7 @@ PesquisarMusicaOpcoes acharMusicaOpcoesMenu();
 
 void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordInfo);
 
-Musica *pesquisarMusica(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *info);
+Musica *pesquisarMusicaUI(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *info);
 
 void printaPesquisa(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo);
 
@@ -70,8 +70,10 @@ MusicaDatabase *pesquisarTodasMusicasComTags(MusicaDatabase *musicas, char *tags
 
 Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo);
 
-
 void printMusica(Musica *musica);
+
+
+void deletarMusicaUI(AppDatabase *db);
 
 
 #endif // PESQUISA_H
