@@ -149,6 +149,17 @@ Playlist *lerPlaylist(FILE *f, MusicaDatabase *musicas) {
 	return novaPlaylist;
 }
 
+PlaylistDatabase *inicializaPlaylistDatabase() {
+	PlaylistDatabase *novaPlaylist = malloc(sizeof(Playlist));
+
+	novaPlaylist->db_playlists = NULL;
+	novaPlaylist->tamanho = 0;
+	novaPlaylist->espacoAlocado = 0;
+	novaPlaylist->final = 0;
+
+	return novaPlaylist;
+}
+
 void adicionaMusicaPlaylist(Playlist *playlist, Musica *musica) {
 	if(playlist && musica) {
 		adicionaMusica(playlist->musicas, musica);

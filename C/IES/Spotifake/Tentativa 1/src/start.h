@@ -25,6 +25,7 @@ typedef struct playlist {
 	char titulo[STRMAX];
 	char proprietario[STRMAX];
 	struct musicaDatabase *musicas;
+	int ativo;
 } Playlist;
 
 typedef struct musicaDatabase {
@@ -63,6 +64,8 @@ Musica *lerMusicaUI();
 PlaylistDatabase *novaDBPlaylists(char fileName[], MusicaDatabase *musicas);
 
 Playlist *lerPlaylist(FILE *f, MusicaDatabase *musicas);
+
+PlaylistDatabase *inicializaPlaylistDatabase();
 
 void adicionaMusicaPlaylist(Playlist *playlist, Musica *musica);
 

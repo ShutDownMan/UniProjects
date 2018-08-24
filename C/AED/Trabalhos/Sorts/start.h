@@ -34,7 +34,6 @@ typedef struct arguments {
 	char *inputFileName;
 	/// nome do arquivo de saida
 	char *outputFileName;
-
 } Arguments;
 
 /**

@@ -4,13 +4,6 @@
 
 #include "start.h"
 
-/**
-	@brief 
-	@param 
-	@return 
-	@precondition 
-	@postcondition 
-*/
 int main(int argc, char const *argv[]) {
 	Arguments *args = NULL;
 

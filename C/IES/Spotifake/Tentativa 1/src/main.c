@@ -36,7 +36,7 @@ int main(void) {
 				acharMusicaUI(db);
 				break;
 			case pesquisarPlaylist:
-//				acharPlaylistUI(db);
+				acharPlaylistUI(db);
 				break;
 			case deletarMusica:
 				deletarMusicaUI(db);

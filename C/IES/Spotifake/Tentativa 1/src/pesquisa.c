@@ -68,7 +68,7 @@ void escolhaModificarFiltrosMusicaMenu(PesquisarMusicaFiltros filtros[]) {
 		printf("  (2)-> [%c]Interprete\n", filtros[1] ? 'X' : ' ');
 		printf("  (3)-> [%c]Autor", filtros[2] ? 'X' : ' ');
 		printf("   (4)-> [%c]Genero\n", filtros[3] ? 'X' : ' ');
-		printf("  (0)-> [%c]Voltar\n\n");
+		printf("  (0)-> Voltar\n\n");
 
 		printf("comando: ");
 		fflush(stdin);
@@ -141,7 +141,7 @@ void escolhaModificarOrdenacaoMusicaMenu(OrdenacaoInfo *ordInfo) {
 
 Musica *pesquisarMusicaUI(MusicaDatabase *musicas, PesquisarMusicaFiltros filtros[], OrdenacaoInfo *ordInfo) {
 	Musica *musicaEcontrada = NULL;
-	MusicaDatabase *listaMusicas = inicializaMusicaDatabase();
+	MusicaDatabase *listaMusicas = NULL;
 	char str[STRMAX], sair = 0;
 	char **tags = NULL;
 	int i, tagsTam = 0;
@@ -160,6 +160,7 @@ Musica *pesquisarMusicaUI(MusicaDatabase *musicas, PesquisarMusicaFiltros filtro
 		free(tags[i]);
 	}
 	free(tags);
+	free(listaMusicas->db_musicas);
 	free(listaMusicas);
 
 	return musicaEcontrada;
@@ -175,12 +176,12 @@ void printaPesquisa(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo) {
 
 	for(i = 0; i < listaMusicaOrdenada->tamanho; ++i) {
 		printf("Musica [%d]:\n", i+1);
-		if(listaMusicaOrdenada->musicas[i]->ativo) {
-			printMusica(listaMusicaOrdenada->musicas[i]);
+		if(((Musica**)listaMusicaOrdenada->ponteiros)[i]->ativo) {
+			printMusica(listaMusicaOrdenada->ponteiros[i]);
 		}
 	}
 
-	free(listaMusicaOrdenada->musicas);
+	free(listaMusicaOrdenada->ponteiros);
 	free(listaMusicaOrdenada->valores);
 	free(listaMusicaOrdenada);
 }
@@ -190,11 +191,11 @@ OrdenacaoVet *criaListaPorAtributo(MusicaDatabase *musicas, OrdenacaoInfo *ordIn
 	int i, inicio, fim, dir;
 
 	listaMusicaOrdenada->tamanho = musicas->tamanho;
-	listaMusicaOrdenada->musicas = malloc(sizeof(Musica*)*musicas->tamanho);
+	listaMusicaOrdenada->ponteiros = malloc(sizeof(Musica*)*musicas->tamanho);
 	listaMusicaOrdenada->valores = malloc(sizeof(int)*musicas->tamanho);
 
 	for(i = 0; i < musicas->tamanho; ++i) {
-		listaMusicaOrdenada->musicas[i] = musicas->db_musicas[i];
+		listaMusicaOrdenada->ponteiros[i] = musicas->db_musicas[i];
 		switch(ordInfo->tipo) {
 			case Ano:
 				listaMusicaOrdenada->valores[i] = musicas->db_musicas[i]->ano;
@@ -223,12 +224,12 @@ void ordenarListaMusica(OrdenacaoVet *listaMusica, int inverter) {
 			Musica *tempM, **musicasL;
 			int temp, *valoresL;
 
-			musicasL = listaMusica->musicas;
+			musicasL = (Musica **)listaMusica->ponteiros;
 			valoresL = listaMusica->valores;
 
 			temp = valoresL[i]; valoresL[i] = valoresL[listaMusica->tamanho-i-1]; valoresL[listaMusica->tamanho-i-1] = temp;
 			tempM = musicasL[i]; musicasL[i] = musicasL[listaMusica->tamanho-i-1]; musicasL[listaMusica->tamanho-i-1] = tempM;
-			printf("%d and %d\n", i, listaMusica->tamanho-i-1);
+//			printf("%d and %d\n", i, listaMusica->tamanho-i-1);
 		}
 	}
 
@@ -248,16 +249,16 @@ int ordenarHelper(OrdenacaoVet *listaMusica, int left, int right) {
 	Musica *pivoM, *tempM;
 
 	pivo = listaMusica->valores[right]; j = left;
-	pivoM = listaMusica->musicas[right];
+	pivoM = listaMusica->ponteiros[right];
 	for(k = left; k < right; k++) {
 		if(listaMusica->valores[k] <= pivo) {
 			temp = listaMusica->valores[j]; listaMusica->valores[j] = listaMusica->valores[k]; listaMusica->valores[k] = temp;
-			tempM = listaMusica->musicas[j]; listaMusica->musicas[j] = listaMusica->musicas[k]; listaMusica->musicas[k] = tempM;
+			tempM = listaMusica->ponteiros[j]; listaMusica->ponteiros[j] = listaMusica->ponteiros[k]; listaMusica->ponteiros[k] = tempM;
 			j++;
 		}
 	}
 	listaMusica->valores[right] = listaMusica->valores[j]; listaMusica->valores[j] = pivo;
-	listaMusica->musicas[right] = listaMusica->musicas[j]; listaMusica->musicas[j] = pivoM;
+	listaMusica->ponteiros[right] = listaMusica->ponteiros[j]; listaMusica->ponteiros[j] = pivoM;
 	return j;
 }
 
@@ -317,9 +318,9 @@ Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo) 
 		printaPesquisa(musicas, ordInfo);
 		printf("Digite o indice de uma musica\n");
 		printf("(0) -> Voltar\n");
-		printf("tam = %d\n", musicas->tamanho);
+//		printf("tam = %d\n", musicas->tamanho);
 		scanf(" %d", &escolha);
-
+		fflush(stdin);
 
 		if(escolha < 0 || escolha > musicas->tamanho) {
 			printf("Digite um numero valido!\n");
@@ -339,23 +340,158 @@ Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo) 
 	return NULL;
 }
 
+void printaPesquisaPlaylist(PlaylistDatabase *playlists) {
+	int i;
+
+	for(i = 0; i < playlists->tamanho; ++i) {
+		
+	}
+
+	free(listaPlaylistOrdenada->ponteiros);
+	free(listaPlaylistOrdenada->valores);
+	free(listaPlaylistOrdenada);
+}
+
 void printMusica(Musica *musica) {
-	printf("Titulo: %s\n", musica->titulo);
-	printf("Interprete: %s\n", musica->interprete);
-	printf("Autor: %s\n", musica->autor);
-	printf("Ano: %d\n", musica->ano);
-	printf("Genero: %s\n", musica->genero);
-	printf("duracao: %d:%02d\n", musica->duracao/60, musica->duracao%60);
-	printf("Avaliacao: %d\n\n", musica->avaliacao);
+	if(musica->ativo) {
+/*		printf("%16s", musica->titulo);
+		printf("%16s\n", musica->interprete);
+		printf("%16s\n", musica->autor);
+		printf("%4d\n", musica->ano);
+		printf("%16s\n", musica->genero);
+		printf("%3d:%02d\n", musica->duracao/60, musica->duracao%60);
+		printf("%1d\n\n", musica->avaliacao);
+*/
+	    printf("Titulo: %s\n", musica->titulo);
+	    printf("Interprete: %s\n", musica->interprete);
+	    printf("Autor: %s\n", musica->autor);
+	    printf("Ano: %d\n", musica->ano);
+	    printf("Genero: %s\n", musica->genero);
+	    printf("duracao: %d:%02d\n", musica->duracao/60, musica->duracao%60);
+	    printf("Avaliacao: %d\n\n", musica->avaliacao);
+	} else {
+		printf("Musica selecionada foi deletada.\n");
+	}
 }
 
 //- PROCURAR PLAYLISTS -//
 
+Playlist *acharPlaylistUI(AppDatabase *db) {
+	Playlist *playlistEcontrada = NULL;
+	PlaylistDatabase *listaPlaylists = NULL;
+	char str[STRMAX], sair = 0;
+	char **tags = NULL;
+	int i, tagsTam = 0;
 
+	printf("Digite sua pesquisa: ");
+	scanf(" %[^\n]%*c", str);
+	fflush(stdin);
+
+	tags = separarTags(str, &tagsTam);
+	listaPlaylists = pesquisarTodasPlaylistsComTags(db->playlists, tags, tagsTam);
+
+	if(listaPlaylists->tamanho > 0)
+		playlistEcontrada = pesquisaPorListaPlaylist(listaPlaylists);
+
+	for(i = 0; i < tagsTam; ++i) {
+		free(tags[i]);
+	}
+	free(tags);
+	free(listaPlaylists);
+	free(listaPlaylists->db_playlists);
+	free(listaPlaylists);
+
+	return playlistEcontrada;
+}
+
+PlaylistDatabase *pesquisarTodasPlaylistsComTags(PlaylistDatabase *playlists, char *tags[], int tagsTam) {
+/*	PlaylistDatabase *playlistsEncontradas = inicializaPlaylistDatabase();
+	Playlist *playlistAtual = NULL;
+	int i, j, k, adiciona;
+	char *tagAtual;
+
+	for(i = 0; i < playlists->tamanho; ++i) {
+		playlistAtual = playlists->db_playlists[i];
+		if(playlistAtual->ativo) {
+			adiciona = 1;
+			for(j = 0; j < tagsTam; ++j) {
+				if(strstr(playlistAtual->titulo, tags[j])) {
+				} else if(strstr(playlistAtual->proprietario, tags[j])) {
+				} else adiciona = 0;
+			}
+			if(adiciona) adicionaPlaylist(playlistsEncontradas, playlistAtual);
+		}
+	}
+*/
+	return playlistsEncontradas;
+}
+
+Playlist *pesquisaPorListaPlaylist(PlaylistDatabase *playlists) {
+/*	int escolha;
+
+	do {
+		printaPesquisaPlaylist(playlists, ordInfo);
+		printf("Digite o indice de uma playlist\n");
+		printf("(0) -> Voltar\n");
+//		printf("tam = %d\n", playlists->tamanho);
+		scanf(" %d", &escolha);
+		fflush(stdin);
+
+		if(escolha < 0 || escolha > playlists->tamanho) {
+			printf("Digite um numero valido!\n");
+			getch();
+		}
+
+	} while(escolha < 0 || escolha > playlists->tamanho);
+
+	if(escolha) {
+		system("cls");
+		printf("Musica escolhida:\n\n");
+		printMusica(playlists->db_playlists[escolha-1]);
+		getch();
+		return playlists->db_playlists[escolha-1];
+	}
+*/
+	return NULL;
+}
+
+void printPlaylist(Playlist *playlist) {
+	int i, duracao;
+	if(playlist && playlist->ativo) {
+		duracao = duracaoPlaylist(playlist);
+
+		printf("Titulo playlist: %s\n", playlist->titulo);
+		printf("Proprietario playlist: %s\n\n", playlist->proprietario);
+		printf("Duracao da playlist: %d:%02d\n", duracao/60, duracao%60);
+		printf("Quantidade de musicas na playlist: %d\n\n", playlist->musicas->tamanho);
+
+		printf("Musicas na playlist:\n");
+		printf("Nome  Autor  Interprete  Genero  Ano  Duracao  Avaliacao\n");
+		for(i = 0; i < playlist->musicas->tamanho; ++i) {
+			printMusica(playlist->musicas->db_musicas[i]);
+		}
+
+	} else {
+		printf("Esta playlist foi removida\n");
+	}
+}
+
+int duracaoPlaylist(Playlist *playlist) {
+	int i, duracao;
+
+	if(playlist && playlist->ativo) {
+		for(i = duracao = 0; i < playlist->musicas->tamanho; ++i) {
+			duracao += playlist->musicas->db_musicas[i]->duracao;
+		}
+	}
+
+	return duracao;
+}
 
 //- DELETAR MUSICAS -//
 
 void deletarMusicaUI(AppDatabase *db) {
+	system("cls");
 	printf("Pesquise pela musica que deseja deletar.\n");
 	printf("Pressione qualquer tecla para continuar...\n");
 	getch();
@@ -363,6 +499,8 @@ void deletarMusicaUI(AppDatabase *db) {
 
 	if(musicaEcontrada) {
 		musicaEcontrada->ativo = 0;
+		printf("Musica deletada!\n");
+		getch();
 	}
 }
 

@@ -1,6 +1,6 @@
 Batata; sopa; cheff; 2018; Rap; 123; 5;
 potato; test; chefito; 123; Rock; 213; 3;
-titulo; interprete; autor; ano; genero; tempo; 1;
+titulo; interprete; autor; 2017; genero; 330; 1;
 (You're) Having My Baby; UNSPECIFIED;Paul Anka/Odia Coates;1974;Reggae;186;3;
 You Light Up My Life; UNSPECIFIED;Debby Boone;1977;Pop;104;5;
 Tie A Yellow Ribbon; UNSPECIFIED;Dawn featuring Tony Orlando;1973;Pop;82;4;
@@ -80,7 +80,7 @@ Sing; UNSPECIFIED;Carpenters;1973;Rock;218;4;
 Annie's Song; UNSPECIFIED;John Denver;1974;Rock;202;2;
 Babe; UNSPECIFIED;Styx;1979;Rock;58;5;
 State of Shock; UNSPECIFIED;Mick Jagger/MIchael Jackson;1984;EDM;248;3;
-I Just Called To Say I Love You; UNSPECIFIED;Stevie Wonder;1984;Hip hop;0;4;
+I Just Called To Say I Love You; UNSPECIFIED;Stevie Wonder;1984;Hip hop;98;4;
 My Sharona; UNSPECIFIED;the Knack;1979;Hip hop;10;5;
 My Melody of Love; UNSPECIFIED;Bobby Vinton;1974;Pop;42;4;
 Longer; UNSPECIFIED;Dan Fogelberg;1979;Pop;208;4;

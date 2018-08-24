@@ -33,7 +33,7 @@ typedef struct ordenacaoInfo {
 } OrdenacaoInfo;
 
 typedef struct ordenacaoVet {
-	Musica **musicas;
+	void **ponteiros;
 	int *valores;
 	int tamanho;
 } OrdenacaoVet;
@@ -72,6 +72,17 @@ Musica *pesquisaPorListaMusica(MusicaDatabase *musicas, OrdenacaoInfo *ordInfo);
 
 void printMusica(Musica *musica);
 
+//- PROCURAR PLAYLISTS -//
+
+Playlist *acharPlaylistUI(AppDatabase *db);
+
+void printPlaylist(Playlist *playlist);
+
+int duracaoPlaylist(Playlist *playlist);
+
+PlaylistDatabase *pesquisarTodasPlaylistsComTags(PlaylistDatabase *playlists, char *tags[], int tagsTam);
+
+//- DELETAR MUSICAS -//
 
 void deletarMusicaUI(AppDatabase *db);
 
