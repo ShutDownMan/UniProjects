@@ -22,8 +22,8 @@ typedef struct music {
 typedef struct playlist {
 	char title[STRMAX];
 	char owner[STRMAX];
-	List *musicas;
-	unsigned char ativo;
+	List *musics;
+	unsigned char active;
 } Playlist;
 
 typedef struct filters {
