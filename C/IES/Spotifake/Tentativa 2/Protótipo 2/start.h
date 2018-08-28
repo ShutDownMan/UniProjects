@@ -5,6 +5,13 @@
 
 #define STRMAX 256
 
+typedef struct list {
+	// However you want to implement it
+
+	/// Has to at least have:
+	unsigned int size;
+} List;
+
 typedef struct appDatabase {
 	List *db_musics;
 	List *db_playlists;
@@ -15,7 +22,7 @@ typedef struct music {
 	char singer[STRMAX];
 	char author[STRMAX];
 	char genre[STRMAX];
-	unsigned int year, duration;
+	unsigned int year, duration, ID;
 	unsigned char rating, active;
 } Music;
 
@@ -31,6 +38,46 @@ typedef struct filters {
 	int length;
 } Filters;
 
+/**
+	@brief allocates memory and initializes attributes for AppDatabase
+	@return a new AppDatabase "instance"
+	@precondition NONE
+	@postcondition a new AppDatabase is initialized and returned
+*/
+AppDatabase *initializeAppDatabase();
+
+/**
+	@brief allocates memory and initializes attributes for Music
+	@return a new Music "instance"
+	@precondition NONE
+	@postcondition a new Music is initialized and returned
+*/
+Music *initializeMusic();
+
+/**
+	@brief allocates memory and initializes attributes for Playlist
+	@return a new Playlist "instance"
+	@precondition NONE
+	@postcondition a new Playlist is initialized and returned
+*/
+Playlist *initializePlaylist();
+
+/**
+	@brief allocates memory and initializes attributes for Filters
+	@return a new Filters "instance"
+	@precondition NONE
+	@postcondition a new Filters is initialized and returned
+*/
+Filters *initializeFilters();
+
+/**
+	@brief add item to list
+	@param list, list to be modified
+	@param item, item to be added
+	@precondition list and item are initialized and not NULL
+	@postcondition item is added to list
+*/
+void addToList(List *list, void *item);
 
 /**
 	@brief add music to database
@@ -82,6 +129,16 @@ List *searchMusicDatabase(AppDatabase *db, char *searchStr, Filters *filters);
 List *searchPlaylistDatabase(AppDatabase *db, char *searchStr, Filters *filters);
 
 /**
+	@brief gets an item from the list given an index
+	@param list, list to be traversed
+	@param index, index of the item
+	@return item found or NULL if not found
+	@precondition list is initialized and not NULL, index is non-negative
+	@postcondition item found is returned
+*/
+void *getListItemFromIndex(List *list, int index);
+
+/**
 	@brief copies attributes from newMusic to oldMusic
 	@param oldMusic, Music to be modified
 	@param newMusic, attributes to be modified to
@@ -130,5 +187,15 @@ bool removePlaylistFromDatabase(AppDatabase *db, Playlist *playlist);
 	@postcondition music is removed from the playlist
 */
 bool removeMusicFromPlaylist(Playlist *playlist, Music *music);
+
+/**
+	@brief remove item from list
+	@param list to be modified
+	@param item to be removed
+	@return TRUE if item was removed, FALSE if it wasn't
+	@precondition list and item are initialized and not NULL
+	@postcondition item is removed from list
+*/
+bool removeItemFromList(List *list, void *item);
 
 #endif
