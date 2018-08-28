@@ -38,6 +38,8 @@ typedef struct filters {
 	int length;
 } Filters;
 
+//- INITIALIZE -//
+
 /**
 	@brief allocates memory and initializes attributes for AppDatabase
 	@return a new AppDatabase "instance"
@@ -69,6 +71,16 @@ Playlist *initializePlaylist();
 	@postcondition a new Filters is initialized and returned
 */
 Filters *initializeFilters();
+
+/**
+	@brief allocates memory and initializes attributes for List
+	@return a new List "instance"
+	@precondition NONE
+	@postcondition a new List is initialized and returned
+*/
+List *initializeList();
+
+//- CREATE -//
 
 /**
 	@brief add item to list
@@ -106,6 +118,8 @@ void addNewPlaylistToDatabase(AppDatabase *db, Playlist *newPlaylist);
 */
 void addMusicToPlaylist(Playlist *playlist, Music *music);
 
+//- READ -//
+
 /**
 	@brief searches and returns list of matching musics from the database
 	@param db, app database
@@ -138,6 +152,8 @@ List *searchPlaylistDatabase(AppDatabase *db, char *searchStr, Filters *filters)
 */
 void *getListItemFromIndex(List *list, int index);
 
+//- UPDATE -//
+
 /**
 	@brief copies attributes from newMusic to oldMusic
 	@param oldMusic, Music to be modified
@@ -157,6 +173,8 @@ void modifyMusic(Music *oldMusic, Music *newMusic);
 	oldPlaylist is modified
 */
 void modifyPlaylist(Playlist *oldPlaylist, Playlist *newPlaylist);
+
+//- DELETE -//
 
 /**
 	@brief remove music from database
