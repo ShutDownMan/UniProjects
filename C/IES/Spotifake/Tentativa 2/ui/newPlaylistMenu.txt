@@ -1,0 +1,32 @@
++ ------------------------------------------------------------- +
+|   New Playlist Menu                                           |
+|                                                               |
+|                                                               |
+|                                               Spotifake v0.01 |
++ ------------------------------------------------------------- +
+
+Title: __________________
+Owner: __________________
+
+Total Duration ________
+Average Rating ___
+
+Musics in Playlist:                          Number selected: ___
+  I|Title       |Singer     |Author     |Genre  |Year|Duration|R|
+-----------------------------------------------------------------
+  1|            |           |           |       |    |        | |
+  2|            |           |           |       |    |        | |
+  3|            |           |           |       |    |        | |
+  4|            |           |           |       |    |        | |
+-----------------------------------------------------------------
+> Press delete on selected music to remove it from the playlist <
+
+                                                  + ----------- +
+                                                  | [A]dd Music |
+                                                  + ----------- +
+
++ -------------- +                                   + -------- +
+| [S]ave Changes |                                   | [C]ancel |
++ -------------- +                                   + -------- +
+
+< [E]xit New Playlist Menu

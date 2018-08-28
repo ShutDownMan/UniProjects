@@ -46,6 +46,8 @@ int main(int argc, char const *argv[]) {
 //			floors[i]->x++;
 		}
 		printSprite(dinosaur->sprite, dinosaur->x+dinosaur->spriteOffsetX, dinosaur->y+dinosaur->spriteOffsetY);
+		gotoXY(35, 5);
+		printf("Dinosaaur greets you o/\n");
 		Sleep(200);
 	}
 

@@ -1,0 +1,32 @@
++ ------------------------------------------------------------- +
+|	Selected Playlist Menu										|
+|																|
+|																|
+|												Spotifake v0.01	|
++ ------------------------------------------------------------- +
+
+Title: __________________
+Owner: __________________
+
+Total Duration 1:08:14
+Average Rating 4.5
+
+Musics in Playlist:                          Number selected: __2
+  I|Title       |Singer     |Author     |Genre  |Year|Duration|R|
+-----------------------------------------------------------------
+  1|Batata azul |Jose da Sil|Naum Sei Vo|Pop    |2007| 1:04:32|5|
+   |da terra ama|va			|cê			|		|	 |		  | |
+   |rela		|			|			|		|	 |		  | |
+  2#I have no cl#Marea		#Aquele la	#Trap	#2011#	  3:42#4#
+   #ue			#			#			#		#	 #		  # #
+  3|			|			|			|		|	 |		  | |
+  4|			|			|			|		|	 |		  | |
+  5|			|			|			|		|	 |		  | |
+-----------------------------------------------------------------
+> Press delete on selected music to remove it from the playlist <
+
++ -------------- +							+ ----------------- +
+| [S]ave Changes |							| [D]elete Playlist |
++ -------------- +							+ ----------------- +
+
+< [E]xit Selected Playlist Menu
