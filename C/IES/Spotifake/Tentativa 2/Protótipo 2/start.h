@@ -30,6 +30,7 @@ typedef struct playlist {
 	char title[STRMAX];
 	char owner[STRMAX];
 	List *musics;
+	unsigned int ID;
 	unsigned char active;
 } Playlist;
 
