@@ -5,6 +5,11 @@
 
 #define STRMAX 256
 
+typedef struct appDatabase {
+	List *db_musics;
+	List *db_playlists;
+} AppDatabase;
+
 typedef struct music {
 	char title[STRMAX];
 	char singer[STRMAX];
