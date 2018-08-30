@@ -31,7 +31,8 @@ typedef struct position {
 /// this enum contains all possible ui element types
 typedef enum uiElementType {
 	PageHeaderElem,
-	ButtonElem
+	ButtonElem,
+	FormElem
 } UIElementType;
 
 /// this struct contains an ui element attributes
@@ -55,6 +56,13 @@ typedef struct button {
 	bool selected, fixed, borders;
 	char *text, alignment;
 } Button;
+
+typedef struct form {
+	Position *position;
+	bool selected, fixed;
+	char *text, *value, alignment;
+	int inputSize;
+} Form;
 
 typedef struct menuUI {
 	List *uiElements;
@@ -95,6 +103,12 @@ void printHorizontalDivision();
 
 void freeButton(Button *button);
 
+//- FORM -//
+
+Form *createForm(char *text);
+
+void printForm(Form *form);
+
 //- CONSOLE -//
 
 void gotoXY(int x, int y);
@@ -110,6 +124,8 @@ UIElement *createUIElem(void *element, UIElementType type);
 PageHeader *UIElementToPageHeader(UIElement *elem);
 
 Button *UIElementToButton(UIElement *elem);
+
+Form *UIElementToForm(UIElement *elem);
 
 void setSelectedUIElem(UIElement *elem, bool selected);
 

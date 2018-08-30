@@ -121,6 +121,7 @@ Button *createButton(char *text) {
 	newButton->position = NULL;
 	newButton->fixed = FALSE;
 	newButton->selected = FALSE;
+	newButton->borders = TRUE;
 	newButton->text = text;
 	newButton->alignment = 0;
 
@@ -157,7 +158,6 @@ void printButton(Button *button) {
 			} else if(button->alignment > 0) {
 				startCursorPosition.X = CONSOLE_WIDTH-(textSize+2);
 			}
-			// printf("%d // %d\n", startCursorPosition.X+textSize+2, startCursorPosition.Y);
 			printRectangle(startCursorPosition.X, startCursorPosition.Y, startCursorPosition.X+textSize+2, startCursorPosition.Y+2, button->selected);
 
 			gotoXY(startCursorPosition.X+1, startCursorPosition.Y+1);
@@ -219,6 +219,54 @@ void freeButton(Button *button) {
 	free(button);
 }
 
+//- FORM -//
+
+Form *createForm(char *text) {
+	Form *newForm = malloc(sizeof(Form));
+
+	newForm->position = NULL;
+	newForm->fixed = FALSE;
+	newForm->selected = FALSE;
+	newForm->inputSize = 10;
+	newForm->text = text;
+	newForm->alignment = 0;
+	newForm->value = NULL;
+
+	return newForm;
+}
+
+void printForm(Form *form) {
+	int textSize = strlen(form->text);
+
+	if(form->fixed) {
+
+	} else {
+		if(form->alignment < 0) {
+			gotoXY(0, -1);
+			if(form->selected)
+				printf("%s _", form->text);
+			else
+				printf("%s ", form->text);
+		} else if(form->alignment > 0) {
+			gotoXY(CONSOLE_WIDTH-(textSize + form->inputSize+1),  -1);
+			if(form->selected)
+				printf("%s _", form->text);
+			else
+				printf("%s ", form->text);
+		}
+	}
+}
+
+void freeForm(Form *form) {
+	if(form->value) {
+		free(form->value);
+	}
+	if(form->position) {
+		free(form->position);
+	}
+	free(form);
+}
+
 //- CONSOLE -//
 
 void gotoXY(int x, int y) {
@@ -275,6 +323,8 @@ UIElement *createUIElem(void *element, UIElementType type) {
 	newUIElement->right = NULL;
 	newUIElement->down = NULL;
 
+	newUIElement->hotkey = 0;
+
 	return newUIElement;
 }
 
@@ -295,6 +345,14 @@ Button *UIElementToButton(UIElement *elem) {
 	return NULL;
 }
 
+Form *UIElementToForm(UIElement *elem) {
+	if(elem->type == FormElem) {
+		return ((Form*)elem->element);
+	}
+
+	return NULL;
+}
+
 void setSelectedUIElem(UIElement *elem, bool selected) {
 	switch(elem->type) {
 		case PageHeaderElem:
@@ -303,6 +361,8 @@ void setSelectedUIElem(UIElement *elem, bool selected) {
 		case ButtonElem:
 			UIElementToButton(elem)->selected = selected;
 			break;
+		case FormElem:
+			UIElementToForm(elem)->selected = selected;
 		default: break;
 	}
 }
@@ -314,6 +374,9 @@ void freeUIElem(UIElement *elem) {
 			break;
 		case ButtonElem:
 			freeButton(UIElementToButton(elem));
+			break;
+		case FormElem:
+			freeForm(UIElementToForm(elem));
 			break;
 		default: break;
 	}

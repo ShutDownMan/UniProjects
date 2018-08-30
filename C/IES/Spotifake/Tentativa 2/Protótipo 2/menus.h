@@ -50,14 +50,12 @@ void drawMainMenu(MainMenuUI *mainMenuUI);
 
 //- MUSICS MENU -//
 
-/// this enum contains the choices available in main menu
 typedef enum musicsMenuChoices {
 	NewMusicMenu,
 	SearchMusicMenu,
 	ExitMusicsMenu
 } MusicsMenuChoices;
 
-/// this struct contains all UI elements present in main menu
 typedef struct musicsMenuUI {
 	MenuUI *info;
 	UIElement *musicsMenuHeader; //< Page Header
@@ -73,5 +71,48 @@ void drawMusicsMenu(MusicsMenuUI *musicsMenuUI);
 void freeMusicsMenuUI(MusicsMenuUI *musicsMenuUI);
 
 //- PLAYLISTS MENU -//
+
+typedef enum playlistsMenuChoices {
+	NewPlaylistMenu,
+	SearchPlaylistMenu,
+	ExitPlaylistsMenu
+} PlaylistsMenuChoices;
+
+typedef struct playlistsMenuUI {
+	MenuUI *info;
+	UIElement *playlistsMenuHeader; //< Page Header
+	UIElement *newPlaylistMenuButton, *searchPlaylistMenuButton, *exitMenuButton; //< Buttons
+} PlaylistsMenuUI;
+
+void playlistsMenu(AppDatabase *db);
+
+PlaylistsMenuUI *initializePlaylistsMenuUI();
+
+void drawPlaylistsMenu(PlaylistsMenuUI *playlistsMenuUI);
+
+void freePlaylistsMenuUI(PlaylistsMenuUI *playlistsMenuUI);
+
+//- NEW MUSIC MENU -//
+
+typedef enum newMusicMenuChoices {
+	SaveChangesNewMusic,
+	CancelNewMusic,
+	ExitNewMusicMenu
+} NewMusicMenuChoices;
+
+typedef struct newMusicMenuUI {
+	MenuUI *info;
+	UIElement *newMusicMenuHeader; //< Page Header
+	UIElement *saveChangesButton, *cancelButton, *exitMenuButton; //< Buttons
+	UIElement *titleForm, *singerForm, *authorForm, *genreForm, *yearForm, *durationForm, *ratingForm; //< Forms
+} NewMusicMenuUI;
+
+void newMusicMenu(AppDatabase *db);
+
+NewMusicMenuUI *initializeNewMusicMenuUI();
+
+void drawNewMusicMenu(NewMusicMenuUI *newMusicMenuUI);
+
+void freeNewMusicMenuUI(NewMusicMenuUI *newMusicMenuUI);
 
 #endif // MENUS_H
