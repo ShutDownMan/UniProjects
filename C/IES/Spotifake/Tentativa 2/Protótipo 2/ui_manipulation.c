@@ -1,5 +1,7 @@
 #include "ui_manipulation.h"
 
+//- INITIALIZE -//
+
 void setupConsole() {
 	HANDLE hOut;
 	COORD consoleSize;
@@ -27,6 +29,54 @@ Position *createPosition(int x, int y) {
 	newPosition->y = 0;
 
 	return newPosition;
+}
+
+//- MENU UI -//
+
+MenuUI *createMenuUI() {
+	MenuUI *newMenuUI = malloc(sizeof(MenuUI));
+
+	newMenuUI->uiElements = NULL;
+	newMenuUI->selectedElement = NULL;
+
+	return newMenuUI;
+}
+
+
+void menuUIArrowControl(MenuUI *menuUI, char charInput) {
+	int i;
+
+	setSelectedUIElem(menuUI->selectedElement, FALSE);
+	switch(charInput) {
+		case LEFT_ARROW_KEY:
+			if(menuUI->selectedElement->left) {
+				menuUI->selectedElement = menuUI->selectedElement->left;
+			}
+			break;
+		case RIGHT_ARROW_KEY:
+			if(menuUI->selectedElement->right) {
+				menuUI->selectedElement = menuUI->selectedElement->right;
+			}
+			break;
+		case UP_ARROW_KEY:
+			if(menuUI->selectedElement->up) {
+				menuUI->selectedElement = menuUI->selectedElement->up;
+			}
+			break;
+		case DOWN_ARROW_KEY:
+			if(menuUI->selectedElement->down) {
+				menuUI->selectedElement = menuUI->selectedElement->down;
+			}
+			break;
+		default: break;
+	}
+	for(i = 0; i < menuUI->uiElements->size; ++i) {
+		UIElement *elem = (UIElement *)getListItemFromIndex(menuUI->uiElements, i);
+		if(elem->hotkey == charInput) {
+			menuUI->selectedElement = elem;
+		}
+	}
+	setSelectedUIElem(menuUI->selectedElement, TRUE);
 }
 
 //- PAGEHEADER -//

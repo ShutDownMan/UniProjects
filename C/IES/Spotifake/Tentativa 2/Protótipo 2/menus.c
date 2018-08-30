@@ -12,12 +12,25 @@ void mainMenu(AppDatabase *db) {
 	do {
 		charInput = getch();
 
-		choice = uiArrowControl(mainMenuUI, charInput);
+		menuUIArrowControl(mainMenuUI->info, charInput);
 		drawMainMenu(mainMenuUI);
+
+		if(charInput == RETURN_KEY && mainMenuUI->info->selectedElement) {
+			if(mainMenuUI->info->selectedElement == mainMenuUI->musicMenuButton) {
+				choice = MusicsMenu;
+			} else if(mainMenuUI->info->selectedElement == mainMenuUI->playlistMenuButton) {
+				choice = PlaylistsMenu;
+			} else if(mainMenuUI->info->selectedElement == mainMenuUI->exitAppButton) {
+				choice = ExitApplication;
+			}
+		}
 
 		switch(choice) {
 			case MusicsMenu:
 				// TODO: Load Musics Menu
+				musicsMenu(db);
+				drawMainMenu(mainMenuUI);
+				choice = NONE;
 				break;
 			case PlaylistsMenu:
 				// TODO: Load Playlists Menu
@@ -31,6 +44,62 @@ void mainMenu(AppDatabase *db) {
 	} while(choice != ExitApplication);
 
 	// TODO: Free mainMenuUI
+}
+
+MainMenuUI *initializeMainMenuUI() {
+	MainMenuUI *mainMenuUI = malloc(sizeof(MainMenuUI));
+
+	mainMenuUI->info = createMenuUI();
+
+	PageHeader *mainMenuHeader = createPageHeader("Main Menu", 6);
+
+	Button *musicMenuButton = createButton("[M]usics Menu");
+	musicMenuButton->alignment = -1;
+
+	Button *playlistMenuButton = createButton("[P]laylists Menu");
+	playlistMenuButton->alignment = 1;
+
+	Button *exitAppButton = createButton("[E]xit Application");
+	exitAppButton->borders = FALSE;
+	exitAppButton->alignment = -1;
+
+	UIElement *mainMenuHeaderElem = createUIElem(mainMenuHeader, PageHeaderElem);
+	UIElement *musicMenuButtonElem = createUIElem(musicMenuButton, ButtonElem);
+	UIElement *playlistMenuButtonElem = createUIElem(playlistMenuButton, ButtonElem);
+	UIElement *exitAppButtonElem = createUIElem(exitAppButton, ButtonElem);
+
+	musicMenuButtonElem->hotkey = 'm';
+	playlistMenuButtonElem->hotkey = 'p';
+	exitAppButtonElem->hotkey = 'e';
+
+	mainMenuUI->info->uiElements = createList();
+	addToList(mainMenuUI->info->uiElements, mainMenuHeaderElem);
+	addToList(mainMenuUI->info->uiElements, musicMenuButtonElem);
+	addToList(mainMenuUI->info->uiElements, playlistMenuButtonElem);
+	addToList(mainMenuUI->info->uiElements, exitAppButtonElem);
+
+	mainMenuHeaderElem->down = musicMenuButtonElem;
+
+	musicMenuButtonElem->up = mainMenuHeaderElem;
+	musicMenuButtonElem->right = playlistMenuButtonElem;
+	musicMenuButtonElem->down = exitAppButtonElem;
+
+	playlistMenuButtonElem->left = musicMenuButtonElem;
+	playlistMenuButtonElem->up = mainMenuHeaderElem;
+	playlistMenuButtonElem->down = exitAppButtonElem;
+
+	exitAppButtonElem->up = musicMenuButtonElem;
+	exitAppButtonElem->right = playlistMenuButtonElem;
+
+	mainMenuUI->mainMenuHeader = mainMenuHeaderElem;
+	mainMenuUI->musicMenuButton = musicMenuButtonElem;
+	mainMenuUI->playlistMenuButton = playlistMenuButtonElem;
+	mainMenuUI->exitAppButton = exitAppButtonElem;
+
+	mainMenuUI->info->selectedElement = mainMenuHeaderElem;
+	setSelectedUIElem(mainMenuHeaderElem, TRUE);
+
+	return mainMenuUI;
 }
 
 void drawMainMenu(MainMenuUI *mainMenuUI) {
@@ -52,101 +121,122 @@ void drawMainMenu(MainMenuUI *mainMenuUI) {
 	printButton(UIElementToButton(mainMenuUI->exitAppButton));
 }
 
-MainMenuUI *initializeMainMenuUI() {
-	MainMenuUI *mainMenuUI = malloc(sizeof(MainMenuUI));
-
-	PageHeader *mainMenuHeader = createPageHeader("Main Menu", 6);
-
-	Button *musicMenuButton = createButton("[M]usics Menu");
-	musicMenuButton->alignment = -1;
-
-	Button *playlistMenuButton = createButton("[P]laylists Menu");
-	playlistMenuButton->alignment = 1;
-
-	Button *exitAppButton = createButton("[E]xit Application");
-	exitAppButton->borders = FALSE;
-	exitAppButton->alignment = -1;
-
-	UIElement *mainMenuHeaderElem = createUIElem(mainMenuHeader, PageHeaderElem);
-	UIElement *musicMenuButtonElem = createUIElem(musicMenuButton, ButtonElem);
-	UIElement *playlistMenuButtonElem = createUIElem(playlistMenuButton, ButtonElem);
-	UIElement *exitAppButtonElem = createUIElem(exitAppButton, ButtonElem);
-
-	mainMenuHeaderElem->down = musicMenuButtonElem;
-
-	musicMenuButtonElem->up = mainMenuHeaderElem;
-	musicMenuButtonElem->right = playlistMenuButtonElem;
-	musicMenuButtonElem->down = exitAppButtonElem;
-
-	playlistMenuButtonElem->left = musicMenuButtonElem;
-	playlistMenuButtonElem->up = mainMenuHeaderElem;
-	playlistMenuButtonElem->down = exitAppButtonElem;
-
-	exitAppButtonElem->up = musicMenuButtonElem;
-	exitAppButtonElem->right = playlistMenuButtonElem;
-
-	mainMenuUI->mainMenuHeader = mainMenuHeaderElem;
-	mainMenuUI->musicMenuButton = musicMenuButtonElem;
-	mainMenuUI->playlistMenuButton = playlistMenuButtonElem;
-	mainMenuUI->exitAppButton = exitAppButtonElem;
-
-	mainMenuUI->selectedElement = mainMenuHeaderElem;
-	setSelectedUIElem(mainMenuHeaderElem, TRUE);
-
-	return mainMenuUI;
-}
-
-MainMenuChoices uiArrowControl(MainMenuUI *mainMenuUI, char charInput) {
-	MainMenuChoices choice = NONE;
-
-	setSelectedUIElem(mainMenuUI->selectedElement, FALSE);
-	switch(charInput) {
-		case LEFT_ARROW_KEY:
-			if(mainMenuUI->selectedElement->left) {
-				mainMenuUI->selectedElement = mainMenuUI->selectedElement->left;
-			}
-			break;
-		case RIGHT_ARROW_KEY:
-			if(mainMenuUI->selectedElement->right) {
-				mainMenuUI->selectedElement = mainMenuUI->selectedElement->right;
-			}
-			break;
-		case UP_ARROW_KEY:
-			if(mainMenuUI->selectedElement->up) {
-				mainMenuUI->selectedElement = mainMenuUI->selectedElement->up;
-			}
-			break;
-		case DOWN_ARROW_KEY:
-			if(mainMenuUI->selectedElement->down) {
-				mainMenuUI->selectedElement = mainMenuUI->selectedElement->down;
-			}
-			break;
-		case RETURN_KEY:
-			if(mainMenuUI->selectedElement) {
-				if(mainMenuUI->selectedElement == mainMenuUI->musicMenuButton) {
-					return MusicsMenu;
-				} else if(mainMenuUI->selectedElement == mainMenuUI->playlistMenuButton) {
-					return PlaylistsMenu;
-				} else if(mainMenuUI->selectedElement == mainMenuUI->exitAppButton) {
-					return ExitApplication;
-				}
-			}
-			case 'm':
-				mainMenuUI->selectedElement = mainMenuUI->musicMenuButton;
-				break;
-			case 'p':
-				mainMenuUI->selectedElement = mainMenuUI->playlistMenuButton;
-				break;
-			case 'e':
-				mainMenuUI->selectedElement = mainMenuUI->exitAppButton;
-				break;
-			break;
-		default: break;
-	}
-	setSelectedUIElem(mainMenuUI->selectedElement, TRUE);
-
-	return choice;
-}
-
 //- MUSICS MENU -//
 
+void musicsMenu(AppDatabase *db) {
+	MusicsMenuUI *musicsMenuUI = initializeMusicsMenuUI();
+	char charInput;
+	MusicsMenuChoices choice = NONE;
+
+	drawMusicsMenu(musicsMenuUI);
+
+	do {
+		charInput = getch();
+
+		menuUIArrowControl(musicsMenuUI->info, charInput);
+		drawMusicsMenu(musicsMenuUI);
+
+		if(charInput == RETURN_KEY && musicsMenuUI->info->selectedElement) {
+			if(musicsMenuUI->info->selectedElement == musicsMenuUI->newMusicMenuButton) {
+				choice = NewMusicMenu;
+			} else if(musicsMenuUI->info->selectedElement == musicsMenuUI->searchMusicMenuButton) {
+				choice = SearchMusicMenu;
+			} else if(musicsMenuUI->info->selectedElement == musicsMenuUI->exitMenuButton) {
+				choice = ExitMusicsMenu;
+			}
+		}
+
+		switch(choice) {
+			case NewMusicMenu:
+				// TODO: Load New Music Menu
+				break;
+			case SearchMusicMenu:
+				// TODO: Load Search Musics Menu
+				break;
+			case ExitMusicsMenu:
+				// TODO: Add exit confirmation
+				break;
+			default: break;
+		}
+
+	} while(choice != ExitMusicsMenu);
+
+	// TODO: Free musicsMenuUI
+//	freeMusicsMenuUI(musicsMenuUI);
+}
+
+MusicsMenuUI *initializeMusicsMenuUI() {
+	MusicsMenuUI *musicsMenuUI = malloc(sizeof(MusicsMenuUI));
+
+	musicsMenuUI->info = createMenuUI();
+
+	PageHeader *musicsMenuHeader = createPageHeader("Musics Menu", 6);
+
+	Button *newMusicMenuButton = createButton("[N]ew Music");
+	newMusicMenuButton->alignment = -1;
+
+	Button *searchMusicMenuButton = createButton("[S]earch Music");
+	searchMusicMenuButton->alignment = 1;
+
+	Button *exitMenuButton = createButton("[E]xit Musics Menu");
+	exitMenuButton->alignment = -1;
+	exitMenuButton->borders = FALSE;
+
+	UIElement *musicsMenuHeaderElem = createUIElem(musicsMenuHeader, PageHeaderElem);
+	UIElement *newMusicMenuButtonElem = createUIElem(newMusicMenuButton, ButtonElem);
+	UIElement *searchMusicMenuButtonElem = createUIElem(searchMusicMenuButton, ButtonElem);
+	UIElement *exitMenuButtonElem = createUIElem(exitMenuButton, ButtonElem);
+
+	newMusicMenuButtonElem->hotkey = 'n';
+	searchMusicMenuButtonElem->hotkey = 's';
+	exitMenuButtonElem->hotkey = 'e';
+
+	musicsMenuUI->info->uiElements = createList();
+	addToList(musicsMenuUI->info->uiElements, musicsMenuHeaderElem);
+	addToList(musicsMenuUI->info->uiElements, newMusicMenuButtonElem);
+	addToList(musicsMenuUI->info->uiElements, searchMusicMenuButtonElem);
+	addToList(musicsMenuUI->info->uiElements, exitMenuButtonElem);
+
+	musicsMenuHeaderElem->down = newMusicMenuButtonElem;
+
+	newMusicMenuButtonElem->up = musicsMenuHeaderElem;
+	newMusicMenuButtonElem->right = searchMusicMenuButtonElem;
+	newMusicMenuButtonElem->down = exitMenuButtonElem;
+
+	searchMusicMenuButtonElem->up = musicsMenuHeaderElem;
+	searchMusicMenuButtonElem->left = newMusicMenuButtonElem;
+	searchMusicMenuButtonElem->down = exitMenuButtonElem;
+
+	exitMenuButtonElem->up = newMusicMenuButtonElem;
+
+	musicsMenuUI->musicsMenuHeader = musicsMenuHeaderElem;
+	musicsMenuUI->newMusicMenuButton = newMusicMenuButtonElem;
+	musicsMenuUI->searchMusicMenuButton = searchMusicMenuButtonElem;
+	musicsMenuUI->exitMenuButton = exitMenuButtonElem;
+
+	musicsMenuUI->info->selectedElement = musicsMenuHeaderElem;
+	setSelectedUIElem(musicsMenuHeaderElem, TRUE);
+
+	return musicsMenuUI;
+}
+
+void drawMusicsMenu(MusicsMenuUI *musicsMenuUI) {
+	COORD cursorPos;
+
+	system("cls");
+
+	printPageHeader(UIElementToPageHeader(musicsMenuUI->musicsMenuHeader));
+
+	printf("\n\n");
+	printButton(UIElementToButton(musicsMenuUI->newMusicMenuButton));
+
+	cursorPos = getCursorPosition();
+	cursorPos.Y += -2;
+	gotoXY(cursorPos.X, cursorPos.Y);
+	printButton(UIElementToButton(musicsMenuUI->searchMusicMenuButton));
+
+	printf("\n\n");
+	printButton(UIElementToButton(musicsMenuUI->exitMenuButton));
+}
+
+void freeMusicsMenuUI(MusicsMenuUI *musicsMenuUI);

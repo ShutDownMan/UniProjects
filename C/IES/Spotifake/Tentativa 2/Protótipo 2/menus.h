@@ -8,23 +8,68 @@
 #include "start.h"
 #include "ui_manipulation.h"
 
+//- MAIN MENU -//
+
+/// this enum contains the choices available in main menu
 typedef enum mainMenuChoices {
 	MusicsMenu,
 	PlaylistsMenu,
 	ExitApplication
 } MainMenuChoices;
 
+/// this struct contains all UI elements present in main menu
 typedef struct mainMenuUI {
-	UIElement *mainMenuHeader, *musicMenuButton, *playlistMenuButton, *exitAppButton;
-	UIElement *selectedElement;
+	MenuUI *info;
+	UIElement *mainMenuHeader; //< Page Header
+	UIElement *musicMenuButton, *playlistMenuButton, *exitAppButton; //< Buttons
 } MainMenuUI;
 
+/**
+	@brief main menu logic of application
+	@param db, app database
+	@precondition db is initialized and not NULL
+	@postcondition main menu will be shown
+*/
 void mainMenu(AppDatabase *db);
 
-void drawMainMenu(MainMenuUI *mainMenuUI);
-
+/**
+	@brief initializes main menu's ui elements struct
+	@return struct initialized
+	@precondition NONE
+	@postcondition struct is initialized and returned
+*/
 MainMenuUI *initializeMainMenuUI();
 
-MainMenuChoices uiArrowControl(MainMenuUI *mainMenuUI, char charInput);
+/**
+	@brief draws main menu's ui elements on screen
+	@param mainMenuUI has all menu's UI elements
+	@precondition mainMenuUI is initialized and not NULL
+	@postcondition menu is shown on screen
+*/
+void drawMainMenu(MainMenuUI *mainMenuUI);
+
+//- MUSICS MENU -//
+
+/// this enum contains the choices available in main menu
+typedef enum musicsMenuChoices {
+	NewMusicMenu,
+	SearchMusicMenu,
+	ExitMusicsMenu
+} MusicsMenuChoices;
+
+/// this struct contains all UI elements present in main menu
+typedef struct musicsMenuUI {
+	MenuUI *info;
+	UIElement *musicsMenuHeader; //< Page Header
+	UIElement *newMusicMenuButton, *searchMusicMenuButton, *exitMenuButton; //< Buttons
+} MusicsMenuUI;
+
+void musicsMenu(AppDatabase *db);
+
+MusicsMenuUI *initializeMusicsMenuUI();
+
+void drawMusicsMenu(MusicsMenuUI *musicsMenuUI);
+
+void freeMusicsMenuUI(MusicsMenuUI *musicsMenuUI);
 
 #endif // MENUS_H

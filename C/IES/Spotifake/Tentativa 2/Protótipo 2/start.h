@@ -1,16 +1,11 @@
 #ifndef START_H
 #define START_H
 
+#include "list.h"
+
 #define bool unsigned char
 
 #define STRMAX 256
-
-typedef struct list {
-	// However you want to implement it
-
-	/// Has to at least have:
-	unsigned int size;
-} List;
 
 typedef struct appDatabase {
 	List *db_musics;
@@ -79,7 +74,7 @@ Filters *initializeFilters();
 	@precondition NONE
 	@postcondition a new List is initialized and returned
 */
-List *initializeList();
+//List *initializeList();
 
 //- CREATE -//
 
@@ -90,7 +85,7 @@ List *initializeList();
 	@precondition list and item are initialized and not NULL
 	@postcondition item is added to list
 */
-void addToList(List *list, void *item);
+//void addToList(List *list, void *item);
 
 /**
 	@brief add music to database
@@ -151,7 +146,7 @@ List *searchPlaylistDatabase(AppDatabase *db, char *searchStr, Filters *filters)
 	@precondition list is initialized and not NULL, index is non-negative
 	@postcondition item found is returned
 */
-void *getListItemFromIndex(List *list, int index);
+//void *getListItemFromIndex(List *list, int index);
 
 //- UPDATE -//
 
@@ -215,6 +210,6 @@ bool removeMusicFromPlaylist(Playlist *playlist, Music *music);
 	@precondition list and item are initialized and not NULL
 	@postcondition item is removed from list
 */
-bool removeItemFromList(List *list, void *item);
+//bool removeItemFromList(List *list, void *item);
 
 #endif
