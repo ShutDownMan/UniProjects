@@ -96,14 +96,14 @@ void printPageHeader(PageHeader *pageHeader) {
 	int i;
 
 	gotoXY(0, 0);
-	printHorizontalLimit(CONSOLE_WIDTH-1, pageHeader->selected);
+	printHorizontalLimit(CONSOLE_WIDTH, pageHeader->selected);
 
 	gotoXY(4, 1);
 	printf("%s", pageHeader->contextText);
 	for(i = 1; i < pageHeader->height-1; ++i) {
 		gotoXY(0, i);
 		putchar('|');
-		gotoXY(CONSOLE_WIDTH, i);
+		gotoXY(CONSOLE_WIDTH-1, i);
 		putchar('|');
 		if(i+1 >= pageHeader->height-1) {
 			gotoXY(CONSOLE_WIDTH-(strlen(pageHeader->appVersion)+2), i);
@@ -112,7 +112,7 @@ void printPageHeader(PageHeader *pageHeader) {
 	}
 
 	gotoXY(0, pageHeader->height-1);
-	printHorizontalLimit(CONSOLE_WIDTH-1, pageHeader->selected);
+	printHorizontalLimit(CONSOLE_WIDTH, pageHeader->selected);
 }
 
 //- BUTTON -//
@@ -166,7 +166,7 @@ void printButton(Button *button) {
 				startCursorPosition.X = CONSOLE_WIDTH-(textSize+4)+1;
 			}
 			gotoXY(startCursorPosition.X, startCursorPosition.Y);
-			printHorizontalLimit(textSize+2, button->selected);
+			printHorizontalLimit(textSize+4, button->selected);
 
 			gotoXY(startCursorPosition.X, startCursorPosition.Y+1);
 			putchar('|');
@@ -174,27 +174,33 @@ void printButton(Button *button) {
 			putchar('|');
 
 			gotoXY(startCursorPosition.X, startCursorPosition.Y+2);
-			printHorizontalLimit(textSize+2, button->selected);
+			printHorizontalLimit(textSize+4, button->selected);
 		}
 	}
 }
 
-char *printHorizontalLimit(int textSize, int selected) {
+char *printHorizontalLimit(int size, int selected) {
 	int i;
+	char *str;
 
 	putchar('+');
-	if(textSize > 3) {
+	if(size > 4) {
 		putchar(' ');
-		for(i = 0; i < textSize-2; ++i) {
-			putchar((selected) ? '=': '-');
+		str = malloc(sizeof(char) * (size-3));
+		if(str) {
+			for(i = 0; i < size-4; ++i) {
+				str[i] = (selected) ? '=' : '-';
+			}
+			str[i] = 0;
 		}
+		printf("%s", str);
+		free(str);
 		putchar(' ');
-	} else if(textSize > 1) {
+	} else if(size > 1) {
 		printf("--");
 	} else {
 		putchar('-');
 	}
-
 	putchar('+');
 }
 

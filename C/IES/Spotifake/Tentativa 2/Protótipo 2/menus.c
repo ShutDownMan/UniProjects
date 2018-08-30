@@ -27,7 +27,6 @@ void mainMenu(AppDatabase *db) {
 
 		switch(choice) {
 			case MusicsMenu:
-				// TODO: Load Musics Menu
 				musicsMenu(db);
 				drawMainMenu(mainMenuUI);
 				choice = NONE;

@@ -85,7 +85,7 @@ Button *createButton(char *text);
 
 void printButton(Button *button);
 
-char *printHorizontalLimit(int textSize, int selected);
+char *printHorizontalLimit(int size, int selected);
 
 void printHorizontalDivision();
 
