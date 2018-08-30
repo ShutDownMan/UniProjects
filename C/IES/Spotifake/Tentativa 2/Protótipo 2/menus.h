@@ -72,4 +72,6 @@ void drawMusicsMenu(MusicsMenuUI *musicsMenuUI);
 
 void freeMusicsMenuUI(MusicsMenuUI *musicsMenuUI);
 
+//- PLAYLISTS MENU -//
+
 #endif // MENUS_H

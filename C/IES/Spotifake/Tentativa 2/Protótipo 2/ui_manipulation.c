@@ -15,10 +15,6 @@ void setupConsole() {
 	ConCurInf.dwSize = 10;
 	ConCurInf.bVisible = FALSE;
 
-	COORD bufferSize = {66, 30};
-
-	SetConsoleScreenBufferSize(hOut, bufferSize);
-
 	SetConsoleCursorInfo(hOut, &ConCurInf);
 }
 
@@ -79,6 +75,16 @@ void menuUIArrowControl(MenuUI *menuUI, char charInput) {
 	setSelectedUIElem(menuUI->selectedElement, TRUE);
 }
 
+void freeMenuUI(MenuUI *menuUI) {
+	int i;
+	for(i = 0; i < menuUI->uiElements->size; ++i) {
+		UIElement *elem = (UIElement *)getListItemFromIndex(menuUI->uiElements, i);
+		freeUIElem(elem);
+
+	}
+	freeList(menuUI->uiElements);
+}
+
 //- PAGEHEADER -//
 
 PageHeader *createPageHeader(char *contextText, int height) {
@@ -93,26 +99,18 @@ PageHeader *createPageHeader(char *contextText, int height) {
 }
 
 void printPageHeader(PageHeader *pageHeader) {
-	int i;
-
-	gotoXY(0, 0);
-	printHorizontalLimit(CONSOLE_WIDTH, pageHeader->selected);
+	printRectangle(0, 0, CONSOLE_WIDTH, pageHeader->height-1, pageHeader->selected);
 
 	gotoXY(4, 1);
 	printf("%s", pageHeader->contextText);
-	for(i = 1; i < pageHeader->height-1; ++i) {
-		gotoXY(0, i);
-		putchar('|');
-		gotoXY(CONSOLE_WIDTH-1, i);
-		putchar('|');
-		if(i+1 >= pageHeader->height-1) {
-			gotoXY(CONSOLE_WIDTH-(strlen(pageHeader->appVersion)+2), i);
-			printf("%s\n", pageHeader->appVersion);
-		}
-	}
+	gotoXY(CONSOLE_WIDTH-(strlen(pageHeader->appVersion)+2), pageHeader->height-2);
+	printf("%s", pageHeader->appVersion);
 
-	gotoXY(0, pageHeader->height-1);
-	printHorizontalLimit(CONSOLE_WIDTH, pageHeader->selected);
+	gotoXY(0, pageHeader->height);
+}
+
+void freePageHeader(PageHeader *pageHeader) {
+	free(pageHeader);
 }
 
 //- BUTTON -//
@@ -133,16 +131,10 @@ void printButton(Button *button) {
 	int textSize = strlen(button->text);
 
 	if(button->fixed) {
-		gotoXY(button->position->x, button->position->y);
-		printHorizontalLimit(textSize+2, button->selected);
+		printRectangle(button->position->x, button->position->y, button->position->x+textSize+2, button->position->y+2, button->selected);
 
-		gotoXY(button->position->x, button->position->y+1);
-		putchar('|');
+		gotoXY(button->position->x+1, button->position->y+1);
 		printf(" %s ", button->text);
-		putchar('|');
-
-		gotoXY(button->position->x, button->position->y+2);
-		printHorizontalLimit(textSize+2, button->selected);
 	} else {
 		if(!button->borders) {
 			if(button->alignment < 0) {
@@ -163,45 +155,53 @@ void printButton(Button *button) {
 			if(button->alignment < 0) {
 				startCursorPosition.X = 0;
 			} else if(button->alignment > 0) {
-				startCursorPosition.X = CONSOLE_WIDTH-(textSize+4)+1;
+				startCursorPosition.X = CONSOLE_WIDTH-(textSize+2);
 			}
-			gotoXY(startCursorPosition.X, startCursorPosition.Y);
-			printHorizontalLimit(textSize+4, button->selected);
+			// printf("%d // %d\n", startCursorPosition.X+textSize+2, startCursorPosition.Y);
+			printRectangle(startCursorPosition.X, startCursorPosition.Y, startCursorPosition.X+textSize+2, startCursorPosition.Y+2, button->selected);
 
-			gotoXY(startCursorPosition.X, startCursorPosition.Y+1);
-			putchar('|');
-			printf(" %s ", button->text);
-			putchar('|');
-
-			gotoXY(startCursorPosition.X, startCursorPosition.Y+2);
-			printHorizontalLimit(textSize+4, button->selected);
+			gotoXY(startCursorPosition.X+1, startCursorPosition.Y+1);
+			printf("%s", button->text);
+			gotoXY(startCursorPosition.X, startCursorPosition.Y+3);
 		}
 	}
 }
 
-char *printHorizontalLimit(int size, int selected) {
-	int i;
+void printRectangle(int x1, int y1, int x2, int y2, int selected) {
+	int i, width = x2 - x1, height = y2 - y1;
 	char *str;
 
-	putchar('+');
-	if(size > 4) {
-		putchar(' ');
-		str = malloc(sizeof(char) * (size-3));
-		if(str) {
-			for(i = 0; i < size-4; ++i) {
-				str[i] = (selected) ? '=' : '-';
-			}
-			str[i] = 0;
+	if(width >= 2) {
+		str = malloc(sizeof(char)*width+1);
+
+		str[0] = (selected) ? 201: 218;
+		str[width-1] = (selected) ? 187 : 191;
+		for(i = 1; i < width-1; ++i) {
+			str[i] = (selected) ? 205 : 196;
 		}
+
+		str[width] = 0;
+		gotoXY(x1, y1);
 		printf("%s", str);
+
+		for(i = 1; i < height; ++i) {
+			gotoXY(x1, y1+i);
+			putchar((selected) ? 186: 179);
+			gotoXY(x2-1, y1+i);
+			putchar((selected) ? 186: 179);
+		}
+
+		str[0] = (selected) ? 200: 192;
+		str[width-1] = (selected) ? 188 : 217;
+		for(i = 1; i < width-1; ++i) {
+			str[i] = (selected) ? 205 : 196;
+		}
+
+		gotoXY(x1, y2);
+		printf("%s", str);
+
 		free(str);
-		putchar(' ');
-	} else if(size > 1) {
-		printf("--");
-	} else {
-		putchar('-');
 	}
-	putchar('+');
 }
 
 void printHorizontalDivision() {
@@ -212,6 +212,14 @@ void printHorizontalDivision() {
 	}
 	printf("\n");
 }
+
+void freeButton(Button *button) {
+	if(button->position)
+		free(button->position);
+	free(button);
+}
+
+//- CONSOLE -//
 
 void gotoXY(int x, int y) {
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -243,6 +251,18 @@ COORD getCursorPosition() {
 
 	return SBInfo.dwCursorPosition;
 }
+
+int getConsoleWidth() {
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int columns, rows;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+
+    return columns;
+}
+
+//- UI ELEMENT -//
 
 UIElement *createUIElem(void *element, UIElementType type) {
 	UIElement *newUIElement = malloc(sizeof(UIElement));
@@ -278,10 +298,22 @@ Button *UIElementToButton(UIElement *elem) {
 void setSelectedUIElem(UIElement *elem, bool selected) {
 	switch(elem->type) {
 		case PageHeaderElem:
-			((PageHeader*)elem->element)->selected = selected;
+			UIElementToPageHeader(elem)->selected = selected;
 			break;
 		case ButtonElem:
 			UIElementToButton(elem)->selected = selected;
+			break;
+		default: break;
+	}
+}
+
+void freeUIElem(UIElement *elem) {
+	switch(elem->type) {
+		case PageHeaderElem:
+			freePageHeader(UIElementToPageHeader(elem));
+			break;
+		case ButtonElem:
+			freeButton(UIElementToButton(elem));
 			break;
 		default: break;
 	}

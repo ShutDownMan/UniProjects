@@ -19,7 +19,7 @@
 
 #define RETURN_KEY 13
 
-#define CONSOLE_WIDTH 65
+#define CONSOLE_WIDTH getConsoleWidth()
 
 #define NONE -1
 
@@ -67,6 +67,8 @@ MenuUI *createMenuUI();
 
 void menuUIArrowControl(MenuUI *menuUI, char charInput);
 
+void freeMenuUI(MenuUI *menuUI);
+
 //- INITIALIZE -//
 
 Position *createPosition(int x, int y);
@@ -79,21 +81,27 @@ PageHeader *createPageHeader(char *contextText, int height);
 
 void printPageHeader(PageHeader *pageHeader);
 
+void freePageHeader(PageHeader *pageHeader);
+
 //- BUTTON -//
 
 Button *createButton(char *text);
 
 void printButton(Button *button);
 
-char *printHorizontalLimit(int size, int selected);
+void printRectangle(int x1, int y1, int x2, int y2, int selected);
 
 void printHorizontalDivision();
+
+void freeButton(Button *button);
 
 //- CONSOLE -//
 
 void gotoXY(int x, int y);
 
 COORD getCursorPosition();
+
+int getConsoleWidth();
 
 //- UIELEMENT -//
 
@@ -104,5 +112,7 @@ PageHeader *UIElementToPageHeader(UIElement *elem);
 Button *UIElementToButton(UIElement *elem);
 
 void setSelectedUIElem(UIElement *elem, bool selected);
+
+void freeUIElem(UIElement *elem);
 
 #endif // UI_MANIPULATION

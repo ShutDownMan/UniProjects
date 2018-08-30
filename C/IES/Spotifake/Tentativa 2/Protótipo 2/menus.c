@@ -28,6 +28,11 @@ void mainMenu(AppDatabase *db) {
 		switch(choice) {
 			case MusicsMenu:
 				musicsMenu(db);
+
+				setSelectedUIElem(mainMenuUI->info->selectedElement, FALSE);
+				mainMenuUI->info->selectedElement = mainMenuUI->mainMenuHeader;
+				setSelectedUIElem(mainMenuUI->info->selectedElement, TRUE);
+
 				drawMainMenu(mainMenuUI);
 				choice = NONE;
 				break;
@@ -106,13 +111,14 @@ void drawMainMenu(MainMenuUI *mainMenuUI) {
 
 	system("cls");
 
+	gotoXY(0, 0);
 	printPageHeader(UIElementToPageHeader(mainMenuUI->mainMenuHeader));
 
 	printf("\n\n");
 	printButton(UIElementToButton(mainMenuUI->musicMenuButton));
 
 	cursorPos = getCursorPosition();
-	cursorPos.Y += -2;
+	cursorPos.Y += -3;
 	gotoXY(cursorPos.X, cursorPos.Y);
 	printButton(UIElementToButton(mainMenuUI->playlistMenuButton));
 
@@ -160,8 +166,7 @@ void musicsMenu(AppDatabase *db) {
 
 	} while(choice != ExitMusicsMenu);
 
-	// TODO: Free musicsMenuUI
-//	freeMusicsMenuUI(musicsMenuUI);
+	freeMusicsMenuUI(musicsMenuUI);
 }
 
 MusicsMenuUI *initializeMusicsMenuUI() {
@@ -230,7 +235,7 @@ void drawMusicsMenu(MusicsMenuUI *musicsMenuUI) {
 	printButton(UIElementToButton(musicsMenuUI->newMusicMenuButton));
 
 	cursorPos = getCursorPosition();
-	cursorPos.Y += -2;
+	cursorPos.Y += -3;
 	gotoXY(cursorPos.X, cursorPos.Y);
 	printButton(UIElementToButton(musicsMenuUI->searchMusicMenuButton));
 
@@ -238,4 +243,8 @@ void drawMusicsMenu(MusicsMenuUI *musicsMenuUI) {
 	printButton(UIElementToButton(musicsMenuUI->exitMenuButton));
 }
 
-void freeMusicsMenuUI(MusicsMenuUI *musicsMenuUI);
+void freeMusicsMenuUI(MusicsMenuUI *musicsMenuUI) {
+	freeMenuUI(musicsMenuUI->info);
+}
+
+//- PLAYLISTS MENU -//
