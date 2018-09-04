@@ -5,8 +5,8 @@
 |                                               Spotifake v0.01 |
 + ------------------------------------------------------------- +
 
-Title: _
-Singer:
+Title:
+Singer:_
 Author:
 Genre:
 

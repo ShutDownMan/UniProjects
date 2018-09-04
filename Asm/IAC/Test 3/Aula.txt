@@ -1,0 +1,113 @@
+MOV dst, src -> copia de dst para src
+MOVZX dst, src -> copia de dst para src preenchendo com zeros e preservando sinal
+MOVSX dst, src -> copia de dst para src
+ADD dst, src
+
+OBS: Não se pode copiar valor de memória para memória
+
+EFLAGS:
+	- carry
+	- parity
+	- auxiliary carry
+	- zero
+	- overflow
+
+ADD eax, 0 -> add 0 em eax
+JZ L1 -> se flag de zero estiver ligada
+JNZ L2 -> se flag de zero estiver desligada
+
+INC dst -> incrementa em 1
+
+ADC dst, src -> dst = dst + src + CF
+
+#define int64 long long int
+
+int64 x, y, z;
+
+z = x + y;
+
+WORD -> 16 bits
+DWORD -> 32 bits
+
+MOV eax, DWORD PTR x
+MOV edx, DWORD PTR x+4
+ADD eax, DWORD PTR y
+ADC edx, DWRORD PTR y+4 -> soma mais o carry
+MOV DWORD PTR z, eax
+MOV DWORD PTR z+4, eax
+
+----
+
+int x;
+int64 y, z;
+
+z = x + y + 1;
+
+MOV eax, x
+CDQ
+ADD eax, DWORD PTR y
+ADC edx, DWORD PTR y+4
+ADD eax, 1
+ADC edx, 0
+MOV DWORD PTR z, eax
+MOV DWORD PTR z+4, edx
+
+----
+
+int x;
+int64 y, z;
+
+z = x + y - 2;
+
+MOV eax, x
+CDQ
+ADD eax, DWORD PTR y
+ADC edx, DWORD PTR y+4
+ADD eax, -2
+ADC edx, -1
+MOV DWORD PTR z, eax
+MOV DWORD PTR z+4, edx
+
+----
+
+SUB dst, src -> dst -= src
+SBB dst, src -> dst = dst - src - CF
+DEC dst
+
+---
+
+MOV eax, x
+CDQ
+ADD eax, DWORD PTR y
+ADC edx, DWORD PTR y+4
+SUB eax, 2
+SUBB edx, -1
+MOV DWORD PTR z, eax
+MOV DWORD PTR z+4, edx
+
+----
+
+MUL -> sem sinal
+IMUL -> com sinal
+
+----
+
+NEG eax -> nega o sinal
+
+LEA ebx, x
+
+---
+
+DIV src
+
+8 bits:
+al <- ax DIV src
+ah <- ax MOD src
+
+16 bits
+ex <- dx:ax DIV src
+dx <- dx:ax MOD src
+
+32 bits:
+eax <- edx:eax DIV src
+edx <- edx:eax MOD src

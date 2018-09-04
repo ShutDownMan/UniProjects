@@ -267,7 +267,7 @@ void freeMusicsMenuUI(MusicsMenuUI *musicsMenuUI) {
 void playlistsMenu(AppDatabase *db) {
 	PlaylistsMenuUI *playlistsMenuUI = initializePlaylistsMenuUI();
 	char charInput;
-	MusicsMenuChoices choice = NONE;
+	PlaylistsMenuChoices choice = NONE;
 
 	drawPlaylistsMenu(playlistsMenuUI);
 
@@ -388,6 +388,7 @@ void freePlaylistsMenuUI(PlaylistsMenuUI *playlistsMenuUI) {
 void newMusicMenu(AppDatabase *db) {
 	NewMusicMenuUI *newMusicMenuUI = initializeNewMusicMenuUI();
 	char charInput;
+	bool updateScreen = FALSE;
 	NewMusicMenuChoices choice = NONE;
 
 	drawNewMusicMenu(newMusicMenuUI);
@@ -403,25 +404,78 @@ void newMusicMenu(AppDatabase *db) {
 				choice = SaveChangesNewMusic;
 			}
 			if(newMusicMenuUI->cancelButton == newMusicMenuUI->info->selectedElement) {
-				choice = CancelNewMusic;
+				choice = ClearNewMusic;
+			}
+			if(newMusicMenuUI->titleForm == newMusicMenuUI->info->selectedElement) {
+				choice = TitleNewMusicFormInput;
+			}
+			if(newMusicMenuUI->singerForm == newMusicMenuUI->info->selectedElement) {
+				choice = SingerNewMusicFormInput;
+			}
+			if(newMusicMenuUI->authorForm == newMusicMenuUI->info->selectedElement) {
+				choice = AuthorNewMusicFormInput;
+			}
+			if(newMusicMenuUI->genreForm == newMusicMenuUI->info->selectedElement) {
+				choice = GenreNewMusicFormInput;
+			}
+			if(newMusicMenuUI->yearForm == newMusicMenuUI->info->selectedElement) {
+				choice = YearNewMusicFormInput;
 			}
 			if(newMusicMenuUI->exitMenuButton == newMusicMenuUI->info->selectedElement) {
 				choice = ExitNewMusicMenu;
 			}
 		}
 
+		setSelectedUIElem(newMusicMenuUI->info->selectedElement, FALSE);
 		switch(choice) {
 			case SaveChangesNewMusic:
 				// TODO: Load New Music Menu
 				break;
-			case CancelNewMusic:
+			case ClearNewMusic:
 				// TODO: Load Search Musics Menu
 				break;
+			case TitleNewMusicFormInput:
+				plainTextFormInputRead(UIElementToForm(newMusicMenuUI->titleForm));
+
+				newMusicMenuUI->info->selectedElement = newMusicMenuUI->singerForm;
+				break;
+			case SingerNewMusicFormInput:
+				plainTextFormInputRead(UIElementToForm(newMusicMenuUI->singerForm));
+
+				newMusicMenuUI->info->selectedElement = newMusicMenuUI->authorForm;
+				break;
+			case AuthorNewMusicFormInput:
+				plainTextFormInputRead(UIElementToForm(newMusicMenuUI->authorForm));
+
+				newMusicMenuUI->info->selectedElement = newMusicMenuUI->genreForm;
+				break;
+			case GenreNewMusicFormInput:
+				plainTextFormInputRead(UIElementToForm(newMusicMenuUI->genreForm));
+
+				newMusicMenuUI->info->selectedElement = newMusicMenuUI->yearForm;
+				break;
+			case YearNewMusicFormInput:
+				numericFormInputRead(UIElementToForm(newMusicMenuUI->yearForm));
+
+//				newMusicMenuUI->info->selectedElement = newMusicMenuUI->durationForm;
+				break;
+			case DurationNewMusicFormInput:
+				break;
+			case RatingNewMusicFormInput:
+				break;
+
 			case ExitNewMusicMenu:
 				// TODO: Add exit confirmation
 				break;
 			default: break;
 		}
+		setSelectedUIElem(newMusicMenuUI->info->selectedElement, TRUE);
+		if(choice != NONE) {
+			choice = NONE;
+			updateScreen = TRUE;
+		}
+		if(updateScreen) drawNewMusicMenu(newMusicMenuUI);
+		updateScreen = FALSE;
 
 	} while(choice != ExitNewMusicMenu);
 
@@ -438,7 +492,7 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	Button *saveChangesButton = createButton("[S]ave Changes");
 	saveChangesButton->alignment = -1;
 
-	Button *cancelButton = createButton("[C]ancel");
+	Button *cancelButton = createButton("[C]lear");
 	cancelButton->alignment = 1;
 
 	Button *exitMenuButton = createButton("[E]xit New Music Menu");
@@ -457,11 +511,16 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	Form *genreForm = createForm("Genre:");
 	genreForm->alignment = -1;
 
+	Form *yearForm = createForm("Year");
+	yearForm->alignment = -1;
+	yearForm->inputSize = 4;
+
 	UIElement *newMusicMenuHeaderElem = createUIElem(newMusicMenuHeader, PageHeaderElem);
 	UIElement *titleFormElem = createUIElem(titleForm, FormElem);
 	UIElement *singerFormElem = createUIElem(singerForm, FormElem);
 	UIElement *authorFormElem = createUIElem(authorForm, FormElem);
 	UIElement *genreFormElem = createUIElem(genreForm, FormElem);
+	UIElement *yearFormElem = createUIElem(yearForm, FormElem);
 	UIElement *saveChangesButtonElem = createUIElem(saveChangesButton, ButtonElem);
 	UIElement *cancelButtonElem = createUIElem(cancelButton, ButtonElem);
 	UIElement *exitMenuButtonElem = createUIElem(exitMenuButton, ButtonElem);
@@ -476,6 +535,7 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	addToList(newMusicMenuUI->info->uiElements, singerFormElem);
 	addToList(newMusicMenuUI->info->uiElements, authorFormElem);
 	addToList(newMusicMenuUI->info->uiElements, genreFormElem);
+	addToList(newMusicMenuUI->info->uiElements, yearFormElem);
 	addToList(newMusicMenuUI->info->uiElements, saveChangesButtonElem);
 	addToList(newMusicMenuUI->info->uiElements, cancelButtonElem);
 	addToList(newMusicMenuUI->info->uiElements, exitMenuButtonElem);
@@ -492,7 +552,10 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	authorFormElem->down = genreFormElem;
 
 	genreFormElem->up = authorFormElem;
-	genreFormElem->down = saveChangesButtonElem;
+	genreFormElem->down = yearFormElem;
+
+	yearFormElem->up = genreFormElem;
+	yearFormElem->down = saveChangesButtonElem;
 
 	saveChangesButtonElem->up = genreFormElem;
 	saveChangesButtonElem->right = cancelButtonElem;
@@ -509,6 +572,7 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	newMusicMenuUI->singerForm = singerFormElem;
 	newMusicMenuUI->authorForm = authorFormElem;
 	newMusicMenuUI->genreForm = genreFormElem;
+	newMusicMenuUI->yearForm = yearFormElem;
 	newMusicMenuUI->saveChangesButton = saveChangesButtonElem;
 	newMusicMenuUI->cancelButton = cancelButtonElem;
 	newMusicMenuUI->exitMenuButton = exitMenuButtonElem;
@@ -534,6 +598,8 @@ void drawNewMusicMenu(NewMusicMenuUI *newMusicMenuUI) {
 	printForm(UIElementToForm(newMusicMenuUI->authorForm));
 	printf("\n");
 	printForm(UIElementToForm(newMusicMenuUI->genreForm));
+	printf("\n\n");
+	printForm(UIElementToForm(newMusicMenuUI->yearForm));
 
 	printf("\n\n");
 	printButton(UIElementToButton(newMusicMenuUI->saveChangesButton));

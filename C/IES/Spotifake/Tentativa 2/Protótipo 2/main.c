@@ -3,7 +3,7 @@
 
 int main(int argc, char const *argv[]) {
 	// TODO: initialize app database
-	AppDatabase *db;
+	AppDatabase *db = NULL;
 
 	setupConsole();
 

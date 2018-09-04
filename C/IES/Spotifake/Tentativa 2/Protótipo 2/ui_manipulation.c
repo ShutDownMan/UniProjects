@@ -3,8 +3,6 @@
 //- INITIALIZE -//
 
 void setupConsole() {
-	HANDLE hOut;
-	COORD consoleSize;
 	CONSOLE_CURSOR_INFO ConCurInf;
 
 	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -230,7 +228,7 @@ Form *createForm(char *text) {
 	newForm->inputSize = 10;
 	newForm->text = text;
 	newForm->alignment = 0;
-	newForm->value = NULL;
+	newForm->inputStr = NULL;
 
 	return newForm;
 }
@@ -238,28 +236,90 @@ Form *createForm(char *text) {
 void printForm(Form *form) {
 	int textSize = strlen(form->text);
 
-	if(form->fixed) {
-
-	} else {
+	if(!form->fixed) {
 		if(form->alignment < 0) {
 			gotoXY(0, -1);
-			if(form->selected)
-				printf("%s _", form->text);
-			else
-				printf("%s ", form->text);
 		} else if(form->alignment > 0) {
 			gotoXY(CONSOLE_WIDTH-(textSize + form->inputSize+1),  -1);
-			if(form->selected)
-				printf("%s _", form->text);
-			else
-				printf("%s ", form->text);
 		}
+
+		if(!form->inputStr) {
+			if(form->selected) {
+				printf("%s>", form->text);
+			} else {
+				printf("%s ", form->text);
+			}
+		} else {
+			printf("%s %s;", form->text, form->inputStr);
+		}
+	}
+
+	if(!form->inputStr)
+		form->inputPosition = getCursorPosition();
+}
+
+char *plainTextFormInputRead(Form *form) {
+	char inputStr[64];
+
+	freeFormInput(form);
+
+	gotoXY(form->inputPosition.X, form->inputPosition.Y);
+	printf("%*c", form->inputSize+1, ' ');
+
+	gotoXY(form->inputPosition.X, form->inputPosition.Y);
+
+	scanf("%[^\n]%*c", inputStr);
+
+	form->inputStr = strcpy(malloc(sizeof(char)*strlen(inputStr) + 1), inputStr);
+
+	return form->inputStr;
+}
+
+char *numericFormInputRead(Form *form) {
+	char *inputStr = malloc(sizeof(char)*form->inputSize+1);
+	char c = 0;
+	int i;
+
+	freeFormInput(form);
+
+	gotoXY(form->inputPosition.X, form->inputPosition.Y);
+	printf("%*c", form->inputSize+1, ' ');
+
+	for(i = 0; i <= form->inputSize; ++i) {
+		inputStr[i] = 0;
+	}
+
+	c = getch();
+	gotoXY(form->inputPosition.X, form->inputPosition.Y);
+	printf("%s", inputStr);
+	for(i = 0; c != RETURN_KEY; c = getch()) {
+		if(i < form->inputSize && isdigit(c)) {
+			inputStr[i++] = c;
+		}
+		if(c == BACKSPACE_KEY && i > 0) {
+			inputStr[--i] = 0;
+			gotoXY(form->inputPosition.X, form->inputPosition.Y);
+			printf("%*c", form->inputSize, ' ');
+		}
+		gotoXY(form->inputPosition.X, form->inputPosition.Y);
+		printf("%s", inputStr);
+	}
+
+	form->inputStr = inputStr;
+
+	return inputStr;
+}
+
+void freeFormInput(Form *form) {
+	if(form->inputStr) {
+		free(form->inputStr);
+		form->inputStr = NULL;
 	}
 }
 
 void freeForm(Form *form) {
-	if(form->value) {
-		free(form->value);
+	if(form->inputStr) {
+		free(form->inputStr);
 	}
 	if(form->position) {
 		free(form->position);
@@ -270,7 +330,6 @@ void freeForm(Form *form) {
 //- CONSOLE -//
 
 void gotoXY(int x, int y) {
-	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO SBInfo;
 	COORD pos;
 
@@ -292,7 +351,6 @@ void gotoXY(int x, int y) {
 }
 
 COORD getCursorPosition() {
-	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO SBInfo;
 
 	GetConsoleScreenBufferInfo(hOut, &SBInfo);
@@ -302,9 +360,9 @@ COORD getCursorPosition() {
 
 int getConsoleWidth() {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
-    int columns, rows;
+    int columns;
 
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    GetConsoleScreenBufferInfo(hOut, &csbi);
     columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 
     return columns;

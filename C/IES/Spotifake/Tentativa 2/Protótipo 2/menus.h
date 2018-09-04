@@ -96,7 +96,14 @@ void freePlaylistsMenuUI(PlaylistsMenuUI *playlistsMenuUI);
 
 typedef enum newMusicMenuChoices {
 	SaveChangesNewMusic,
-	CancelNewMusic,
+	ClearNewMusic,
+	TitleNewMusicFormInput,
+	SingerNewMusicFormInput,
+	AuthorNewMusicFormInput,
+	GenreNewMusicFormInput,
+	YearNewMusicFormInput,
+	DurationNewMusicFormInput,
+	RatingNewMusicFormInput,
 	ExitNewMusicMenu
 } NewMusicMenuChoices;
 

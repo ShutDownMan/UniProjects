@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
+#include <ctype.h>
 #include <Windows.h>
 
 #include "list.h"
@@ -14,6 +16,7 @@
 #define RIGHT_ARROW_KEY 77
 #define UP_ARROW_KEY 72
 #define DOWN_ARROW_KEY 80
+#define BACKSPACE_KEY 8
 
 #define E_KEY 101
 
@@ -60,7 +63,8 @@ typedef struct button {
 typedef struct form {
 	Position *position;
 	bool selected, fixed;
-	char *text, *value, alignment;
+	char *text, *inputStr, alignment;
+	COORD inputPosition;
 	int inputSize;
 } Form;
 
@@ -68,6 +72,8 @@ typedef struct menuUI {
 	List *uiElements;
 	UIElement *selectedElement; //< selected element in UI
 } MenuUI;
+
+HANDLE hOut;
 
 //- MENU UI -//
 
@@ -108,6 +114,14 @@ void freeButton(Button *button);
 Form *createForm(char *text);
 
 void printForm(Form *form);
+
+char *plainTextFormInputRead(Form *form);
+
+char *numericFormInputRead(Form *form);
+
+void freeFormInput(Form *form);
+
+void freeForm(Form *form);
 
 //- CONSOLE -//
 
