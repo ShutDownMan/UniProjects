@@ -2,265 +2,7 @@
 
 //- MAIN MENU -//
 
-void mainMenu(AppDatabase *db) {
-	MainMenuUI *mainMenuUI = initializeMainMenuUI();
-	char charInput;
-	MainMenuChoices choice = NONE;
-
-	drawMainMenu(mainMenuUI);
-
-	do {
-		charInput = getch();
-
-		menuUIArrowControl(mainMenuUI->info, charInput);
-		drawMainMenu(mainMenuUI);
-
-		if(charInput == RETURN_KEY && mainMenuUI->info->selectedElement) {
-			if(mainMenuUI->info->selectedElement == mainMenuUI->musicMenuButton) {
-				choice = MusicsMenu;
-			} else if(mainMenuUI->info->selectedElement == mainMenuUI->playlistMenuButton) {
-				choice = PlaylistsMenu;
-			} else if(mainMenuUI->info->selectedElement == mainMenuUI->exitAppButton) {
-				choice = ExitApplication;
-			}
-		}
-
-		switch(choice) {
-			case MusicsMenu:
-				musicsMenu(db);
-
-				setSelectedUIElem(mainMenuUI->info->selectedElement, FALSE);
-				mainMenuUI->info->selectedElement = mainMenuUI->mainMenuHeader;
-				setSelectedUIElem(mainMenuUI->info->selectedElement, TRUE);
-
-				drawMainMenu(mainMenuUI);
-				choice = NONE;
-				break;
-			case PlaylistsMenu:
-				playlistsMenu(db);
-
-				setSelectedUIElem(mainMenuUI->info->selectedElement, FALSE);
-				mainMenuUI->info->selectedElement = mainMenuUI->mainMenuHeader;
-				setSelectedUIElem(mainMenuUI->info->selectedElement, TRUE);
-
-				drawMainMenu(mainMenuUI);
-				choice = NONE;
-				break;
-			case ExitApplication:
-				// TODO: Add exit confirmation
-				break;
-			default: break;
-		}
-
-	} while(choice != ExitApplication);
-
-	// TODO: Free mainMenuUI
-}
-
-MainMenuUI *initializeMainMenuUI() {
-	MainMenuUI *mainMenuUI = malloc(sizeof(MainMenuUI));
-
-	mainMenuUI->info = createMenuUI();
-
-	PageHeader *mainMenuHeader = createPageHeader("Main Menu", 6);
-
-	Button *musicMenuButton = createButton("[M]usics Menu");
-	musicMenuButton->alignment = -1;
-
-	Button *playlistMenuButton = createButton("[P]laylists Menu");
-	playlistMenuButton->alignment = 1;
-
-	Button *exitAppButton = createButton("[E]xit Application");
-	exitAppButton->borders = FALSE;
-	exitAppButton->alignment = -1;
-
-	UIElement *mainMenuHeaderElem = createUIElem(mainMenuHeader, PageHeaderElem);
-	UIElement *musicMenuButtonElem = createUIElem(musicMenuButton, ButtonElem);
-	UIElement *playlistMenuButtonElem = createUIElem(playlistMenuButton, ButtonElem);
-	UIElement *exitAppButtonElem = createUIElem(exitAppButton, ButtonElem);
-
-	musicMenuButtonElem->hotkey = 'm';
-	playlistMenuButtonElem->hotkey = 'p';
-	exitAppButtonElem->hotkey = 'e';
-
-	mainMenuUI->info->uiElements = createList();
-	addToList(mainMenuUI->info->uiElements, mainMenuHeaderElem);
-	addToList(mainMenuUI->info->uiElements, musicMenuButtonElem);
-	addToList(mainMenuUI->info->uiElements, playlistMenuButtonElem);
-	addToList(mainMenuUI->info->uiElements, exitAppButtonElem);
-
-	mainMenuHeaderElem->down = musicMenuButtonElem;
-
-	musicMenuButtonElem->up = mainMenuHeaderElem;
-	musicMenuButtonElem->right = playlistMenuButtonElem;
-	musicMenuButtonElem->down = exitAppButtonElem;
-
-	playlistMenuButtonElem->left = musicMenuButtonElem;
-	playlistMenuButtonElem->up = mainMenuHeaderElem;
-	playlistMenuButtonElem->down = exitAppButtonElem;
-
-	exitAppButtonElem->up = musicMenuButtonElem;
-	exitAppButtonElem->right = playlistMenuButtonElem;
-
-	mainMenuUI->mainMenuHeader = mainMenuHeaderElem;
-	mainMenuUI->musicMenuButton = musicMenuButtonElem;
-	mainMenuUI->playlistMenuButton = playlistMenuButtonElem;
-	mainMenuUI->exitAppButton = exitAppButtonElem;
-
-	mainMenuUI->info->selectedElement = mainMenuHeaderElem;
-	setSelectedUIElem(mainMenuHeaderElem, TRUE);
-
-	return mainMenuUI;
-}
-
-void drawMainMenu(MainMenuUI *mainMenuUI) {
-	COORD cursorPos;
-
-	system("cls");
-
-	gotoXY(0, 0);
-	printPageHeader(UIElementToPageHeader(mainMenuUI->mainMenuHeader));
-
-	printf("\n\n");
-	printButton(UIElementToButton(mainMenuUI->musicMenuButton));
-
-	cursorPos = getCursorPosition();
-	cursorPos.Y += -3;
-	gotoXY(cursorPos.X, cursorPos.Y);
-	printButton(UIElementToButton(mainMenuUI->playlistMenuButton));
-
-	printf("\n\n");
-	printButton(UIElementToButton(mainMenuUI->exitAppButton));
-}
-
 //- MUSICS MENU -//
-
-void musicsMenu(AppDatabase *db) {
-	MusicsMenuUI *musicsMenuUI = initializeMusicsMenuUI();
-	char charInput;
-	MusicsMenuChoices choice = NONE;
-
-	drawMusicsMenu(musicsMenuUI);
-
-	do {
-		charInput = getch();
-
-		menuUIArrowControl(musicsMenuUI->info, charInput);
-		drawMusicsMenu(musicsMenuUI);
-
-		if(charInput == RETURN_KEY && musicsMenuUI->info->selectedElement) {
-			if(musicsMenuUI->info->selectedElement == musicsMenuUI->newMusicMenuButton) {
-				choice = NewMusicMenu;
-			} else if(musicsMenuUI->info->selectedElement == musicsMenuUI->searchMusicMenuButton) {
-				choice = SearchMusicMenu;
-			} else if(musicsMenuUI->info->selectedElement == musicsMenuUI->exitMenuButton) {
-				choice = ExitMusicsMenu;
-			}
-		}
-
-		switch(choice) {
-			case NewMusicMenu:
-				newMusicMenu(db);
-
-				setSelectedUIElem(musicsMenuUI->info->selectedElement, FALSE);
-				musicsMenuUI->info->selectedElement = musicsMenuUI->musicsMenuHeader;
-				setSelectedUIElem(musicsMenuUI->info->selectedElement, TRUE);
-
-				drawMusicsMenu(musicsMenuUI);
-				choice = NONE;
-				// TODO: Load New Music Menu
-				break;
-			case SearchMusicMenu:
-				// TODO: Load Search Musics Menu
-				break;
-			case ExitMusicsMenu:
-				// TODO: Add exit confirmation
-				break;
-			default: break;
-		}
-
-	} while(choice != ExitMusicsMenu);
-
-	freeMusicsMenuUI(musicsMenuUI);
-}
-
-MusicsMenuUI *initializeMusicsMenuUI() {
-	MusicsMenuUI *musicsMenuUI = malloc(sizeof(MusicsMenuUI));
-
-	musicsMenuUI->info = createMenuUI();
-
-	PageHeader *musicsMenuHeader = createPageHeader("Musics Menu", 6);
-
-	Button *newMusicMenuButton = createButton("[N]ew Music");
-	newMusicMenuButton->alignment = -1;
-
-	Button *searchMusicMenuButton = createButton("[S]earch Music");
-	searchMusicMenuButton->alignment = 1;
-
-	Button *exitMenuButton = createButton("[E]xit Musics Menu");
-	exitMenuButton->alignment = -1;
-	exitMenuButton->borders = FALSE;
-
-	UIElement *musicsMenuHeaderElem = createUIElem(musicsMenuHeader, PageHeaderElem);
-	UIElement *newMusicMenuButtonElem = createUIElem(newMusicMenuButton, ButtonElem);
-	UIElement *searchMusicMenuButtonElem = createUIElem(searchMusicMenuButton, ButtonElem);
-	UIElement *exitMenuButtonElem = createUIElem(exitMenuButton, ButtonElem);
-
-	newMusicMenuButtonElem->hotkey = 'n';
-	searchMusicMenuButtonElem->hotkey = 's';
-	exitMenuButtonElem->hotkey = 'e';
-
-	musicsMenuUI->info->uiElements = createList();
-	addToList(musicsMenuUI->info->uiElements, musicsMenuHeaderElem);
-	addToList(musicsMenuUI->info->uiElements, newMusicMenuButtonElem);
-	addToList(musicsMenuUI->info->uiElements, searchMusicMenuButtonElem);
-	addToList(musicsMenuUI->info->uiElements, exitMenuButtonElem);
-
-	musicsMenuHeaderElem->down = newMusicMenuButtonElem;
-
-	newMusicMenuButtonElem->up = musicsMenuHeaderElem;
-	newMusicMenuButtonElem->right = searchMusicMenuButtonElem;
-	newMusicMenuButtonElem->down = exitMenuButtonElem;
-
-	searchMusicMenuButtonElem->up = musicsMenuHeaderElem;
-	searchMusicMenuButtonElem->left = newMusicMenuButtonElem;
-	searchMusicMenuButtonElem->down = exitMenuButtonElem;
-
-	exitMenuButtonElem->up = newMusicMenuButtonElem;
-
-	musicsMenuUI->musicsMenuHeader = musicsMenuHeaderElem;
-	musicsMenuUI->newMusicMenuButton = newMusicMenuButtonElem;
-	musicsMenuUI->searchMusicMenuButton = searchMusicMenuButtonElem;
-	musicsMenuUI->exitMenuButton = exitMenuButtonElem;
-
-	musicsMenuUI->info->selectedElement = musicsMenuHeaderElem;
-	setSelectedUIElem(musicsMenuHeaderElem, TRUE);
-
-	return musicsMenuUI;
-}
-
-void drawMusicsMenu(MusicsMenuUI *musicsMenuUI) {
-	COORD cursorPos;
-
-	system("cls");
-
-	printPageHeader(UIElementToPageHeader(musicsMenuUI->musicsMenuHeader));
-
-	printf("\n\n");
-	printButton(UIElementToButton(musicsMenuUI->newMusicMenuButton));
-
-	cursorPos = getCursorPosition();
-	cursorPos.Y += -3;
-	gotoXY(cursorPos.X, cursorPos.Y);
-	printButton(UIElementToButton(musicsMenuUI->searchMusicMenuButton));
-
-	printf("\n\n");
-	printButton(UIElementToButton(musicsMenuUI->exitMenuButton));
-}
-
-void freeMusicsMenuUI(MusicsMenuUI *musicsMenuUI) {
-	freeMenuUI(musicsMenuUI->info);
-}
 
 //- PLAYLISTS MENU -//
 
@@ -400,8 +142,8 @@ void newMusicMenu(AppDatabase *db) {
 		drawNewMusicMenu(newMusicMenuUI);
 
 		if(charInput == RETURN_KEY && newMusicMenuUI->info->selectedElement) {
-			if(newMusicMenuUI->saveChangesButton == newMusicMenuUI->info->selectedElement) {
-				choice = SaveChangesNewMusic;
+			if(newMusicMenuUI->saveButton == newMusicMenuUI->info->selectedElement) {
+				choice = SaveNewMusic;
 			}
 			if(newMusicMenuUI->cancelButton == newMusicMenuUI->info->selectedElement) {
 				choice = ClearNewMusic;
@@ -421,6 +163,12 @@ void newMusicMenu(AppDatabase *db) {
 			if(newMusicMenuUI->yearForm == newMusicMenuUI->info->selectedElement) {
 				choice = YearNewMusicFormInput;
 			}
+			if(newMusicMenuUI->durationForm == newMusicMenuUI->info->selectedElement) {
+				choice = DurationNewMusicFormInput;
+			}
+			if(newMusicMenuUI->ratingForm == newMusicMenuUI->info->selectedElement) {
+				choice = RatingNewMusicFormInput;
+			}
 			if(newMusicMenuUI->exitMenuButton == newMusicMenuUI->info->selectedElement) {
 				choice = ExitNewMusicMenu;
 			}
@@ -428,7 +176,7 @@ void newMusicMenu(AppDatabase *db) {
 
 		setSelectedUIElem(newMusicMenuUI->info->selectedElement, FALSE);
 		switch(choice) {
-			case SaveChangesNewMusic:
+			case SaveNewMusic:
 				// TODO: Load New Music Menu
 				break;
 			case ClearNewMusic:
@@ -457,11 +205,17 @@ void newMusicMenu(AppDatabase *db) {
 			case YearNewMusicFormInput:
 				numericFormInputRead(UIElementToForm(newMusicMenuUI->yearForm));
 
-//				newMusicMenuUI->info->selectedElement = newMusicMenuUI->durationForm;
+				newMusicMenuUI->info->selectedElement = newMusicMenuUI->durationForm;
 				break;
 			case DurationNewMusicFormInput:
+				durationFormInputRead(UIElementToForm(newMusicMenuUI->durationForm));
+
+				newMusicMenuUI->info->selectedElement = newMusicMenuUI->ratingForm;
 				break;
 			case RatingNewMusicFormInput:
+				ratingFormInputRead(UIElementToForm(newMusicMenuUI->ratingForm));
+
+				newMusicMenuUI->info->selectedElement = newMusicMenuUI->saveButton;
 				break;
 
 			case ExitNewMusicMenu:
@@ -470,7 +224,7 @@ void newMusicMenu(AppDatabase *db) {
 			default: break;
 		}
 		setSelectedUIElem(newMusicMenuUI->info->selectedElement, TRUE);
-		if(choice != NONE) {
+		if(choice != NONE && choice != ExitNewMusicMenu) {
 			choice = NONE;
 			updateScreen = TRUE;
 		}
@@ -489,8 +243,8 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 
 	PageHeader *newMusicMenuHeader = createPageHeader("New Music Menu", 6);
 
-	Button *saveChangesButton = createButton("[S]ave Changes");
-	saveChangesButton->alignment = -1;
+	Button *saveButton = createButton("[S]ave");
+	saveButton->alignment = -1;
 
 	Button *cancelButton = createButton("[C]lear");
 	cancelButton->alignment = 1;
@@ -511,9 +265,17 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	Form *genreForm = createForm("Genre:");
 	genreForm->alignment = -1;
 
-	Form *yearForm = createForm("Year");
+	Form *yearForm = createForm("Year:");
 	yearForm->alignment = -1;
 	yearForm->inputSize = 4;
+
+	Form *durationForm = createForm("Duration:");
+//	durationForm->alignment = -1;
+	durationForm->inputSize = 8;
+
+	Form *ratingForm = createForm("Rating:");
+	ratingForm->alignment = -1;
+	ratingForm->inputSize = 5;
 
 	UIElement *newMusicMenuHeaderElem = createUIElem(newMusicMenuHeader, PageHeaderElem);
 	UIElement *titleFormElem = createUIElem(titleForm, FormElem);
@@ -521,11 +283,13 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	UIElement *authorFormElem = createUIElem(authorForm, FormElem);
 	UIElement *genreFormElem = createUIElem(genreForm, FormElem);
 	UIElement *yearFormElem = createUIElem(yearForm, FormElem);
-	UIElement *saveChangesButtonElem = createUIElem(saveChangesButton, ButtonElem);
+	UIElement *durationFormElem = createUIElem(durationForm, FormElem);
+	UIElement *ratingFormElem = createUIElem(ratingForm, FormElem);
+	UIElement *saveButtonElem = createUIElem(saveButton, ButtonElem);
 	UIElement *cancelButtonElem = createUIElem(cancelButton, ButtonElem);
 	UIElement *exitMenuButtonElem = createUIElem(exitMenuButton, ButtonElem);
 
-	saveChangesButtonElem->hotkey = 's';
+	saveButtonElem->hotkey = 's';
 	cancelButtonElem->hotkey = 'c';
 	exitMenuButtonElem->hotkey = 'e';
 
@@ -536,7 +300,9 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	addToList(newMusicMenuUI->info->uiElements, authorFormElem);
 	addToList(newMusicMenuUI->info->uiElements, genreFormElem);
 	addToList(newMusicMenuUI->info->uiElements, yearFormElem);
-	addToList(newMusicMenuUI->info->uiElements, saveChangesButtonElem);
+	addToList(newMusicMenuUI->info->uiElements, durationFormElem);
+	addToList(newMusicMenuUI->info->uiElements, ratingFormElem);
+	addToList(newMusicMenuUI->info->uiElements, saveButtonElem);
 	addToList(newMusicMenuUI->info->uiElements, cancelButtonElem);
 	addToList(newMusicMenuUI->info->uiElements, exitMenuButtonElem);
 
@@ -555,17 +321,25 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	genreFormElem->down = yearFormElem;
 
 	yearFormElem->up = genreFormElem;
-	yearFormElem->down = saveChangesButtonElem;
+	yearFormElem->right = durationFormElem;
+	yearFormElem->down = ratingFormElem;
 
-	saveChangesButtonElem->up = genreFormElem;
-	saveChangesButtonElem->right = cancelButtonElem;
-	saveChangesButtonElem->down = exitMenuButtonElem;
+	durationFormElem->up = genreFormElem;
+	durationFormElem->left = yearFormElem;
+	durationFormElem->down = ratingFormElem;
+
+	ratingFormElem->up = yearFormElem;
+	ratingFormElem->down = saveButtonElem;
+
+	saveButtonElem->up = ratingFormElem;
+	saveButtonElem->right = cancelButtonElem;
+	saveButtonElem->down = exitMenuButtonElem;
 
 	cancelButtonElem->up = newMusicMenuHeaderElem;
-	cancelButtonElem->left = saveChangesButtonElem;
+	cancelButtonElem->left = saveButtonElem;
 	cancelButtonElem->down = exitMenuButtonElem;
 
-	exitMenuButtonElem->up = saveChangesButtonElem;
+	exitMenuButtonElem->up = saveButtonElem;
 
 	newMusicMenuUI->newMusicMenuHeader = newMusicMenuHeaderElem;
 	newMusicMenuUI->titleForm = titleFormElem;
@@ -573,7 +347,9 @@ NewMusicMenuUI *initializeNewMusicMenuUI() {
 	newMusicMenuUI->authorForm = authorFormElem;
 	newMusicMenuUI->genreForm = genreFormElem;
 	newMusicMenuUI->yearForm = yearFormElem;
-	newMusicMenuUI->saveChangesButton = saveChangesButtonElem;
+	newMusicMenuUI->durationForm = durationFormElem;
+	newMusicMenuUI->ratingForm = ratingFormElem;
+	newMusicMenuUI->saveButton = saveButtonElem;
 	newMusicMenuUI->cancelButton = cancelButtonElem;
 	newMusicMenuUI->exitMenuButton = exitMenuButtonElem;
 
@@ -600,18 +376,106 @@ void drawNewMusicMenu(NewMusicMenuUI *newMusicMenuUI) {
 	printForm(UIElementToForm(newMusicMenuUI->genreForm));
 	printf("\n\n");
 	printForm(UIElementToForm(newMusicMenuUI->yearForm));
+	printForm(UIElementToForm(newMusicMenuUI->durationForm));
+	printf("\n\n");
+	printForm(UIElementToForm(newMusicMenuUI->ratingForm));
 
 	printf("\n\n");
-	printButton(UIElementToButton(newMusicMenuUI->saveChangesButton));
+	printButton(UIElementToButton(newMusicMenuUI->saveButton));
 
 	cursorPos = getCursorPosition();
 	cursorPos.Y += -3;
 	gotoXY(cursorPos.X, cursorPos.Y);
 	printButton(UIElementToButton(newMusicMenuUI->cancelButton));
 
-
 	printf("\n\n");
 	printButton(UIElementToButton(newMusicMenuUI->exitMenuButton));
+}
+
+char *durationFormInputRead(Form *form) {
+	char *outputStr = malloc(sizeof(char)*form->inputSize+1);
+	char inputStr[(form->inputSize-2)+1];
+	char c = 0;
+	int i, j, k;
+
+	freeFormInput(form);
+
+	gotoXY(form->inputPosition.X-1, form->inputPosition.Y);
+	printf("%*c", form->inputSize+2, ' ');
+
+	for(i = 0; i <= form->inputSize-2; ++i) {
+		inputStr[i] = 0;
+	}
+	for(i = 0; i <= form->inputSize; ++i) {
+		outputStr[i] = ' ';
+	}
+	outputStr[form->inputSize] = 0;
+
+	c = getch();
+	gotoXY(form->inputPosition.X, form->inputPosition.Y);
+	printf("%s", outputStr);
+	for(i = 0; c != RETURN_KEY; c = getch()) {
+		gotoXY(form->inputPosition.X-1, form->inputPosition.Y);
+		printf("%*c", form->inputSize+2, ' ');
+
+		if(i < form->inputSize-2 && isdigit(c)) {
+			inputStr[i++] = c;
+		}
+		if(c == BACKSPACE_KEY && i > 0) {
+			inputStr[--i] = 0;
+		}
+
+		for(j = 0, k = i-1; j < form->inputSize; ++j, --k) {
+			if(k >= 0) {
+				if(j == 2 || j == 5)
+					outputStr[(form->inputSize-1)-(j++)] = ':';
+				outputStr[(form->inputSize-1)-j] = inputStr[k];
+			} else {
+				outputStr[(form->inputSize-1)-j] = ' ';
+			}
+		}
+
+		gotoXY(form->inputPosition.X, form->inputPosition.Y);
+		printf("%s", outputStr);
+	}
+
+	form->inputStr = outputStr;
+
+	return outputStr;
+}
+
+char *ratingFormInputRead(Form *form) {
+	int i, stars = 0;
+	char c, *inputStr;
+
+	gotoXY(form->inputPosition.X, form->inputPosition.Y);
+	printf("%*c", form->inputSize, ' ');
+
+	do {
+		c = getch();
+		if(isdigit(c) && c <= '5') {
+			stars = c-'0';
+
+			gotoXY(form->inputPosition.X, form->inputPosition.Y);
+			printf("%*c", form->inputSize, ' ');
+
+			gotoXY(form->inputPosition.X, form->inputPosition.Y);
+			for(i = 0; i < c-'0'; ++i) {
+				printf("*");
+			}
+		}
+
+	} while(c != RETURN_KEY);
+
+	inputStr = (char *)malloc(sizeof(char) * stars + 1);
+	for(i = 0; i < stars; ++i) {
+		inputStr[i] = '*';
+	}
+	inputStr[i] = 0;
+
+	form->inputStr = inputStr;
+
+	return inputStr;
 }
 
 void freeNewMusicMenuUI(NewMusicMenuUI *newMusicMenuUI) {

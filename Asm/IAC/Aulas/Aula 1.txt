@@ -1,0 +1,21 @@
+
+// y = 30*x
+asm(".intel_syntax noprefix\n\t"
+	"MOV EAX, x\n\t"
+	"MOV EDX, EAX\n\t"
+	"SHL EAX, 5\n\t"
+	"SHL EDX, 1\n\t"
+	"SUB EAX, EDX\n\t"
+	"MOV y, EAX\n\t"
+	"\n\t"
+	".att_syntax prefix\n");
+
+
+SHR DST, QNT -> shift right, não preserva sinal
+SAR DST, QNT -> shift right, preserva sinal
+
+SHRD DST, SRC, QNT -> shift right de DST com preenchimento de SRC
+SHLD DST, SRC, QNT -> shift left de DST com preenchimento de SRC
+
+BSF DST, SRC -> bit scan forward
+BSR DST, SRC -> bit scan backwards

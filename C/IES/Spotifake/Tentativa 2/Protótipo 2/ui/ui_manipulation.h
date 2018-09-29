@@ -10,7 +10,7 @@
 #include <ctype.h>
 #include <Windows.h>
 
-#include "list.h"
+#include "..\src\list.h"
 
 #define LEFT_ARROW_KEY 75
 #define RIGHT_ARROW_KEY 77

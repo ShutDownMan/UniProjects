@@ -1,5 +1,5 @@
 #include "start.h"
-#include "menus.h"
+#include "..\ui\menus.h"
 
 int main(int argc, char const *argv[]) {
 	// TODO: initialize app database

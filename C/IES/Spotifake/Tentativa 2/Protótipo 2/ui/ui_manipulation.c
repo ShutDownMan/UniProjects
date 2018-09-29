@@ -225,7 +225,7 @@ Form *createForm(char *text) {
 	newForm->position = NULL;
 	newForm->fixed = FALSE;
 	newForm->selected = FALSE;
-	newForm->inputSize = 10;
+	newForm->inputSize = 32;
 	newForm->text = text;
 	newForm->alignment = 0;
 	newForm->inputStr = NULL;
@@ -249,28 +249,42 @@ void printForm(Form *form) {
 			} else {
 				printf("%s ", form->text);
 			}
+			if(!form->inputStr)
+				form->inputPosition = getCursorPosition();
+			printf("%*c", form->inputSize+1, ' ');
 		} else {
-			printf("%s %s;", form->text, form->inputStr);
+			if(form->selected) {
+				printf("%s|%s|", form->text, form->inputStr);
+			} else {
+				printf("%s %s ", form->text, form->inputStr);
+			}
+			printf("%*c", (int)(form->inputSize-strlen(form->inputStr)), ' ');
 		}
 	}
-
-	if(!form->inputStr)
-		form->inputPosition = getCursorPosition();
 }
 
 char *plainTextFormInputRead(Form *form) {
-	char inputStr[64];
+	char inputStr[256];
 
 	freeFormInput(form);
 
-	gotoXY(form->inputPosition.X, form->inputPosition.Y);
+	gotoXY(form->inputPosition.X-1, form->inputPosition.Y);
 	printf("%*c", form->inputSize+1, ' ');
 
 	gotoXY(form->inputPosition.X, form->inputPosition.Y);
-
 	scanf("%[^\n]%*c", inputStr);
 
+	gotoXY(form->inputPosition.X-1, form->inputPosition.Y);
+	printf("%*c", form->inputSize+1, ' ');
+
 	form->inputStr = strcpy(malloc(sizeof(char)*strlen(inputStr) + 1), inputStr);
+
+	if(strlen(inputStr) > form->inputSize) {
+		gotoXY(form->inputPosition.X, form->inputPosition.Y);
+		printf("Entrada de no maximo %d caracteres", form->inputSize);
+		getch();
+		freeFormInput(form);
+	}
 
 	return form->inputStr;
 }
@@ -282,7 +296,7 @@ char *numericFormInputRead(Form *form) {
 
 	freeFormInput(form);
 
-	gotoXY(form->inputPosition.X, form->inputPosition.Y);
+	gotoXY(form->inputPosition.X-1, form->inputPosition.Y);
 	printf("%*c", form->inputSize+1, ' ');
 
 	for(i = 0; i <= form->inputSize; ++i) {
@@ -298,8 +312,8 @@ char *numericFormInputRead(Form *form) {
 		}
 		if(c == BACKSPACE_KEY && i > 0) {
 			inputStr[--i] = 0;
-			gotoXY(form->inputPosition.X, form->inputPosition.Y);
-			printf("%*c", form->inputSize, ' ');
+			gotoXY(form->inputPosition.X-1, form->inputPosition.Y);
+			printf("%*c", form->inputSize+1, ' ');
 		}
 		gotoXY(form->inputPosition.X, form->inputPosition.Y);
 		printf("%s", inputStr);
