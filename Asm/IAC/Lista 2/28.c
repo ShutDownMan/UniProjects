@@ -9,7 +9,8 @@ int main(int argc, char const *argv[]) {
 
 	asm(".intel_syntax noprefix\n\t"
 		"MOV EAX, _x\n\t"
-		"MOV ECX, 1\n\t"
+		"MOV EBX, 10\n\t"
+		"MOV ECX, 0\n\t"
 
 		"\n"
 	"START:\n\t"
@@ -18,8 +19,8 @@ int main(int argc, char const *argv[]) {
 
 		"INC ECX\n\t"
 
-		"SHR EAX, 3\n\t"
-		"SHR EAX\n\t"
+		"MOV EDX, 0\n\t"
+		"IDIV EBX\n\t"
 
 		"JMP START\n\t"
 
