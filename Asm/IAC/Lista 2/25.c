@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]) {
 		"XOR EDX, EDX\n\t"
 		"MOV ECX, 1\n\t"
 		"LEA EDI, [_s]\n\t"
-		"LEA EBP, [EDI]\n\t"
+//		"MOV EBP, EDI\n\t" //< DOESN'T FUCKN WORK
 
 		"\n"
 	"START_0:\n\t"
@@ -36,13 +36,14 @@ int main(int argc, char const *argv[]) {
 		"DEC EBX\n\t"
 		"SHR EBX\n\t"
 
+		"MOV _t, EBX\n\t"
 		"\n"
 	"START:\n\t"
 		"OR EBX, 0\n\t"
 		"JZ END\n\t"
 
 		"MOV AL, BYTE PTR [EDI]\n\t"
-		"CMP AL, BYTE PTR [EBP + EDX]\n\t"
+		"CMP AL, BYTE PTR [_s + EDX]\n\t"
 		"JNE FALSE\n\t"
 
 		"\n"
@@ -62,8 +63,8 @@ int main(int argc, char const *argv[]) {
 		"MOV _t, ECX\n\t"
 		".att_syntax prefix\n");
 
-//	printf("s = %s\n", s);
-//	printf("t = %d\n", t);
+	printf("s = %s\n", s);
+	printf("t = %d\n", t);
 
 	return 0;
 }
