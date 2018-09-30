@@ -177,23 +177,23 @@ int main(void) {
 		"MOV EBX, DWORD PTR [_x2+4]\n\t"
 
 		"CMP EAX, 97\n"
-		"JL FALSE0\n\t"
+		"JL FALSE\n\t"
 		"CMP EAX, 122\n\t"
-		"JG FALSE0\n\t"
+		"JG FALSE\n\t"
 
 		"\n"
 	"TRUE:\n\t"
 		"ADD ECX, DWORD PTR [_x3]\n\t"
 		"ADC EBX, DWORD PTR [_x3+4]\n\t"
-		"JMP END0\n\t"
+		"JMP END\n\t"
 
 		"\n"
-	"FALSE0:\n\t"
+	"FALSE:\n\t"
 		"SUB EBX, DWORD PTR [_x3+4]\n\t"
 		"SBB ECX, DWORD PTR [_x3]\n\t"
 
 		"\n"
-	"END0:\n\t"
+	"END:\n\t"
 		"MOV DWORD PTR [_x1], ECX\n\t"
 		"MOV DWORD PTR [_x1+4], EBX\n\t"
 		".att_syntax prefix\n");
@@ -207,12 +207,12 @@ int main(void) {
 /*	asm(".intel_syntax noprefix\n\t"
 		"MOV AL, _c1\n\t"
 		"CMP AL, 48\n\t"
-		"JL END\n\t"
+		"JL ENDn\t"
 		"CMP AL, 57\n\t"
-		"JG END\n\t"
+		"JG ENDn\t"
 
 		"SUB AL, 48\n\t"
-	"END:\n\t"
+	"END\n\t"
 		"MOV _c1, AL\n\t"
 
 		".att_syntax prefix\n");
@@ -226,22 +226,22 @@ int main(void) {
 */
 /*	asm(".intel_syntax noprefix\n\t"
 		"CMP DWORD PTR _i1, 0\n\t"
-		"JZ FALSE1\n\t"
+		"JZ FALSE\n\t"
 		"CMP DWORD PTR _i2, 0\n\t"
-		"JNZ FALSE1\n\t"
+		"JNZ FALSE\n\t"
 
 		"MOV AL, _c1\n\t"
 		"CBW\n\t"
 		"MOV _i1, EAX\n\t"
-		"JMP END1\n\t"
+		"JMP END\n\t"
 
 		"\n"
-	"FALSE1:\n\t"
+	"FALSE:\n\t"
 		"MOV AL, BYTE PTR _i2\n\t"
 		"MOV _c1, AL\n\t"
 
 		"\n"
-	"END1:\n\t"
+	"END:\n\t"
 		".att_syntax prefix\n");
 
 	printVars();
@@ -256,24 +256,24 @@ int main(void) {
 		"OR EAX, DWORD PTR [_x1+4]\n\t"
 
 		"OR EAX, EAX\n\t"
-		"JZ FALSE2\n\t"
+		"JZ FALSE\n\t"
 
 		"MOV EAX, DWORD PTR [_x2]\n\t"
 		"OR EAX, DWORD PTR [_x2+4]\n\t"
 
 		"OR EAX, EAX\n\t"
-		"JZ FALSE2\n\t"
+		"JZ FALSE\n\t"
 
 		"MOV AL, _c1\n\t"
 		"CBW\n\t"
 		"MOV _i1, EAX\n\t"
 
-		"JMP CONTINUE2\n\t"
-	"FALSE2:\n\t"
+		"JMP CONTINUE\n\t"
+	"FALSE:\n\t"
 		"MOV AL, BYTE PTR _i2\n\t"
 		"MOV _c1, AL\n\t"
 
-	"CONTINUE2:\n\t"
+	"CONTINUE:\n\t"
 		"\n\t"
 		".att_syntax prefix\n");
 
@@ -290,24 +290,24 @@ int main(void) {
 		"OR EAX, DWORD PTR [_x1+4]\n\t"
 
 		"OR EAX, EAX\n\t"
-		"JZ FALSE3\n\t"
+		"JZ FALSE\n\t"
 
 		"MOV EAX, DWORD PTR [_x2]\n\t"
 		"OR EAX, DWORD PTR [_x2+4]\n\t"
 
 		"OR EAX, EAX\n\t"
-		"JNZ FALSE3\n\t"
+		"JNZ FALSE\n\t"
 
 		"MOV AL, _c1\n\t"
 		"CBW\n\t"
 		"MOV _i1, EAX\n\t"
 
-		"JMP CONTINUE3\n\t"
-	"FALSE3:\n\t"
+		"JMP CONTINUE\n\t"
+	"FALSE:\n\t"
 		"MOV AL, BYTE PTR _i2\n\t"
 		"MOV _c1, AL\n\t"
 
-	"CONTINUE3:\n\t"
+	"CONTINUE:\n\t"
 		"\n\t"
 		".att_syntax prefix\n");
 
@@ -323,18 +323,18 @@ int main(void) {
 
 		"OR EAX, EAX\n\t"
 		"INC DWORD PTR _i1\n\t"
-		"JZ FALSE4\n\t"
+		"JZ FALSE\n\t"
 
 		"MOV AL, _c1\n\t"
 		"CBW\n\t"
 		"MOV _i1, EAX\n\t"
 
-		"JMP CONTINUE4\n\t"
-	"FALSE4:\n\t"
+		"JMP CONTINUE\n\t"
+	"FALSE:\n\t"
 		"MOV AL, BYTE PTR _i2\n\t"
 		"MOV _c1, AL\n\t"
 
-	"CONTINUE4:\n\t"
+	"CONTINUE:\n\t"
 		"\n\t"
 		".att_syntax prefix\n");
 	printVars();
@@ -349,19 +349,19 @@ int main(void) {
 		"MOV AL, _c1\n\t"
 		"CBW\n\t"
 		"CMP EAX, 97\n\t"
-		"JL TRUE5\n\t"
+		"JL TRUE\n\t"
 		"CMP EAX, 122\n\t"
-		"JG TRUE5\n\t"
+		"JG TRUE\n\t"
 
 		"DEC DWORD PTR _i1\n\t"
 
-		"JMP CONTINUE5\n"
+		"JMP CONTINUE\n"
 		"\n"
-	"TRUE5:\n\t"
+	"TRUE:\n\t"
 		"INC DWORD PTR _i1\n\t"
 
 		"\n"
-	"CONTINUE5:\n\t"
+	"CONTINUE:\n\t"
 		"\n\t"
 		".att_syntax prefix\n");
 	printVars();

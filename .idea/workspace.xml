@@ -10,30 +10,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23467f40-0798-4966-a34d-22ba83384e60" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/C++/Aulas C2/Circulo/Circulo/Circulo.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/C++/Aulas C2/Circulo/Circulo/Circulo.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C++/Aulas C2/ContaCorrente/ContaCorrente/ContaCorrente.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/C++/Aulas C2/ContaCorrente/ContaCorrente/ContaCorrente.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C++/Aulas C2/ContaCorrente/ContaCorrente/bank.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/C++/Aulas C2/ContaCorrente/ContaCorrente/bank.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C++/Aulas C2/ContaCorrente/ContaCorrente/transaction.h" beforeDir="false" afterPath="$PROJECT_DIR$/C++/Aulas C2/ContaCorrente/ContaCorrente/transaction.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/C++/Aulas C2/ContaCorrente/build-ContaCorrente-Desktop_Qt_5_5_0_MinGW_32bit-Debug/debug/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C++/Aulas C2/Ponto/Ponto/Ponto.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/C++/Aulas C2/Ponto/Ponto/Ponto.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C++/Aulas C2/Ponto/Ponto/circulo.h" beforeDir="false" afterPath="$PROJECT_DIR$/C++/Aulas C2/Ponto/Ponto/circulo.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C++/LFA/Trabalhos/AFD/AFD/AFD.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/C++/LFA/Trabalhos/AFD/AFD/AFD.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C/CLP/Prep IAC/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/C/CLP/Prep IAC/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C/Monitoria/lista2bim.c" beforeDir="false" afterPath="$PROJECT_DIR$/C/Monitoria/lista2bim.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C/URI/1142.c" beforeDir="false" afterPath="$PROJECT_DIR$/C/URI/1142.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C/URI/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/C/URI/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/LFA/AFD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java/LFA/AFD/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/IAC/Lista 1/2.c" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/IAC/Lista 1/2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/IAC/Lista 2/1.c" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/IAC/Lista 2/1.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/IAC/Lista 2/in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/IAC/Lista 2/in.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1461395627">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Asm/IAC/Lista 2/25.c">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,9 +49,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
@@ -58,8 +61,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -87,39 +90,40 @@
       <updated>1531279327878</updated>
       <workItem from="1531279331846" duration="30000" />
       <workItem from="1531279398786" duration="127000" />
+      <workItem from="1538271079183" duration="45000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157000" />
+    <option name="totallyTimeSpent" value="202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22526042" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="CMake" order="7" visible="true" weight="0.30588236" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22818792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info active="true" anchor="bottom" id="CMake" order="10" visible="true" weight="0.304698" />
+      <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt" />
+    <entry file="file://$PROJECT_DIR$/Asm/IAC/Lista 2/25.c">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>

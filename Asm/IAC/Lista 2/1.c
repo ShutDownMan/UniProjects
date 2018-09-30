@@ -36,42 +36,6 @@ int main(int argc, char const *argv[]) {
 
 	printf("%d\n", t);
 
-	// strlen
-	printf("entre com a string\n");
-	gets(s);
-
-	asm(".intel_syntax noprefix\n\t"
-		"xor ebx, ebx\n"
-	"s0:\n\t"
-		"cmp byte ptr [ebx+_s], 0\n\t"
-		"je s1\n\t"
-		"inc ebx\n\t"
-		"jmp s0\n"
-	"s1:\n\t"
-		"mov _t, ebx\n\t"
-		".att_syntax prefix\n");
-
-	printf("%d\n", t);
-
-	// strlen
-
-	asm(".intel_syntax noprefix\n\t"
-		"lea ebx, _s\n\t"
-		"mov edi, ebx\n"
-	"t0:\n\t"
-		"cmp byte ptr [ebx], 0\n\t"
-		"je t1\n\t"
-		"inc ebx\n\t"
-		"jmp t0\n"
-	"t1:\n\t"
-		"sub ebx, edi\n\t"
-		"mov _t, ebx\n"
-		".att_syntax prefix\n");
-
-	printf("%d\n", t);
-
-	// outros blocos assembly
-
 	system("PAUSE");
 	return 0;
 }
