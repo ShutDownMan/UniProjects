@@ -20,8 +20,8 @@ int main(int argc, char const *argv[]) {
 
 	// i1 -= 5
 	asm(".intel_syntax noprefix\n\t"
-		"MOV EAX, _i1\n\t"
-		"LEA EAX, [-5 + EAX]\n\t"
+		"MOV ECX, _i1\n\t"
+		"LEA EAX, [-5 + ECX]\n\t"
 		"MOV _i1, EAX\n\t"
 		".att_syntax prefix\n");
 	printVars();
