@@ -2,7 +2,7 @@
 
 int x, t;
 
-// conta a quantidade mínima de bits para conter um inteiro sem sinal
+// conta a quantidade minima de bits para conter um inteiro sem sinal
 int main(int argc, char const *argv[]) {
 
 	scanf("%d", &x);
