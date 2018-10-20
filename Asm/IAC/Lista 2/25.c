@@ -16,7 +16,6 @@ int main(int argc, char const *argv[]) {
 		"XOR EDX, EDX\n\t"
 		"MOV ECX, 1\n\t"
 		"LEA EDI, [_s]\n\t"
-//		"MOV EBP, EDI\n\t" //< DOESN'T FUCKN WORK
 
 		"\n"
 	"START_0:\n\t"

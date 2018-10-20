@@ -20,9 +20,9 @@ int main(int argc, char const *argv[]) {
 
 	// i2 = i1*10 + i2*31 + 100
 	asm(".intel_syntax noprefix\n\t"
-		"MOV ECX, _i1\n\t"
-		"LEA EAX, [100 + ECX*8]\n\t"
-		"LEA EAX, [EAX + ECX*2]\n\t"
+		"MOV EBX, _i1\n\t"
+		"LEA EAX, [100 + EBX*8]\n\t"
+		"LEA EAX, [EAX + EBX*2]\n\t"
 
 		"MOV ECX, _i2\n\t"
 		"LEA EBX, [ECX*8]\n\t"

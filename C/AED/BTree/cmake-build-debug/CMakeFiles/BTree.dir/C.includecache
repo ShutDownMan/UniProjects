@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.c
+stdlib.h
+-
+BTree.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
+stdio.h
+-
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/main.c
+stdio.h
+-
+BTree.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
+
