@@ -7,6 +7,8 @@ int main() {
 
     createEmptyBTree(f);
 
+//    insert(f, 100);
+//    insert(f, 101);
     insert(f, -2);
     insert(f, 24);
     insert(f, -8);

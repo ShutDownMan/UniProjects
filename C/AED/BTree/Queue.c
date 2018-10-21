@@ -77,7 +77,6 @@ void deleteQueue(Queue *queue) {
     free(queue);
 }
 
-
 //- SHOW -//
 
 void printQ(Queue *queue) {
