@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/BTree.dir/main.c.obj"
   "CMakeFiles/BTree.dir/BTree.c.obj"
+  "CMakeFiles/BTree.dir/Queue.c.obj"
   "BTree.pdb"
   "BTree.exe"
   "BTree.exe.manifest"

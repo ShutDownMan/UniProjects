@@ -11,10 +11,24 @@ stdlib.h
 -
 BTree.h
 D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
+Queue.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h
 
 D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
 stdio.h
 -
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+Queue.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h
 
 D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/main.c
 stdio.h

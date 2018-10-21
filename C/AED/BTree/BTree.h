@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-#define ORDER 3
+#define ORDER 5
 
 typedef struct BTreeNode {
     int keyNum, nodePos;
@@ -22,7 +22,7 @@ typedef struct freeNode {
 } freeNode;
 
 typedef struct BTreeHeader {
-    int root, nodeQuantity, freeNodesRoot;
+    int root, nodesQuantity, freeNodesRoot, freeNodesQuantity;
 } BTreeHeader;
 
 //- INITIALIZE -//
@@ -41,7 +41,7 @@ void insert(FILE *f, int info);
 
 void insertAux(FILE *f, BTreeHeader *header, BTreeNode *root, int info);
 
-void insertOnRight(BTreeNode *root, int pos, int k, int p);
+void insertOnRight(BTreeNode *root, int pos, int info, int p);
 
 int overflow(BTreeNode *root);
 
@@ -60,5 +60,16 @@ BTreeNode *readBTreeNode(FILE *f, int pos);
 //- REMOVE -//
 
 void freeBTreeNode(BTreeNode *node);
+
+//- SHOW -//
+
+void printHeader(BTreeHeader *header);
+
+void printBTree(FILE *f);
+
+void printBTreeNodeChildren(BTreeNode *node);
+
+void printBTreeNodeKeys(BTreeNode *node);
+
 
 #endif
