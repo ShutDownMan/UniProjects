@@ -7,15 +7,19 @@
 
 #include <stdio.h>
 
-#define ORDER 5
+#define ORDER 3
+
+typedef struct RegData {
+    int id;
+    int regPos;
+} RegData;
 
 /// estrutura de nó de árvore B em arquivo
 typedef struct BTreeNode {
     /// numero de chaves populadas e posição do nó em arquivo
     int keyNum, nodePos;
     /// vetor de chaves, ponteiros dos registro e filhos no arquivo
-    int keys[ORDER];
-    int data[ORDER];
+    RegData keys[ORDER];
     int children[ORDER];
 } BTreeNode;
 
@@ -49,6 +53,8 @@ void createEmptyBTree(FILE *f);
  */
 BTreeNode *createNode();
 
+FreeNode *createFreeNode();
+
 //- WRITE -//
 
 /**
@@ -68,16 +74,16 @@ void writeHeaderToFile(FILE *f, BTreeHeader *header);
  * @precondition arquivo tem que estar aberto e ter direito de escrita
  * @postcondition nó é escrito no arquivo
  */
-int writeNodeToFile(FILE *f, BTreeNode *node, BTreeHeader *header);
+int writeNodeToFile(FILE *f, BTreeHeader *header, BTreeNode *node);
 
 /**
  * esta função insere um valor na árvore B que se encontra no arquivo indicado
  * @param f arquivo indicado
- * @param info valor a ser inserido na árvore
+ * @param id valor a ser inserido na árvore
  * @precondition arquivo tem que estar aberto e ter direito de escrita
  * @postcondition valor é inserido no arquivo
  */
-void insert(FILE *f, int info);
+void insert(FILE *f, int id, int regPos);
 
 /**
  * esta função é uma recursiva auxiliar de inserir
@@ -88,7 +94,7 @@ void insert(FILE *f, int info);
  * @precondition arquivo tem que estar aberto e ter direito de escrita
  * @postcondition valor é inserido no arquivo
  */
-void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, int info);
+void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, RegData info);
 
 /**
  * esta função insere o o valor passado no seu lugar correto no nó
@@ -97,7 +103,7 @@ void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, int info);
  * @param info é o valor a ser inserido
  * @param p é o endereço para filho a direita do valor inserido
  */
-void insertOnRight(BTreeNode *node, int pos, int info, int p);
+void insertOnRight(BTreeNode *node, int pos, RegData info, int p);
 
 /**
  * esta função testa se ocorreu everflow em um nó
@@ -116,7 +122,7 @@ int overflow(BTreeNode *node);
  * @precondition node não pode ser nulo
  * @postcondition um novo nó é criado e retornado
  */
-BTreeNode *split(BTreeNode *node, int *m);
+BTreeNode *split(BTreeNode *node, RegData *m);
 
 /**
  * esta função procura se um valor existe em um nó e se não modifica pos \
@@ -127,7 +133,7 @@ BTreeNode *split(BTreeNode *node, int *m);
  * @return se valor foi encontrado ou não
  * @precondition node e pos não podem ser nulos
  */
-int searchBTreePos(BTreeNode *node, int info, int *pos);
+int searchBTreePos(BTreeNode *node, RegData info, int *pos);
 
 /**
  * testa se nó passado é folha
@@ -167,9 +173,31 @@ BTreeNode *readBTreeNode(FILE *f, int pos);
  * @precondition arquivo tem que estar aberto e ter direito de escrita
  * @postcondition espaço em memória para o nó livre é alocado e inicializado
  */
-FreeNode *readFreeNode(FILE *f, int pos);
+FreeNode *readBTreeFreeNode(FILE *f, int pos);
 
 //- REMOVE -//
+
+void removeBTree(FILE *fTree, int info);
+
+void removeBTreeAux(FILE *fTree, BTreeHeader *header, BTreeNode *node, RegData info);
+
+void removeFromLeaf(BTreeNode *node, int pos);
+
+void removeFromInnerNode(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos);
+
+RegData getPred(FILE *f, BTreeNode *node, int pos);
+
+RegData getSucc(FILE *f, BTreeNode *node, int pos);
+
+void merge(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos);
+
+void fill(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos);
+
+void borrowFromPrev(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos);
+
+void borrowFromNext(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos);
+
+void writeBTreeFreeNodesList(FILE *fTree, BTreeHeader *header, BTreeNode *node);
 
 /**
  * esta função libera memória de nó de árvore B

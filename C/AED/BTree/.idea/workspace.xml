@@ -12,13 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ece8bab4-77bd-4ab0-b6f1-9c9a5ea94c67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Jedson.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BTree.c" beforeDir="false" afterPath="$PROJECT_DIR$/BTree.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BTree.h" beforeDir="false" afterPath="$PROJECT_DIR$/BTree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Queue.c" beforeDir="false" afterPath="$PROJECT_DIR$/Queue.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/BTree.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/BTree.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/Queue.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/Queue.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/btree.dat" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/btree.dat" afterDir="false" />
@@ -36,17 +33,18 @@
     <session id="-814254167">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="c" value="3" />
           <entry key="doxygen" value="1" />
-          <entry key="h" value="1" />
+          <entry key="h" value="2" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
@@ -54,21 +52,21 @@
         <counts>
           <entry key="CMakeLists.txt" value="1" />
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="4" />
+          <entry key="ObjectiveC" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="c" value="13756" />
+          <entry key="c" value="17513" />
           <entry key="doxygen" value="5" />
-          <entry key="h" value="936" />
-          <entry key="m" value="53" />
+          <entry key="h" value="1055" />
+          <entry key="m" value="76" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Doxygen file" value="75" />
-          <entry key="ObjectiveC" value="14675" />
+          <entry key="ObjectiveC" value="18574" />
         </counts>
       </usages-collector>
     </session>
@@ -78,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="23" selection-start-line="11" selection-end-line="23" />
+            <state relative-caret-position="348">
+              <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -87,20 +85,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BTree.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="103">
+              <caret line="173" column="12" lean-forward="true" selection-start-line="173" selection-start-column="12" selection-end-line="173" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BTree.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="263">
+              <caret line="307" column="21" lean-forward="true" selection-start-line="307" selection-start-column="21" selection-end-line="307" selection-end-column="21" />
               <folding>
                 <element signature="e#43#62#0" expanded="true" />
               </folding>
@@ -121,7 +119,7 @@
         <entry file="file://$PROJECT_DIR$/Queue.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1460">
-              <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+              <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
               <folding>
                 <element signature="e#43#61#0" expanded="true" />
               </folding>
@@ -144,6 +142,21 @@
       <find>printf</find>
       <find>infomer</find>
       <find>arvore</find>
+      <find>sear</find>
+      <find>Free</find>
+      <find>FreeNode</find>
+      <find>fill</find>
+      <find>borrow</find>
+      <find>Split</find>
+      <find>getPred</find>
+      <find>readFree</find>
+      <find>write</find>
+      <find>writeBTree</find>
+      <find>writeBTreeFreeNodesList</find>
+      <find>insert</find>
+      <find>remov</find>
+      <find>remo</find>
+      <find>*pos</find>
     </findStrings>
     <replaceStrings>
       <replace>árvore</replace>
@@ -182,7 +195,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,14 +206,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/main.c" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="settings.editor.selected.configurable" value="CompDBSettings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -242,12 +255,13 @@
       <option name="presentableId" value="Default" />
       <updated>1539980634982</updated>
       <workItem from="1539980638598" duration="25149000" />
-      <workItem from="1540100887430" duration="33573000" />
+      <workItem from="1540100887430" duration="34307000" />
+      <workItem from="1540172139665" duration="27831000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58722000" />
+    <option name="totallyTimeSpent" value="87287000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -262,7 +276,7 @@
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -298,22 +312,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
+    <entry file="file://$PROJECT_DIR$/Queue.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="23" selection-start-line="11" selection-end-line="23" />
+        <state relative-caret-position="1460">
+          <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BTree.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#43#62#0" expanded="true" />
+            <element signature="e#43#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -325,20 +329,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Queue.c">
+    <entry file="file://C:/TDM-GCC-64/x86_64-w64-mingw32/include/d2d1effecthelpers.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1460">
-          <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+        <state relative-caret-position="170">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
           <folding>
-            <element signature="e#43#61#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BTree.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="103">
+          <caret line="173" column="12" lean-forward="true" selection-start-line="173" selection-start-column="12" selection-end-line="173" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BTree.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="307" column="21" lean-forward="true" selection-start-line="307" selection-start-column="21" selection-end-line="307" selection-end-column="21" />
+          <folding>
+            <element signature="e#43#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
