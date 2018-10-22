@@ -157,12 +157,15 @@ void insert(FILE *f, int id, int regPos) {
         if (overflow(root)) {
             /// splita o nó
             RegData m;
+            printf("---------\n");
+            printBTreeNodeChildren(root);
+            printf("\n----------\n");
+
             newNode = split(root, &m);
             BTreeNode *newRoot = createNode();
 
             /// inicializa novos nós criados no split
-            newRoot->keys[0].id = m.id;
-            newRoot->keys[0].regPos = m.regPos;
+            newRoot->keys[0] = m;
             newRoot->children[0] = header->root;
             newRoot->keyNum = 1;
 
@@ -199,12 +202,13 @@ void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, RegData inf
     int pos = 0;
 
     /// se valor não existe no nó atual
-    if (!searchBTreePos(currentNode, info, &pos)) {
+    if (!searchBTreePos(currentNode, info.id, &pos)) {
         /// se nó atual é folha
         if (isLeaf(currentNode)) {
             /// insere valor no nó atual
             insertOnRight(currentNode, pos, info, -1);
         } else {
+
             /// lê nó indicado para inserção
             BTreeNode *node = readBTreeNode(f, currentNode->children[pos]);
             /// insere no nó lido
@@ -237,7 +241,7 @@ void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, RegData inf
  */
 void insertOnRight(BTreeNode *node, int pos, RegData info, int p) {
     /// move todos valores antes de pos para direita
-    for (int i = node->keyNum + 1; i > pos; --i) {
+    for (int i = node->keyNum; i > pos; --i) {
         node->keys[i] = node->keys[i - 1];
         node->children[i + 1] = node->children[i];
     }
@@ -279,14 +283,18 @@ BTreeNode *split(BTreeNode *node, RegData *m) {
     /// atribui para m valor da chave mediana
     *m = node->keys[q];
 
-    /// atrbui valores acima da posição mediana de node para newNode
+    /// atribui valores acima da posição mediana de node para newNode
     newNode->children[0] = node->children[q + 1];
     for (int i = 0; i < newNode->keyNum; ++i) {
         newNode->keys[i] = node->keys[q + i + 1];
         newNode->children[i + 1] = node->children[q + i + 2];
-//        root->keys[q + i + 1] = 0;
-//        root->children[q + i + 2] = -1;
+//        node->keys[q + i + 1] = 0;
+//        node->children[q + i + 2] = -1;
     }
+
+//    printf("---------\n");
+//    printBTreeNodeChildren(node);
+//    printf("\n----------\n");
 
     /// retona nó criado na operação
     return newNode;
@@ -301,12 +309,12 @@ BTreeNode *split(BTreeNode *node, RegData *m) {
  * @return se valor foi encontrado ou não
  * @precondition node e pos não podem ser nulos
  */
-int searchBTreePos(BTreeNode *node, RegData info, int *pos) {
+int searchBTreePos(BTreeNode *node, int info, int *pos) {
     /// passa pelas chaves procurando por um valor maior que o valor passado
     for ((*pos) = 0; (*pos) < node->keyNum; (*pos)++) {
-        if (info.id == node->keys[(*pos)].id)
+        if (info == node->keys[(*pos)].id)
             return 1;
-        else if (info.id < node->keys[(*pos)].id)
+        else if (info < node->keys[(*pos)].id)
             return 0;
     }
     return 0;
@@ -418,7 +426,7 @@ void removeBTree(FILE *fTree, int id) {
 
 void removeBTreeAux(FILE *fTree, BTreeHeader *header, BTreeNode *node, RegData info) {
     int pos;
-    searchBTreePos(node, info, &pos);
+    searchBTreePos(node, info.id, &pos);
 
     if (pos < node->keyNum && node->keys[pos].id == info.id) {
         if (isLeaf(node)) {
@@ -436,7 +444,7 @@ void removeBTreeAux(FILE *fTree, BTreeHeader *header, BTreeNode *node, RegData i
         int flag = (pos == node->keyNum);
 
         BTreeNode *nextNode = readBTreeNode(fTree, node->children[pos]);
-        printf("nextNode->keyNum = %d\n", nextNode->keyNum);
+//        printf("nextNode->keyNum = %d\n", nextNode->keyNum);
         printBTreeNodeKeys(nextNode);
         if (nextNode->keyNum < ORDER / 2) {
             fill(fTree, header, node, pos);
@@ -448,7 +456,7 @@ void removeBTreeAux(FILE *fTree, BTreeHeader *header, BTreeNode *node, RegData i
             removeBTreeAux(fTree, header, prevNode = readBTreeNode(fTree, node->children[pos - 1]), info);
             modifiedNode = prevNode;
         } else {
-            printf("removeBTreeAux (0)\n");
+//            printf("removeBTreeAux (0)\n");
             removeBTreeAux(fTree, header, nextNode, info);
             modifiedNode = nextNode;
         }
@@ -476,7 +484,7 @@ void removeFromInnerNode(FILE *fTree, BTreeHeader *header, BTreeNode *node, int 
     BTreeNode *leftChildNode = readBTreeNode(fTree, node->children[pos]);
     BTreeNode *rightChildNode = readBTreeNode(fTree, node->children[pos + 1]);
 
-    printf("removeFromInnerNode (0)\n");
+//    printf("removeFromInnerNode (0)\n");
 
     if (leftChildNode->keyNum >= ORDER / 2) {
         RegData pred = getPred(fTree, node, pos);
@@ -487,7 +495,7 @@ void removeFromInnerNode(FILE *fTree, BTreeHeader *header, BTreeNode *node, int 
         node->keys[pos] = succ;
         removeBTreeAux(fTree, header, rightChildNode, succ);
     } else {
-        printf("removeFromInnerNode (1)\n");
+//        printf("removeFromInnerNode (1)\n");
         merge(fTree, header, node, pos);
         removeBTreeAux(fTree, header, leftChildNode, k);
     }
@@ -539,7 +547,7 @@ void merge(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos) {
     BTreeNode *child = readBTreeNode(fTree, pos);
     BTreeNode *sibling = readBTreeNode(fTree, pos + 1);
 
-    printf("merge (0)\n");
+//    printf("merge (0)\n");
 
     child->keys[(ORDER - 1) / 2 - 1] = node->keys[pos];
 
@@ -577,7 +585,7 @@ void fill(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos) {
     BTreeNode *childNext = readBTreeNode(fTree, node->children[pos + 1]);
 
     if (pos != 0 && childPrev->keyNum - 1 >= ORDER / 2) {
-        printf("fill (0)\n");
+//        printf("fill (0)\n");
         borrowFromPrev(fTree, header, node, pos);
     } else if (pos != node->keyNum && childNext->keyNum - 1 >= ORDER / 2) {
         borrowFromNext(fTree, header, node, pos);
@@ -731,7 +739,7 @@ void printBTree(FILE *f) {
             QNode *qNode = popQ(q);
             BTreeNode *bTreeNode = (BTreeNode *) qNode->info;
 
-            printBTreeNodeKeys(bTreeNode);
+            printBTreeNodeChildren(bTreeNode);
             printf(" ");
 
             /// puxa os seus filhos para a fila

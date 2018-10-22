@@ -9,6 +9,12 @@
 
 //- INITIALIZE -//
 
+/**
+ * cria uma nova fila
+ * @return fila alocada e inicializada
+ * @precondition nenhuma
+ * @postcondition fila é criada e retornada
+ */
 Queue *createQueue() {
     Queue *newQueue = (Queue *) malloc(sizeof(Queue));
 
@@ -19,18 +25,31 @@ Queue *createQueue() {
     return newQueue;
 }
 
+/**
+ * cria um nó de fila
+ * @param info valor a ser armazenado pelo novo nó
+ * @return nó alocado e inicializado
+ * @precondition nenhuma
+ * @postcondition nó é criado e retornado
+ */
 QNode *createQNode(void *info) {
     QNode *newQNode = (QNode *) malloc(sizeof(QNode));
 
     newQNode->info = info;
     newQNode->next = NULL;
-    newQNode->prev = NULL;
 
     return newQNode;
 }
 
 //- UPDATE -//
 
+/**
+ * insere valor no final da fila
+ * @param queue fila a ser inserido o valor
+ * @param info valor a ser inserido na fila
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 void pushQ(Queue *queue, void *info) {
     if (!queue) return;
     QNode *newQNode = createQNode(info);
@@ -38,13 +57,19 @@ void pushQ(Queue *queue, void *info) {
     if (!queue->first) {
         queue->first = queue->last = newQNode;
     } else {
-        newQNode->prev = queue->last;
         queue->last->next = newQNode;
         queue->last = newQNode;
     }
     queue->count++;
 }
 
+/**
+ * retorna valor o começo da fila
+ * @param queue é a fila ser modificada
+ * @return nó no começo da fila
+ * @precondition nenhuma
+ * @postcondition nó no começo da fila é modificado
+ */
 QNode *popQ(Queue *queue) {
     QNode *node = NULL;
 
@@ -54,7 +79,6 @@ QNode *popQ(Queue *queue) {
     node = queue->first;
     queue->first = node->next;
     if (queue->first) {
-        queue->first->prev = NULL;
     } else {
         queue->last = NULL;
     }
@@ -66,6 +90,12 @@ QNode *popQ(Queue *queue) {
 
 //- DELETE -//
 
+/**
+ * remove a fila
+ * @param queue fila a ser liberada
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 void deleteQueue(Queue *queue) {
     QNode *tracer, *next;
 
@@ -79,6 +109,12 @@ void deleteQueue(Queue *queue) {
 
 //- SHOW -//
 
+/**
+ * printa na saida padrão a fila indicada
+ * @param queue fila indicada
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 void printQ(Queue *queue) {
     QNode *tracer;
 

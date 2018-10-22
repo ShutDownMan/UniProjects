@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 
-#define ORDER 3
+#define ORDER 5
 
 typedef struct RegData {
     int id;
@@ -133,7 +133,7 @@ BTreeNode *split(BTreeNode *node, RegData *m);
  * @return se valor foi encontrado ou não
  * @precondition node e pos não podem ser nulos
  */
-int searchBTreePos(BTreeNode *node, RegData info, int *pos);
+int searchBTreePos(BTreeNode *node, int info, int *pos);
 
 /**
  * testa se nó passado é folha
