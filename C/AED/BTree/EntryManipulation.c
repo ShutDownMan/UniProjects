@@ -11,9 +11,16 @@
 
 #define MAXSTR 256
 
-
 //- INITIALIZE -//
 
+/**
+ * inicializa arquivo de registros
+ * @param regFile arquivo de registro
+ * @param treeFile arquivo de árvore B
+ * @param regFile arquivo de registros
+ * @precondition arquivos tem que estar abertos e ter direito de escrita
+ * @postcondition cabeçalho é inicializado no arquivo indicado
+ */
 void createEmptyRegList(FILE *regFile) {
     RegFileHeader header;
 
@@ -23,6 +30,12 @@ void createEmptyRegList(FILE *regFile) {
     writeRegHeaderToFile(regFile, &header);
 }
 
+/**
+ * cria um novo registro e o retorna
+ * @return registro alocado e inicializado
+ * @preconddtion nenhuma
+ * @postconddtion novo registro é criado e retornado
+ */
 Entry *createEntry() {
     Entry *newReg = (Entry *) malloc(sizeof(Entry));
 
@@ -31,10 +44,17 @@ Entry *createEntry() {
     return newReg;
 }
 
+/**
+ * função para inicialização de rgistro
+ * @return um novo registro vazio estaticamente alocado
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 Entry emptyEntry() {
     Entry emptyEntry;
 
     emptyEntry.id = 0;
+    emptyEntry.filePos = -1;
     emptyEntry.name[0] = '\0';
     emptyEntry.sex = '\0';
     emptyEntry.cpf[0] = '\0';
@@ -52,6 +72,13 @@ Entry emptyEntry() {
 
 //- READ -//
 
+/**
+ * lê cabeçalho de arquivo de registros do arquivo indicado
+ * @param regFile arquivo de registros
+ * @return cabecalho criado
+ * @precondition arquivo tem que estar aberto e ter direito de escrita
+ * @postcondition cabeçalho é criado e retornado
+ */
 RegFileHeader *readRegHeader(FILE *regFile) {
     RegFileHeader *header = (RegFileHeader *) malloc(sizeof(RegFileHeader));
 
@@ -62,6 +89,15 @@ RegFileHeader *readRegHeader(FILE *regFile) {
     return header;
 }
 
+/**
+ * lê um registro livre na posição indicada
+ * @param regFile arquivo de registros
+ * @param header cabelalho do arquivo
+ * @param pos posição indicada
+ * @return nó lido
+ * @precondition arquivo tem que estar aberto e ter direito de escrita
+ * @postcondition nenhuma
+ */
 FreeReg *readFreeReg(FILE *regFile, RegFileHeader *header, int pos) {
     FreeReg *freeReg = (FreeReg *) malloc(sizeof(FreeReg));
 
@@ -75,6 +111,14 @@ FreeReg *readFreeReg(FILE *regFile, RegFileHeader *header, int pos) {
     return freeReg;
 }
 
+/**
+ * @param regFile arquivo de registros
+ * @param header cabeçalho do arquivo de registros
+ * @param pos posição do registro a ser lido
+ * @return registro lido
+ * @precondition arquivo tem que estar aberto e ter direito de escrita
+ * @postcondition registro é lido e retornado
+ */
 Entry *readEntry(FILE *regFile, RegFileHeader *header, int pos) {
     Entry *entry = (Entry *) malloc(sizeof(Entry));
 
@@ -90,6 +134,13 @@ Entry *readEntry(FILE *regFile, RegFileHeader *header, int pos) {
 
 //- WRITE -//
 
+/**
+ * escreve cabeçalho do arquivo de registros e o retorna
+ * @param regFile arquivo de registros
+ * @param header cabeçalho a ser escrito
+ * @precondition arquivo tem que estar aberto e ter direito de escrita
+ * @postcondition cabeçalho passado é escrito no arquivo de registros
+ */
 void writeRegHeaderToFile(FILE *regFile, RegFileHeader *header) {
     if (!header)
         return;
@@ -99,6 +150,15 @@ void writeRegHeaderToFile(FILE *regFile, RegFileHeader *header) {
     fwrite(header, sizeof(RegFileHeader), 1, regFile);
 }
 
+/**
+ * escreve registro no arquivo de registro na posição indicada
+ * @param regFile arquivo de registro
+ * @param header cabeçalho do arquivo de registros
+ * @param reg registro a ser escrito
+ * @return posição que o registro foi escrito
+ * @precondition arquivo tem que estar aberto e ter direito de escrita
+ * @postcondition registro passado é escrito no arquivo de registros
+ */
 int writeRegToFile(FILE *regFile, RegFileHeader *header, Entry *reg) {
     int pos = 0;
 
@@ -108,10 +168,14 @@ int writeRegToFile(FILE *regFile, RegFileHeader *header, Entry *reg) {
     if ((pos = header->freeRegRoot) == -1) {
         pos = header->topPos++;
     } else {
-        FreeReg *freeReg = readFreeReg(regFile, header, pos);
-        header->freeRegRoot = freeReg->next;
-        free(freeReg);
+        if((pos = reg->filePos) == -1) {
+            FreeReg *freeReg = readFreeReg(regFile, header, pos);
+            header->freeRegRoot = freeReg->next;
+            free(freeReg);
+        }
     }
+
+    reg->filePos = pos;
 
     fseek(regFile, sizeof(RegFileHeader) + sizeof(Entry) * pos, SEEK_SET);
 
@@ -140,6 +204,12 @@ void modifyTelephone(Entry *reg) {
     getch();
 }
 
+/**
+ * lê do console um novo numero de calular e altera o registro passado
+ * @param reg registro a ser modificado
+ * @precondition reg não pode ser nulo
+ * @postcondition registro é modificado
+ */
 void modifyCellphone(Entry *reg) {
     char str[MAXSTR] = {0};
 
@@ -156,6 +226,12 @@ void modifyCellphone(Entry *reg) {
     getch();
 }
 
+/**
+ * lê do console um email e altera o registro passado
+ * @param reg registro a ser modificado
+ * @precondition reg não pode ser nulo
+ * @postcondition registro é modificado
+ */
 void modifyEmail(Entry *reg) {
     char str[MAXSTR] = {0};
 
@@ -172,6 +248,12 @@ void modifyEmail(Entry *reg) {
     getch();
 }
 
+/**
+ * lê do console um endereço e altera o registro passado
+ * @param reg registro a ser modificado
+ * @precondition reg não pode ser nulo
+ * @postcondition registro é modificado
+ */
 void modifyAddress(Entry *reg) {
     char str[MAXSTR] = {0};
 
@@ -190,6 +272,13 @@ void modifyAddress(Entry *reg) {
 
 //- VALIDATION -//
 
+/**
+ * testa se string passada faz um CPF válido
+ * @param str string a ser testada
+ * @return 1 para verdadeiro 0 para falso
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 int isValidCPF(char *str) {
     for (int i = 0; str[i]; ++i) {
         if (!isdigit(str[i]) && str[i] != '-')
@@ -198,6 +287,13 @@ int isValidCPF(char *str) {
     return 1;
 }
 
+/**
+ * testa se string passada faz um numero de celular válido
+ * @param str string a ser testada
+ * @return 1 para verdadeiro 0 para falso
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 int isValidCellphone(char *str) {
     for (int i = 0; str[i]; ++i) {
         if (!isdigit(str[i]) && str[i] != '-')
@@ -206,6 +302,13 @@ int isValidCellphone(char *str) {
     return 1;
 }
 
+/**
+ * testa se string passada faz um numero de telefone válido
+ * @param str string a ser testada
+ * @return 1 para verdadeiro 0 para falso
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 int isValidTelephone(char *str) {
     for (int i = 0; str[i]; ++i) {
         if (!isdigit(str[i]) && str[i] != '-')
@@ -214,6 +317,13 @@ int isValidTelephone(char *str) {
     return 1;
 }
 
+/**
+ * testa se string passada faz uma data válida
+ * @param str string a ser testada
+ * @return 1 para verdadeiro 0 para falso
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 int isValidDate(char *str) {
     int numCount = 0, barCount = 0;
 
@@ -230,6 +340,12 @@ int isValidDate(char *str) {
 
 //- SHOW -//
 
+/**
+ * printa no console o registro passado
+ * @param entry registro a ser printado
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 void printEntry(Entry *entry) {
     if (!entry)
         return;

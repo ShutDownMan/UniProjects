@@ -379,6 +379,7 @@ void modifyEntry(FILE *treeFile, FILE *regFile) {
                     getch();
                     break;
             }
+            writeRegToFile(regFile, regFileHeader, foundEntry);
         } while (choice);
     }
 

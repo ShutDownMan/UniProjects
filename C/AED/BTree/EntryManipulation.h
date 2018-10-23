@@ -20,7 +20,7 @@
 
 /// estrutura de registro de médico
 typedef struct Entry {
-    int id;
+    int id, filePos;
     char name[NAMELENGTH];
     char sex;
     char cpf[CPFLENGTH];
@@ -95,7 +95,6 @@ RegFileHeader *readRegHeader(FILE *regFile);
 FreeReg *readFreeReg(FILE *regFile, RegFileHeader *header, int pos);
 
 /**
- *
  * @param regFile arquivo de registros
  * @param header cabeçalho do arquivo de registros
  * @param pos posição do registro a ser lido
@@ -117,36 +116,96 @@ Entry *readEntry(FILE *regFile, RegFileHeader *header, int pos);
 void writeRegHeaderToFile(FILE *regFile, RegFileHeader *header);
 
 /**
- * escreve 
- * @param regFile
- * @param header
- * @param reg
- * @return
+ * escreve registro no arquivo de registro na posição indicada
+ * @param regFile arquivo de registro
+ * @param header cabeçalho do arquivo de registros
+ * @param reg registro a ser escrito
+ * @return posição que o registro foi escrito
+ * @precondition arquivo tem que estar aberto e ter direito de escrita
+ * @postcondition registro passado é escrito no arquivo de registros
  */
 int writeRegToFile(FILE *regFile, RegFileHeader *header, Entry *reg);
 
 //- MODIFY -//
 
-void modifyTelephone(Entry *reg);
-
+/**
+ * lê do console um novo numero de calular e altera o registro passado
+ * @param reg registro a ser modificado
+ * @precondition reg não pode ser nulo
+ * @postcondition registro é modificado
+ */
 void modifyCellphone(Entry *reg);
 
+/**
+ * lê do console um novo numero de telefone e altera o registro passado
+ * @param reg registro a ser modificado
+ * @precondition reg não pode ser nulo
+ * @postcondition registro é modificado
+ */
+void modifyTelephone(Entry *reg);
+
+/**
+ * lê do console um email e altera o registro passado
+ * @param reg registro a ser modificado
+ * @precondition reg não pode ser nulo
+ * @postcondition registro é modificado
+ */
 void modifyEmail(Entry *reg);
 
+/**
+ * lê do console um endereço e altera o registro passado
+ * @param reg registro a ser modificado
+ * @precondition reg não pode ser nulo
+ * @postcondition registro é modificado
+ */
 void modifyAddress(Entry *reg);
 
 //- VALIDATION -//
 
+/**
+ * testa se string passada faz um CPF válido
+ * @param str string a ser testada
+ * @return 1 para verdadeiro 0 para falso
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 int isValidCPF(char *str);
 
+/**
+ * testa se string passada faz um numero de celular válido
+ * @param str string a ser testada
+ * @return 1 para verdadeiro 0 para falso
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 int isValidCellphone(char *str);
 
+/**
+ * testa se string passada faz um numero de telefone válido
+ * @param str string a ser testada
+ * @return 1 para verdadeiro 0 para falso
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 int isValidTelephone(char *str);
 
+/**
+ * testa se string passada faz uma data válida
+ * @param str string a ser testada
+ * @return 1 para verdadeiro 0 para falso
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 int isValidDate(char *str);
 
 //- SHOW -//
 
+/**
+ * printa no console o registro passado
+ * @param entry registro a ser printado
+ * @precondition nenhuma
+ * @postcondition nenhuma
+ */
 void printEntry(Entry *entry);
 
 #endif //BTREE_REGISTRYMANIPULATION_H
