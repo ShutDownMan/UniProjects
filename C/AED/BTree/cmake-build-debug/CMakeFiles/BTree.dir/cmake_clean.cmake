@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/BTree.dir/main.c.obj"
+  "CMakeFiles/BTree.dir/Main.c.obj"
   "CMakeFiles/BTree.dir/BTree.c.obj"
   "CMakeFiles/BTree.dir/Queue.c.obj"
   "CMakeFiles/BTree.dir/EntryManipulation.c.obj"

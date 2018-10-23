@@ -12,30 +12,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ece8bab4-77bd-4ab0-b6f1-9c9a5ea94c67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EntryManipulation.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EntryManipulation.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menus.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menus.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BTree.c" beforeDir="false" afterPath="$PROJECT_DIR$/BTree.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BTree.h" beforeDir="false" afterPath="$PROJECT_DIR$/BTree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EntryManipulation.c" beforeDir="false" afterPath="$PROJECT_DIR$/EntryManipulation.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EntryManipulation.h" beforeDir="false" afterPath="$PROJECT_DIR$/EntryManipulation.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menus.c" beforeDir="false" afterPath="$PROJECT_DIR$/Menus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menus.h" beforeDir="false" afterPath="$PROJECT_DIR$/Menus.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BTree.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BTree.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/BTree.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/BTree.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/Queue.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/Queue.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/EntryManipulation.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/EntryManipulation.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/Menus.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/Menus.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/objects1.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BTree.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/btree.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -64,11 +58,12 @@
     <session id="-814254167">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -88,27 +83,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="c" value="20823" />
+          <entry key="c" value="22909" />
           <entry key="doxygen" value="5" />
-          <entry key="h" value="2953" />
+          <entry key="h" value="5785" />
           <entry key="m" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Doxygen file" value="90" />
-          <entry key="ObjectiveC" value="23794" />
+          <entry key="Doxygen file" value="134" />
+          <entry key="ObjectiveC" value="28668" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.c">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="24" column="44" lean-forward="true" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+            <state relative-caret-position="1260">
+              <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -119,8 +114,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Menus.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="280">
+              <caret line="14" selection-start-line="14" selection-end-line="17" />
               <folding>
                 <element signature="e#88#118#0" expanded="true" />
               </folding>
@@ -131,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Menus.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="216" column="40" selection-start-line="216" selection-start-column="40" selection-end-line="216" selection-end-column="40" />
+            <state relative-caret-position="1180">
+              <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
               <folding>
                 <element signature="e#43#61#0" expanded="true" />
               </folding>
@@ -140,11 +135,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EntryManipulation.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="15" />
+            <state relative-caret-position="300">
+              <caret line="114" column="69" selection-start-line="114" selection-start-column="69" selection-end-line="114" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -152,8 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EntryManipulation.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="189" column="15" selection-start-line="189" selection-start-column="15" selection-end-line="189" selection-end-column="15" />
+            <state relative-caret-position="308">
+              <caret line="66" selection-start-line="66" selection-end-line="66" />
               <folding>
                 <element signature="e#43#73#0" expanded="true" />
               </folding>
@@ -164,7 +159,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BTree.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1112">
+            <state relative-caret-position="1340">
               <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
               <folding>
                 <element signature="e#76#94#0" expanded="true" />
@@ -176,8 +171,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BTree.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1557">
-              <caret line="428" column="10" selection-start-line="428" selection-start-column="4" selection-end-line="428" selection-end-column="10" />
+            <state relative-caret-position="5740">
+              <caret line="287" selection-start-line="287" selection-end-line="287" />
               <folding>
                 <element signature="e#43#62#0" expanded="true" />
               </folding>
@@ -188,7 +183,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Queue.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
+            <state relative-caret-position="340">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
@@ -210,10 +205,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>printf</find>
-      <find>em construcao</find>
-      <find>;</find>
-      <find>novo.</find>
       <find>fWrite</find>
       <find>CabecalhoDados</find>
       <find>texto</find>
@@ -226,7 +217,6 @@
       <find>prin</find>
       <find>fscanf(f,</find>
       <find>^:</find>
-      <find>reg</find>
       <find>&quot;%[\n]</find>
       <find>%[^\n]</find>
       <find>%[\n]</find>
@@ -236,10 +226,15 @@
       <find>sear</find>
       <find>search</find>
       <find>FreeReg</find>
-      <find>newReg</find>
       <find>scanf</find>
       <find>%[^\n]%*c</find>
       <find>%s</find>
+      <find>[</find>
+      <find>newReg</find>
+      <find>emptyEntry-&gt;</find>
+      <find>reg</find>
+      <find>print</find>
+      <find>preconditions</find>
     </findStrings>
     <replaceStrings>
       <replace>árvore</replace>
@@ -256,13 +251,17 @@
       <replace>scanf</replace>
       <replace>scanf(</replace>
       <replace>\n</replace>
-      <replace>newReg</replace>
       <replace>%[^\n]%*c</replace>
-      <replace>Entry</replace>
       <replace>entry</replace>
       <replace>printf</replace>
       <replace>%s</replace>
       <replace>%s\n</replace>
+      <replace>[0</replace>
+      <replace>emptyReg</replace>
+      <replace>emptyEntry</replace>
+      <replace>emptyEntry.</replace>
+      <replace>newReg</replace>
+      <replace>Entry</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -277,13 +276,14 @@
         <option value="$PROJECT_DIR$/registryManipulation.h" />
         <option value="$PROJECT_DIR$/BTree.h" />
         <option value="$PROJECT_DIR$/RegistryManipulation.h" />
-        <option value="$PROJECT_DIR$/BTree.c" />
         <option value="$PROJECT_DIR$/RegistryManipulation.c" />
-        <option value="$PROJECT_DIR$/EntryManipulation.h" />
-        <option value="$PROJECT_DIR$/Menus.h" />
-        <option value="$PROJECT_DIR$/EntryManipulation.c" />
-        <option value="$PROJECT_DIR$/Menus.c" />
         <option value="$PROJECT_DIR$/main.c" />
+        <option value="$PROJECT_DIR$/Main.c" />
+        <option value="$PROJECT_DIR$/Menus.h" />
+        <option value="$PROJECT_DIR$/BTree.c" />
+        <option value="$PROJECT_DIR$/Menus.c" />
+        <option value="$PROJECT_DIR$/EntryManipulation.c" />
+        <option value="$PROJECT_DIR$/EntryManipulation.h" />
       </list>
     </option>
   </component>
@@ -367,12 +367,13 @@
       <updated>1539980634982</updated>
       <workItem from="1539980638598" duration="25149000" />
       <workItem from="1540100887430" duration="34307000" />
-      <workItem from="1540172139665" duration="50280000" />
+      <workItem from="1540172139665" duration="66180000" />
+      <workItem from="1540316877294" duration="226000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109736000" />
+    <option name="totallyTimeSpent" value="125862000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -452,9 +453,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Menus.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" selection-start-line="14" selection-end-line="17" />
+          <folding>
+            <element signature="e#88#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Menus.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1180">
+          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+          <folding>
+            <element signature="e#43#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BTree.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1340">
+          <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
+          <folding>
+            <element signature="e#76#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BTree.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5740">
+          <caret line="287" selection-start-line="287" selection-end-line="287" />
+          <folding>
+            <element signature="e#43#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Queue.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
+        <state relative-caret-position="340">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
@@ -469,40 +520,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BTree.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1112">
-          <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
-          <folding>
-            <element signature="e#76#94#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BTree.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1557">
-          <caret line="428" column="10" selection-start-line="428" selection-start-column="4" selection-end-line="428" selection-end-column="10" />
-          <folding>
-            <element signature="e#43#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Menus.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#88#118#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EntryManipulation.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="189" column="15" selection-start-line="189" selection-start-column="15" selection-end-line="189" selection-end-column="15" />
+        <state relative-caret-position="308">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
           <folding>
             <element signature="e#43#73#0" expanded="true" />
           </folding>
@@ -511,28 +532,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EntryManipulation.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Menus.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="216" column="40" selection-start-line="216" selection-start-column="40" selection-end-line="216" selection-end-column="40" />
-          <folding>
-            <element signature="e#43#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="24" column="44" lean-forward="true" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="114" column="69" selection-start-line="114" selection-start-column="69" selection-end-line="114" selection-end-column="69" />
         </state>
       </provider>
     </entry>

@@ -3,7 +3,13 @@
 //
 
 #include "EntryManipulation.h"
+
 #include <stdlib.h>
+#include <ctype.h>
+#include <conio.h>
+#include "string.h"
+
+#define MAXSTR 256
 
 
 //- INITIALIZE -//
@@ -20,20 +26,28 @@ void createEmptyRegList(FILE *regFile) {
 Entry *createEntry() {
     Entry *newReg = (Entry *) malloc(sizeof(Entry));
 
-    newReg->id = 0;
-    newReg->name[0] = '\0';
-    newReg->sex = '\0';
-    newReg->cpf[0] = '\0';
-    newReg->crm[0] = '\0';
-    newReg->expertise[0] = '\0';
-    newReg->rg[0] = '\0';
-    newReg->telephone[0] = '\0';
-    newReg->cellphone[0] = '\0';
-    newReg->email[0] = '\0';
-    newReg->address[0] = '\0';
-    newReg->birthdate[0] = '\0';
+    *newReg = emptyEntry();
 
     return newReg;
+}
+
+Entry emptyEntry() {
+    Entry emptyEntry;
+
+    emptyEntry.id = 0;
+    emptyEntry.name[0] = '\0';
+    emptyEntry.sex = '\0';
+    emptyEntry.cpf[0] = '\0';
+    emptyEntry.crm[0] = '\0';
+    emptyEntry.expertise[0] = '\0';
+    emptyEntry.rg[0] = '\0';
+    emptyEntry.telephone[0] = '\0';
+    emptyEntry.cellphone[0] = '\0';
+    emptyEntry.email[0] = '\0';
+    emptyEntry.address[0] = '\0';
+    emptyEntry.birthdate[0] = '\0';
+
+    return emptyEntry;
 }
 
 //- READ -//
@@ -101,18 +115,7 @@ int writeRegToFile(FILE *regFile, RegFileHeader *header, Entry *reg) {
 
     fseek(regFile, sizeof(RegFileHeader) + sizeof(Entry) * pos, SEEK_SET);
 
-    fwrite(&reg->id, sizeof(int), 1, regFile);
-    fwrite(reg->name, sizeof(char) * NAMELENGTH, 1, regFile);
-    fwrite(&reg->sex, sizeof(char), 1, regFile);
-    fwrite(reg->cpf, sizeof(char) * CPFLENGTH, 1, regFile);
-    fwrite(reg->crm, sizeof(char) * CRMLENGTH, 1, regFile);
-    fwrite(reg->expertise, sizeof(char) * EXPERTISELENGTH, 1, regFile);
-    fwrite(reg->rg, sizeof(char) * RGLENGTH, 1, regFile);
-    fwrite(reg->telephone, sizeof(char) * TELEPHONELENGTH, 1, regFile);
-    fwrite(reg->cellphone, sizeof(char) * CELLPHONELENGTH, 1, regFile);
-    fwrite(reg->email, sizeof(char) * EMAILLENGTH, 1, regFile);
-    fwrite(reg->address, sizeof(char) * ADDRESSLENGTH, 1, regFile);
-    fwrite(reg->birthdate, sizeof(char) * BIRTHDATELENGTH, 1, regFile);
+    fwrite(reg, sizeof(Entry), 1, regFile);
 
     writeRegHeaderToFile(regFile, header);
 
@@ -121,72 +124,114 @@ int writeRegToFile(FILE *regFile, RegFileHeader *header, Entry *reg) {
 
 //- MODIFY -//
 
-void modifyName(Entry *reg) {
-
-}
-
-void modifySex(Entry *reg) {
-
-}
-
-void modifyCPF(Entry *reg) {
-
-}
-
-void modifyCRM(Entry *reg) {
-
-}
-
-void modifyExpertise(Entry *reg) {
-
-}
-
-void modifyRG(Entry *reg) {
-
-}
-
 void modifyTelephone(Entry *reg) {
+    char str[MAXSTR] = {0};
 
+    fflush(stdin);
+    printf("digite um novo numero de telefone: ");
+    scanf("%[^\n]%*c", str);
+
+    if (isValidCellphone(str)) {
+        strcpy(reg->telephone, str);
+        printf("numero de telefone modificado!\n");
+    } else {
+        printf("numero de telefone invalido!\n");
+    }
+    getch();
 }
 
 void modifyCellphone(Entry *reg) {
+    char str[MAXSTR] = {0};
 
+    fflush(stdin);
+    printf("digite um novo numero de celular: ");
+    scanf("%[^\n]%*c", str);
+
+    if (isValidCellphone(str)) {
+        strcpy(reg->cellphone, str);
+        printf("numero de celular modificado!\n");
+    } else {
+        printf("numero de celular invalido!\n");
+    }
+    getch();
 }
 
 void modifyEmail(Entry *reg) {
+    char str[MAXSTR] = {0};
 
+    fflush(stdin);
+    printf("digite um novo email: ");
+    scanf("%[^\n]%*c", str);
+
+    if (str[0]) {
+        strcpy(reg->email, str);
+        printf("email modificado!\n");
+    } else {
+        printf("email invalido!\n");
+    }
+    getch();
 }
 
 void modifyAddress(Entry *reg) {
+    char str[MAXSTR] = {0};
 
-}
+    fflush(stdin);
+    printf("digite um novo endereco: ");
+    scanf("%[^\n]%*c", str);
 
-void modifyAdress(Entry *reg) {
-
-}
-
-void modifyBirthDate(Entry *reg) {
-
+    if (str[0]) {
+        strcpy(reg->address, str);
+        printf("endereco modificado!\n");
+    } else {
+        printf("endereco invalido!\n");
+    }
+    getch();
 }
 
 //- VALIDATION -//
 
 int isValidCPF(char *str) {
+    for (int i = 0; str[i]; ++i) {
+        if (!isdigit(str[i]) && str[i] != '-')
+            return 0;
+    }
     return 1;
 }
 
 int isValidCellphone(char *str) {
+    for (int i = 0; str[i]; ++i) {
+        if (!isdigit(str[i]) && str[i] != '-')
+            return 0;
+    }
     return 1;
 }
 
 int isValidTelephone(char *str) {
+    for (int i = 0; str[i]; ++i) {
+        if (!isdigit(str[i]) && str[i] != '-')
+            return 0;
+    }
+    return 1;
+}
+
+int isValidDate(char *str) {
+    int numCount = 0, barCount = 0;
+
+    for (int i = 0; str[i]; ++i) {
+        numCount += isdigit(str[i]);
+        barCount += str[i] == '/';
+    }
+
+    if((numCount < 6 || numCount > 8) || barCount != 2)
+        return 0;
+
     return 1;
 }
 
 //- SHOW -//
 
 void printEntry(Entry *entry) {
-    if(!entry)
+    if (!entry)
         return;
 
     printf("Codigo: ");

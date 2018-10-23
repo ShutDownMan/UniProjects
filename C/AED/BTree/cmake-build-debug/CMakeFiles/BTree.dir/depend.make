@@ -19,6 +19,6 @@ CMakeFiles\BTree.dir\Queue.c.obj: ..\Queue.h
 
 CMakeFiles\BTree.dir\main.c.obj: ..\BTree.h
 CMakeFiles\BTree.dir\main.c.obj: ..\EntryManipulation.h
+CMakeFiles\BTree.dir\main.c.obj: ..\Main.c
 CMakeFiles\BTree.dir\main.c.obj: ..\Menus.h
-CMakeFiles\BTree.dir\main.c.obj: ..\main.c
 

@@ -88,6 +88,9 @@
 		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h">
 			<Option target="BTree"/>
 		</Unit>
+		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Main.c">
+			<Option target="BTree"/>
+		</Unit>
 		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.c">
 			<Option target="BTree"/>
 		</Unit>
@@ -98,9 +101,6 @@
 			<Option target="BTree"/>
 		</Unit>
 		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h">
-			<Option target="BTree"/>
-		</Unit>
-		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/main.c">
 			<Option target="BTree"/>
 		</Unit>
 		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/CMakeLists.txt">

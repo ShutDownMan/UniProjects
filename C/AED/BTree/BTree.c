@@ -157,9 +157,6 @@ void insertBTree(FILE *f, int id, int regPos) {
         if (overflow(root)) {
             /// splita o nó
             RegData m;
-            printf("---------\n");
-            printBTreeNodeChildren(root);
-            printf("\n----------\n");
 
             newNode = split(root, &m);
             BTreeNode *newRoot = createNode();
@@ -288,13 +285,8 @@ BTreeNode *split(BTreeNode *node, RegData *m) {
     for (int i = 0; i < newNode->keyNum; ++i) {
         newNode->keys[i] = node->keys[q + i + 1];
         newNode->children[i + 1] = node->children[q + i + 2];
-//        node->keys[q + i + 1] = 0;
-//        node->children[q + i + 2] = -1;
     }
 
-//    printf("---------\n");
-//    printBTreeNodeChildren(node);
-//    printf("\n----------\n");
 
     /// retona nó criado na operação
     return newNode;

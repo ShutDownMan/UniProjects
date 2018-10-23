@@ -58,18 +58,18 @@ include CMakeFiles\BTree.dir\progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles\BTree.dir\flags.make
 
-CMakeFiles\BTree.dir\main.c.obj: CMakeFiles\BTree.dir\flags.make
-CMakeFiles\BTree.dir\main.c.obj: ..\main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Jedson\Documents\GitHub\UniProjects\C\AED\BTree\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/BTree.dir/main.c.obj"
-	C:\TDM-GCC-64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\BTree.dir\main.c.obj   -c D:\Jedson\Documents\GitHub\UniProjects\C\AED\BTree\main.c
+CMakeFiles\BTree.dir\Main.c.obj: CMakeFiles\BTree.dir\flags.make
+CMakeFiles\BTree.dir\Main.c.obj: ..\Main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Jedson\Documents\GitHub\UniProjects\C\AED\BTree\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/BTree.dir/Main.c.obj"
+	C:\TDM-GCC-64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\BTree.dir\Main.c.obj   -c D:\Jedson\Documents\GitHub\UniProjects\C\AED\BTree\Main.c
 
-CMakeFiles\BTree.dir\main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/BTree.dir/main.c.i"
-	C:\TDM-GCC-64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\Jedson\Documents\GitHub\UniProjects\C\AED\BTree\main.c > CMakeFiles\BTree.dir\main.c.i
+CMakeFiles\BTree.dir\Main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/BTree.dir/Main.c.i"
+	C:\TDM-GCC-64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\Jedson\Documents\GitHub\UniProjects\C\AED\BTree\Main.c > CMakeFiles\BTree.dir\Main.c.i
 
-CMakeFiles\BTree.dir\main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/BTree.dir/main.c.s"
-	C:\TDM-GCC-64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\Jedson\Documents\GitHub\UniProjects\C\AED\BTree\main.c -o CMakeFiles\BTree.dir\main.c.s
+CMakeFiles\BTree.dir\Main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/BTree.dir/Main.c.s"
+	C:\TDM-GCC-64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\Jedson\Documents\GitHub\UniProjects\C\AED\BTree\Main.c -o CMakeFiles\BTree.dir\Main.c.s
 
 CMakeFiles\BTree.dir\BTree.c.obj: CMakeFiles\BTree.dir\flags.make
 CMakeFiles\BTree.dir\BTree.c.obj: ..\BTree.c
@@ -125,7 +125,7 @@ CMakeFiles\BTree.dir\Menus.c.s: cmake_force
 
 # Object files for target BTree
 BTree_OBJECTS = \
-"CMakeFiles\BTree.dir\main.c.obj" \
+"CMakeFiles\BTree.dir\Main.c.obj" \
 "CMakeFiles\BTree.dir\BTree.c.obj" \
 "CMakeFiles\BTree.dir\Queue.c.obj" \
 "CMakeFiles\BTree.dir\EntryManipulation.c.obj" \
@@ -134,7 +134,7 @@ BTree_OBJECTS = \
 # External object files for target BTree
 BTree_EXTERNAL_OBJECTS =
 
-BTree.exe: CMakeFiles\BTree.dir\main.c.obj
+BTree.exe: CMakeFiles\BTree.dir\Main.c.obj
 BTree.exe: CMakeFiles\BTree.dir\BTree.c.obj
 BTree.exe: CMakeFiles\BTree.dir\Queue.c.obj
 BTree.exe: CMakeFiles\BTree.dir\EntryManipulation.c.obj

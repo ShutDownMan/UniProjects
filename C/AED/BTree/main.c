@@ -7,14 +7,16 @@
 #include "Menus.h"
 
 int main() {
-    int choice = 1;
+    int choice;
 
+    /// abre arquivos binários para escrita
     FILE *treeFile = fopen("btree.bin", "wb+");
     FILE *regFile = fopen("data.bin", "wb+");
 
+    /// inicializa arquivos
     initializeFiles(treeFile, regFile);
-//    getch();
 
+    /// main menu
     do {
         system("CLS");
         printf("[1] - Carregar arquivos de inicializacao\n");
@@ -29,28 +31,38 @@ int main() {
 
         scanf("%d", &choice);
 
+        /// escolha do usuário
         switch (choice) {
+            case 0:
+                break;
             case 1:
+                /// carrega arquivo de texto para os arquivos binários
                 loadFileMenu(treeFile, regFile);
                 break;
             case 2:
+                /// lê novo registro do console
                 readRegFromConsole(treeFile, regFile);
                 break;
             case 3:
-                // WIP
+                /// altera informações de registro
+                modifyEntry(treeFile, regFile);
                 break;
             case 4:
+                /// pesquisa por registro
                 searchEntry(treeFile, regFile);
                 break;
             case 5:
                 // WIP
             case 6:
+                /// printa no console todos registros em ordem crescente de código
                 printRegister(treeFile, regFile);
                 break;
             case 7:
+                /// printa árvore correspondente do arquivo binário por nível
                 printBTree(treeFile);
                 break;
             default:
+                printf("Escolha invalida");
                 break;
         }
 
