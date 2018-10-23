@@ -20,12 +20,12 @@ void createEmptyBTree(FILE *f) {
 
     /// inicializa cabeçalho para valores padrões
     header.root = -1;
-    header.nodesQuantity = 0;
+    header.topPos = 0;
     header.freeNodesRoot = -1;
     header.freeNodesQuantity = 0;
 
     /// escreve cabeãlho em arquivo
-    writeHeaderToFile(f, &header);
+    writeBTreeHeaderToFile(f, &header);
 }
 
 /**
@@ -70,7 +70,7 @@ FreeNode *createFreeNode() {
  * @param header é o cabeçalho a ser escrito no arquivo
  * @precondition arquivo tem que estar aberto e ter direitos de escrita
  */
-void writeHeaderToFile(FILE *f, BTreeHeader *header) {
+void writeBTreeHeaderToFile(FILE *f, BTreeHeader *header) {
     if (!header)
         return;
 
@@ -99,7 +99,7 @@ int writeNodeToFile(FILE *f, BTreeHeader *header, BTreeNode *node) {
         /// se não existem posições livres dentro do arquivo
         if ((pos = header->freeNodesRoot) == -1) {
             /// coloca posição para topo do arquivo
-            pos = header->nodesQuantity++;
+            pos = header->topPos++;
         } else {
             /// atualiza posição livre no arquivo
             FreeNode *freeNode = readBTreeFreeNode(f, pos);
@@ -130,9 +130,9 @@ int writeNodeToFile(FILE *f, BTreeHeader *header, BTreeNode *node) {
  * @precondition arquivo tem que estar aberto e ter direito de escrita
  * @postcondition valor é inserido no arquivo
  */
-void insert(FILE *f, int id, int regPos) {
+void insertBTree(FILE *f, int id, int regPos) {
     /// cabeçalho do arquivo
-    BTreeHeader *header = readHeader(f);
+    BTreeHeader *header = readBTreeHeader(f);
     /// raiz da árvore
     BTreeNode *root = readBTreeNode(f, header->root);
     BTreeNode *newNode;
@@ -182,7 +182,7 @@ void insert(FILE *f, int id, int regPos) {
 
 //    printHeader(header);
     /// escreve cabeçalho no arquivo
-    writeHeaderToFile(f, header);
+    writeBTreeHeaderToFile(f, header);
 
     /// libera memória utilizada pela raiz e pelo cabeçalho
     freeBTreeNode(root);
@@ -340,7 +340,7 @@ int isLeaf(BTreeNode *node) {
  * @precondition arquivo tem que estar aberto e com direito de escrita
  * @postcondition espaço em memória para o cabeçalho é alocado e inicializado
  */
-BTreeHeader *readHeader(FILE *f) {
+BTreeHeader *readBTreeHeader(FILE *f) {
     /// aloca espaço na memória para o cabeçalho
     BTreeHeader *header = (BTreeHeader *) malloc(sizeof(BTreeHeader));
 
@@ -413,7 +413,7 @@ FreeNode *readBTreeFreeNode(FILE *f, int pos) {
 //- REMOVE -//
 
 void removeBTree(FILE *fTree, int id) {
-    BTreeHeader *header = readHeader(fTree);
+    BTreeHeader *header = readBTreeHeader(fTree);
     BTreeNode *root = readBTreeNode(fTree, header->root);
 
     RegData data = {.id = id, .regPos = -1};
@@ -574,7 +574,7 @@ void merge(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos) {
 
     writeBTreeFreeNodesList(fTree, header, sibling);
 
-    writeHeaderToFile(fTree, header);
+    writeBTreeHeaderToFile(fTree, header);
 
     freeBTreeNode(sibling);
     freeBTreeNode(child);
@@ -709,7 +709,7 @@ void freeBTreeNode(BTreeNode *node) {
 void printHeader(BTreeHeader *header) {
     printf("--------------------\n");
     printf("Root = %d\n", header->root);
-    printf("Node Quantity = %d\n", header->nodesQuantity);
+    printf("Node Quantity = %d\n", header->topPos);
     printf("Free Nodes Root = %d\n", header->freeNodesRoot);
     printf("--------------------\n");
 }
@@ -722,7 +722,7 @@ void printHeader(BTreeHeader *header) {
  */
 void printBTree(FILE *f) {
     /// lê cabeçalho e raiz da árvore
-    BTreeHeader *header = readHeader(f);
+    BTreeHeader *header = readBTreeHeader(f);
     BTreeNode *root = readBTreeNode(f, header->root);
     /// cria fila
     Queue *q = createQueue();
@@ -739,7 +739,7 @@ void printBTree(FILE *f) {
             QNode *qNode = popQ(q);
             BTreeNode *bTreeNode = (BTreeNode *) qNode->info;
 
-            printBTreeNodeChildren(bTreeNode);
+            printBTreeNodeKeys(bTreeNode);
             printf(" ");
 
             /// puxa os seus filhos para a fila

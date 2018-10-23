@@ -1,0 +1,8 @@
+1000:Jose da Silva:M:123456789-11:1234:oftalmologista:1234534-5:45-3573-1122:45-99999-8844:jose@uol.com:Av Parana 200:01/01/1980
+1200:Maria dos Santos:F:111111111-22:5678:cardiologista:130456-1::45-98403-1122:maria@gmail.com:Rua Rui Barbosa 123:12/04/1989
+800:Carlos Xavier:M:333333333-44:1357:dermatologista:4567273-5:45-3576-1122::carlos@yahoo.com.br::23/10/1999
+3000:Joao Machado:M:888888888-33:9753:otorrinolaringologista:M343216:45-3572-8866:45-99987-4422::Av Parana 1122:11/08/1985
+2500:Joana Santana:F:777777777-66:2468:pediatra:675433-1:45-2102-5000:45-99985-6644::Rua Almirante Barroso 55:17/12/1997
+4728:Joaquim Souza:M:111222333-22:8642::34433-6:45-3573-3546:45-98831-4455:jsouza@hotmail.com::05/03/1992
+1324:Pedro Pinheiro:M:444555666-11:8967:hematologista:M234525::45-99927-7766:pedrop@gmail.br:Av Republica Argentina 66:14/07/1987
+500:Sandra Cardoso:F:777888999-88:4523::8765435-7:::sandrac@yahoo.com:Rua Santos Dumont 735:8/11/1994

@@ -4,10 +4,21 @@
 CMakeFiles/BTree.dir/BTree.c.obj
  D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.c
  D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h
  D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h
+CMakeFiles/BTree.dir/EntryManipulation.c.obj
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.c
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h
+CMakeFiles/BTree.dir/Menus.c.obj
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.c
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.h
 CMakeFiles/BTree.dir/Queue.c.obj
  D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.c
  D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h
 CMakeFiles/BTree.dir/main.c.obj
  D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h
+ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.h
  D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/main.c

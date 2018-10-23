@@ -1,39 +1,62 @@
 #include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
 
-#include "BTree.h"
+#define MAXSTR 256
+
+#include "Menus.h"
 
 int main() {
-    FILE *f = fopen("btree.dat", "wb+");
+    int choice = 1;
 
-    createEmptyBTree(f);
+    FILE *treeFile = fopen("btree.bin", "wb+");
+    FILE *regFile = fopen("data.bin", "wb+");
 
-//    insert(f, 100);
-//    insert(f, 101);
-    insert(f, 2, 0);
-    insert(f, 24, 0);
-    insert(f, 8, 0);
-    insert(f, 32, 0);
-    insert(f, 16, 0);
-//    insert(f, 12, 0);
-//    insert(f, -51);
-//    insert(f, 65);
-//    insert(f, 15, 0);
-//    insert(f, 5, 0);
-//    insert(f, 1);
-//    insert(f, 36, 0);
-//    insert(f, -41);
-//    insert(f, 14, 0);
-//    insert(f, 46, 0);
+    initializeFiles(treeFile, regFile);
+//    getch();
 
-    printBTree(f);
+    do {
+        system("CLS");
+        printf("[1] - Carregar arquivos de inicializacao\n");
+        printf("[2] - Inserir Medico\n");
+        printf("[3] - Alterar Medico\n");
+        printf("[4] - Buscar dados de Medico\n");
+        printf("[5] - Remover Medico\n");
+        printf("[6] - Imprimir Cadastro\n");
+        printf("[7] - Imprimir a Arvore-B\n");
+        printf("[0] - Fechar\n");
+        printf("    Opcao: ");
 
-    printf("-----------\n");
+        scanf("%d", &choice);
 
-//    removeBTree(f, 36);
-//    insert(f, 16);
-//    removeBTree(f, 5);
+        switch (choice) {
+            case 1:
+                loadFileMenu(treeFile, regFile);
+                break;
+            case 2:
+                readRegFromConsole(treeFile, regFile);
+                break;
+            case 3:
+                // WIP
+                break;
+            case 4:
+                searchEntry(treeFile, regFile);
+                break;
+            case 5:
+                // WIP
+            case 6:
+                printRegister(treeFile, regFile);
+                break;
+            case 7:
+                printBTree(treeFile);
+                break;
+            default:
+                break;
+        }
 
-    printBTree(f);
+        getch();
+
+    } while (choice);
 
     return 0;
 }

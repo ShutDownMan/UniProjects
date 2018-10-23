@@ -82,6 +82,18 @@
 		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h">
 			<Option target="BTree"/>
 		</Unit>
+		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.c">
+			<Option target="BTree"/>
+		</Unit>
+		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h">
+			<Option target="BTree"/>
+		</Unit>
+		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.c">
+			<Option target="BTree"/>
+		</Unit>
+		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.h">
+			<Option target="BTree"/>
+		</Unit>
 		<Unit filename="D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.c">
 			<Option target="BTree"/>
 		</Unit>

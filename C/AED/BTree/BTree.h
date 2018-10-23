@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 
+#include "EntryManipulation.h"
+
 #define ORDER 5
 
 typedef struct RegData {
@@ -32,7 +34,7 @@ typedef struct FreeNode {
 
 /// estrutura de cabeçalho de arquivo
 typedef struct BTreeHeader {
-    int root, nodesQuantity, freeNodesRoot, freeNodesQuantity;
+    int root, topPos, freeNodesRoot, freeNodesQuantity;
 } BTreeHeader;
 
 //- INITIALIZE -//
@@ -63,7 +65,7 @@ FreeNode *createFreeNode();
  * @param header é o cabeçalho a ser escrito no arquivo
  * @precondition arquivo tem que estar aberto e ter direitos de escrita
  */
-void writeHeaderToFile(FILE *f, BTreeHeader *header);
+void writeBTreeHeaderToFile(FILE *f, BTreeHeader *header);
 
 /**!
  * esta função escreve um nó de árvore B em um arquivo indicado
@@ -83,7 +85,7 @@ int writeNodeToFile(FILE *f, BTreeHeader *header, BTreeNode *node);
  * @precondition arquivo tem que estar aberto e ter direito de escrita
  * @postcondition valor é inserido no arquivo
  */
-void insert(FILE *f, int id, int regPos);
+void insertBTree(FILE *f, int id, int regPos);
 
 /**
  * esta função é uma recursiva auxiliar de inserir
@@ -153,7 +155,7 @@ int isLeaf(BTreeNode *node);
  * @precondition arquivo tem que estar aberto e com direito de escrita
  * @postcondition espaço em memória para o cabeçalho é alocado e inicializado
  */
-BTreeHeader *readHeader(FILE *f);
+BTreeHeader *readBTreeHeader(FILE *f);
 
 /**
  * esta função lê um nó em um arquivo inidacado na posição passada

@@ -17,6 +17,32 @@ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h
 D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
 stdio.h
 -
+EntryManipulation.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.c
+EntryManipulation.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h
+stdlib.h
+-
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h
+stdio.h
+-
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.c
+stdio.h
+-
+stdlib.h
+-
+Menus.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.h
+
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.h
+EntryManipulation.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/EntryManipulation.h
+BTree.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
 
 D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.c
 stdio.h
@@ -33,6 +59,10 @@ D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Queue.h
 D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/main.c
 stdio.h
 -
-BTree.h
-D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/BTree.h
+conio.h
+-
+stdlib.h
+-
+Menus.h
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/BTree/Menus.h
 

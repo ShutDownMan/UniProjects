@@ -3,4 +3,4 @@ project(BTree C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(BTree main.c BTree.h BTree.c Queue.c Queue.h)
+add_executable(BTree main.c BTree.h BTree.c Queue.c Queue.h EntryManipulation.c EntryManipulation.h Menus.c Menus.h)
