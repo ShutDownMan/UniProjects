@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f9ba1b-16b7-4aa5-a267-25a06ae89d2d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../C/IES/Spotifake/Tentativa 2/Protótipo 2/menus.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/IES/Spotifake/Tentativa 2/Protótipo 2/menus.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/IES/Spotifake/Tentativa 2/Protótipo 2/menus.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/IES/Spotifake/Tentativa 2/Protótipo 2/menus.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/IES/Spotifake/Tentativa 2/Protótipo 2/ui_manipulation.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/IES/Spotifake/Tentativa 2/Protótipo 2/ui_manipulation.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/URI/2253.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/URI/2253.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/URI/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/URI/a.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Turing Machine/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/BTree.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/BTree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/EntryManipulation.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/EntryManipulation.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/Menus.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/Menus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/BTree.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/BTree.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/EntryManipulation.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/EntryManipulation.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/Menus.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/Menus.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/btree.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/btree.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C2/Aulas/Infix/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../C2/Aulas/Infix/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,8 +31,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1188">
-              <caret line="55" column="34" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+            <state relative-caret-position="360">
+              <caret line="105" column="25" lean-forward="true" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -34,8 +43,8 @@
       <file leaf-file-name="FileScanner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2156">
-              <caret line="100" column="30" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="43" />
+            <state relative-caret-position="-14">
+              <caret line="72" column="21" selection-start-line="59" selection-end-line="78" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -43,8 +52,8 @@
       <file leaf-file-name="Automata.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="270" column="21" selection-start-line="270" selection-start-column="21" selection-end-line="270" selection-end-column="21" />
+            <state relative-caret-position="624">
+              <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
             </state>
           </provider>
         </entry>
@@ -106,10 +115,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="25" />
-    <option name="width" value="1750" />
-    <option name="height" value="1030" />
+    <option name="x" value="68" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="824" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -117,9 +126,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -302,11 +311,12 @@
       <workItem from="1534717143994" duration="1870000" />
       <workItem from="1534946077925" duration="842000" />
       <workItem from="1537291580644" duration="320000" />
+      <workItem from="1540756709599" duration="4575000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47069000" />
+    <option name="totallyTimeSpent" value="51644000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -318,7 +328,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -329,19 +339,19 @@
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5013423" side_tool="true" weight="0.18328841" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
       <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.61051214" />
+      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49731544" weight="0.23584905" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.23691276" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.23933902" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
+      <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49932885" weight="0.32884097" />
@@ -352,17 +362,17 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.18328841" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26912752" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.4986577" weight="0.23180594" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.4986577" weight="0.23180594" />
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -372,13 +382,13 @@
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" weight="0.23584905" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5013423" side_tool="true" weight="0.18328841" />
       <window_info id="Capture Tool" order="1" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49932885" weight="0.32884097" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26912752" />
+      <window_info id="Favorites" order="4" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -733,27 +743,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2156">
-          <caret line="100" column="30" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="55" column="34" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+        <state relative-caret-position="360">
+          <caret line="105" column="25" lean-forward="true" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14">
+          <caret line="72" column="21" selection-start-line="59" selection-end-line="78" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="270" column="21" selection-start-line="270" selection-start-column="21" selection-end-line="270" selection-end-column="21" />
+        <state relative-caret-position="624">
+          <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
         </state>
       </provider>
     </entry>

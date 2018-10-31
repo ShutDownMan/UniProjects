@@ -19,15 +19,15 @@ int main() {
     /// main menu
     do {
         system("CLS");
-        printf("[1] - Carregar arquivos de inicializacao\n");
-        printf("[2] - Inserir Medico\n");
-        printf("[3] - Alterar Medico\n");
-        printf("[4] - Buscar dados de Medico\n");
-        printf("[5] - Remover Medico\n");
-        printf("[6] - Imprimir Cadastro\n");
-        printf("[7] - Imprimir a Arvore-B\n");
-        printf("[0] - Fechar\n");
-        printf("    Opcao: ");
+        printf("[1]Carregar arquivos de inicializacao\n");
+        printf("[2]Inserir Medico\n");
+        printf("[3]Alterar Medico\n");''
+        printf("[4]Buscar dados de Medico\n");
+        printf("[5]Remover Medico\n");
+        printf("[6]Imprimir Cadastro\n");
+        printf("[7]Imprimir a Arvore-B\n");
+        printf("[0]Fechar\n");
+        printf("---> Opcao: ");
 
         scanf("%d", &choice);
 

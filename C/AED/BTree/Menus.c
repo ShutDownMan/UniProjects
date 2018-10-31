@@ -222,10 +222,12 @@ void searchEntry(FILE *treeFile, FILE *regFile) {
     int code;
     Entry *found = NULL;
 
+    fflush(stdin);
     printf("Digite o codigo a ser pesquisado: ");
     scanf("%d", &code);
 
     found = searchEntryBTree(treeFile, regFile, code);
+    printEntry(found);
 
     free(found);
 }

@@ -181,6 +181,10 @@ void insertBTree(FILE *f, int id, int regPos) {
     /// escreve cabeçalho no arquivo
     writeBTreeHeaderToFile(f, header);
 
+    printf("-----------\n");
+    printBTree(f);
+    printf("-----------\n");
+
     /// libera memória utilizada pela raiz e pelo cabeçalho
     freeBTreeNode(root);
     free(header);
@@ -210,7 +214,7 @@ void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, RegData inf
             BTreeNode *node = readBTreeNode(f, currentNode->children[pos]);
             /// insere no nó lido
             insertAux(f, header, node, info);
-            /// se ocorreu oferflow no nó indicado
+            /// se ocorreu overflow no nó indicado
             if (overflow(node)) {
                 /// splita o nó
                 RegData m;
@@ -727,7 +731,7 @@ void printBTree(FILE *f) {
     nodeCount = q->count;
     while (nodeCount) {
         /// printa os nós do nível atual na saida padrão
-        while (nodeCount > 0) {
+        while (nodeCount) {
             QNode *qNode = popQ(q);
             BTreeNode *bTreeNode = (BTreeNode *) qNode->info;
 

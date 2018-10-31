@@ -325,14 +325,10 @@ int isValidTelephone(char *str) {
  * @postcondition nenhuma
  */
 int isValidDate(char *str) {
-    int numCount = 0, barCount = 0;
+    int n = 0;
 
-    for (int i = 0; str[i]; ++i) {
-        numCount += isdigit(str[i]);
-        barCount += str[i] == '/';
-    }
-
-    if((numCount < 6 || numCount > 8) || barCount != 2)
+    sscanf(str, "%*d/%*d/%*d%n", &n);
+    if(n < 5 || n > 10)
         return 0;
 
     return 1;
