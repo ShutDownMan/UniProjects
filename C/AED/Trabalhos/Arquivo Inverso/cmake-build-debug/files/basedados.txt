@@ -1,0 +1,4 @@
+./files/arvores.txt
+./files/conto.txt
+./files/divisao.txt
+./files/ipe.txt

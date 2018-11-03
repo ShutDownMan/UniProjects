@@ -1,0 +1,3 @@
+um algoritmo e um procedimento eficaz, um modo de
+fazer uma coisa em um numero de finito de passos
+discretos. calcular a divisao ate a quinta casa decimal.

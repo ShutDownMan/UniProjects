@@ -1,0 +1,3 @@
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir
+D:/Jedson/Documents/GitHub/UniProjects/C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/edit_cache.dir
