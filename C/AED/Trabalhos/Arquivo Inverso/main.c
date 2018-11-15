@@ -22,7 +22,7 @@ int main(int argc, const char *argv[]) {
     if(!(stopWordsFile = fopen(argv[2], "r"))) return 2;
 
     StopWordsList *stopWordsList = readStopWordsList(stopWordsFile);
-    getWordInversionFile(txtFilesFile, stopWordsList);
+    getWordInvertedFile(txtFilesFile, stopWordsList);
 
     MainMenuChoices choice;
     do {
@@ -36,6 +36,7 @@ int main(int argc, const char *argv[]) {
                 printWordInvertedFile();
                 break;
             case FindWordInFiles:
+                searchForEntry(txtFilesFile);
                 break;
             case Exit:
                 printf("Exiting Program...\n");
@@ -46,6 +47,9 @@ int main(int argc, const char *argv[]) {
         getch();
     } while (choice != Exit);
 
+
+    fclose(txtFilesFile);
+    fclose(stopWordsFile);
     freeStopWordList(stopWordsList);
 
     return 0;
