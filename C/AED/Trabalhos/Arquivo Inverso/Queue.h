@@ -2,8 +2,8 @@
 // Created by Jedson on 10/21/2018.
 //
 
-#ifndef BTREE_QUEUE_H
-#define BTREE_QUEUE_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 /// estrutura de nó para fila de lista encadeada
 typedef struct QNode {
@@ -79,4 +79,4 @@ void deleteQueue(Queue *queue);
  */
 void printQ(Queue *queue);
 
-#endif //BTREE_QUEUE_H
+#endif //QUEUE_H

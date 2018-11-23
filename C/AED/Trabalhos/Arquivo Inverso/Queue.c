@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "Queue.h"
 
 //- INITIALIZE -//
@@ -98,7 +97,7 @@ QNode *popQ(Queue *queue) {
 void deleteQueue(Queue *queue) {
     QNode *tracer, *next;
 
-    for(tracer = queue->first; tracer; tracer = next) {
+    for (tracer = queue->first; tracer; tracer = next) {
         next = tracer->next;
         free(tracer);
     }
@@ -117,7 +116,7 @@ void deleteQueue(Queue *queue) {
 void printQ(Queue *queue) {
     QNode *tracer;
 
-    for(tracer = queue->first; tracer; tracer = tracer->next) {
+    for (tracer = queue->first; tracer; tracer = tracer->next) {
         printf("[0x%p]<->", tracer->info);
     }
     printf("\n");

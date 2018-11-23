@@ -1,0 +1,45 @@
+This year, the full 250 hours of interviews I conducted for the BBS Documentary are going online at the Internet Archive.
+
+There's already a collection of them up, from when I first set out to do this. Called "The BBS Documentary Archive", it's currently 32 items from various interviews, including a few clip farms and full interviews of a bunch of people who sat with me back in the years of 2002-2004 to talk about all matter of technology and bulletin board history.
+
+That collection, as it currently stands, is a bit of an incomplete mess. Over the course of this project, it will become a lot less so. I'll be adding every minute of tape I can recover from my storage, as well as fixing up metadata where possible. Naturally you will be asked to help as well.
+
+A bit of background for people coming into this cold: I shot a movie called "BBS: The Documentary" which ended up being an eight episode mini-series. It tried to be the first and ultimately the last large documentary about bulletin board systems, those machines hooked up to phone lines that lived far and wide from roughly 1978-2000s. They were brilliant and weird and they're one of the major examples of life going online. They laid the foundation for a population that used the Internet and the Web, and I think they're terribly interesting.
+
+I was worried that we were going to never get The Documentary On BBSes and so I ended up making it. It's already 10 years and change since the movie came out, and there's not been another BBS Documentary, so I guess this is it. My movie was very North American-centric and didn't go into blistering detail about Your Local BBS Scene, and some people resented that, but I stand by both decisions; just getting the whole thing done required a level of effort and energy I'm sure I'm not capable of any more.
+
+Anyway, I'm very proud of that movie.
+
+I'm also proud of the breadth of interviews – people who pioneered BBSes in the 1970s, folks who played around in scenes both infamous and obscure, and experts in areas of this story that would never, ever have been interviewed by any other production. This movie has everything: Vinton Cerf (co-creator of the Internet) along with legends of Fidonet like Tom Jennings and Ken Kaplan and even John Madill, who drew the FidoNet dog logo. We've got ANSI kids and Apple II crackers and writers of a mass of the most popular BBS software packages. The creator of .QWK packets and multiple members of the Cult of the Dead Cow. There's so much covered here that I just think would never, ever be immortalized otherwise.
+
+And the movie came out, and it sold really well, and I open licensed it, and people discover it every day and play it on YouTube or pull out the package and play the original DVDs. It's a part of culture, and I'm just so darn proud of it.
+
+Part of the reason the movie is watchable is because I took the 250 hours of footage and made it 7.5 hours in total. Otherwise… well….
+
+…unless, of course, you're a maniac, and you want to watch me talking with people about subjects decades in the past and either having it go really well or fall completely apart. The shortest interview is 8 minutes. The longest is five hours. There's legions of knowledge touched on in these conversations, stuff that can be a starting port for a bunch of research that would otherwise be out of options to even find what the words are.
+
+Now, a little word about self-doubt.
+
+When I first starting uploading hours of footage of BBS Documentary interviews to the Internet Archive, I was doing it from my old job, and I had a lot going on. I'd not done much direct work with Internet Archive and didn't know anything going on behind the scenes or how things worked or frankly much about the organization in any meaningful amount. I just did it, and sent along something like 20 hours of footage. Things were looking good.
+
+Then, reviews.
+
+Some people started writing a few scathing responses to the uploads, pointing out how rough they were, my speech patterns, the interview style, and so on. Somehow, I let that get into my head, and so, with so much else to do, I basically walked away from it.
+
+12 years later (12 years!) I'm back, and circumstances have changed.
+
+I work for the Archive, I've uploaded hundreds of terabytes of stuff, and the BBS documentary rests easily on its laurels of being a worthwhile production. Comments by randos about how they wish I'd done some prettify-ing of the documentary "raw" footage don't even register. I've had to swim upstream through a cascade of poor responses to things I've done in public since then – they don't get at me. It took some time to get to this place of comfort, which is why I bring it up. For people who think of me as some bulletproof soul, let it be known that "even I" had to work up to that level, even when sitting on something like BBS Documentary and years of accomplishment. And those randos? Never heard from them again.
+
+The interview style I used in the documentary raw footage should be noted because it's deliberate: they're conversations. I sometimes talk as much as the subjects. It quickly became obvious that people in this situation of describing BBS history would have aspects that were crystal clear, but would also have a thousand little aspects lost in fuzzy clouds of memory. As I'd been studying BBSes intensely for years at this point, it would often take me telling them some story (and often the same stories) to trigger a long-dormant tale that they would fly with. In many cases, you can see me shut up the second people talk, because that was why I was talking in the first place. I should have known people might not get that, and I shouldn't have listened to them so long ago.
+
+And from these conversations come stories and insights that are priceless. Folks who lived this life in their distant youth have all sorts of perspectives on this odd computer world and it's just amazing that I have this place and collection to give them back to you.
+
+But it will still need your help.
+
+Here's the request.
+
+I lived this stupid thing; I really, really want to focus on putting a whole bunch of commitments to bed. Running the MiniDV recorder is not too hard for me, and neither is the basic uploading process, which I've refined over the years. But having to listen to myself for hundreds of hours using whatever time I have on earth left… it doesn't appeal to me at all.
+
+And what I really don't want to do, beyond listening to myself, is enter the endless amount of potential metadata, especially about content. I might be inspired to here and there, especially with old friends or interviews I find joyful every time I see them again. But I can't see myself doing this for everything and I think metadata on a "subjects covered" and "when was this all held" is vital for the collection having use. So I need volunteers to help me. I run a Discord server that communicates with people collaborating with me and I have a bunch of other ways to be reached. I'm asking for help here – turning this all into something useful beyond just existing is a vital step that I think everyone can contribute to.
+
+If you think you can help with that, please step forward.

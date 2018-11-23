@@ -167,9 +167,9 @@ void insertBTree(FILE *f, char *id, int regPos) {
     /// escreve cabeçalho no arquivo
     writeBTreeHeaderToFile(f, header);
 
-    printf("-----------\n");
-    printBTree(f);
-    printf("-----------\n");
+//    printf("-----------\n");
+//    printBTree(f);
+//    printf("-----------\n");
 
     /// libera memória utilizada pela raiz e pelo cabeçalho
     free(root);
@@ -392,7 +392,7 @@ Entry *searchEntryBTree(FILE *treeFile, FILE *regFile, char *code) {
 //            system("CLS");
             foundEntry = readEntryFromFile(regFile, currentNode->keys[pos].regPos);
         } else {
-            printf("Entry not found!\n");
+//            printf("Entry not found!\n");
         }
 
         free(currentNode);

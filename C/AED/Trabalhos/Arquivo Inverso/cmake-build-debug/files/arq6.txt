@@ -1,0 +1,21 @@
+In January of 2015, Lazy Game Reviews, a site dedicated to reviews of retro and historic video games (especially of the DOS stripe), reviewed the Internet Archive's MS-DOS Games Collection that was making a bit of news back then.
+
+It was…. mixed. Here's a link to the video of the review.
+
+I didn't see much point in responding at the time, especially in the Hellmouth of Youtube Comments, but we've had a few months with this MS-DOS emulation out there (and a year of console/other computer emulation before that) and so maybe it's just time for me to respond to some of the more salient points in the review, in no particular order.
+
+So, here they are, lazier responses to a lazy review.
+
+    "I already use DOSBOX and have most of this." – The purpose of doing in-browser emulation is not to compete with people who are the types of personalities to go through installing emulators on their home system, or who collect scads of old programs to play in those emulators. What it does do is provide instant access to old programs, for a massive variety of platforms (not just MS-DOS, but over 25 in the Internet Archive system, not counting the arcade games), and most importantly, keep access to the most obscure and edge-case programs that even the most strident hoarder would think twice about keeping around. Yes, you can play a DOOM clone or a famous Role-Playing game, but you can also try out a pregnancy calculator, a US Savings Note Valuation program, or an Exercise Bike Companion. Which if the standard emulator user was keeping on their hard drive, I'll dine on Roast Chapeau tonight.
+    "Other sites have done this." – Other sites tend to have Java plugins, Chrome or Firefox extensions, or similar requirements to install extra "stuff" into the Browser. Spoiler alert: People are doing that less and less, having been ultra-burned in the past. And in many cases, these sites provide you with rich, beautiful ads to accompany your program use and browsing. Some even do some roundabout amount of charging. The goal from the beginning was ‘one click, and you're there" with the Internet Archive experience, and we've generally done that. It's a little difference, but it does make the world.
+    Some of the games are broken. – Some were too fast, some didn't work in the emulator quite as expected, and some just crashed. Over time, I've repaired what people have brought to my attention, or removed the program if it's just not working deep into operation. We have 3,400 programs in the MS-DOS collection alone – it needs people reviewing them to know what's up. Since the review was written, things are much better and will continue to refine.
+    There seems to be zero quality control – Guilty as charged, in so far that I simply snapped in a wide variety of at-reach software examples to put into the collection. Over time, some have been swapped out and some have been improved, including machine settings, or discovering superior versions of items. The entire collection was snapped into place by, essentially, a single person. Again, it's gotten better in months hence as feedback has come in.
+    How long will this be up – A while to come, apparently.
+
+People who read my stuff on this site have heard this before, but the fundamental intention with all the JSMESS/EM-DOSBOX in-browser emulation was to turn the experience of computing into a truly embeddable, referenced object. To say to you, as I can do right here, that there's this completely weird pixels simulator someone made over a decade ago, and then have you click it and you are right there trying it out instantly, is the new world that I'm talking about bringing in.
+
+Or maybe this interesting use of 167k of data might impress you. Or running a benchmark within the emulator, on itself. Or running a very early PC demo.
+
+The point is, that's what this is all about… not just about how better or worse it can play a specific game, or who is doing what out there in the realm of providing a free arcade. It's about making software playable. Really old software. Really playable.
+
+And if you want to define the last 3 years of work on this, it's been anything but lazy.

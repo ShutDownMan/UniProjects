@@ -27,6 +27,8 @@ stdlib.h
 -
 string.h
 -
+ctype.h
+-
 InvertionFileManipulation.h
 D:/Jedson/Documents/GitHub/UniProjects/C/AED/Trabalhos/Arquivo Inverso/InvertionFileManipulation.h
 
@@ -40,8 +42,6 @@ D:/Jedson/Documents/GitHub/UniProjects/C/AED/Trabalhos/Arquivo Inverso/Queue.c
 stdio.h
 -
 stdlib.h
--
-string.h
 -
 Queue.h
 D:/Jedson/Documents/GitHub/UniProjects/C/AED/Trabalhos/Arquivo Inverso/Queue.h

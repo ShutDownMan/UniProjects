@@ -1,0 +1,39 @@
+At the end of May, I mentioned the Ted Nelson Junk Mail project, where a group of people were scanning in boxes of mailings and pamphlets collected by Ted Nelson and putting them on the Internet Archive. Besides the uniqueness of the content, it was also unique in that we were trying to set it up to be self-sustaining from volunteer monetary contributions, and the compensate the scanners doing the work.
+
+This entire endeavor has been wildly successful.
+
+We are well past 18,000 pages scanned. We have taken in thousands in donations. And we now have three people scanning and one person entering metadata.
+
+Here is the spreadsheet with transparency and donation information.
+
+I highly encourage donating.
+
+But let's talk about how this collection continues to be amazing.
+
+Always, there are the pure visuals. As we're scanning away, we're starting to see trends in what we have, and everything seems to go from the early 1960s to the early 1990s, a 30-year scope that encompasses a lot of companies and a lot of industries. These companies are trying to thrive in a whirlpool of competing attention, especially in certain technical fields, and they try everything from humor to class to rudimentary fear-and-uncertainty plays in the art.
+
+These are exquisitely designed brochures, in many cases – obviously done by a firm or with an in-house group specifically tasked with making the best possible paper invitations and with little expense spared. After all, this might be the only customer-facing communication a company could have about its products, and might be the best convincing literature after the salesman has left or the envelope is opened.
+
+Scanning at 600dpi has been a smart move – you can really zoom in and see detail, find lots to play with or study or copy. Everything is at this level, like this detail about a magnetic eraser that lets you see the lettering on the side.
+
+Going after these companies for gender roles or other out-of-fashion jokes almost feels like punching down, but yeah, there's a lot of it. Women draped over machines, assumptions that women will be doing the typing, and clunky humor about fulfilling your responsibilities as a (male) boss abounds. Cultural norms regarding what fears reigned in business or how companies were expected to keep on top of the latest trends are baked in there too.
+
+The biggest obstacle going forward, besides bringing attention to this work, is going to be one of findability. The collection is not based on some specific subject matter other than what attracted Ted's attention over the decades. He tripped lightly among aerospace, lab science, computers, electronics, publishing… nothing escaped his grasp, especially in technical fields.
+
+If people are looking for pure aesthetic beauty, that is, "here's a drawing of something done in a very old way" or "here are old fonts", then this bounty is already, at 1,700 items, a treasure trove that could absorb weeks of your time. Just clicking around to items that on first blush seem to have boring title pages will often expand into breathtaking works of art and design.
+
+I'm not worried about that part, frankly – these kind of sell themselves.
+
+But there's so much more to find among these pages, and as we're now up to so many examples, it's going to be a challenge to get researching folks to find them.
+
+We have the keywording active, so you can search for terms like monitor, circuit, or hypercard and get more specific matches without concentrating on what the title says or what graphics appear on the front. The Archive has a full-text search, and so people looking for phrases will no doubt stumble into this collection.
+
+But how easily will people even think to know about a wristwatch for the Macintosh from 1990, a closed circuit camera called the Handy Looky..  or this little graphic, nestled away inside a bland software catalog:
+
+…I don't know. I'll mention that this is actually twitter-fodder among archivists, who are unhappy when someone is described as "discovering" something in the archives, when it was obvious a person cataloged it and put it there.
+
+But that's not the case here. Even Kyle, who's doing the metadata, is doing so in a descriptive fashion, and on a rough day of typing in descriptions, he might not particularly highlight unique gems in the pile (he often does, though). So, if you discover them in there, you really did discover them.
+
+So, the project is deep, delightful, and successful. The main consideration of this is funding; we are paying the scanners $10/hr to scan and the metadata is $15/hr. They work fast and efficiently. We track them on the spreadsheet. But that means a single day of this work can cause a notable bill. We're asking people on twitter to raise funds, but it never hurts to ask here as well. Consider donating to this project, because we may not know for years how much wonderful history is saved here.
+
+Please share the jewels you find.

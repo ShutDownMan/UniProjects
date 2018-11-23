@@ -1,0 +1,37 @@
+When, exactly, is the right time to introduce some new program or technology? What if, as is often the case, it is not quite 100% done or fully tested? Do you hold back until every corner has been sanded, and every surface sanded to a shine? Or do you put it out, splinters and smelling of the sawmill, and let it be finished in the open?
+
+Well, now you know my opinion.
+
+Announcing, everybody, The Emularity, once a simple name for a post on this weblog, but now its own piece of open-licensed software/scripts. I've been working with our lead coder on this project, Dan Brooks, for a number of months on this thing, and while it has a fairly spectacular and intimidating learning curve, I think it's set up well enough to justify handing it out.
+
+Consider The Emularity to be in a Beta state.
+
+If you're not in the mood to play around with a still smoking script package, then hold back and wait a little while until the Emularity is in better shape as a distributable. Oh, make no mistake, it works and works well. But there's still some pieces to iron out and documentation to write, along with examples to help you.
+
+Have I dropped enough caveats and warnings? Great.
+
+The Emularity came about because while the Internet Archive has this wonderful collection of tens of thousands of software package (and it will continue to grow it), the fact is that the methods and programs used to bring in-browser emulation to you shouldn't be locked away. They should be freed up, given away, and provided for others to build on, improve, debug and assist with its next level of adoption: Worldwide.
+
+With this software (and a bit of noodling), you can now run emulation for anything, anything, in the realm of JSMESS, JSMAME and EM-DOSBOX, which are the three main Javascript emulators running at the Internet Archive. In fact, as the Emularity page shows, we have provided three sets of javascript emulators, already compiled and waiting, that you can just drop right in along with the acquired software and just have everything run.
+
+Let's say it again:
+
+We Just Made In-Browser Emulation Ubiquitous, Peristent, and Easy.
+
+People are figuring out how we did the work with the in-browser emulation at the Archive and there's certainly been a handful of people and sites that went off and cloned things and tinkered enough to get them running on their own machines. Bravo. Always wanted that.
+
+But The Emularity is the attempt to make it so simple, so very effortless, to install an emulator for the software/console/machine of your choice and just have it run – in a local file directory, or a website, or file server in your school or office. Nothing less, in other words, than turning emulation into something that you can do as simply as you might drop a .ZIP file into a directory.
+
+Why?
+
+Because it's time.
+
+After a year plus of life with JSMESS and its variants/cousins, it's time to increase the audience even farther than it has been. To make it so that contributions to Emularity, or the JSMESS/JSMAME projects, is rewarded with your work being able to spread worldwide. It's no secret – our projects need people, smart people, who can look at the work we're doing with our loader and the .js files that the emulators consist of, and go "Oh, I know how to make that run twice as fast/twice as responsive" and contribute those improvements.
+
+I'm asking people to come in, work with the Emularity, complain about this aspect or that aspect, improve it, and contribute back the improvements. I want people to wander over to the emulators themselves and help us find ways to speed them up, to optimize the code/compiling so the system requirements for the best sound and performance is much lower than it's been up to this point.
+
+It's working. I want it to work better. And I want it, just like all the rest of the volunteers who've given countless hours to this project, to work everywhere.
+
+Let's do this thing.
+
+Let's celebrate the dawn of the Emularity.

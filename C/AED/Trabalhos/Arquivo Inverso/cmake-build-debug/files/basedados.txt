@@ -2,3 +2,10 @@
 ./files/conto.txt
 ./files/divisao.txt
 ./files/ipe.txt
+./files/the_undiscovered.txt
+./files/arq1.txt
+./files/arq2.txt
+./files/arq3.txt
+./files/arq4.txt
+./files/arq5.txt
+./files/arq6.txt

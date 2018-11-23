@@ -18,8 +18,8 @@ int main(int argc, const char *argv[]) {
 
     if (argc != 3) return 1;
 
-    if(!(txtFilesFile = fopen(argv[1], "r"))) return 1;
-    if(!(stopWordsFile = fopen(argv[2], "r"))) return 2;
+    if (!(txtFilesFile = fopen(argv[1], "r"))) return 1;
+    if (!(stopWordsFile = fopen(argv[2], "r"))) return 2;
 
     StopWordsList *stopWordsList = readStopWordsList(stopWordsFile);
     getWordInvertedFile(txtFilesFile, stopWordsList);

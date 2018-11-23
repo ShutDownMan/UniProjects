@@ -1,0 +1,34 @@
+It's inevitable that Archive Team would try to archive the hand that archives it.
+
+We dump a lot of data into the Internet Archive – hundreds of gigabytes a day. And the Archive itself has a goodly amount of petabytes in its stacks. Thanks to a series of articles and appearances, the Archive's getting some pretty good general attention. Lots of it. People are amazed, filled with wonder, impressed.
+
+They also tend to ask the same set of questions. Some of them tend to deal with the archive's "backup plan" or various off-the-cuff engineering questions. It's natural, I suppose. The Internet Archive definitely has engineering and backup plans; let's get that straight.
+
+But the idea intrigued me, just because I like the idea of there being data that people recognize is precious ("digital heritage" is still a new and not universal concept) and the inherent power that people felt with the Archive Team downloading projects being applied to storing away additional copies of collections on archive.org, not bound by geography, politics or censorship.
+
+So, I kind of launched into the idea of an experiment to back up the Internet Archive. Here's the initial essay and random thoughts about it. (It's not required reading.)
+
+What followed then was a miniature storm, with a bunch of people weighing in about how such a thing "should" be done, how impossible it was, good people will die on the beach, etc.
+
+But after a couple weeks of poking at the project with a stick, a working prototype came into being. We've been working on it, here and there, ever since, and right now, roughly 10 terabytes of Internet Archive materials are now backed up in at least three geographically separated areas around the world.
+
+More thoughts after the short list of relevant information I wanted you to have.
+
+    Again, it must be stressed, this is not an Internet Archive Project. Engineers and admins at Internet Archive work all day to make the site resilient. This is 100% separate.
+    We have 47 people/clients helping at the moment. We're ready to take on many, many more.
+    Here is a page showing the current status of the project. You can see how we add more data, and how we have people worldwide contributing.
+    As the project absorbs and verifies the 3 additional copies of the collections, additional collections are being added. So the more people, the better.
+    If you're packing a few hundred gigabytes of disk space (or more!) connected to the Internet, and are mounting it using a Unix/Linux variant, read up here.
+    The disk space you contribute need not be permanent – if you need it back, you can delete data in stages and the system will deal with it. We just want to use space you weren't using anyway.
+
+Again, the startup document for getting git-annex going on your system is located here.
+
+Some thoughts.
+
+First, the resistance and anger from some quarters when I brought this up was unexpected, although looking back, I guess it was inevitable. The idea that it might be done "wrong" in some way, that some attempt to back up the data in an errored approach would be worse than remaining at the status quo, seems to be endemic. Regardless, I strongly believe you need something done to be able to improve it, so we're pushing on.
+
+Next, the way to back up the Internet Archive is not to back up the entire Internet Archive – it's to move forward, incrementally, playing the game of "what is in here that's almost nowhere else and the world would be rather poor for it being going". In that way, we go for more of the "historical usenet" and "old time radio recordings" than, say, a random 1990s dance music collection. That said, as things go on, and if this experiment is successful, the dance music will get gathered up as well.
+
+Finally, what I like about this experiment is the amount of learning that goes into it. I like being on the ground, asking the questions that need to be asked – how big exactly is the whole thing? What sort of problems occur when you're tracking petabytes of data to back up? How how disk space is floating out there, unused, looking for a purpose, even if only temporary? What constitutes vital digital heritage? Finding out answers to those questions, getting the answers down, talking about what the whole thing means – that's where learning comes from.
+
+IA.BAK – it's the best thing you could be doing with unused disk space.

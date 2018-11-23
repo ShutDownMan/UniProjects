@@ -1,0 +1,39 @@
+There's a bit of a nuance here; this entry is less about the specific situation I'm talking about, than about the kind of situation it is.
+
+I got pulled into this whole thing randomly, when someone wrote me to let me know it was going along. Naturally, I fired into it all with all cylinders, but after a while, I figured out very good people were already on it, by days, and so I don't actually have to do much of anything. That works for me.
+
+It went down like this.
+
+MOS Technology designed the 6502 chip which was in a mass of home computers in the 1970s and 1980s. (And is still being sold today.) The company, founded in 1969, was purchased in 1976 by Commodore (they of the 64 and Amiga) and became their chip production arm. A lot of the nitty gritty details are in the Wikipedia page for MOS. This company, now a subsidiary, lived a little life in Pennsylvania throughout the 1980s as part of the Commodore family. I assume people went to work, designed things, parked in the parking lot, checked out prototypes, responded to crazy Commodore administration requests… the usual.
+
+In 1994, Commodore went out of business and its pieces bought by various groups. In the case of the MOS Technology building, it was purchased by various management and probably a little outside investment, and became a new company, called GMT Microelectronics. GMT did whatever companies like that do, until 2001, when they were shut down by the Environmental Protection Agency because it turns out they kind of contaminated the groundwater and didn't clean it up very well.
+
+Then the building sat, a memory to people who cared about the 6502 (like me), to former employees, and probably nobody else.
+
+Now, welcome to 2017!
+
+The building has gotten a new owner who wants to turn the property into something useful. To do this, they basically have to empty it, raze the building the ground, clean the ground, and then build a new building. Bravo, developer. Remember, this building has sat for 16 years, unwanted and unused.
+
+The sign from the GMT days still sits outside, unchanged and just aged from when the building was once that business. Life has certainly gone on. By the way, these photos are all from Doug Crawford of the Vintage Computing Federation, who took this tour in late 2017.
+
+Inside, as expected, it is a graffiti and firepit shitshow, the result of years of kids and others camping out in the building's skeletal remains and probably whiling away the weekends hanging out.
+
+And along with these pleasant scenes of decay and loss are some others involving what Doug thought were "Calcium Deposits" and which I personally interpret as maybe I never need to set foot in this building at any point in my future life and probably will have to burn any clothing I wear should I do so.
+
+But damn if Doug didn't make the journey into this environmentally problematic deathtrap to document it, and he even brought a guest of some reknown related to Commodore history: Bil Herd, one of the designers of the Commodore 128.
+
+So, here's what I want to get to: In this long-abandoned building, decades past prime and the province of trespassers and neglect, there turns out to have been quite a bit of Commodore history lying about.
+
+There's unquestionably some unusually neat items here old printed documentation, chip wafers, and those magnetic tapes of who knows what; maybe design or something else that needed storage.
+
+So here's the thing; the person who was cleaning up this building for demolishing was put into some really weird situations he wanted people to know this was here, and maybe offer it up to collectors, but as the blowback happened from folks when he revealed he'd been throwing stuff out, he was thrown into a defensive position and ultimately ended up sticking with looking into selling it, like salvage.
+
+I think there's two lessons here:
+
+    There's no question there's caches of materials out there, be they in old corporate offices, warehouses, storerooms, or what have you, that are likely precious windows into bygone technology. There's an important lesson in not assuming "everything" is gone and maybe digging a bit deeper. That means contacting places, inquiring with simple non-badgering questions, and being known as someone interested in some aspect of history so people might contact you about opportunities going forward.
+
+    Being a shouty toolbox about these opportunities will not improve the situation.
+
+I am lucky enough to be offered a lot of neat materials in a given month; people contact me about boxes, rooms and piles that they're not sure what the right steps are. They don't want to be lectured or shouted at; they want ideas and support as they work out their relationship to the material. These are often commercial products now long-gone and there's a narrative that old automatically means "payday at auction" and that may or may not be true; but it's a very compelling narrative, especially when times are hard.
+
+So much has been saved and yes, a lot has been lost. But if the creators of the 6502 can have wafers and materials sitting around for 20 years after the company closed, I think there's some brightness on the horizon for a lot of other "lost" materials as well.
