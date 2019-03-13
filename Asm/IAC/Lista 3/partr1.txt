@@ -1,0 +1,92 @@
+1.	__fastcall: Os dois primeiros argumentos de 32 bits ou menos são colocados nos registradores ECX e EDX e o resto é colocado na stack da direita para esquerda;
+	quem limpa a stack é a função chamada.
+	__cdecl: Argumentos são passados da direita para esquerda e colocados na stack;
+	quem limpa a stack é a função chamadora.
+	__stdcall: Argumentos são passados da direita para esquerda e colocados na stack;
+	quem limpa a stack é a função chamada.
+
+2.	int __stdcall sumExample (int a, int b);
+
+-	Função chamadora (__fastcall):
+  mov         edx,3
+  mov         ecx,2
+  call        @fastcallSum@8
+  mov         dword ptr [c],eax
+
+-	Função chamada (__fastcall):
+  push        ebp
+  mov         ebp,esp
+  sub         esp,0D8h
+  push        ebx
+  push        esi
+  push        edi
+  push        ecx
+  lea         edi,[ebp-0D8h]
+  mov         ecx,36h
+  mov         eax,0CCCCCCCCh
+  rep stos    dword ptr [edi]
+  pop         ecx
+  mov         dword ptr [ebp-14h],edx
+  mov         dword ptr [ebp-8],ecx
+  mov         eax,dword ptr [a]
+  add         eax,dword ptr [b]
+  pop         edi
+  pop         esi
+  pop         ebx
+  mov         esp,ebp
+  pop         ebp
+  ret
+
+-	Função chamadora (__cdecl):
+push        3
+push        2
+call        _sumExample
+add         esp,8
+mov         dword ptr [c],eax
+
+-	Função chamada (__cdecl):
+push        ebp
+mov         ebp,esp
+sub         esp,0C0h
+push        ebx
+push        esi
+push        edi
+lea         edi,[ebp-0C0h]
+mov         ecx,30h
+mov         eax,0CCCCCCCCh
+rep stos    dword ptr [edi]
+mov         eax,dword ptr [a]
+add         eax,dword ptr [b]
+pop         edi
+pop         esi
+pop         ebx
+mov         esp,ebp
+pop         ebp
+ret
+
+-	Função chamadora (__stdcall):
+push        3
+push        2
+call        _sumExample@8
+mov         dword ptr [c],eax
+
+-	Função chamada (__stdcall):
+push        ebp
+mov         ebp,esp
+sub         esp,0C0h
+push        ebx
+push        esi
+push        edi
+lea         edi,[ebp-0C0h]
+mov         ecx,30h
+mov         eax,0CCCCCCCCh
+rep stos    dword ptr [edi]
+mov         eax,dword ptr [a]
+add         eax,dword ptr [b]
+pop         edi
+pop         esi
+pop         ebx
+mov         esp,ebp
+pop         ebp
+ret         8
+

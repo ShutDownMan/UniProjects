@@ -1,0 +1,27 @@
+sistemas tutores inteligentes tem sido amplamente usados como
+recursos computacionais em sala de aula e tambem extra-classe. Alguns dos tutores
+mais amplamente empregados em escolas destinam-se a aprendizagem de algebra.
+uma das principais vantagens dos sistemas
+tutores e oferecer auxilio inteligente individualizado aos alunos, permitindo que eles
+aprendam no seu proprio ritmo.
+
+Para que os stis possam oferecer essa assistencia individualizada aos alunos,
+eles precisam guardar informacoes sobre perfil e habilidades dos mesmos. conforme
+o aluno interage com o sistema, resolvendo exercicios por exemplo, o tutor constroi um
+modelo deste aluno, identificando os conceitos que foram corretamente assimilados e
+relacionados a sua estrutura cognitiva, assim como as falsas concepcoes. o componente
+do sti responsavel por este mapeamento de informacoes e o modelo de aluno. 
+uma das formas que os mas mapeiam o conhecimento
+e atraves de redes bayesianas, por estas serem capazes de tratar a incerteza dos
+dados.
+Este artigo descreve a implementacao de uma rb para o mapeamento do
+conhecimento de algebra elementar, mais especificamente, de operacoes relacionadas a
+resolucao de equacoes de 1o grau. Esta rede fara parte do ma do projeto pat2math1, um
+sti voltado ao ensino de algebra elementar (equacoes de 1o e 2o grau com uma incognita).
+stis como o Andes, o sql-tutor,
+e o sti de algebra empregam rbs em suas arquiteturas, seja
+para identificar a linha de raciocinio do aluno, como para mapear seu conhecimento. o
+modelo proposto neste artigo possui o diferencial de considerar cada passo de resolucao
+da equacao como uma evidencia do conhecimento do aluno, ao inves de considerar apenas
+se o aluno acertou a resposta final. isso permite uma identificacao mais precisa das
+unidades de conhecimento do aluno.

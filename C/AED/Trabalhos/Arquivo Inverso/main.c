@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
+#include <stdlib.h>
 
 #include "InvertionFileManipulation.h"
 
@@ -26,6 +27,7 @@ int main(int argc, const char *argv[]) {
 
     MainMenuChoices choice;
     do {
+        system("CLS");
         choice = mainMenu();
 
         switch (choice) {

@@ -137,12 +137,10 @@ void addWordsFromFile(FILE *invertedFile, FILE *registryFile, StopWordsList *sto
             if (foundEntry) {
                 foundEntry->quant++;
                 writeEntryToFile(registryFile, registryHeader, foundEntry);
-//                printEntry(foundEntry);
                 free(foundEntry);
             }
         }
     }
-
 }
 
 /*!
@@ -154,7 +152,7 @@ void addWordsFromFile(FILE *invertedFile, FILE *registryFile, StopWordsList *sto
  * @postcondition nenhuma
  */
 char isValidWord(char *word, StopWordsList *stopWordsList) {
-    if (!word[0]) return 0;
+    if (!word[0] || !word[1]) return 0;
 
     /// testa se palavra é stopword
     for (int i = 0; i < stopWordsList->length; ++i) {
@@ -181,11 +179,14 @@ int getNextWord(char *wordBuffer, FILE *f) {
 
     /// lê char por char até montar proxima palavra no arquivo
     do {
-        if (fscanf(f, "%c", &c) == EOF && !i) return EOF;
+        fscanf(f, "%c", &c);
+        if (feof(f) && !i) return EOF;
 
         if ((isValidCharacter = isValidChar(c))) {
             wordBuffer[i++] = c;
         }
+
+        if (feof(f)) return EOF;
     } while (isValidCharacter);
 
     wordBuffer[i] = 0;

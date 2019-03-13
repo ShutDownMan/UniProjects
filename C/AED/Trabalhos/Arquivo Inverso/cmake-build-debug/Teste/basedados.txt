@@ -1,0 +1,8 @@
+musica/elisregina.txt
+musica/milton.txt
+literatura/ferreiragullar.txt
+literatura/rubemalves.txt
+objaprend/oa.txt
+objaprend/oa2.txt
+objaprend/oa3.txt
+sti/sti1.txt

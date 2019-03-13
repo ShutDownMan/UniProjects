@@ -1,0 +1,13 @@
+Q=5
+F={q4}
+alfabeto={a,b,X,Y}
+(q0,a)=(q1,X,D)
+(q0,Y)=(q3,Y,D)
+(q1,a)=(q1,a,D)
+(q1,Y)=(q1,Y,D)
+(q1,b)=(q2,Y,E)
+(q2,a)=(q2,a,E)
+(q2,Y)=(q2,Y,E)
+(q2,X)=(q0,X,D)
+(q3,Y)=(q3,Y,D)
+(q3,$)=(q4,$,E)
