@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-
 #include "start.h"
 #include "sorts.h"
 #include "function_clock.h"

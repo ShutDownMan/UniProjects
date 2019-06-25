@@ -1,6 +1,12 @@
 #ifndef START_H
 #define START_H
 
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
 #define MAXRAND UINT_MAX
 
 #define SORT_TYPE_INVALID -1
