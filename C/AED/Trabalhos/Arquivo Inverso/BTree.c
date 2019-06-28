@@ -195,7 +195,6 @@ void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, RegData inf
             /// insere valor no nó atual
             insertOnRight(currentNode, pos, info, -1);
         } else {
-
             /// lê nó indicado para inserção
             BTreeNode *node = readBTreeNode(f, currentNode->children[pos]);
             /// insere no nó lido
@@ -271,11 +270,11 @@ BTreeNode *split(BTreeNode *node, RegData *m) {
     *m = node->keys[q];
 
     /// atribui valores acima da posição mediana de node para newNode
-    newNode->children[0] = node->children[q + 1];
     for (int i = 0; i < q; ++i) {
         newNode->keys[i] = node->keys[q + 1 + i];
-        newNode->children[i + 1] = node->children[q + 2 + i];
+        newNode->children[i] = node->children[q + i];
     }
+    newNode->children[q] = node->children[ORDER - 1];
 
     /// retona nó criado na operação
     return newNode;

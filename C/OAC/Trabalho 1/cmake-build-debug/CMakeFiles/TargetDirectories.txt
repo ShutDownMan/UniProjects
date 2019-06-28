@@ -1,0 +1,3 @@
+D:/Jedson/Documents/GitHub/UniProjects/C/OAC/Trabalho 1/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Jedson/Documents/GitHub/UniProjects/C/OAC/Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir
+D:/Jedson/Documents/GitHub/UniProjects/C/OAC/Trabalho 1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

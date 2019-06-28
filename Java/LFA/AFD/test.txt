@@ -1,0 +1,8 @@
+alfabeto={a,b,c}
+estados={<inicial>,q1,q2}
+inicial=<inicial>
+finais={<inicial>,q1}
+(<inicial>,a) = q1
+(q1,a) = q1
+(q1,b) = q2
+(q2,c) = q1

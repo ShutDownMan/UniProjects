@@ -39,7 +39,7 @@ List* insert(List *list, int val) {
 }
 
 List* insert_apos(List *list, int val, int x) {
-    List *next;
+    List *aux;
 
     if(isEmpty(list)) {
         return createKnot(x);
@@ -50,9 +50,9 @@ List* insert_apos(List *list, int val, int x) {
         return list;
     }
 
-    next = list->next;
-    list->next = createKnot(x);
-    list->next->next = next;
+    aux = list->next;
+    list->next = createKnot(val);
+    list->next->next = aux;
 
     return list;
 }

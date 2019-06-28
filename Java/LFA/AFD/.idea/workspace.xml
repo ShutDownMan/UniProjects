@@ -2,21 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f9ba1b-16b7-4aa5-a267-25a06ae89d2d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../Turing Machine/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/BTree.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/BTree.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/EntryManipulation.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/EntryManipulation.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/Menus.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/Menus.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/BTree.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/BTree.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/EntryManipulation.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/EntryManipulation.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/Menus.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/Menus.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/CMakeFiles/BTree.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/btree.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/btree.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/cmake-build-debug/data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../C/AED/BTree/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/BTree/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C2/Aulas/Infix/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../C2/Aulas/Infix/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../C/OAC/Trabalho 1/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../C/OAC/Trabalho 1/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/LinkedLists/LinkedLists (Approach 2)/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/LinkedLists/LinkedLists (Approach 2)/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/BTree.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/BTree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/BTree.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/BTree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/InvertionFileManipulation.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/InvertionFileManipulation.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/BTree.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/BTree.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/InvertionFileManipulation.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/InvertionFileManipulation.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Arquivo_Inverso.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/Teste/basedados.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/Teste/basedados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/files/basedados.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/files/basedados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/files/stopwords.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/files/stopwords.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/invertedFile.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/invertedFile.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/registryFile.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/Arquivo Inverso/cmake-build-debug/registryFile.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/AFD_jar/AFD.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/AFD_jar/AFD.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Turing Machine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Turing Machine/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +47,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="105" column="25" lean-forward="true" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+            <state relative-caret-position="2288">
+              <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,26 +59,26 @@
       <file leaf-file-name="FileScanner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14">
-              <caret line="72" column="21" selection-start-line="59" selection-end-line="78" selection-end-column="9" />
+            <state>
+              <caret column="20" selection-start-column="20" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Automata.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Automata.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
+            <state relative-caret-position="3388">
+              <caret line="154" column="64" selection-start-line="154" selection-start-column="64" selection-end-line="154" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="State.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="State.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/State.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+            <state relative-caret-position="441">
+              <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -81,6 +97,8 @@
       <find>[%s]</find>
       <find>'%s'</find>
       <find>automato</find>
+      <find>containsKey</find>
+      <find>Character</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -97,11 +115,11 @@
         <option value="$PROJECT_DIR$/src/Java/com/jedson/afd/FileScanner.java" />
         <option value="$PROJECT_DIR$/src/Java/com/jedson/afd/Automata.java" />
         <option value="$PROJECT_DIR$/src/Java/com/jedson/afd/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/jedson/afd/State.java" />
         <option value="$PROJECT_DIR$/src/com/jedson/afd/Main.java" />
         <option value="$PROJECT_DIR$/automata.txt" />
-        <option value="$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java" />
         <option value="$PROJECT_DIR$/src/com/jedson/afd/Automata.java" />
+        <option value="$PROJECT_DIR$/src/com/jedson/afd/State.java" />
+        <option value="$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java" />
       </list>
     </option>
   </component>
@@ -126,9 +144,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,6 +213,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -312,11 +330,13 @@
       <workItem from="1534946077925" duration="842000" />
       <workItem from="1537291580644" duration="320000" />
       <workItem from="1540756709599" duration="4575000" />
+      <workItem from="1560008144967" duration="1300000" />
+      <workItem from="1560444900729" duration="308000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51644000" />
+    <option name="totallyTimeSpent" value="53252000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -339,50 +359,50 @@
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5013423" side_tool="true" weight="0.18328841" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.61051214" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.61051214" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49731544" weight="0.23584905" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.23933902" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.24466951" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
       <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49932885" weight="0.32884097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32884097" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49932885" weight="0.32881" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.32884097" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4986577" weight="0.18328841" />
       <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26912752" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.4986577" weight="0.23180594" />
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32884097" />
+      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" weight="0.23584905" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39892185" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49798658" weight="0.32345015" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5013423" side_tool="true" weight="0.18328841" />
       <window_info id="Capture Tool" order="1" />
       <window_info anchor="bottom" id="Message" order="3" />
@@ -398,13 +418,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/automata.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -736,17 +749,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/State.java">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_161/src.zip!/java/util/HashMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+        <state relative-caret-position="311">
+          <caret line="594" column="28" selection-start-line="594" selection-start-column="19" selection-end-line="594" selection-end-column="30" />
+          <folding>
+            <element signature="e#23628#23629#0" expanded="true" />
+            <element signature="e#23682#23683#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="105" column="25" lean-forward="true" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+        <state relative-caret-position="2288">
+          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -755,15 +772,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/FileScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="72" column="21" selection-start-line="59" selection-end-line="78" selection-end-column="9" />
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/Automata.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
+        <state relative-caret-position="3388">
+          <caret line="154" column="64" selection-start-line="154" selection-start-column="64" selection-end-line="154" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jedson/afd/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
         </state>
       </provider>
     </entry>

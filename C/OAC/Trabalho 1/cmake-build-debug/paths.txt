@@ -1,0 +1,30 @@
+1. Defina:
+	a) Arquitetura
+		A arquitetura de computadores é uma especificação que detalha como um conjunto de padrões de tecnologia de software e hardware interage para formar um sistema ou plataforma de computador. Em suma, a arquitetura do computador refere-se a como um sistema de computador é projetado e com quais tecnologias ele é compatível.
+	b) Organização
+		A organização de computadores preocupa-se com a maneira como os componentes de hardware operam e a maneira como eles são conectados para formar o sistema de computador.
+		Presume-se que os vários componentes estejam implementados e que a tarefa é investigar a estrutura organizacional para verificar se as partes do computador operam como pretendido.
+	c) Tradutor
+		É um programa programa programa escrito na linguagem linguagem linguagem linguagem Ln-1
+		Ele recebe um programa fonte escrito na linguagem Ln;
+		Para cada instrução do programa fonte o tradutor gera um conjunto de instruções  equivalentes na linguagem alvo (Ln-1).
+		O programa fonte pode ser traduzido uma única vez e executado várias vezes.
+	d) Interpretador
+		É um programa escrito em Ln-1;
+		Recebe programas fonte, escritos em Ln como dados de entrada e efetua a execução de cada instrução do programa fonte, examinando-a e executando uma sequência equivalente de instruçõesde Ln-1 diretamente.
+		Não cria um programa na linguagem Ln-1;
+	e) Throughput
+		A taxa de processamento bruta de uma arquitetura.
+	f) Tempo de resposta
+		Latência do sistema, é o tempo necessário para executar alguma ação ou produzir algum resultado.
+
+2. 
+
+3. Níveis de Abstração
+	Nivel 0 - Nível da lógica digital
+		Nivel mais baixo da estrutura
+		Objetos de interesse são conhecidos como portas lógicas.
+		Cada porta lógica possui 1 ou mais entradas digitais (aceitam 0 ou 1) e calculam funções lógicas simples sobre essas entradas. Exemplos: AND, OR, XOR,...
+		Portas lógicas são combinadas para formar memórias de um bit -> registradores -> o processador -> principal dispositivo do computador.
+	Nível 1 - Nível de Arquitetura
+		Memória local e ULA que realiza 

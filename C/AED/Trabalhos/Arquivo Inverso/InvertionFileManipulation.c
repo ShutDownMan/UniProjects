@@ -99,7 +99,7 @@ void addWordsFromFile(FILE *invertedFile, FILE *registryFile, StopWordsList *sto
         if (isValidWord(word, stopWordsList)) {
             /// insert on invertedFile
 
-//            printf("--> %s\n", word);
+//            printf("\t--> %s\n", word);
             /// se palavra não existe na arvore
             if (!(foundEntry = searchEntryBTree(invertedFile, registryFile, word))) {
                 /// adiciona palavra na arvore
@@ -180,6 +180,7 @@ int getNextWord(char *wordBuffer, FILE *f) {
     /// lê char por char até montar proxima palavra no arquivo
     do {
         fscanf(f, "%c", &c);
+        c = (char) tolower(c);
         if (feof(f) && !i) return EOF;
 
         if ((isValidCharacter = isValidChar(c))) {
@@ -204,7 +205,7 @@ int getNextWord(char *wordBuffer, FILE *f) {
 char isValidChar(char c) {
     /// testa se charactere é pontuação
 //    return (c != '\n' && c != ' ' && c != '.' && c != ',' && c != '!' && c != '?' && c != ';' && c != ':');
-    return (isalnum(c) || c == '-' || c == '\'');
+    return (isalnum(c) && !isdigit(c));
 }
 
 /*!

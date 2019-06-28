@@ -1,0 +1,1 @@
+INSERT INTO curso(NomeCurso, SiglaCurso) VALUES('Matemática', 'MAT');

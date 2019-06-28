@@ -10,7 +10,7 @@
 #include "Registy.h"
 
 #define MAXSTR 16
-#define ORDER 5
+#define ORDER 3
 
 typedef struct RegData {
     char id[MAXSTR];

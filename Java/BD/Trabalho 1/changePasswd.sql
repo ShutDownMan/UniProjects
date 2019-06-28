@@ -1,0 +1,1 @@
+UPDATE mysql.user SET Password=PASSWORD('123456sete') WHERE User='Jedson' AND Host='localhost';
