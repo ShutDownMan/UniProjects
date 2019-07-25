@@ -17,7 +17,8 @@ void Multiplexer::updateIO() {
     this->inputBBus->update();
     this->controlSignal->update();
 
-    this->outBus->setValue((!this->controlSignal->getValue()) ? this->inputABus->getValue() : this->inputBBus->getValue());
+    this->outBus->setValue(
+            (!this->controlSignal->getValue()) ? this->inputABus->getValue() : this->inputBBus->getValue());
 }
 
 void Multiplexer::initialize(INBus *inputABusRef, INBus *inputBBusRef, INBus *controlSignalRef) {

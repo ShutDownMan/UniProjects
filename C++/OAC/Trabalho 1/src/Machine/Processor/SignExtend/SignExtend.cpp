@@ -14,7 +14,7 @@ void SignExtend::updateIO() {
 
     int16_t s = this->inBus->getValue();
 
-    this->outBus->setValue((int32_t)s);
+    this->outBus->setValue((int32_t) s);
 }
 
 void SignExtend::initialize(INBus *inBusRef) {

@@ -48,7 +48,7 @@ void Processor::initialize() {
 
     Machine::debugInfo("Initializing Component: Alu Controller");
     this->aluControl->initialize(new INBus(0x0000002F, this->instructionMemory->getInstructionBus()),
-                                 new INBus(this->control->getAluOpSignal()));
+                                 new INBus(0x00000003, this->control->getAluOpSignal()));
 
     Machine::debugInfo("Initializing Component: Adder 2");
     this->adder_2->initialize(new INBus(this->shiftLeft2->getOutBus()),

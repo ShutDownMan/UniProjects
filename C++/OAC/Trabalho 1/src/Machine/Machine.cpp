@@ -18,10 +18,14 @@ void Machine::clock() {
         processor->updateIO();
 
         c = getchar_unlocked();
-    } while(c != 'q');
+    } while (c != 'q');
 }
 
 
 void Machine::debugInfo(const char *message) {
     fprintf(stderr, "%s\n", message);
+}
+
+void Machine::initialize(char *instructionsFile) {
+
 }

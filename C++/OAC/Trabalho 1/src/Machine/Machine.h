@@ -11,17 +11,18 @@
 #include "Processor.h"
 
 class Machine {
-public:
-    Machine();
-
 private:
     Processor *processor;
 
+    // Memory memory;
 
 public:
+    Machine();
+
+    void initialize(char *instructionsFile);
+
     void clock();
 
-//    Memory memory;
     static void debugInfo(const char *message);
 };
 
