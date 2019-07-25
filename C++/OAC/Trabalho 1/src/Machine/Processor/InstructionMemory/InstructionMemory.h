@@ -11,6 +11,8 @@
 
 class InstructionMemory {
 private:
+    unsigned int *memory;
+
     INBus *readAddressBus;
 
     OUTBus *instructionBus;
@@ -22,7 +24,7 @@ public:
 
     void updateIO();
 
-    void initialize(INBus *readAddressBusRef);
+    void initialize(unsigned int *memoryRef, INBus *readAddressBusRef);
 
     OUTBus *getInstructionBus() const;
 };

@@ -14,8 +14,6 @@ void PCRegister::initialize(INBus *refInBus) {
 }
 
 void PCRegister::updateState() {
-    this->inBus->update();
-
     this->outBus->setValue(this->inBus->getValue());
 }
 

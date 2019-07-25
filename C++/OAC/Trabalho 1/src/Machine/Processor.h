@@ -59,7 +59,7 @@ public:
 public:
     Processor();
 
-    void initialize();
+    void initialize(unsigned int *instructionMemoryRef);
 
     void clock();
 

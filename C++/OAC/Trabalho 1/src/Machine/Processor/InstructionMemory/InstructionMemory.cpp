@@ -9,16 +9,17 @@ InstructionMemory::InstructionMemory() {
     this->instructionBus = new OUTBus();
 }
 
-void InstructionMemory::updateState() {
+void InstructionMemory::initialize(unsigned int *memoryRef, INBus *readAddressBusRef) {
+    this->memory = memoryRef;
+    this->readAddressBus = readAddressBusRef;
+}
 
+void InstructionMemory::updateState() {
+    this->instructionBus->setValue(this->memory[this->readAddressBus->getValue()]);
 }
 
 void InstructionMemory::updateIO() {
     this->readAddressBus->update();
-}
-
-void InstructionMemory::initialize(INBus *readAddressBusRef) {
-    this->readAddressBus = readAddressBusRef;
 }
 
 OUTBus *InstructionMemory::getInstructionBus() const {

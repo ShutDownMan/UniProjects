@@ -10,17 +10,19 @@
 
 class ShiftLeft2 {
 private:
-    INBus *inBus{};
-    OUTBus *outBus{};
-public:
-    OUTBus *getOutBus() const;
+    INBus *inBus;
+    OUTBus *outBus;
 
 public:
+    ShiftLeft2();
+
     void updateState();
 
     void updateIO();
 
     void initialize(INBus *inBusRef);
+
+    OUTBus *getOutBus() const;
 };
 
 

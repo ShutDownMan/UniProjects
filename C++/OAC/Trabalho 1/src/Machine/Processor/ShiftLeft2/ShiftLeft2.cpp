@@ -4,6 +4,10 @@
 
 #include "ShiftLeft2.h"
 
+ShiftLeft2::ShiftLeft2() {
+    this->outBus = new OUTBus();
+}
+
 void ShiftLeft2::updateState() {
 
 }

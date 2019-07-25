@@ -5,9 +5,43 @@
 #include "Processor.h"
 #include "Machine.h"
 
-Processor::Processor() = default;
+Processor::Processor() {
+    this->pc = new PCRegister();
 
-void Processor::initialize() {
+    this->num4Const = new OUTBus();
+
+    this->adder_1 = new Adder();
+
+    this->instructionMemory = new InstructionMemory();
+
+    this->control = new Control();
+
+    this->regDstMux = new Multiplexer();
+
+    this->registers = new Registers();
+
+    this->signExtend = new SignExtend();
+
+    this->shiftLeft2 = new ShiftLeft2();
+
+    this->aluSrcMux = new Multiplexer();
+
+    this->aluControl = new ALUControl();
+
+    this->adder_2 = new Adder();
+
+    this->alu = new ALU();
+
+    this->branchZeroAnd = new And();
+
+    this->branchZeroMux = new Multiplexer();
+
+    this->dataMemory = new DataMemory();
+
+    this->memToRegMux = new Multiplexer();
+}
+
+void Processor::initialize(unsigned int *instructionMemoryRef) {
     Machine::debugInfo("Initializing Component: PC Register");
     this->pc->initialize(new INBus(branchZeroMux->getOutBus()));
 
@@ -19,7 +53,8 @@ void Processor::initialize() {
                               new INBus(this->num4Const));
 
     Machine::debugInfo("Initializing Component: Instruction Memory");
-    this->instructionMemory->initialize(new INBus(pc->getOutBus()));
+    this->instructionMemory->initialize(instructionMemoryRef,
+                                        new INBus(pc->getOutBus()));
 
     Machine::debugInfo("Initializing Component: Controller");
     this->control->initialize(new INBus(0xFE000000, instructionMemory->getInstructionBus()));

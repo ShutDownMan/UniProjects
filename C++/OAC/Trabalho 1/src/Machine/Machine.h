@@ -24,6 +24,8 @@ public:
     void clock();
 
     static void debugInfo(const char *message);
+
+    unsigned int getInstructionFromLine(const char str[255]);
 };
 
 
