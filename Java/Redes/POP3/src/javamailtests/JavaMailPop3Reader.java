@@ -12,13 +12,13 @@ public class JavaMailPop3Reader {
         // mail server connection parameters
         String host = "pop.mail.yahoo.com";
         String user = "jesuistoiamigo";
-        String password = "RTA402016";
+        String password = "";
 
         // connect to my pop3 inbox
         Properties properties = System.getProperties();
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 
-        Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+//        Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
         properties.setProperty("mail.pop3.socketFactory.class", SSL_FACTORY);
         properties.setProperty("mail.pop3.socketFactory.fallback", "false");
         properties.setProperty("mail.pop3.port", "995");
