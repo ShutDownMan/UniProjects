@@ -11,13 +11,21 @@ Machine::Machine() {
 
 void Machine::clock() {
     char c;
+    int i = 0;
 
     do {
         processor->clock();
+        printf("------------------------------------------------\n");
         processor->updateIO();
+        printf("------------------------------------------------\n");
 
-        c = getchar_unlocked();
-    } while (c != 'q');
+        processor->printRegisters();
+        printf("------------------------------------------------\n");
+        processor->printMemory();
+        printf("------------------------------------------------\n");
+
+        c = getchar();
+    } while (i++ < 13 && c != 'q');
 }
 
 
@@ -28,7 +36,7 @@ void Machine::debugInfo(const char *message) {
 void Machine::initialize(char *instructionsFile) {
     FILE *f = fopen(instructionsFile, "r");
 
-    if(!f)
+    if (!f)
         exit(1);
 
     int i;
@@ -55,3 +63,5 @@ unsigned int Machine::getInstructionFromLine(const char *str) {
 
     return res;
 }
+
+

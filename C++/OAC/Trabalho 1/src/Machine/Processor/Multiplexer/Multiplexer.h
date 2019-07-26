@@ -24,6 +24,8 @@ public:
     void initialize(INBus *inputABusRef, INBus *inputBBusRef, INBus *controlSignalRef);
 
     OUTBus *getOutBus() const;
+
+    void printContents();
 };
 
 

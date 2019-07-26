@@ -15,7 +15,7 @@ public:
 
     int getValue() const;
 
-    void setValue(int newValue);
+    void setValue(unsigned int newValue);
 
 };
 

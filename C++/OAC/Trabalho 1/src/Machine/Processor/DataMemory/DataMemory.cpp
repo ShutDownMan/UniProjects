@@ -3,28 +3,61 @@
 //
 
 #include "DataMemory.h"
+#include <string>
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+DataMemory::DataMemory() {
+    this->addressBus = nullptr;
+    this->writeDataBus = nullptr;
+    this->writeMemControlBus = nullptr;
+    this->readMemControlBus = nullptr;
+
+    this->readDataBus = new OUTBus();
+}
 
 void DataMemory::updateState() {
-
+    int val;
+    if (this->writeMemControlBus->getValue())
+        memcpy(&this->memory[this->addressBus->getValue()], &(val = this->writeDataBus->getValue()), sizeof(int));
 }
 
 void DataMemory::updateIO() {
-    this->writeData->update();
+    this->writeDataBus->update();
     this->addressBus->update();
+    this->readMemControlBus->update();
+    this->writeMemControlBus->update();
+
+    if (this->readMemControlBus->getValue())
+        this->readDataBus->setValue(this->memory[this->addressBus->getValue()]);
 }
 
-void DataMemory::initialize(INBus *addressBusRef, INBus *writeDataRef) {
+void DataMemory::initialize(INBus *addressBusRef, INBus *writeDataRef, INBus *writeMemControlBusRef,
+                            INBus *readMemControlBusRef) {
     this->addressBus = addressBusRef;
-    this->writeData = writeDataRef;
-}
-
-DataMemory::DataMemory() {
-    this->readDataBus = new OUTBus();
-
-    this->addressBus = nullptr;
-    this->writeData = nullptr;
+    this->writeDataBus = writeDataRef;
+    this->readMemControlBus = readMemControlBusRef;
+    this->writeMemControlBus = writeMemControlBusRef;
 }
 
 OUTBus *DataMemory::getReadDataBus() const {
     return readDataBus;
+}
+
+const unsigned char *DataMemory::getMemory() const {
+    return memory;
+}
+
+void DataMemory::printContents() {
+    string str = "DataMemory:\n";
+
+    str += "\taddressBus: " + to_string(this->addressBus->getValue()) + "\n";
+    str += "\twriteDataBus: " + to_string(this->writeDataBus->getValue()) + "\n";
+    str += "\treadMemControlBus: " + to_string(this->readMemControlBus->getValue()) + "\n";
+    str += "\twriteMemControlBus: " + to_string(this->writeMemControlBus->getValue()) + "\n";
+    str += "\treadDataBus: " + to_string(this->readDataBus->getValue()) + "\n";
+
+    cout << str << endl;
 }

@@ -16,8 +16,6 @@ private:
 public:
     ShiftLeft2();
 
-    void updateState();
-
     void updateIO();
 
     void initialize(INBus *inBusRef);

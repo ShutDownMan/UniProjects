@@ -8,7 +8,7 @@ int OUTBus::getValue() const {
     return value;
 }
 
-void OUTBus::setValue(int newValue) {
+void OUTBus::setValue(unsigned int newValue) {
     OUTBus::value = newValue;
 }
 

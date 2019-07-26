@@ -5,17 +5,14 @@
 #include "ShiftLeft2.h"
 
 ShiftLeft2::ShiftLeft2() {
+    this->inBus = nullptr;
     this->outBus = new OUTBus();
-}
-
-void ShiftLeft2::updateState() {
-
 }
 
 void ShiftLeft2::updateIO() {
     this->inBus->update();
 
-    this->outBus->setValue(this->inBus->getValue() << 2);
+    this->outBus->setValue(this->inBus->getValue() << 2u);
 }
 
 void ShiftLeft2::initialize(INBus *inBusRef) {

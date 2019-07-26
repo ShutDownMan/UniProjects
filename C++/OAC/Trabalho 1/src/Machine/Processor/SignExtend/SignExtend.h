@@ -22,6 +22,8 @@ public:
     void initialize(INBus *inBusRef);
 
     OUTBus *getOutBus() const;
+
+    void printContents();
 };
 
 

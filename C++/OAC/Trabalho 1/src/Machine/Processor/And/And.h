@@ -18,13 +18,13 @@ private:
 public:
     And();
 
-    void updateState();
-
     void updateIO();
 
     void initialize(INBus *inputABusRef, INBus *inputBBusRef);
 
     OUTBus *getOutBus() const;
+
+    void printContents();
 };
 
 

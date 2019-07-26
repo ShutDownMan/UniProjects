@@ -12,7 +12,7 @@ INBus::INBus(OUTBus *refBus) : refBus(refBus) {
 
 INBus::INBus(unsigned int mask, OUTBus *refBus) : mask(mask), refBus(refBus) {
     this->value = 0;
-    this->fistSetBit = ffs(mask);
+    this->fistSetBit = ffs(mask) - 1;
 }
 
 void INBus::update() {

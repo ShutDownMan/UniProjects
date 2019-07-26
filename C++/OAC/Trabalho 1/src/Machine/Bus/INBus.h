@@ -11,8 +11,8 @@
 class INBus {
 
 private:
-    unsigned int value{};
-    unsigned int mask{};
+    unsigned int value;
+    unsigned int mask;
 
     unsigned char fistSetBit;
 

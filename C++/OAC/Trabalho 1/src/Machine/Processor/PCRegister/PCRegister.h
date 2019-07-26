@@ -24,6 +24,8 @@ public:
 
     OUTBus *getOutBus() const;
 
+    void printContents();
+
 };
 
 

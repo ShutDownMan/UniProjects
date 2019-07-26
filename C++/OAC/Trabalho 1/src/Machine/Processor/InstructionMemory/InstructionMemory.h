@@ -27,6 +27,8 @@ public:
     void initialize(unsigned int *memoryRef, INBus *readAddressBusRef);
 
     OUTBus *getInstructionBus() const;
+
+    void printContents();
 };
 
 

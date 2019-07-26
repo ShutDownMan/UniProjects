@@ -9,9 +9,14 @@
 #include "../../Bus/INBus.h"
 
 class DataMemory {
+
 private:
+    unsigned char memory[65536] = {0};
+
     INBus *addressBus;
-    INBus *writeData = nullptr;
+    INBus *writeDataBus;
+    INBus *writeMemControlBus;
+    INBus *readMemControlBus;
 
     OUTBus *readDataBus;
 
@@ -22,9 +27,14 @@ public:
 
     void updateIO();
 
-    void initialize(INBus *addressBusRef, INBus *writeDataRef);
+    void
+    initialize(INBus *addressBusRef, INBus *writeDataRef, INBus *writeMemControlBusRef, INBus *readMemControlBusRef);
 
     OUTBus *getReadDataBus() const;
+
+    const unsigned char *getMemory() const;
+
+    void printContents();
 };
 
 

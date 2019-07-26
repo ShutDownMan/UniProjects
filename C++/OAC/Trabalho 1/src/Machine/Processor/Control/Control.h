@@ -8,26 +8,27 @@
 #include "../../Bus/OUTBus.h"
 #include "../../Bus/INBus.h"
 
-#define IS_RTYPE_INSTRUCTION    0x3F
-#define IS_LW_INSTRUCTION       0x23
-#define IS_SW_INSTRUCTION       0x2B
-#define IS_BEQ_INSTRUCTION      0x04
+#define IS_RTYPE_INSTRUCTION    0x00u
+#define IS_LW_INSTRUCTION       0x23u
+#define IS_SW_INSTRUCTION       0x2Bu
+#define IS_BEQ_INSTRUCTION      0x04u
+#define IS_LI_INSTRUCTION       0x0Fu
 
 typedef enum InstructionType {
     RTYPE,
     LW,
     SW,
     BEQ,
+    LI,
     NONE
 } InstructionType;
+static const char * InstructionTypeStrings[] = { "RTYPE", "LW", "SW", "BEQ", "LI", "NONE" };
 
 class Control {
+
 private:
     INBus *inBus;
 
-    OUTBus *RegDstSignal;
-
-private:
     OUTBus *BranchSignal;
     OUTBus *MemReadSignal;
     OUTBus *MemToRegSignal;
@@ -35,6 +36,10 @@ private:
     OUTBus *MemWriteSignal;
     OUTBus *ALUSrcSignal;
     OUTBus *RegWriteSignal;
+    OUTBus *RegDstSignal;
+    OUTBus *RegDataSrcSignal;
+public:
+    OUTBus *getRegDataSrc() const;
 
 public:
     Control();
@@ -60,9 +65,9 @@ public:
     OUTBus *getRegWriteSignal() const;
 
 
-    unsigned int testRegisterDestinationSignal(InstructionType type);
-
     InstructionType getInstructionType();
+
+    void printContents();
 };
 
 

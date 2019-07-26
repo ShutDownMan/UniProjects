@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Machine/Machine.h"
 
+using namespace std;
+
 int main() {
     auto *machine = new Machine();
 
@@ -12,4 +14,3 @@ int main() {
 
     return 0;
 }
-

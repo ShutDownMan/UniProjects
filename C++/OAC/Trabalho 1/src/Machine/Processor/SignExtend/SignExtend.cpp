@@ -4,8 +4,14 @@
 
 #include <cstdint>
 #include "SignExtend.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 SignExtend::SignExtend() {
+    this->inBus = nullptr;
+
     this->outBus = new OUTBus();
 }
 
@@ -23,4 +29,14 @@ void SignExtend::initialize(INBus *inBusRef) {
 
 OUTBus *SignExtend::getOutBus() const {
     return outBus;
+}
+
+void SignExtend::printContents() {
+    string str = "SignExtend:\n";
+
+    str += "\tinBus: " + to_string(this->inBus->getValue()) + "\n";
+    str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
+
+    cout << str << endl;
+
 }

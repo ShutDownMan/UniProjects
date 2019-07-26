@@ -3,6 +3,10 @@
 //
 
 #include "Multiplexer.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 Multiplexer::Multiplexer() {
     this->inputABus = nullptr;
@@ -29,4 +33,14 @@ void Multiplexer::initialize(INBus *inputABusRef, INBus *inputBBusRef, INBus *co
 
 OUTBus *Multiplexer::getOutBus() const {
     return outBus;
+}
+
+void Multiplexer::printContents() {
+    string str = "Multiplexer:\n";
+
+    str += "\tinputABus: " + to_string(this->inputABus->getValue()) + "\n";
+    str += "\tinputBBus: " + to_string(this->inputBBus->getValue()) + "\n";
+    str += "\tcontrolSignal: " + to_string(this->controlSignal->getValue()) + "\n";
+
+    cout << str << endl;
 }

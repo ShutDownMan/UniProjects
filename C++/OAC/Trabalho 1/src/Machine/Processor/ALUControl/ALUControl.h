@@ -23,6 +23,8 @@ public:
     void initialize(INBus *inBusRef, INBus *controlBusRef);
 
     OUTBus *getOutBus() const;
+
+    void printContents();
 };
 
 

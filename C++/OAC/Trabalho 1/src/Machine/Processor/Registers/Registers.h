@@ -11,10 +11,14 @@
 
 class Registers {
 private:
+    unsigned int memory[32] = {0};
+
     INBus *readRegister1Bus;
     INBus *readRegister2Bus;
     INBus *writeRegisterBus;
     INBus *writeDataBus;
+
+    INBus *writeControlBus;
 
     OUTBus *readData1Bus;
     OUTBus *readData2Bus;
@@ -27,11 +31,16 @@ public:
     void updateIO();
 
     void initialize(INBus *readRegister1BusRef, INBus *readRegisterBus2Ref, INBus *writeRegisterBusRef,
-                    INBus *writeDataBusRef);
+                    INBus *writeDataBusRef,
+                    INBus *writeControlBusRef);
+
+    const unsigned int *getMemory() const;
 
     OUTBus *getReadData1() const;
 
     OUTBus *getReadData2() const;
+
+    void printContents();
 };
 
 

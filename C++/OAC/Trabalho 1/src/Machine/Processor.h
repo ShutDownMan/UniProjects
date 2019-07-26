@@ -34,6 +34,8 @@ public:
 
     Multiplexer *regDstMux = new Multiplexer();
 
+    Multiplexer *regDataSrcMux = new Multiplexer();
+
     Registers *registers = new Registers();
 
     SignExtend *signExtend = new SignExtend();
@@ -64,6 +66,10 @@ public:
     void clock();
 
     void updateIO();
+
+    void printRegisters();
+
+    void printMemory();
 };
 
 

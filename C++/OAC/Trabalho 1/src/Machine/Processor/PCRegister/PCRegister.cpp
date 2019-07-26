@@ -3,9 +3,15 @@
 //
 
 #include "PCRegister.h"
+#include "../../Machine.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 PCRegister::PCRegister() {
     this->inBus = nullptr;
+
     this->outBus = new OUTBus();
 }
 
@@ -23,5 +29,14 @@ void PCRegister::updateIO() {
 
 OUTBus *PCRegister::getOutBus() const {
     return outBus;
+}
+
+void PCRegister::printContents() {
+    string str = "PCRegister:\n";
+
+    str += "\tInBus: " + to_string(this->inBus->getValue()) + "\n";
+    str += "\tOutBus: " + to_string(this->outBus->getValue()) + "\n";
+
+    cout << str << endl;
 }
 
