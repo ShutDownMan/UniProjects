@@ -19,6 +19,8 @@
 #include "Processor/ALU/ALU.h"
 #include "Processor/And/And.h"
 #include "Processor/DataMemory/DataMemory.h"
+#include "Processor/Or/Or.h"
+#include "Processor/BranchControl.h"
 
 class Processor {
 public:
@@ -50,13 +52,19 @@ public:
 
     ALU *alu = new ALU();
 
+    BranchControl *branchControl = new BranchControl();
+
     And *branchZeroAnd = new And();
 
-    Multiplexer *branchZeroMux = new Multiplexer();
+    Or *branchJumpOr = new Or();
+
+    Multiplexer *branchMux = new Multiplexer();
 
     DataMemory *dataMemory = new DataMemory();
 
     Multiplexer *memToRegMux = new Multiplexer();
+
+    Multiplexer *branchJumpSrcMux = new Multiplexer();
 
 public:
     Processor();

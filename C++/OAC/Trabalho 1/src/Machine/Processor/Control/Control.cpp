@@ -21,71 +21,68 @@ Control::Control() {
     this->BranchSignal = new OUTBus();
     this->ALUOpSignal = new OUTBus();
     this->RegDataSrcSignal = new OUTBus();
+    this->BranchJumpSignal = new OUTBus();
 }
 
 void Control::updateIO() {
     this->inBus->update();
 
+    this->RegDstSignal->setValue(0);
+    this->ALUSrcSignal->setValue(0);
+    this->MemToRegSignal->setValue(0);
+    this->RegWriteSignal->setValue(0);
+    this->MemReadSignal->setValue(0);
+    this->MemWriteSignal->setValue(0);
+    this->BranchSignal->setValue(0);
+    this->ALUOpSignal->setValue(0);
+    this->RegDataSrcSignal->setValue(0);
+    this->BranchJumpSignal->setValue(0);
+
     switch (getInstructionType()) {
         case RTYPE:
             Machine::debugInfo("R Type Instruction detected");
             this->RegDstSignal->setValue(1);
-            this->ALUSrcSignal->setValue(0);
-            this->MemToRegSignal->setValue(0);
             this->RegWriteSignal->setValue(1);
-            this->MemReadSignal->setValue(0);
-            this->MemWriteSignal->setValue(0);
-            this->BranchSignal->setValue(0);
             this->ALUOpSignal->setValue(2);
             break;
+
         case LW:
             Machine::debugInfo("LW Instruction detected");
-            this->RegDstSignal->setValue(0);
             this->ALUSrcSignal->setValue(1);
             this->MemToRegSignal->setValue(1);
             this->RegWriteSignal->setValue(1);
             this->MemReadSignal->setValue(1);
-            this->MemWriteSignal->setValue(0);
-            this->BranchSignal->setValue(0);
-            this->ALUOpSignal->setValue(0); // WHY THO?
-            this->RegDataSrcSignal->setValue(0);
             break;
+
         case SW:
             Machine::debugInfo("SW Instruction detected");
-//            this->RegDstSignal->setValue(?);
             this->ALUSrcSignal->setValue(1);
-//            this->MemToRegSignal->setValue(?);
-            this->RegWriteSignal->setValue(0);
-            this->MemReadSignal->setValue(0);
             this->MemWriteSignal->setValue(1);
-            this->BranchSignal->setValue(0);
-            this->ALUOpSignal->setValue(0); // WHY THO?
-            this->RegDataSrcSignal->setValue(0);
             break;
+
         case BEQ:
             Machine::debugInfo("BEQ Instruction detected");
-//            this->RegDstSignal->setValue(?);
-            this->ALUSrcSignal->setValue(0);
-//            this->MemToRegSignal->setValue(?);
-            this->RegWriteSignal->setValue(0);
-            this->MemReadSignal->setValue(0);
-            this->MemWriteSignal->setValue(0);
             this->BranchSignal->setValue(1);
             this->ALUOpSignal->setValue(1);
-            this->RegDataSrcSignal->setValue(0);
+            break;
+
+        case BNE:
+            Machine::debugInfo("BNE Instruction detected");
+            this->BranchSignal->setValue(2);
+            this->ALUOpSignal->setValue(1);
             break;
 
         case LI:
             Machine::debugInfo("LI Instruction detected");
-            this->RegDstSignal->setValue(0);
-//            this->ALUSrcSignal->setValue(0);
-//            this->MemToRegSignal->setValue(0);
             this->RegWriteSignal->setValue(1);
-            this->MemReadSignal->setValue(0);
-            this->MemWriteSignal->setValue(0);
-            this->BranchSignal->setValue(0);
-//            this->ALUOpSignal->setValue(0);
             this->RegDataSrcSignal->setValue(1);
+            break;
+
+        case J:
+            Machine::debugInfo("J Instruction detected");
+            this->BranchSignal->setValue(1);
+            this->ALUOpSignal->setValue(1);
+            this->BranchJumpSignal->setValue(1);
             break;
 
         default:
@@ -134,6 +131,10 @@ OUTBus *Control::getRegDataSrc() const {
     return RegDataSrcSignal;
 }
 
+OUTBus *Control::getBranchJumpSignal() const {
+    return BranchJumpSignal;
+}
+
 InstructionType Control::getInstructionType() {
     if (this->inBus->getValue() == IS_RTYPE_INSTRUCTION) return RTYPE;
 
@@ -143,7 +144,11 @@ InstructionType Control::getInstructionType() {
 
     if (this->inBus->getValue() == IS_BEQ_INSTRUCTION) return BEQ;
 
+    if (this->inBus->getValue() == IS_BNE_INSTRUCTION) return BNE;
+
     if (this->inBus->getValue() == IS_LI_INSTRUCTION) return LI;
+
+    if (this->inBus->getValue() == IS_J_INSTRUCTION) return J;
 
     return NONE;
 }
@@ -161,6 +166,7 @@ void Control::printContents() {
     str += "\tBranchSignal: " + to_string(this->BranchSignal->getValue()) + "\n";
     str += "\tALUOpSignal: " + to_string(this->ALUOpSignal->getValue()) + "\n";
     str += "\tRegDataSrcSignal: " + to_string(this->RegDataSrcSignal->getValue()) + "\n";
+    str += "\tBranchJumpSignal: " + to_string(this->BranchJumpSignal->getValue()) + "\n";
     str += "\tInstructionType: " + to_string(this->getInstructionType()) + "\n";
 
     cout << str << endl;
@@ -180,3 +186,20 @@ void Control::printContents() {
 
 // 101011 11100 10010 0000000000000000
 // 101011 11100 10011 0000000000000100
+
+// LI $1, 1
+// 001111 00000 00001 00000 00000000001
+// LI $2, 1
+// 001111 00000 00010 00000 00000000001
+// ADD $3, $2, $1
+// 000000 00001 00010 00011 00000100000
+// AND $2, $2, $0
+// 000000 00010 00000 00010 00000100100
+// ADD $2, $2, $1
+// 000000 00010 00001 00010 00000100000
+// AND $1, $1, $0
+// 000000 00001 00000 00001 00000100100
+// ADD $1, $1, $3
+// 000000 00001 00011 00001 00000100000
+// J -6
+// 000010 11111111111111111111111010

@@ -5,15 +5,19 @@
 #ifndef MIPS_MONOCYCLE_ALUCONTROL_H
 #define MIPS_MONOCYCLE_ALUCONTROL_H
 
-
 #include "../../Bus/INBus.h"
+
+#define IS_JR_MASK 0x08u
 
 class ALUControl {
 private:
-    INBus *instructionBus;
+    INBus *functBus;
     INBus *controlBus;
 
     OUTBus *outBus;
+    OUTBus *BranchJumpSrcSignal;
+public:
+    OUTBus *getBranchJumpSrcSignal() const;
 
 public:
     ALUControl();

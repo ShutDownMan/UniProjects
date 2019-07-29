@@ -19,7 +19,7 @@ private:
 public:
     Machine();
 
-    void initialize(char *instructionsFile);
+    void initialize(const char *instructionsFile);
 
     void clock();
 

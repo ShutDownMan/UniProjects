@@ -12,17 +12,20 @@
 #define IS_LW_INSTRUCTION       0x23u
 #define IS_SW_INSTRUCTION       0x2Bu
 #define IS_BEQ_INSTRUCTION      0x04u
+#define IS_BNE_INSTRUCTION      0x05u
 #define IS_LI_INSTRUCTION       0x0Fu
+#define IS_J_INSTRUCTION        0x02u
 
 typedef enum InstructionType {
     RTYPE,
     LW,
     SW,
     BEQ,
+    BNE,
     LI,
+    J,
     NONE
 } InstructionType;
-static const char * InstructionTypeStrings[] = { "RTYPE", "LW", "SW", "BEQ", "LI", "NONE" };
 
 class Control {
 
@@ -38,8 +41,7 @@ private:
     OUTBus *RegWriteSignal;
     OUTBus *RegDstSignal;
     OUTBus *RegDataSrcSignal;
-public:
-    OUTBus *getRegDataSrc() const;
+    OUTBus *BranchJumpSignal;
 
 public:
     Control();
@@ -64,6 +66,9 @@ public:
 
     OUTBus *getRegWriteSignal() const;
 
+    OUTBus *getRegDataSrc() const;
+
+    OUTBus *getBranchJumpSignal() const;
 
     InstructionType getInstructionType();
 

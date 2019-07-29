@@ -6,47 +6,11 @@
 #include "Processor.h"
 #include "Machine.h"
 
-Processor::Processor() {
-    this->pc = new PCRegister();
-
-    this->num4Const = new OUTBus();
-
-    this->adder_1 = new Adder();
-
-    this->instructionMemory = new InstructionMemory();
-
-    this->control = new Control();
-
-    this->regDstMux = new Multiplexer();
-
-    this->regDstMux = new Multiplexer();
-
-    this->registers = new Registers();
-
-    this->signExtend = new SignExtend();
-
-    this->shiftLeft2 = new ShiftLeft2();
-
-    this->aluSrcMux = new Multiplexer();
-
-    this->aluControl = new ALUControl();
-
-    this->adder_2 = new Adder();
-
-    this->alu = new ALU();
-
-    this->branchZeroAnd = new And();
-
-    this->branchZeroMux = new Multiplexer();
-
-    this->dataMemory = new DataMemory();
-
-    this->memToRegMux = new Multiplexer();
-}
+Processor::Processor() = default;
 
 void Processor::initialize(unsigned int *instructionMemoryRef) {
     Machine::debugInfo("Initializing Component: PC Register");
-    this->pc->initialize(new INBus(branchZeroMux->getOutBus()));
+    this->pc->initialize(new INBus(branchMux->getOutBus()));
 
     Machine::debugInfo("Initializing Component: Number 4 const");
     this->num4Const->setValue(4);
@@ -72,6 +36,10 @@ void Processor::initialize(unsigned int *instructionMemoryRef) {
                                     new INBus(0x0000FFFF, this->instructionMemory->getInstructionBus()),
                                     new INBus(this->control->getRegDataSrc()));
 
+    Machine::debugInfo("Initializing Component: Register Data Source Multiplexer");
+    this->branchJumpSrcMux->initialize(new INBus(this->signExtend->getOutBus()),
+                                       new INBus(this->registers->getReadData1()),
+                                       new INBus(this->aluControl->getBranchJumpSrcSignal()));
 
     Machine::debugInfo("Initializing Component: Registers");
     this->registers->initialize(new INBus(0x03E00000, this->instructionMemory->getInstructionBus()),
@@ -104,14 +72,14 @@ void Processor::initialize(unsigned int *instructionMemoryRef) {
                           new INBus(this->aluSrcMux->getOutBus()),
                           new INBus(0x0000000F, this->aluControl->getOutBus()));
 
-    Machine::debugInfo("Initializing Component: Branch-Zero And");
-    this->branchZeroAnd->initialize(new INBus(this->control->getBranchSignal()),
-                                    new INBus(this->alu->getZeroBus()));
+    this->branchControl->initialize(new INBus(0x03, this->control->getBranchSignal()),
+                                    new INBus(this->alu->getZeroBus()),
+                                    new INBus(this->control->getBranchJumpSignal()));
 
-    Machine::debugInfo("Initializing Component: Branch-Zero Multiplexer");
-    this->branchZeroMux->initialize(new INBus(this->adder_1->getOutputBus()),
-                                    new INBus(this->adder_2->getOutputBus()),
-                                    new INBus(this->branchZeroAnd->getOutBus()));
+    Machine::debugInfo("Initializing Component: Branch Multiplexer");
+    this->branchMux->initialize(new INBus(this->adder_1->getOutputBus()),
+                                new INBus(this->adder_2->getOutputBus()),
+                                new INBus(this->branchControl->getOutBus()));
 
     Machine::debugInfo("Initializing Component: Data Memory");
     this->dataMemory->initialize(new INBus(this->alu->getOutBus()),
@@ -173,6 +141,9 @@ void Processor::updateIO() {
     signExtend->updateIO();
     signExtend->printContents();
 
+    Machine::debugInfo("Updating Component: Branch Source Multiplexer");
+    branchJumpSrcMux->updateIO();
+
     Machine::debugInfo("Updating Component: Shift Left 2");
     shiftLeft2->updateIO();
 
@@ -186,17 +157,26 @@ void Processor::updateIO() {
 
     Machine::debugInfo("Updating Component: Adder 2");
     adder_2->updateIO();
+    adder_2->printContents();
 
     Machine::debugInfo("Updating Component: ALU");
     alu->updateIO();
     alu->printContents();
 
-    Machine::debugInfo("Updating Component: Branch-Zero And");
-    branchZeroAnd->updateIO();
-//    branchZeroAnd->printContents();
+    Machine::debugInfo("Updating Component: Branch Control");
+    branchControl->updateIO();
+    branchControl->printContents();
 
-    Machine::debugInfo("Updating Component: Branch-Zero Multiplexer");
-    branchZeroMux->updateIO();
+//    Machine::debugInfo("Updating Component: Branch-Zero And");
+//    branchZeroAnd->updateIO();
+//    branchZeroAnd->printContents();
+//
+//    Machine::debugInfo("Updating Component: Branch-Jump Or");
+//    branchJumpOr->updateIO();
+
+    Machine::debugInfo("Updating Component: Branch Multiplexer");
+    branchMux->updateIO();
+    branchMux->printContents();
 
     Machine::debugInfo("Updating Component: Data Memory");
     dataMemory->updateIO();
@@ -226,7 +206,7 @@ void Processor::printRegisters() {
 
     for (int i = 0; i < 32; ++i) {
         if (registersMem[i])
-            printf("$%d = %d\n", i, (int)registersMem[i]);
+            printf("$%d = %d\n", i, (int) registersMem[i]);
     }
 }
 

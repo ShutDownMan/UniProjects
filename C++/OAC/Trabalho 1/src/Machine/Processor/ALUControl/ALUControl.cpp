@@ -11,16 +11,19 @@ using namespace std;
 
 ALUControl::ALUControl() {
     this->controlBus = nullptr;
-    this->instructionBus = nullptr;
+    this->functBus = nullptr;
 
     this->outBus = new OUTBus();
+    this->BranchJumpSrcSignal = new OUTBus();
 }
 
 void ALUControl::updateIO() {
-    this->instructionBus->update();
+    this->functBus->update();
     this->controlBus->update();
 
-    unsigned int fsignal = this->instructionBus->getValue();
+    this->BranchJumpSrcSignal->setValue(0);
+
+    unsigned int fsignal = this->functBus->getValue();
     unsigned int result = 0;
 
     switch (this->controlBus->getValue()) {
@@ -40,8 +43,8 @@ void ALUControl::updateIO() {
             // XXX0
             result &= ~(1ul << 0u);
 
-            // XX0X
-            result &= ~(1ul << 1u);
+            // XX1X
+            result |= 1ul << 1u;
 
             // X1XX
             result |= 1ul << 2u;
@@ -49,6 +52,9 @@ void ALUControl::updateIO() {
             break;
 
         case 2:
+            if(this->functBus->getValue() == IS_JR_MASK)
+                this->BranchJumpSrcSignal->setValue(1);
+
             // XXX?
             if (!(fsignal & 0x09u)) // F0 e F3
                 result &= ~(1ul << 0u);
@@ -95,7 +101,7 @@ void ALUControl::updateIO() {
 }
 
 void ALUControl::initialize(INBus *inBusRef, INBus *controlBusRef) {
-    this->instructionBus = inBusRef;
+    this->functBus = inBusRef;
     this->controlBus = controlBusRef;
 }
 
@@ -103,12 +109,17 @@ OUTBus *ALUControl::getOutBus() const {
     return outBus;
 }
 
+OUTBus *ALUControl::getBranchJumpSrcSignal() const {
+    return BranchJumpSrcSignal;
+}
+
 void ALUControl::printContents() {
     string str = "ALUControl:\n";
 
     str += "\tControlBus: " + to_string(this->controlBus->getValue()) + "\n";
-    str += "\tInstructionBus: " + to_string(this->instructionBus->getValue()) + "\n";
+    str += "\tInstructionBus: " + to_string(this->functBus->getValue()) + "\n";
     str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
+    str += "\tBranchJumpSrcSignal: " + to_string(this->BranchJumpSrcSignal->getValue()) + "\n";
 
     cout << str << endl;
 }

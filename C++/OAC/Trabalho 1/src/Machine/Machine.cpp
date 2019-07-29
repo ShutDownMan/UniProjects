@@ -25,7 +25,7 @@ void Machine::clock() {
         printf("------------------------------------------------\n");
 
         c = getchar();
-    } while (i++ < 13 && c != 'q');
+    } while (i++ < 64 && c != 'q');
 }
 
 
@@ -33,7 +33,7 @@ void Machine::debugInfo(const char *message) {
     fprintf(stderr, "%s\n", message);
 }
 
-void Machine::initialize(char *instructionsFile) {
+void Machine::initialize(const char *instructionsFile) {
     FILE *f = fopen(instructionsFile, "r");
 
     if (!f)

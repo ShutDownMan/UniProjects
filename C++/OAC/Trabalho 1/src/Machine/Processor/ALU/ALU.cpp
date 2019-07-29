@@ -52,6 +52,8 @@ void ALU::updateIO() {
             break;
     }
 
+    this->zeroBus->setValue(res == 0);
+
     this->outBus->setValue(res);
 }
 
