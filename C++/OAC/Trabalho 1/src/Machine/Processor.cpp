@@ -33,7 +33,7 @@ void Processor::initialize(unsigned int *instructionMemoryRef) {
 
     Machine::debugInfo("Initializing Component: Register Data Source Multiplexer");
     this->regDataSrcMux->initialize(new INBus(this->memToRegMux->getOutBus()),
-                                    new INBus(0x0000FFFF, this->instructionMemory->getInstructionBus()),
+                                    new INBus(this->signExtend->getOutBus()),
                                     new INBus(this->control->getRegDataSrc()));
 
     Machine::debugInfo("Initializing Component: Register Data Source Multiplexer");
@@ -120,26 +120,26 @@ void Processor::updateIO() {
 
     Machine::debugInfo("Updating Component: Instruction Memory");
     instructionMemory->updateIO();
-    instructionMemory->printContents();
+//    instructionMemory->printContents();
 
     Machine::debugInfo("Updating Component: Controller");
     control->updateIO();
-    control->printContents();
+//    control->printContents();
 
     Machine::debugInfo("Updating Component: Register Destination Multiplexer");
     regDstMux->updateIO();
 
     Machine::debugInfo("Updating Component: Register Data Source Multiplexer");
     regDataSrcMux->updateIO();
-    regDataSrcMux->printContents();
+//    regDataSrcMux->printContents();
 
     Machine::debugInfo("Updating Component: Registers");
     registers->updateIO();
-    registers->printContents();
+//    registers->printContents();
 
     Machine::debugInfo("Updating Component: Sign Extend");
     signExtend->updateIO();
-    signExtend->printContents();
+//    signExtend->printContents();
 
     Machine::debugInfo("Updating Component: Branch Source Multiplexer");
     branchJumpSrcMux->updateIO();
@@ -153,19 +153,19 @@ void Processor::updateIO() {
 
     Machine::debugInfo("Updating Component: Alu Controller");
     aluControl->updateIO();
-    aluControl->printContents();
+//    aluControl->printContents();
 
     Machine::debugInfo("Updating Component: Adder 2");
     adder_2->updateIO();
-    adder_2->printContents();
+//    adder_2->printContents();
 
     Machine::debugInfo("Updating Component: ALU");
     alu->updateIO();
-    alu->printContents();
+//    alu->printContents();
 
     Machine::debugInfo("Updating Component: Branch Control");
     branchControl->updateIO();
-    branchControl->printContents();
+//    branchControl->printContents();
 
 //    Machine::debugInfo("Updating Component: Branch-Zero And");
 //    branchZeroAnd->updateIO();
@@ -176,29 +176,29 @@ void Processor::updateIO() {
 
     Machine::debugInfo("Updating Component: Branch Multiplexer");
     branchMux->updateIO();
-    branchMux->printContents();
+//    branchMux->printContents();
 
     Machine::debugInfo("Updating Component: Data Memory");
     dataMemory->updateIO();
-    dataMemory->printContents();
+//    dataMemory->printContents();
 
     Machine::debugInfo("Updating Component: Memory to Register Multiplexer");
     memToRegMux->updateIO();
-    memToRegMux->printContents();
+//    memToRegMux->printContents();
 
     /// Second update
 
     Machine::debugInfo("Updating Component: PC Register");
     pc->updateIO();
-    pc->printContents();
+//    pc->printContents();
 
     Machine::debugInfo("Updating Component: Register Data Source Multiplexer");
     regDataSrcMux->updateIO();
-    regDataSrcMux->printContents();
+//    regDataSrcMux->printContents();
 
     Machine::debugInfo("Updating Component: Registers");
     registers->updateIO();
-    registers->printContents();
+//    registers->printContents();
 }
 
 void Processor::printRegisters() {

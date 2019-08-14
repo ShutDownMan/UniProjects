@@ -2,14 +2,15 @@
 // Created by jarvis on 7/22/19.
 //
 
-#include "ALUControl.h"
+#include "ALUController.h"
+#include "../../Machine.h"
 
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-ALUControl::ALUControl() {
+ALUController::ALUController() {
     this->controlBus = nullptr;
     this->functBus = nullptr;
 
@@ -17,7 +18,7 @@ ALUControl::ALUControl() {
     this->BranchJumpSrcSignal = new OUTBus();
 }
 
-void ALUControl::updateIO() {
+void ALUController::updatePassive() {
     this->functBus->update();
     this->controlBus->update();
 
@@ -36,7 +37,7 @@ void ALUControl::updateIO() {
             break;
 
         case 2:
-            if(this->functBus->getValue() == IS_JR_MASK)
+            if (this->functBus->getValue() == IS_JR_MASK)
                 this->BranchJumpSrcSignal->setValue(1);
 
             // XXX?
@@ -84,26 +85,26 @@ void ALUControl::updateIO() {
 
 }
 
-void ALUControl::initialize(INBus *inBusRef, INBus *controlBusRef) {
-    this->functBus = inBusRef;
+void ALUController::initialize(INBus *functBusRef, INBus *controlBusRef) {
+    this->functBus = functBusRef;
     this->controlBus = controlBusRef;
 }
 
-OUTBus *ALUControl::getOutBus() const {
+OUTBus *ALUController::getOutBus() const {
     return outBus;
 }
 
-OUTBus *ALUControl::getBranchJumpSrcSignal() const {
+OUTBus *ALUController::getBranchJumpSrcSignal() const {
     return BranchJumpSrcSignal;
 }
 
-void ALUControl::printContents() {
-    string str = "ALUControl:\n";
+void ALUController::printContents() {
+    string str = "ALUController:\n";
 
     str += "\tControlBus: " + to_string(this->controlBus->getValue()) + "\n";
     str += "\tInstructionBus: " + to_string(this->functBus->getValue()) + "\n";
     str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
     str += "\tBranchJumpSrcSignal: " + to_string(this->BranchJumpSrcSignal->getValue()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 2);
 }

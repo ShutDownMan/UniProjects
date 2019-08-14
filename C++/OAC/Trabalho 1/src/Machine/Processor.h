@@ -17,10 +17,8 @@
 #include "Processor/ShiftLeft2/ShiftLeft2.h"
 #include "Processor/ALUControl/ALUControl.h"
 #include "Processor/ALU/ALU.h"
-#include "Processor/And/And.h"
 #include "Processor/DataMemory/DataMemory.h"
-#include "Processor/Or/Or.h"
-#include "Processor/BranchControl.h"
+#include "Processor/BranchControl/BranchControl.h"
 
 class Processor {
 public:
@@ -53,10 +51,6 @@ public:
     ALU *alu = new ALU();
 
     BranchControl *branchControl = new BranchControl();
-
-    And *branchZeroAnd = new And();
-
-    Or *branchJumpOr = new Or();
 
     Multiplexer *branchMux = new Multiplexer();
 

@@ -10,7 +10,13 @@ int main() {
     machine->initialize("fibTeste.txt");
 
     Machine::debugInfo("Clocking Machine");
-    machine->clock();
+    char c;
+    int i = 0;
+
+    do {
+        machine->clock();
+        c = getchar();
+    } while (i++ < 64 && c != 'q');
 
     return 0;
 }

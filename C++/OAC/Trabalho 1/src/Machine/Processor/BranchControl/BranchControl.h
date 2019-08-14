@@ -6,7 +6,7 @@
 #define MIPS_MONOCYCLE_BRANCHCONTROL_H
 
 
-#include "../Bus/INBus.h"
+#include "../../Bus/INBus.h"
 
 class BranchControl {
 private:

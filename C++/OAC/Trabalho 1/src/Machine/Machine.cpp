@@ -5,32 +5,31 @@
 #include <cstdlib>
 #include "Machine.h"
 
+#include <iostream>
+
+using namespace std;
+
 Machine::Machine() {
     this->processor = new Processor();
 }
 
 void Machine::clock() {
-    char c;
-    int i = 0;
+    processor->clock();
+    printf("------------------------------------------------\n");
+    processor->updateIO();
+    printf("------------------------------------------------\n");
 
-    do {
-        processor->clock();
-        printf("------------------------------------------------\n");
-        processor->updateIO();
-        printf("------------------------------------------------\n");
-
-        processor->printRegisters();
-        printf("------------------------------------------------\n");
-        processor->printMemory();
-        printf("------------------------------------------------\n");
-
-        c = getchar();
-    } while (i++ < 64 && c != 'q');
+    processor->printRegisters();
+    printf("------------------------------------------------\n");
+    processor->printMemory();
+    printf("------------------------------------------------\n");
 }
 
 
 void Machine::debugInfo(const char *message) {
-    fprintf(stderr, "%s\n", message);
+    cout << "\033[1;31m";
+    fprintf(stdout, "%s", message);
+    cout << "\033[0m\n";
 }
 
 void Machine::initialize(const char *instructionsFile) {
@@ -59,7 +58,6 @@ unsigned int Machine::getInstructionFromLine(const char *str) {
     for (i = 31; i >= 0; --i, aux <<= 1u) {
         res |= (str[i] - '0') ? aux : 0;
     }
-    printf("\n");
 
     return res;
 }
