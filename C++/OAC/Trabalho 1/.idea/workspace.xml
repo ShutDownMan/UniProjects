@@ -11,24 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ed1cea8-67d1-40aa-90a7-8bc12384cf0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Machine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ALU/ALU.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ALU/ALU.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ALUController/ALUController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ALUController/ALUController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/BranchController/BranchController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/BranchController/BranchController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Controller/Controller.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Controller/Controller.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Memory/Memory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Memory/Memory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Multiplexer/Multiplexer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Multiplexer/Multiplexer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Register/Register.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Register/Register.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Registers/Registers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Registers/Registers.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/SignExtend/SignExtend.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/SignExtend/SignExtend.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Machine.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Machine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="2ed1cea8-67d1-40aa-90a7-8bc12384cf0d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -331,7 +314,7 @@
       <workItem from="1565145709700" duration="1829000" />
       <workItem from="1565189020338" duration="5000" />
       <workItem from="1565821717428" duration="278000" />
-      <workItem from="1565856176358" duration="3644000" />
+      <workItem from="1565856176358" duration="3907000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1564085419726</created>
@@ -379,11 +362,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128463000" />
+    <option name="totallyTimeSpent" value="128726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-16" width="1920" height="1071" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76648843" visible="true" weight="0.16203208" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
