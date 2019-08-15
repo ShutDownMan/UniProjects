@@ -53,10 +53,6 @@ private:
     OUTBus *BranchSignal;
     OUTBus *MemReadSignal;
     OUTBus *IRWriteSignal;
-public:
-    OUTBus *getIRWriteSignal() const;
-
-private:
     OUTBus *MemToRegSignal;
     OUTBus *ALUOpSignal;
     OUTBus *MemWriteSignal;
@@ -70,6 +66,7 @@ private:
     OUTBus *AluSrcASignal;
     OUTBus *AluSrcBSignal;
     OUTBus *PCSourceSignal;
+    OUTBus *AluOutWriteSignal;
 
 public:
     Controller();
@@ -107,6 +104,10 @@ public:
     OUTBus *getAluSrcBSignal() const;
 
     OUTBus *getPCSourceSignal() const;
+
+    OUTBus *getIRWriteSignal() const;
+
+    OUTBus *getAluOutWriteSignal() const;
 
     InstructionType getInstructionType();
 

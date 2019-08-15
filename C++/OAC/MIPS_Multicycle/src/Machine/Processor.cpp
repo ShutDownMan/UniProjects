@@ -8,13 +8,13 @@
 #include "Machine.h"
 
 Processor::Processor() {
-    this->pc = new PCRegister();
+    this->pc = new Register();
 
     this->IorDMux = new Multiplexer();
 
     this->memory = new Memory();
 
-    this->instructionRegister = new InstructionRegister();
+    this->instructionRegister = new Register();
 
     this->memoryDataRegister = new Register();
 
@@ -144,7 +144,8 @@ void Processor::initialize(unsigned char *memoryRef) {
                           new INBus(this->aluController->getOutBus()));
 
     Machine::debugInfo("Initializing Component: ALUOut Register", 1);
-    this->aluOut->initialize(new INBus(this->alu->getOutBus()));
+    this->aluOut->initialize(new INBus(this->alu->getOutBus()),
+                             new INBus(this->controller->getAluOutWriteSignal()));
 
     Machine::debugInfo("Initializing Component: PC Source Multiplexer", 1);
     this->pcSourceMux->initialize(new INBus(this->alu->getOutBus()),
@@ -280,27 +281,45 @@ void Processor::updatePassive() {
     Machine::debugInfo("Updating Component: IorD Multiplexer", 1);
     this->IorDMux->updatePassive();
 
+    Machine::debugInfo("Clocking Component: Memory", 1);
+    this->memory->updateIO();
+    this->memory->writeMem();
+    this->memory->printContents();
+
     Machine::debugInfo("Updating Component: Memory to Register Multiplexer", 1);
     this->memToRegMux->updatePassive();
 //    this->memToRegMux->printContents();
 }
 
+
 void Processor::printRegisters() {
     unsigned int const *registersMem = this->registers->getMemory();
+    char buff[255];
+
+    Machine::debugInfo("Register Contents:", 1);
 
     for (int i = 0; i < 32; ++i) {
-        if (registersMem[i])
-            printf("$%d = %d\n", i, (int) registersMem[i]);
+        if (registersMem[i]) {
+            sprintf(buff, "\t$%d = %d", i, (int) registersMem[i]);
+            Machine::debugInfo(buff, 1);
+        }
     }
+    Machine::debugInfo("", 1);
 }
 
 void Processor::printMemory() {
     unsigned char const *dataMem = this->memory->getMemory();
+    char buff[255];
     int val;
+
+    Machine::debugInfo("Memory Contents:", 1);
 
     for (int i = 0; i < 65536; i += 4) {
         memcpy(&val, &dataMem[i], sizeof(int));
-        if (dataMem[i])
-            printf("MEM[%d] = 0x%x\n", i, val);
+        if (dataMem[i]) {
+            sprintf(buff, "\tMEM[%02d] = 0x%x", i, val);
+            Machine::debugInfo(buff, 1);
+        }
     }
+    Machine::debugInfo("", 1);
 }

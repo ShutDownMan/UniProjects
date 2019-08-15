@@ -16,17 +16,17 @@ Machine::Machine() {
 }
 
 void Machine::clock() {
-    printf("------------------------------------------------\n");
+    debugInfo("================================================\n", 1);
     processor->updateController();
-    printf("++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    debugInfo("------------------------------------------------\n", 1);
     processor->clock();
-    printf("++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    debugInfo("------------------------------------------------\n", 1);
     processor->updatePassive();
-    printf("++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
-    processor->printRegisters();
-    printf("++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    debugInfo("------------------------------------------------\n", 1);
     processor->printMemory();
+    debugInfo("------------------------------------------------\n", 1);
+    processor->printRegisters();
 
 }
 
@@ -67,10 +67,13 @@ void Machine::initialize(const char *instructionsFile, unsigned char verbLevel) 
 
     for (i = 0; !feof(f); i += 4) {
         fgets(buff, 255, f);
+
         aux = getInstructionFromLine(buff);
         memcpy(&memory[i], &aux, sizeof(int));
         memory[i] = getInstructionFromLine(buff);
-        printf("Instruction[%d] = %u\n", i, aux);
+
+        sprintf(buff, "Instruction[%d] = %u", i, aux);
+        debugInfo(buff, 1);
     }
 
     processor->initialize(memory);
@@ -86,5 +89,3 @@ unsigned int Machine::getInstructionFromLine(const char *str) {
 
     return res;
 }
-
-

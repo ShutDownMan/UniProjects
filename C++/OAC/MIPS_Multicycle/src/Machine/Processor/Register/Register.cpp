@@ -12,6 +12,7 @@ using namespace std;
 
 Register::Register() {
     this->inBus = nullptr;
+    this->controlSignal = nullptr;
 
     this->outBus = new OUTBus();
 }
@@ -20,10 +21,18 @@ void Register::initialize(INBus *refInBus) {
     this->inBus = refInBus;
 }
 
+void Register::initialize(INBus *refInBus, INBus *controlSignalRef) {
+    this->inBus = refInBus;
+    this->controlSignal = controlSignalRef;
+}
+
 void Register::updatePassive() {
     this->inBus->update();
+    if (this->controlSignal)
+        this->controlSignal->update();
 
-    this->outBus->setValue(this->inBus->getValue());
+    if (!this->controlSignal || this->controlSignal->getValue())
+        this->outBus->setValue(this->inBus->getValue());
 }
 
 OUTBus *Register::getOutBus() const {
@@ -35,6 +44,8 @@ void Register::printContents() {
 
     str += "\tInBus = " + to_string(this->inBus->getValue()) + "\n";
     str += "\tOutBus = " + to_string(this->outBus->getValue()) + "\n";
+    if (this->controlSignal)
+        str += "\tContolSignal = " + to_string(this->controlSignal->getValue()) + "\n";
 
     Machine::debugInfo(str.c_str(), 2);
 }

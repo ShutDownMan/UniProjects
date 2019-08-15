@@ -37,11 +37,15 @@ void Memory::updateIO() {
     this->writeDataBus->update();
 }
 
-void Memory::updateState() {
+void Memory::writeMem() {
     unsigned int val;
 
     if (this->writeMemControlBus->getValue())
         memcpy(&this->memory[this->addressBus->getValue()], &(val = this->writeDataBus->getValue()), sizeof(int));
+}
+
+void Memory::updateState() {
+    unsigned int val;
 
     if (this->readMemControlBus->getValue()) {
         memcpy(&val, &this->memory[this->addressBus->getValue()], sizeof(int));

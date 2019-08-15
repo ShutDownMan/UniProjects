@@ -11,6 +11,8 @@
 class Register {
 private:
     INBus *inBus;
+    INBus *controlSignal;
+
     OUTBus *outBus;
 
 public:
@@ -20,9 +22,11 @@ public:
 
     OUTBus *getOutBus() const;
 
-    void printContents();
-
     void updatePassive();
+
+    void initialize(INBus *refInBus, INBus *controlSignalRef);
+
+    void printContents();
 };
 
 

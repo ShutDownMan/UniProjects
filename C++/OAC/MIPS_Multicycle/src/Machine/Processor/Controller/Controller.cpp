@@ -30,6 +30,7 @@ Controller::Controller() {
     this->PCWriteSignal = new OUTBus();
     this->AluSrcASignal = new OUTBus();
     this->AluSrcBSignal = new OUTBus();
+    this->AluOutWriteSignal = new OUTBus();
 }
 
 void Controller::initialize(INBus *inBusRef) {
@@ -57,6 +58,7 @@ void Controller::updateState() {
     this->PCWriteSignal->setValue(0);
     this->AluSrcASignal->setValue(0);
     this->AluSrcBSignal->setValue(0);
+    this->AluOutWriteSignal->setValue(0);
 
     switch (this->state) {
 //        case Initialization:
@@ -79,11 +81,12 @@ void Controller::updateState() {
             this->AluSrcASignal->setValue(0);
             this->AluSrcBSignal->setValue(3);
             this->ALUOpSignal->setValue(0);
+            this->AluOutWriteSignal->setValue(1);
 
             switch (this->getInstructionType()) {
                 case LW:
                 case SW:
-                    this->state = MemoryAccessLW;
+                    this->state = MemoryAddressComputation;
                     break;
                 case RTYPE:
                     this->state = Execution;
@@ -106,6 +109,7 @@ void Controller::updateState() {
             this->AluSrcASignal->setValue(1);
             this->AluSrcBSignal->setValue(2);
             this->ALUOpSignal->setValue(0);
+            this->AluOutWriteSignal->setValue(1);
 
             switch (this->getInstructionType()) {
                 case LW:
@@ -149,6 +153,7 @@ void Controller::updateState() {
             this->RegDstSignal->setValue(1);
             this->RegWriteSignal->setValue(1);
             this->MemToRegSignal->setValue(0);
+            this->AluOutWriteSignal->setValue(1);
 
             this->state = InstructionFetch;
             break;
@@ -171,6 +176,7 @@ void Controller::updateState() {
             this->RegDataSrcSignal->setValue(1);
             this->AluSrcASignal->setValue(1);
             this->AluSrcBSignal->setValue(2);
+            this->AluOutWriteSignal->setValue(1);
 
             this->state = LoadImmediateCompletion;
             break;
@@ -246,6 +252,11 @@ OUTBus *Controller::getPCSourceSignal() const {
 OUTBus *Controller::getIRWriteSignal() const {
     return IRWriteSignal;
 }
+
+OUTBus *Controller::getAluOutWriteSignal() const {
+    return AluOutWriteSignal;
+}
+
 
 InstructionType Controller::getInstructionType() {
     if (this->inBus->getValue() == IS_RTYPE_INSTRUCTION) return RTYPE;

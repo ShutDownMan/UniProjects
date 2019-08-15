@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.14)
-project(MIPS_Multicycle)
+project(MIPS_MULTICYCLE)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(MIPS_Multicycle
+add_executable(MIPS_MULTICYCLE
         src/main.cpp
         src/Machine/Machine.cpp
         src/Machine/Machine.h

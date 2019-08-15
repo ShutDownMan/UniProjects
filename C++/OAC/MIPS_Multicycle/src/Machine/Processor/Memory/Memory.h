@@ -35,6 +35,8 @@ public:
     void printContents();
 
     void updateIO();
+
+    void writeMem();
 };
 
 

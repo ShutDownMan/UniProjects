@@ -22,13 +22,13 @@
 
 class Processor {
 public:
-    PCRegister *pc;
+    Register *pc;
 
     Multiplexer *IorDMux;
 
     Memory *memory;
 
-    InstructionRegister *instructionRegister;
+    Register *instructionRegister;
 
     Register *memoryDataRegister;
 
