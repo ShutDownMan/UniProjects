@@ -336,8 +336,8 @@ void Processor::printMemory() {
 
     for (int i = 0; i < 65536; i += 4) {
         memcpy(&val, &dataMem[i], sizeof(int));
-        if (dataMem[i]) {
-            sprintf(buff, "\tMEM[%02d] = 0x%x", i, val);
+        if (val) {
+            sprintf(buff, "\tMEM[%02d] = 0x%08x", i, val);
             Machine::debugInfo(buff, 1);
         }
     }

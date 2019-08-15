@@ -5,7 +5,7 @@ int main() {
     auto *machine = new Machine();
 
     Machine::debugInfo("Initializing Machine", 1);
-    machine->initialize("initTest.txt", 3);
+    machine->initialize("teste3.txt", 3);
 
     Machine::debugInfo("Clocking Machine", 1);
 
