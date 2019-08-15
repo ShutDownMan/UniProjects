@@ -47,6 +47,6 @@ void Register::printContents() {
     if (this->controlSignal)
         str += "\tControlSignal = " + to_string(this->controlSignal->getValue()) + "\n";
 
-    Machine::debugInfo(str.c_str(), 2);
+    Machine::debugInfo(str.c_str(), 3);
 }
 

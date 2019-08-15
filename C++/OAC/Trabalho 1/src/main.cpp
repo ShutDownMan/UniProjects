@@ -22,6 +22,7 @@ int main(int argc, char const *argv[]) {
     int i = 0;
 
     do {
+        Machine::debugInfo("Clocking Machine", 1);
         machine->clock();
         printf("Type any key for the next clock\n"
                "Press 'q' to quit");

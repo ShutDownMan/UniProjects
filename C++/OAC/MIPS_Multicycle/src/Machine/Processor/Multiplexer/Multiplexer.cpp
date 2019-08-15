@@ -82,5 +82,5 @@ void Multiplexer::printContents() {
     str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
     str += "\tcontrolSignal: " + to_string(this->controlSignal->getValue()) + "\n";
 
-    Machine::debugInfo(str.c_str(), 2);
+    Machine::debugInfo(str.c_str(), 3);
 }

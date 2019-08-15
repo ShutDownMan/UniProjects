@@ -108,5 +108,5 @@ void ALUController::printContents() {
     str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
     str += "\tBranchJumpSrcSignal: " + to_string(this->BranchJumpSrcSignal->getValue()) + "\n";
 
-    Machine::debugInfo(str.c_str(), 2);
+    Machine::debugInfo(str.c_str(), 3);
 }

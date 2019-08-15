@@ -35,6 +35,6 @@ void ShiftLeft2::printContents() {
     str += "\tinBus: " + to_string(this->inBus->getValue()) + "\n";
     str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
 
-    Machine::debugInfo(str.c_str(), 2);
+    Machine::debugInfo(str.c_str(), 3);
 
 }

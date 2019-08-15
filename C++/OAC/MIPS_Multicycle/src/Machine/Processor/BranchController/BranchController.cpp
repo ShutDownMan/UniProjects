@@ -58,6 +58,6 @@ void BranchController::printContents() {
     str += "\tzeroSignalBus: " + to_string(this->zeroSignalBus->getValue()) + "\n";
     str += "\tbranchEnable: " + to_string(this->outBus->getValue()) + "\n";
 
-    Machine::debugInfo(str.c_str(), 2);
+    Machine::debugInfo(str.c_str(), 3);
 
 }

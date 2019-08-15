@@ -14,6 +14,16 @@ OUTBus.h
 
 /home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Machine.cpp
+Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Machine.h
+cstdlib
+-
+iostream
+-
+cstring
+-
+
 /home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Machine.h
 cstdio
 -
@@ -68,16 +78,6 @@ Processor/BranchControl/BranchControl.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
 
-/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Control/Control.cpp
-Control.h
-/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Control/Control.h
-../../Machine.h
-/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Machine.h
-string
--
-iostream
--
-
 /home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Control/Control.h
 ../../Bus/OUTBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
@@ -117,4 +117,10 @@ iostream
 /home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
 ../../Bus/OUTBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/main.cpp
+iostream
+-
+Machine/Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Machine.h
 

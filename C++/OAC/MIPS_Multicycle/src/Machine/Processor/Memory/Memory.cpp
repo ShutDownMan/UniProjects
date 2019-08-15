@@ -71,5 +71,5 @@ void Memory::printContents() {
     str += "\twriteMemControlBus: " + to_string(this->writeMemControlBus->getValue()) + "\n";
     str += "\treadDataBus: " + to_string(this->memDataBus->getValue()) + "\n";
 
-    Machine::debugInfo(str.c_str(), 2);
+    Machine::debugInfo(str.c_str(), 3);
 }

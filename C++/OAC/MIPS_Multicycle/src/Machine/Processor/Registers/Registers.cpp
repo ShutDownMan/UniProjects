@@ -72,5 +72,5 @@ void Registers::printContents() {
     str += "\treadData1Bus: " + to_string(this->readData1Bus->getValue()) + "\n";
     str += "\treadData2Bus: " + to_string(this->readData2Bus->getValue()) + "\n";
 
-    Machine::debugInfo(str.c_str(), 2);
+    Machine::debugInfo(str.c_str(), 3);
 }

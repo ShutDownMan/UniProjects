@@ -306,5 +306,5 @@ void Controller::printContents() {
     str += "\tAluSrcBSignal: " + to_string(this->AluSrcBSignal->getValue()) + "\n";
     str += "\tInstructionType: " + to_string(this->getInstructionType()) + "\n";
 
-    Machine::debugInfo(str.c_str(), 2);
+    Machine::debugInfo(str.c_str(), 3);
 }

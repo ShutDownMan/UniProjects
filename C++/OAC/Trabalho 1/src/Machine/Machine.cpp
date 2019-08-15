@@ -2,10 +2,10 @@
 // Created by jarvis on 7/22/19.
 //
 
-#include <cstdlib>
 #include "Machine.h"
-
+#include <cstdlib>
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -17,17 +17,17 @@ Machine::Machine() {
 
 void Machine::clock() {
     debugInfo("================================================", 1);
-    Machine::debugInfo("Clocking Machine", 2);
+    Machine::debugInfo("Clocking Components", 2);
     processor->clock();
     debugInfo("------------------------------------------------", 2);
     Machine::debugInfo("Updating IO", 2);
     processor->updateIO();
     debugInfo("------------------------------------------------", 2);
 
-    Machine::debugInfo("Printing Registers", 1);
+    Machine::debugInfo("Registers", 1);
     processor->printRegisters();
     debugInfo("------------------------------------------------", 1);
-    Machine::debugInfo("Printing Memory", 1);
+    Machine::debugInfo("Memory", 1);
     processor->printMemory();
     debugInfo("------------------------------------------------", 1);
 }
@@ -65,14 +65,22 @@ void Machine::initialize(const char *instructionsFile, unsigned char verbLevel) 
     int i;
     auto *instructionMemory = (unsigned int *) (malloc(255 * sizeof(unsigned int)));
     char buff[255];
+    int aux;
+
+    Machine::debugInfo("Instructions:", 1);
 
     for (i = 0; !feof(f); ++i) {
         fgets(buff, 255, f);
+        aux = getInstructionFromLine(buff);
+        memcpy(&instructionMemory[i], &aux, sizeof(int));
         instructionMemory[i] = getInstructionFromLine(buff);
-        if (verbLevel)
-            printf("Instruction[%02d] = 0x%08x\n", i * 4, instructionMemory[i]);
+        if (verbLevel) {
+            sprintf(buff, "\tInstruction[%03d] = 0x%08x", i * 4, aux);
+            debugInfo(buff, 1);
+        }
     }
 
+    debugInfo("------------------------------------------------", 1);
     processor->initialize(instructionMemory);
 }
 

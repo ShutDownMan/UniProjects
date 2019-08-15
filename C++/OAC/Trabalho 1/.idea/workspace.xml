@@ -12,27 +12,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed1cea8-67d1-40aa-90a7-8bc12384cf0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Bus/INBus.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Bus/OUTBus.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Machine.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ALU/ALU.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ALUControl/ALUControl.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Adder/Adder.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/BranchControl/BranchControl.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Control/Control.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/DataMemory/DataMemory.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/InstructionMemory/InstructionMemory.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/PCRegister/PCRegister.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Registers/Registers.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/main.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Trabalho_1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Control/Control.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Control/Control.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Machine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ALU/ALU.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ALU/ALU.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ALUController/ALUController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ALUController/ALUController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/BranchController/BranchController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/BranchController/BranchController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Controller/Controller.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Controller/Controller.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Memory/Memory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Memory/Memory.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Multiplexer/Multiplexer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Multiplexer/Multiplexer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Register/Register.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Register/Register.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Registers/Registers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/Registers/Registers.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/SignExtend/SignExtend.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MIPS_Multicycle/src/Machine/Processor/SignExtend/SignExtend.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Machine.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Machine/Machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Machine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,34 +48,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Machine/Processor.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="160" column="25" selection-start-line="160" selection-start-column="25" selection-end-line="160" selection-end-column="25" />
+            <state relative-caret-position="938">
+              <caret line="216" column="23" lean-forward="true" selection-start-line="216" selection-start-column="23" selection-end-line="216" selection-end-column="23" />
               <folding>
                 <element signature="e#40#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-              <folding>
-                <element signature="e#40#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Machine/Processor/PCRegister/PCRegister.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="e#40#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="318">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -98,44 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Machine/Machine.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="70" column="51" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
-              <folding>
-                <element signature="e#40#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Machine/Processor/ALUControl/ALUControl.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Machine/Processor/ALU/ALU.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-              <folding>
-                <element signature="e#40#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Control/Control.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+            <state relative-caret-position="378">
+              <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
               <folding>
                 <element signature="e#40#60#0" expanded="true" />
               </folding>
@@ -147,8 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new INBus()</find>
-      <find>branchJumpS</find>
       <find>$0</find>
       <find>$1</find>
       <find>$2</find>
@@ -174,9 +110,11 @@
       <find>.c_str(), 2)</find>
       <find>A + B</find>
       <find>LI</find>
-      <find>, 2);</find>
       <find>LI INS</find>
       <find>//</find>
+      <find>, 2);</find>
+      <find>//</find>
+      <find>Clockin</find>
     </findStrings>
     <replaceStrings>
       <replace>Updating Component</replace>
@@ -261,13 +199,13 @@
         <option value="$PROJECT_DIR$/src/Machine/Processor/ALUControl/ALUControl.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/DataMemory/DataMemory.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/BranchControl/BranchControl.cpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/PCRegister/PCRegister.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/ALU/ALU.cpp" />
-        <option value="$PROJECT_DIR$/src/Machine/Machine.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/Control/Control.cpp" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/Machine/Machine.cpp" />
       </list>
     </option>
   </component>
@@ -393,7 +331,7 @@
       <workItem from="1565145709700" duration="1829000" />
       <workItem from="1565189020338" duration="5000" />
       <workItem from="1565821717428" duration="278000" />
-      <workItem from="1565856176358" duration="2261000" />
+      <workItem from="1565856176358" duration="3644000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1564085419726</created>
@@ -441,7 +379,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127080000" />
+    <option name="totallyTimeSpent" value="128463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-16" width="1920" height="1071" extended-state="0" />
@@ -731,32 +669,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Machine/Processor/PCRegister/PCRegister.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
           <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="e#40#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Processor.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="160" column="25" selection-start-line="160" selection-start-column="25" selection-end-line="160" selection-end-column="25" />
-          <folding>
-            <element signature="e#40#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -788,20 +706,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Machine.cpp">
+    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Control/Control.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="70" column="51" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
+        <state relative-caret-position="-58">
+          <caret line="89" column="18" lean-forward="true" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
+          <folding>
+            <element signature="e#40#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Machine/Processor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="938">
+          <caret line="216" column="23" lean-forward="true" selection-start-line="216" selection-start-column="23" selection-end-line="216" selection-end-column="23" />
           <folding>
             <element signature="e#40#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Control/Control.cpp">
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+        <state relative-caret-position="318">
+          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Machine/Machine.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
           <folding>
             <element signature="e#40#60#0" expanded="true" />
           </folding>

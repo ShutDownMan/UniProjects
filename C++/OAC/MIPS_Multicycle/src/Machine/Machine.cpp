@@ -2,8 +2,8 @@
 // Created by jarvis on 7/22/19.
 //
 
-#include <cstdlib>
 #include "Machine.h"
+#include <cstdlib>
 #include <iostream>
 #include <cstring>
 
@@ -17,15 +17,20 @@ Machine::Machine() {
 
 void Machine::clock() {
     debugInfo("================================================", 1);
+    Machine::debugInfo("Updating Controller:", 2);
     processor->updateController();
-    debugInfo("------------------------------------------------", 1);
+    debugInfo("------------------------------------------------", 2);
+    Machine::debugInfo("Clocking Components:", 2);
     processor->clock();
-    debugInfo("------------------------------------------------", 1);
+    debugInfo("------------------------------------------------", 2);
+    Machine::debugInfo("Updating Passive Components:", 2);
     processor->updatePassive();
+    debugInfo("------------------------------------------------", 2);
 
-    debugInfo("------------------------------------------------", 1);
+    Machine::debugInfo("Memory:", 1);
     processor->printMemory();
     debugInfo("------------------------------------------------", 1);
+    Machine::debugInfo("Registers:", 1);
     processor->printRegisters();
     debugInfo("------------------------------------------------", 1);
 
@@ -38,13 +43,13 @@ void Machine::debugInfo(const char *message, unsigned char verbLevel) {
 
     switch (verbLevel) {
         case 1:
-            cout << "\033[1;31m";
+            cout << "\033[1;32m";
             break;
         case 2:
-            cout << "\033[1;37m";
+            cout << "\033[1;34m";
             break;
         case 3:
-            cout << "\033[1;34m";
+            cout << "\033[1;33m";
             break;
         default:
             break;
@@ -66,6 +71,8 @@ void Machine::initialize(const char *instructionsFile, unsigned char verbLevel) 
     char buff[255];
     int aux;
 
+    Machine::debugInfo("Instructions:", 1);
+
     for (i = 0; !feof(f); i += 4) {
         fgets(buff, 255, f);
 
@@ -73,12 +80,14 @@ void Machine::initialize(const char *instructionsFile, unsigned char verbLevel) 
         memcpy(&memory[i], &aux, sizeof(int));
         memory[i] = getInstructionFromLine(buff);
         if (verbLevel) {
-            sprintf(buff, "Instruction[%02d] = 0x%08x", i * 4, aux);
+            sprintf(buff, "\tInstruction[%03d] = 0x%08x", i * 4, aux);
             debugInfo(buff, 1);
         }
     }
 
+    debugInfo("------------------------------------------------", 1);
     processor->initialize(memory);
+    debugInfo("------------------------------------------------", 1);
 }
 
 unsigned int Machine::getInstructionFromLine(const char *str) {
