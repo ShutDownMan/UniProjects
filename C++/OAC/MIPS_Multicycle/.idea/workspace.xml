@@ -11,17 +11,432 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4be89eb8-1342-430f-aac6-493db561f155" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Machine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Memory/Memory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Memory/Memory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Memory/Memory.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Memory/Memory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Register/Register.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Register/Register.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Register/Register.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Register/Register.h" afterDir="false" />
+    <list default="true" id="4be89eb8-1342-430f-aac6-493db561f155" name="Default Changelist" comment="SW funcionando">
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/.idea/MIPS_Multicycle.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdC/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdCXX/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/CXX.includecache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/DependInfo.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/build.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/cmake_clean.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/depend.internal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/flags.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/link.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/progress.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/INBus.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/OUTBus.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Machine.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALU/ALU.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALUController/ALUController.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/BranchController/BranchController.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Controller/Controller.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/InstructionRegister/InstructionRegister.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Memory/Memory.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/PCRegister/PCRegister.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Register/Register.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Registers/Registers.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir/src/main.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/CXX.includecache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/DependInfo.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/build.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/cmake_clean.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/depend.internal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/flags.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/link.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/progress.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Bus/INBus.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Bus/OUTBus.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Machine.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/ALU/ALU.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/ALUController/ALUController.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/BranchController/BranchController.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/Controller/Controller.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/InstructionRegister/InstructionRegister.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/Memory/Memory.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/PCRegister/PCRegister.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/Register/Register.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/Registers/Registers.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_Multicycle.dir/src/main.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/feature_tests.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/feature_tests.cxx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/MIPS_MULTICYCLE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/MIPS_MULTICYCLE.cbp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/MIPS_Multicycle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/MIPS_Multicycle.cbp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/fibTeste.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/initTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/teste1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/teste2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/cmake-build-debug/teste3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Bus/INBus.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Bus/INBus.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Bus/OUTBus.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Bus/OUTBus.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Machine.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Machine.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/ALU/ALU.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/ALU/ALU.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/ALUController/ALUController.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/ALUController/ALUController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Adder/Adder.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Adder/Adder.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/BranchController/BranchController.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/BranchController/BranchController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Controller/Controller.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Controller/Controller.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/InstructionRegister/InstructionRegister.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/InstructionRegister/InstructionRegister.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Memory/Memory.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Memory/Memory.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Multiplexer/Multiplexer.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Multiplexer/Multiplexer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/PCRegister/PCRegister.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/PCRegister/PCRegister.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Register/Register.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Register/Register.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Registers/Registers.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/Registers/Registers.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/ShiftLeft2/ShiftLeft2.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/SignExtend/SignExtend.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/Machine/Processor/SignExtend/SignExtend.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/src/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdC/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdCXX/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/CXX.includecache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/DependInfo.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/build.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/cmake_clean.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/depend.internal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/flags.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/link.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/progress.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Bus/INBus.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Bus/OUTBus.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Machine.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ALU/ALU.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ALUControl/ALUControl.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Adder/Adder.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/BranchControl/BranchControl.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Control/Control.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/DataMemory/DataMemory.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/InstructionMemory/InstructionMemory.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/PCRegister/PCRegister.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Registers/Registers.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/Trabalho_1.dir/src/main.cpp.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/feature_tests.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/feature_tests.cxx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/MIPS_MONOCYCLE.cbp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/Trabalho_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/Trabalho_1.cbp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/fibTeste.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/teste1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/teste2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Trabalho 1/cmake-build-debug/teste3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdC/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdCXX/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/feature_tests.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/feature_tests.cxx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/untitled.dir/DependInfo.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/untitled.dir/build.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/untitled.dir/cmake_clean.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/untitled.dir/depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/untitled.dir/flags.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/untitled.dir/link.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/CMakeFiles/untitled.dir/progress.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/cmake-build-debug/untitled.cbp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/000 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/001 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/002 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/003 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/004 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/005 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/006 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/007 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/008 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/009 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/010 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/011 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/012 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/013 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/014 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/015 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/016 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/017 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/018 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/019 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/020 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/021 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/022 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/023 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/024 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/025 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/026 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/027 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/028 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/029 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/030 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/031 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/032 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/033 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/034 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/035 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/036 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/037 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/038 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/039 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/040 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/041 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/042 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/043 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/044 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/045 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/046 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/047 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/048 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/049 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/050 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/051 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/052 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/053 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/054 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/055 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/056 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/057 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/058 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/059 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/060 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/061 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/062 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/063 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/064 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/065 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/066 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/067 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/068 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/069 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/070 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/071 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/072 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/073 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/074 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/075 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/076 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/077 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/078 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/079 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/080 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/081 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/082 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/083 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/084 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/085 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/086 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/087 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/088 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/089 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/090 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/091 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/092 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/093 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/094 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/095 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/096 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/097 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/098 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/099 Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/000 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/001 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/002 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/003 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/004 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/005 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/006 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/007 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/008 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/009 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/010 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/011 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/012 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/013 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/014 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/015 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/016 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/017 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/018 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/019 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/020 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/021 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/022 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/023 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/024 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/025 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/026 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/027 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/028 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/029 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/030 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/031 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/032 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/033 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/034 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/035 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/036 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/037 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/038 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/039 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/040 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/041 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/042 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/043 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/044 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/045 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/046 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/047 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/048 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/049 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/050 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/051 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/052 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/053 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/054 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/055 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/056 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/057 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/058 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/059 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/060 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/061 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/062 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/063 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/064 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/065 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/066 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/067 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/068 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/069 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/070 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/071 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/072 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/073 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/074 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/075 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/076 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/077 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/078 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/079 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/080 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/081 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/082 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/083 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/084 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/085 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/086 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/087 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/088 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/089 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/090 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/091 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/092 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/093 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/094 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/095 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/096 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/097 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/098 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/099 Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/FINAL/PDF_FINAL/lu3087422csmh.tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/Rifa Casamento.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/Rifa Casamento.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/colador_de_paginas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/doc_pdf_convertor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/numerador_de_rifas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Python/Scripts/NumeradorDeRifas/run_all" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/initTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/initTest.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +454,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Machine/Processor.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
@@ -60,7 +475,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmake-build-debug/initTest.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
@@ -306,12 +721,20 @@
       <workItem from="1565145709703" duration="11686000" />
       <workItem from="1565189020882" duration="2111000" />
       <workItem from="1565802245040" duration="9739000" />
-      <workItem from="1565833412416" duration="5908000" />
+      <workItem from="1565833412416" duration="6166000" />
     </task>
+    <task id="LOCAL-00001" summary="SW funcionando">
+      <created>1565842896201</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1565842896201</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50638000" />
+    <option name="totallyTimeSpent" value="50896000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -331,13 +754,13 @@
       <window_info id="Favorites" order="2" sideWeight="0.4012539" side_tool="true" weight="0.13208556" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32983193" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32983193" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32983193" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39915967" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32983193" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32983193" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.32983193" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32983193" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -350,6 +773,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SW funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="SW funcionando" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Machine/Bus/INBus.h">
@@ -592,6 +1019,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/initTest.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Machine/Processor.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -599,13 +1033,6 @@
           <folding>
             <element signature="e#40#58#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/initTest.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
         </state>
       </provider>
     </entry>
