@@ -161,10 +161,21 @@ void Controller::updateState() {
             this->AluSrcASignal->setValue(1);
             this->AluSrcBSignal->setValue(0);
             this->ALUOpSignal->setValue(1);
-            this->PCWriteCondSignal->setValue(1);
             this->PCSourceSignal->setValue(1);
 
-            this->state = InstructionFetch;
+            switch (this->getInstructionType()) {
+                case BEQ:
+                    this->PCWriteCondSignal->setValue(1);
+                    break;
+                case BNE:
+                    this->PCWriteCondSignal->setValue(2);
+                    break;
+                default:
+                    Machine::debugInfo("ERROR ON BranchCompletion STATE", 1);
+                    break;
+            }
+
+                this->state = InstructionFetch;
             break;
         case JumpCompletion:
             this->PCWriteSignal->setValue(1);

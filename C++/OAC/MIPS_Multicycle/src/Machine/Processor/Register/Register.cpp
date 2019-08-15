@@ -45,7 +45,7 @@ void Register::printContents() {
     str += "\tInBus = " + to_string(this->inBus->getValue()) + "\n";
     str += "\tOutBus = " + to_string(this->outBus->getValue()) + "\n";
     if (this->controlSignal)
-        str += "\tContolSignal = " + to_string(this->controlSignal->getValue()) + "\n";
+        str += "\tControlSignal = " + to_string(this->controlSignal->getValue()) + "\n";
 
     Machine::debugInfo(str.c_str(), 2);
 }

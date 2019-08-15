@@ -34,8 +34,20 @@ void BranchController::updatePassive() {
 
     this->outBus->setValue(0);
 
-    if ((this->zeroSignalBus->getValue() && this->pcWriteCondBus->getValue()) || this->pcWriteBus->getValue())
+    if(this->pcWriteBus->getValue()) {
         this->outBus->setValue(1);
+    }
+
+    switch (this->pcWriteCondBus->getValue()) {
+        case 1:
+            if (this->zeroSignalBus->getValue())
+                this->outBus->setValue(1);
+            break;
+        case 2:
+            if (!this->zeroSignalBus->getValue())
+                this->outBus->setValue(1);
+            break;
+    }
 }
 
 void BranchController::printContents() {

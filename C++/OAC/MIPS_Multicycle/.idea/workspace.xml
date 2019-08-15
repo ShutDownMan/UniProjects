@@ -13,9 +13,13 @@
   <component name="ChangeListManager">
     <list default="true" id="4be89eb8-1342-430f-aac6-493db561f155" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/initTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/initTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/teste1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/teste1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/teste2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/teste2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/teste3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/teste3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Machine/Processor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/BranchController/BranchController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/BranchController/BranchController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Register/Register.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Register/Register.cpp" afterDir="false" />
     </list>
     <list id="76593ef6-a82e-4447-9b11-5e358fef409b" name="Noup" comment="">
       <change afterPath="$PROJECT_DIR$/../MIPS_MULTICYCLE/.idea/MIPS_Multicycle.iml" afterDir="false" />
@@ -475,11 +479,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Machine/Processor.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="316" column="15" lean-forward="true" selection-start-line="316" selection-start-column="15" selection-end-line="316" selection-end-column="15" />
+            <state relative-caret-position="-958">
+              <caret line="204" column="50" lean-forward="true" selection-start-line="204" selection-start-column="50" selection-end-line="205" selection-end-column="50" />
               <folding>
                 <element signature="e#40#58#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Machine/Processor/BranchController/BranchController.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="458">
+              <caret line="43" column="42" lean-forward="true" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -496,7 +509,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmake-build-debug/teste3.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -508,8 +521,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="43" />
+            <state relative-caret-position="63">
+              <caret line="154" column="22" selection-start-line="154" selection-start-column="22" selection-end-line="154" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Machine/Processor/ALUController/ALUController.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="34" column="15" lean-forward="true" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="39" column="4" selection-start-line="29" selection-start-column="8" selection-end-line="43" selection-end-column="1" />
+              <folding>
+                <element signature="e#107#136#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -518,10 +552,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>initial</find>
-      <find>PCSourceSignal</find>
-      <find>PCRegister:</find>
-      <find>PCWriteSignal</find>
       <find>PCRegister</find>
       <find>addressBus:</find>
       <find>ger</find>
@@ -548,6 +578,10 @@
       <find>ALUController:</find>
       <find>ALU:</find>
       <find>IorD</find>
+      <find>Contr</find>
+      <find>pcRe</find>
+      <find>pcRegisterController</find>
+      <find>A - B</find>
     </findStrings>
     <replaceStrings>
       <replace>MIPS_MONOCYCLE_INSTRUCTIONREGISTER</replace>
@@ -584,28 +618,28 @@
         <option value="$PROJECT_DIR$/src/Machine/Processor/InstructionRegister/InstructionRegister.h" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/SignExtend/SignExtend.cpp" />
-        <option value="$PROJECT_DIR$/src/Machine/Processor/BranchController/BranchController.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Machine.h" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/InstructionRegister/InstructionRegister.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Bus/INBus.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/Machine/Machine.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/Register/Register.h" />
-        <option value="$PROJECT_DIR$/src/Machine/Processor/Register/Register.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor.h" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/Memory/Memory.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.h" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/Registers/Registers.cpp" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/Multiplexer/Multiplexer.cpp" />
-        <option value="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp" />
         <option value="$PROJECT_DIR$/cmake-build-debug/initTest.txt" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/ALUController/ALUController.h" />
         <option value="$PROJECT_DIR$/src/Machine/Processor/ALUController/ALUController.cpp" />
         <option value="$PROJECT_DIR$/cmake-build-debug/teste1.txt" />
-        <option value="$PROJECT_DIR$/src/Machine/Processor.cpp" />
         <option value="$PROJECT_DIR$/cmake-build-debug/teste2.txt" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/cmake-build-debug/teste3.txt" />
+        <option value="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp" />
+        <option value="$PROJECT_DIR$/src/Machine/Processor/Register/Register.cpp" />
+        <option value="$PROJECT_DIR$/src/Machine/Processor.cpp" />
+        <option value="$PROJECT_DIR$/src/Machine/Processor/BranchController/BranchController.cpp" />
       </list>
     </option>
   </component>
@@ -735,7 +769,7 @@
       <workItem from="1565145709703" duration="11686000" />
       <workItem from="1565189020882" duration="2111000" />
       <workItem from="1565802245040" duration="9739000" />
-      <workItem from="1565833412416" duration="14983000" />
+      <workItem from="1565833412416" duration="16094000" />
     </task>
     <task id="LOCAL-00001" summary="SW funcionando">
       <created>1565842896201</created>
@@ -758,11 +792,18 @@
       <option name="project" value="LOCAL" />
       <updated>1565851527633</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="BEQ Funcionando">
+      <created>1565853652010</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1565853652010</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59713000" />
+    <option name="totallyTimeSpent" value="60824000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -805,7 +846,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="SW funcionando" />
     <MESSAGE value="ADD e SUB funcionam" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD e SUB funcionam" />
+    <MESSAGE value="BEQ Funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="BEQ Funcionando" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Machine/Bus/INBus.h">
@@ -874,13 +916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/BranchController/BranchController.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -973,13 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Register/Register.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Multiplexer/Multiplexer.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -994,16 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-          <folding>
-            <element signature="e#107#136#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1031,34 +1049,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Processor.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="316" column="15" lean-forward="true" selection-start-line="316" selection-start-column="15" selection-end-line="316" selection-end-column="15" />
-          <folding>
-            <element signature="e#40#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/teste1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/ALUController/ALUController.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="87" column="1" lean-forward="true" selection-start-line="87" selection-start-column="1" selection-end-line="87" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1083,6 +1077,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="32" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/ALUController/ALUController.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="34" column="15" lean-forward="true" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Register/Register.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="39" column="4" selection-start-line="29" selection-start-column="8" selection-end-line="43" selection-end-column="1" />
+          <folding>
+            <element signature="e#107#136#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="154" column="22" selection-start-line="154" selection-start-column="22" selection-end-line="154" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Machine/Processor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-958">
+          <caret line="204" column="50" lean-forward="true" selection-start-line="204" selection-start-column="50" selection-end-line="205" selection-end-column="50" />
+          <folding>
+            <element signature="e#40#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Machine/Processor/BranchController/BranchController.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="43" column="42" lean-forward="true" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
         </state>
       </provider>
     </entry>

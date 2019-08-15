@@ -86,7 +86,6 @@ void Processor::initialize(unsigned char *memoryRef) {
                                            new INBus(this->controller->getPCWriteSignal()),
                                            new INBus(this->alu->getZeroBus()));
 
-
     Machine::debugInfo("Initializing Component: Register Destination Multiplexer", 1);
     this->regDstMux->initialize(new INBus(0x001F0000, this->instructionRegister->getOutBus()),
                                 new INBus(0x0000F800, this->instructionRegister->getOutBus()),
@@ -203,6 +202,9 @@ void Processor::clock() {
 }
 
 void Processor::updatePassive() {
+//    Machine::debugInfo("Updating Component: PC Register Controller", 1);
+//    this->pcRegisterController->updatePassive();
+
     Machine::debugInfo("Updating IO Component: PC Register", 1);
     this->pc->updatePassive();
     this->pc->printContents();
@@ -276,6 +278,7 @@ void Processor::updatePassive() {
 
     Machine::debugInfo("Updating Component: PC Register Controller", 1);
     this->pcRegisterController->updatePassive();
+    this->pcRegisterController->printContents();
 
     /// Second update
 
