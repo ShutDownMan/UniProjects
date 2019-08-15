@@ -6,7 +6,6 @@
 #define MIPS_MULTICYCLE_PROCESSOR_H
 
 #include <cstdio>
-#include "Processor/PCRegister/PCRegister.h"
 #include "Processor/Multiplexer/Multiplexer.h"
 #include "Processor/Memory/Memory.h"
 #include "Processor/Register/Register.h"
@@ -17,8 +16,6 @@
 #include "Processor/ShiftLeft2/ShiftLeft2.h"
 #include "Processor/ALUController/ALUController.h"
 #include "Processor/ALU/ALU.h"
-#include "Processor/InstructionRegister/InstructionRegister.h"
-
 
 class Processor {
 public:

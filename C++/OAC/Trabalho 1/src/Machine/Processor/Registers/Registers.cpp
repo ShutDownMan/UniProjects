@@ -3,6 +3,7 @@
 //
 
 #include "Registers.h"
+#include "../../Machine.h"
 #include <string>
 #include <iostream>
 
@@ -69,5 +70,5 @@ void Registers::printContents() {
     str += "\treadData1Bus: " + to_string(this->readData1Bus->getValue()) + "\n";
     str += "\treadData2Bus: " + to_string(this->readData2Bus->getValue()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 3);
 }

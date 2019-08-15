@@ -11,21 +11,23 @@
 #include "Processor.h"
 
 class Machine {
+public:
+    static unsigned char verbosityLevel;
+
 private:
     Processor *processor;
-
-    // Memory memory;
 
 public:
     Machine();
 
-    void initialize(const char *instructionsFile);
+    void initialize(const char *instructionsFile, unsigned char verbLevel);
 
     void clock();
 
-    static void debugInfo(const char *message);
+    static void debugInfo(const char *message, unsigned char verbLevel);
 
-    unsigned int getInstructionFromLine(const char str[255]);
+    static unsigned int getInstructionFromLine(const char str[255]);
+
 };
 
 

@@ -3,6 +3,7 @@
 //
 
 #include "BranchControl.h"
+#include "../../Machine.h"
 #include <string>
 #include <iostream>
 
@@ -62,6 +63,5 @@ void BranchControl::printContents() {
     str += "\tjumpSignalBus: " + to_string(this->jumpSignalBus->getValue()) + "\n";
     str += "\tbranchEnable: " + to_string(this->outBus->getValue()) + "\n";
 
-    cout << str << endl;
-
+    Machine::debugInfo(str.c_str(), 3);
 }

@@ -1,0 +1,5 @@
+#!/bin/bash
+env ;
+./numerador_de_rifas.py ;
+./doc_pdf_convertor ;
+./colador_de_paginas.py

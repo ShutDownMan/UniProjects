@@ -1,0 +1,120 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+strings.h
+-
+OUTBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Machine.h
+cstdio
+-
+curses.h
+-
+Processor.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor.h
+cstdio
+-
+Processor/PCRegister/PCRegister.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/PCRegister/PCRegister.h
+Processor/Adder/Adder.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Adder/Adder.h
+Processor/InstructionMemory/InstructionMemory.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/InstructionMemory/InstructionMemory.h
+Processor/Control/Control.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Control/Control.h
+Processor/Multiplexer/Multiplexer.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Multiplexer/Multiplexer.h
+Processor/Registers/Registers.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Registers/Registers.h
+Processor/SignExtend/SignExtend.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/SignExtend/SignExtend.h
+Processor/ShiftLeft2/ShiftLeft2.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/ShiftLeft2/ShiftLeft2.h
+Processor/ALUControl/ALUControl.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/ALUControl/ALUControl.h
+Processor/ALU/ALU.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/ALU/ALU.h
+Processor/DataMemory/DataMemory.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/DataMemory/DataMemory.h
+Processor/BranchControl/BranchControl.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/BranchControl/BranchControl.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/ALU/ALU.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/ALUControl/ALUControl.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Adder/Adder.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+../../Bus/OUTBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/BranchControl/BranchControl.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Control/Control.cpp
+Control.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Control/Control.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Machine.h
+string
+-
+iostream
+-
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Control/Control.h
+../../Bus/OUTBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/DataMemory/DataMemory.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/InstructionMemory/InstructionMemory.h
+../../Bus/OUTBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Multiplexer/Multiplexer.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/PCRegister/PCRegister.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/Registers/Registers.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+../../Bus/OUTBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/ShiftLeft2/ShiftLeft2.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Processor/SignExtend/SignExtend.h
+../../Bus/INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/INBus.h
+../../Bus/OUTBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/Trabalho 1/src/Machine/Bus/OUTBus.h
+

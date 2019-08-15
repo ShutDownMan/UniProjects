@@ -27,27 +27,27 @@ void ALU::updateIO() {
 
     switch (this->controlBus->getValue()) {
         case AND:
-            Machine::debugInfo("A & B");
+            Machine::debugInfo("A & B", 3);
             res = this->inputABus->getValue() & this->inputBBus->getValue();
             break;
         case OR:
-            Machine::debugInfo("A | B");
+            Machine::debugInfo("A | B", 3);
             res = this->inputABus->getValue() | this->inputBBus->getValue();
             break;
         case SUM:
-            Machine::debugInfo("A + B");
+            Machine::debugInfo("A + B", 3);
             res = this->inputABus->getValue() + this->inputBBus->getValue();
             break;
         case SUB:
-            Machine::debugInfo("A - B");
+            Machine::debugInfo("A - B", 3);
             res = this->inputABus->getValue() - this->inputBBus->getValue();
             break;
         case LST:
-            Machine::debugInfo("A < B");
+            Machine::debugInfo("A < B", 3);
             res = (this->inputABus->getValue() < this->inputBBus->getValue());
             break;
         case NOR:
-            Machine::debugInfo("!(A | B)");
+            Machine::debugInfo("!(A | B)", 3);
             res = ~(this->inputABus->getValue() | this->inputBBus->getValue());
             break;
     }
@@ -80,5 +80,5 @@ void ALU::printContents() {
     str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
     str += "\tzeroBus: " + to_string(this->zeroBus->getValue()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 3);
 }

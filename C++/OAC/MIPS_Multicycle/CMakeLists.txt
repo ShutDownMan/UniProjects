@@ -13,10 +13,6 @@ add_executable(MIPS_MULTICYCLE
         src/Machine/Bus/INBus.h
         src/Machine/Bus/OUTBus.cpp
         src/Machine/Bus/OUTBus.h
-        src/Machine/Processor/PCRegister/PCRegister.cpp
-        src/Machine/Processor/PCRegister/PCRegister.h
-        src/Machine/Processor/InstructionRegister/InstructionRegister.cpp
-        src/Machine/Processor/InstructionRegister/InstructionRegister.h
         src/Machine/Processor/Multiplexer/Multiplexer.cpp
         src/Machine/Processor/Multiplexer/Multiplexer.h
         src/Machine/Processor/Memory/Memory.cpp

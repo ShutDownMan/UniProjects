@@ -3,6 +3,7 @@
 //
 
 #include "Multiplexer.h"
+#include "../../Machine.h"
 #include <string>
 #include <iostream>
 
@@ -42,5 +43,5 @@ void Multiplexer::printContents() {
     str += "\tinputBBus: " + to_string(this->inputBBus->getValue()) + "\n";
     str += "\tcontrolSignal: " + to_string(this->controlSignal->getValue()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 3);
 }

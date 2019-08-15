@@ -37,6 +37,6 @@ void PCRegister::printContents() {
     str += "\tInBus: " + to_string(this->inBus->getValue()) + "\n";
     str += "\tOutBus: " + to_string(this->outBus->getValue()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 3);
 }
 

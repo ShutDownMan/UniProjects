@@ -4,6 +4,7 @@
 
 #include <cstdint>
 #include "SignExtend.h"
+#include "../../Machine.h"
 #include <string>
 #include <iostream>
 
@@ -37,6 +38,6 @@ void SignExtend::printContents() {
     str += "\tinBus: " + to_string(this->inBus->getValue()) + "\n";
     str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 3);
 
 }

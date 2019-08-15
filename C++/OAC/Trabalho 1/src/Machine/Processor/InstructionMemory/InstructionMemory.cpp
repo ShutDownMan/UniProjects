@@ -3,6 +3,7 @@
 //
 
 #include "InstructionMemory.h"
+#include "../../Machine.h"
 #include <string>
 #include <iostream>
 
@@ -38,6 +39,6 @@ void InstructionMemory::printContents() {
     str += "\tReadAddressBus: " + to_string(this->readAddressBus->getValue()) + "\n";
     str += "\tInstructionBus: " + to_string(this->instructionBus->getValue()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 3);
 }
 

@@ -40,14 +40,14 @@ void Control::updateIO() {
 
     switch (getInstructionType()) {
         case RTYPE:
-            Machine::debugInfo("R Type Instruction detected");
+            Machine::debugInfo("R Type Instruction detected", 3);
             this->RegDstSignal->setValue(1);
             this->RegWriteSignal->setValue(1);
             this->ALUOpSignal->setValue(2);
             break;
 
         case LW:
-            Machine::debugInfo("LW Instruction detected");
+            Machine::debugInfo("LW Instruction detected", 3);
             this->ALUSrcSignal->setValue(1);
             this->MemToRegSignal->setValue(1);
             this->RegWriteSignal->setValue(1);
@@ -55,38 +55,38 @@ void Control::updateIO() {
             break;
 
         case SW:
-            Machine::debugInfo("SW Instruction detected");
+            Machine::debugInfo("SW Instruction detected", 3);
             this->ALUSrcSignal->setValue(1);
             this->MemWriteSignal->setValue(1);
             break;
 
         case BEQ:
-            Machine::debugInfo("BEQ Instruction detected");
+            Machine::debugInfo("BEQ Instruction detected", 3);
             this->BranchSignal->setValue(1);
             this->ALUOpSignal->setValue(1);
             break;
 
         case BNE:
-            Machine::debugInfo("BNE Instruction detected");
+            Machine::debugInfo("BNE Instruction detected", 3);
             this->BranchSignal->setValue(2);
             this->ALUOpSignal->setValue(1);
             break;
 
         case LI:
-            Machine::debugInfo("LI Instruction detected");
+            Machine::debugInfo("LI Instruction detected", 3);
             this->RegWriteSignal->setValue(1);
             this->RegDataSrcSignal->setValue(1);
             break;
 
         case J:
-            Machine::debugInfo("J Instruction detected");
+            Machine::debugInfo("J Instruction detected", 3);
             this->BranchSignal->setValue(1);
             this->ALUOpSignal->setValue(1);
             this->BranchJumpSignal->setValue(1);
             break;
 
         default:
-            Machine::debugInfo("INSTRUCTION TYPE NOT DETECTED!");
+            Machine::debugInfo("INSTRUCTION TYPE NOT DETECTED!", 3);
             break;
     }
 }
@@ -169,7 +169,7 @@ void Control::printContents() {
     str += "\tBranchJumpSignal: " + to_string(this->BranchJumpSignal->getValue()) + "\n";
     str += "\tInstructionType: " + to_string(this->getInstructionType()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 3);
 }
 
 // 001111 00000 10010 0000000000001000

@@ -3,6 +3,7 @@
 //
 
 #include "Adder.h"
+#include "../../Machine.h"
 #include <string>
 #include <iostream>
 
@@ -38,6 +39,5 @@ void Adder::printContents() {
     str += "\tinputBBus: " + to_string(this->inputBBus->getValue()) + "\n";
     str += "\toutputBus: " + to_string(this->outputBus->getValue()) + "\n";
 
-    cout << str << endl;
-
+    Machine::debugInfo(str.c_str(), 3);
 }

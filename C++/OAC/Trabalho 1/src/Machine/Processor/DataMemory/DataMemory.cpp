@@ -3,6 +3,7 @@
 //
 
 #include "DataMemory.h"
+#include "../../Machine.h"
 #include <string>
 #include <iostream>
 #include <cstring>
@@ -59,5 +60,5 @@ void DataMemory::printContents() {
     str += "\twriteMemControlBus: " + to_string(this->writeMemControlBus->getValue()) + "\n";
     str += "\treadDataBus: " + to_string(this->readDataBus->getValue()) + "\n";
 
-    cout << str << endl;
+    Machine::debugInfo(str.c_str(), 3);
 }

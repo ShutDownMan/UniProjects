@@ -3,6 +3,12 @@
 //
 
 #include "ShiftLeft2.h"
+#include "../../Machine.h"
+
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 ShiftLeft2::ShiftLeft2() {
     this->inBus = nullptr;
@@ -21,4 +27,14 @@ void ShiftLeft2::initialize(INBus *inBusRef) {
 
 OUTBus *ShiftLeft2::getOutBus() const {
     return outBus;
+}
+
+void ShiftLeft2::printContents() {
+    string str = "ALUControl:\n";
+
+    str += "\tinBus: " + to_string(this->inBus->getValue()) + "\n";
+    str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
+
+    Machine::debugInfo(str.c_str(), 3);
+
 }

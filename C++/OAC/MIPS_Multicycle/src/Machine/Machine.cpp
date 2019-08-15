@@ -16,17 +16,18 @@ Machine::Machine() {
 }
 
 void Machine::clock() {
-    debugInfo("================================================\n", 1);
+    debugInfo("================================================", 1);
     processor->updateController();
-    debugInfo("------------------------------------------------\n", 1);
+    debugInfo("------------------------------------------------", 1);
     processor->clock();
-    debugInfo("------------------------------------------------\n", 1);
+    debugInfo("------------------------------------------------", 1);
     processor->updatePassive();
 
-    debugInfo("------------------------------------------------\n", 1);
+    debugInfo("------------------------------------------------", 1);
     processor->printMemory();
-    debugInfo("------------------------------------------------\n", 1);
+    debugInfo("------------------------------------------------", 1);
     processor->printRegisters();
+    debugInfo("------------------------------------------------", 1);
 
 }
 
@@ -43,7 +44,7 @@ void Machine::debugInfo(const char *message, unsigned char verbLevel) {
             cout << "\033[1;37m";
             break;
         case 3:
-            cout << "\033[1;35m";
+            cout << "\033[1;34m";
             break;
         default:
             break;
@@ -71,9 +72,10 @@ void Machine::initialize(const char *instructionsFile, unsigned char verbLevel) 
         aux = getInstructionFromLine(buff);
         memcpy(&memory[i], &aux, sizeof(int));
         memory[i] = getInstructionFromLine(buff);
-
-        sprintf(buff, "Instruction[%d] = %u", i, aux);
-        debugInfo(buff, 1);
+        if (verbLevel) {
+            sprintf(buff, "Instruction[%02d] = 0x%08x", i * 4, aux);
+            debugInfo(buff, 1);
+        }
     }
 
     processor->initialize(memory);

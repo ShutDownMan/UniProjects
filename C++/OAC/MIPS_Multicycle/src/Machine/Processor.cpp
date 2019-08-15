@@ -165,9 +165,6 @@ void Processor::updateController() {
 }
 
 void Processor::clock() {
-//    Machine::debugInfo("Clocking Component: PC Register");
-//    this->pc->readRegisters();
-//    this->pc->printContents();
 
     Machine::debugInfo("Updating Component: IorD Multiplexer", 1);
     this->IorDMux->updatePassive();
@@ -178,42 +175,27 @@ void Processor::clock() {
     Machine::debugInfo("Updating IO of Component: Registers", 1);
     this->registers->updateIO();
 
-    // -- //
-
     Machine::debugInfo("Clocking Component: Memory", 1);
     this->memory->readMem();
     this->memory->printContents();
 
-//    Machine::debugInfo("Clocking Component: Memory Data Register");
-//    this->memoryDataRegister->readRegisters();
-
     Machine::debugInfo("Clocking Component: Registers", 1);
     this->registers->readRegisters();
     this->registers->printContents();
-
-//    Machine::debugInfo("Clocking Component: Register A");
-//    this->registerA->readRegisters();
-//
-//    Machine::debugInfo("Clocking Component: Register B");
-//    this->registerB->readRegisters();
-//
-//    Machine::debugInfo("Clocking Component: ALU Out Register");
-//    this->aluOut->readRegisters();
 }
 
 void Processor::updatePassive() {
-//    Machine::debugInfo("Updating Component: PC Register Controller", 1);
-//    this->pcRegisterController->updatePassive();
-
     Machine::debugInfo("Updating IO Component: PC Register", 1);
     this->pc->updatePassive();
     this->pc->printContents();
 
     Machine::debugInfo("Updating Component: IorD Multiplexer", 1);
     this->IorDMux->updatePassive();
+    this->IorDMux->printContents();
 
     Machine::debugInfo("Updating IO Component: Memory Data Register", 1);
     this->memoryDataRegister->updatePassive();
+    this->memoryDataRegister->printContents();
 
     Machine::debugInfo("Updating IO Component: Instruction Register", 1);
     this->instructionRegister->updatePassive();
@@ -221,13 +203,15 @@ void Processor::updatePassive() {
 
     Machine::debugInfo("Updating Component: Memory to Register Multiplexer", 1);
     this->memToRegMux->updatePassive();
-//    this->memToRegMux->printContents();
+    this->memToRegMux->printContents();
 
     Machine::debugInfo("Updating Component: Register Destination Multiplexer", 1);
     this->regDstMux->updatePassive();
+    this->regDstMux->printContents();
 
     Machine::debugInfo("Updating Component: Registers", 1);
     this->registers->readRegisters();
+    this->registers->printContents();
 
     Machine::debugInfo("Updating Component: Sign Extend", 1);
     this->signExtend->updatePassive();
@@ -235,9 +219,7 @@ void Processor::updatePassive() {
 
     Machine::debugInfo("Updating Component: ALU Shift Left 2", 1);
     this->aluShiftLeft2->updatePassive();
-//    this->aluShiftLeft2->printContents();
-
-//    this->registers->printContents();
+    this->aluShiftLeft2->printContents();
 
     Machine::debugInfo("Updating IO Component: Register A", 1);
     this->registerA->updatePassive();
@@ -258,8 +240,6 @@ void Processor::updatePassive() {
     Machine::debugInfo("Updating Component: PC Shift Left 2", 1);
     this->pcShiftLeft2->updatePassive();
 
-    this->instructionRegister->printContents();
-
     Machine::debugInfo("Updating Component: Alu Controller", 1);
     this->aluController->updatePassive();
     this->aluController->printContents();
@@ -270,7 +250,7 @@ void Processor::updatePassive() {
 
     Machine::debugInfo("Updating Component: PC Source Multiplexer", 1);
     this->pcSourceMux->updatePassive();
-//    pcSourceMux->printContents();
+    pcSourceMux->printContents();
 
     Machine::debugInfo("Updating Component: ALU Out Register", 1);
     this->aluOut->updatePassive();
@@ -298,15 +278,15 @@ void Processor::updatePassive() {
 
     Machine::debugInfo("Updating IO Component: Memory Data Register", 1);
     this->memoryDataRegister->updatePassive();
-//    this->memoryDataRegister->printContents();
+    this->memoryDataRegister->printContents();
 
     Machine::debugInfo("Updating Component: Memory to Register Multiplexer", 1);
     this->memToRegMux->updatePassive();
-//    this->memToRegMux->printContents();
+    this->memToRegMux->printContents();
 
     Machine::debugInfo("Updating Component: Register Destination Multiplexer", 1);
     this->regDstMux->updatePassive();
-//    this->regDstMux->printContents();
+    this->regDstMux->printContents();
 
     Machine::debugInfo("Updating Component: Registers", 1);
     this->registers->updateIO();
