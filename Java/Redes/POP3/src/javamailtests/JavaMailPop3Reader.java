@@ -9,48 +9,55 @@ public class JavaMailPop3Reader {
 
     public static void main(String args[]) throws Exception {
 
-        // mail server connection parameters
+        // Parametros de conexão do servidor de email
         String host = "pop.mail.yahoo.com";
         String user = "jesuistoiamigo";
-        String password = "RTA402016";
+        String password = "faA2$%Cde!@#fa1356$#$%";
+        String port = "995";
 
-        // connect to my pop3 inbox
+        // Setup das propriedades da conexão
         Properties properties = System.getProperties();
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 
         Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+
         properties.setProperty("mail.pop3.socketFactory.class", SSL_FACTORY);
         properties.setProperty("mail.pop3.socketFactory.fallback", "false");
-        properties.setProperty("mail.pop3.port", "995");
-        properties.setProperty("mail.pop3.socketFactory.port", "995");
+        properties.setProperty("mail.pop3.port", port);
+        properties.setProperty("mail.pop3.socketFactory.port", port);
         properties.setProperty("mail.pop3.ssl.trust", host); // Trust all Servers
-        URLName urln = new URLName("pop3", host, 995, null, user, password);
 
+        // URL de conexão
+        URLName urln = new URLName("pop3", host, Integer.valueOf(port), null, user, password);
+
+        // Pedido de conexão
         Session session = Session.getInstance(properties, null);
+        session.setDebug(true);
         Store store = session.getStore(urln);
-
         store.connect();
 
         Folder inbox = store.getFolder("Inbox");
         inbox.open(Folder.READ_ONLY);
 
-        // get the list of inbox messages
+        // Pega lista de mensagens inbox
         Message[] messages = inbox.getMessages();
 
-        if (messages.length == 0) System.out.println("No messages found.");
+        if (messages.length == 0) System.out.println("Nenehuma mensagem encontrada.");
 
+        /// Pra cada mensagem na lista
         for (int i = 0; i < messages.length; i++) {
-            // stop after listing ten messages
+            // Para depois das 10 primeiras mensagens
             if (i > 10) {
                 System.exit(0);
                 inbox.close(true);
                 store.close();
             }
 
-            System.out.println("Message " + (i + 1));
-            System.out.println("From : " + messages[i].getFrom()[0]);
-            System.out.println("Subject : " + messages[i].getSubject());
-            System.out.println("Sent Date : " + messages[i].getSentDate());
+            System.out.println("Mensagem " + (i + 1));
+            System.out.println("De: " + messages[i].getFrom()[0]);
+            System.out.println("Titulo: " + messages[i].getSubject());
+            System.out.println("Data de envio: " + messages[i].getSentDate());
+
             System.out.println();
         }
 
