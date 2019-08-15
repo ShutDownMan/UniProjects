@@ -29,7 +29,7 @@ typedef enum InstructionType {
 
 typedef enum StateName {
 //    Initialization,             /// 0
-            InstructionFetch,           /// 0
+    InstructionFetch,           /// 0
     InstructionDecode,          /// 1
     MemoryAddressComputation,   /// 2
     MemoryAccessLW,             /// 3

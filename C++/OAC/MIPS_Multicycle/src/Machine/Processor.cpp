@@ -75,7 +75,8 @@ void Processor::initialize(unsigned char *memoryRef) {
                                           new INBus(this->controller->getIRWriteSignal()));
 
     Machine::debugInfo("Initializing Component: Memory Data Register", 1);
-    this->memoryDataRegister->initialize(new INBus(this->memory->getMemDataBus()));
+    this->memoryDataRegister->initialize(new INBus(this->memory->getMemDataBus()),
+                                         new INBus(this->controller->getMemReadSignal()));
 
     Machine::debugInfo("Initializing Component: Controller", 1);
     this->controller->initialize(new INBus(0xFC000000, this->instructionRegister->getOutBus()));
@@ -134,9 +135,8 @@ void Processor::initialize(unsigned char *memoryRef) {
     this->pcShiftLeft2->initialize(new INBus(0x3FFFFFF, this->instructionRegister->getOutBus()));
 
     Machine::debugInfo("Initializing Component: Alu Controller", 1);
-    this->aluController->initialize(new INBus(0x0000002F, this->memory->getMemDataBus()),
+    this->aluController->initialize(new INBus(0x0000002F, this->instructionRegister->getOutBus()),
                                     new INBus(0x00000003, this->controller->getAluOpSignal()));
-
 
     Machine::debugInfo("Initializing Component: ALU", 1);
     this->alu->initialize(new INBus(this->aluSrcAMux->getOutBus()),
@@ -167,8 +167,11 @@ void Processor::updateController() {
 
 void Processor::clock() {
 //    Machine::debugInfo("Clocking Component: PC Register");
-//    this->pc->updatePassive();
+//    this->pc->readRegisters();
 //    this->pc->printContents();
+
+    Machine::debugInfo("Updating Component: IorD Multiplexer", 1);
+    this->IorDMux->updatePassive();
 
     Machine::debugInfo("Updating IO of Component: Memory", 1);
     this->memory->updateIO();
@@ -179,24 +182,24 @@ void Processor::clock() {
     // -- //
 
     Machine::debugInfo("Clocking Component: Memory", 1);
-    this->memory->updateState();
+    this->memory->readMem();
     this->memory->printContents();
 
 //    Machine::debugInfo("Clocking Component: Memory Data Register");
-//    this->memoryDataRegister->updatePassive();
+//    this->memoryDataRegister->readRegisters();
 
     Machine::debugInfo("Clocking Component: Registers", 1);
-    this->registers->updateState();
+    this->registers->readRegisters();
     this->registers->printContents();
 
 //    Machine::debugInfo("Clocking Component: Register A");
-//    this->registerA->updatePassive();
+//    this->registerA->readRegisters();
 //
 //    Machine::debugInfo("Clocking Component: Register B");
-//    this->registerB->updatePassive();
+//    this->registerB->readRegisters();
 //
 //    Machine::debugInfo("Clocking Component: ALU Out Register");
-//    this->aluOut->updatePassive();
+//    this->aluOut->readRegisters();
 }
 
 void Processor::updatePassive() {
@@ -222,7 +225,7 @@ void Processor::updatePassive() {
     this->regDstMux->updatePassive();
 
     Machine::debugInfo("Updating Component: Registers", 1);
-    this->registers->updatePassive();
+    this->registers->readRegisters();
 
     Machine::debugInfo("Updating Component: Sign Extend", 1);
     this->signExtend->updatePassive();
@@ -253,9 +256,11 @@ void Processor::updatePassive() {
     Machine::debugInfo("Updating Component: PC Shift Left 2", 1);
     this->pcShiftLeft2->updatePassive();
 
+    this->instructionRegister->printContents();
+
     Machine::debugInfo("Updating Component: Alu Controller", 1);
     this->aluController->updatePassive();
-//    this->aluController->printContents();
+    this->aluController->printContents();
 
     Machine::debugInfo("Updating Component: ALU", 1);
     this->alu->updatePassive();
@@ -280,17 +285,32 @@ void Processor::updatePassive() {
 
     Machine::debugInfo("Updating Component: IorD Multiplexer", 1);
     this->IorDMux->updatePassive();
+    this->IorDMux->printContents();
 
     Machine::debugInfo("Clocking Component: Memory", 1);
     this->memory->updateIO();
+    this->memory->readMem();
     this->memory->writeMem();
     this->memory->printContents();
+
+    Machine::debugInfo("Updating IO Component: Memory Data Register", 1);
+    this->memoryDataRegister->updatePassive();
+//    this->memoryDataRegister->printContents();
 
     Machine::debugInfo("Updating Component: Memory to Register Multiplexer", 1);
     this->memToRegMux->updatePassive();
 //    this->memToRegMux->printContents();
-}
 
+    Machine::debugInfo("Updating Component: Register Destination Multiplexer", 1);
+    this->regDstMux->updatePassive();
+//    this->regDstMux->printContents();
+
+    Machine::debugInfo("Updating Component: Registers", 1);
+    this->registers->updateIO();
+    this->registers->writeRegisters();
+    this->registers->printContents();
+
+}
 
 void Processor::printRegisters() {
     unsigned int const *registersMem = this->registers->getMemory();

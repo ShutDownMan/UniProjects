@@ -136,16 +136,17 @@ void Controller::updateState() {
             this->state = InstructionFetch;
             break;
         case MemoryReadCompletionStep:
-            this->RegDstSignal->setValue(1);
+            this->RegDstSignal->setValue(0);
             this->RegWriteSignal->setValue(1);
-            this->MemToRegSignal->setValue(0);
+            this->MemToRegSignal->setValue(1);
 
             this->state = InstructionFetch;
             break;
         case Execution:
             this->AluSrcASignal->setValue(1);
-            this->AluSrcBSignal->setValue(2);
-            this->ALUOpSignal->setValue(0);
+            this->AluSrcBSignal->setValue(0);
+            this->ALUOpSignal->setValue(2);
+            this->AluOutWriteSignal->setValue(1);
 
             this->state = RTypeCompletion;
             break;
@@ -153,7 +154,6 @@ void Controller::updateState() {
             this->RegDstSignal->setValue(1);
             this->RegWriteSignal->setValue(1);
             this->MemToRegSignal->setValue(0);
-            this->AluOutWriteSignal->setValue(1);
 
             this->state = InstructionFetch;
             break;
@@ -331,8 +331,22 @@ void Controller::printContents() {
 // 000000 00001 00000 00001 00000100100
 // ADD $1, $1, $3
 // 000000 00001 00011 00001 00000100000
+// 000000 00111 01000 00110 00000100000
 // J -7
 // 000010 11111111111111111111111001
 
 // BNE $0, $1, -7
 // 000101 00000 00001 1111111111111001
+
+/*
+
+ TESTE!!!!
+00111100000111000000000000011101
+10101100000111000000000000011100
+10001100000110000000000000011100
+
+10001100000111000000000000011100
+00111100000100100000000000000110
+00111100000100110000000000000101
+
+ */

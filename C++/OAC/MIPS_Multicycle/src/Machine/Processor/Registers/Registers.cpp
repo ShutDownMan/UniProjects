@@ -38,12 +38,12 @@ void Registers::updateIO() {
     this->writeControlBus->update();
 }
 
-void Registers::updatePassive() {
+void Registers::readRegisters() {
     this->readData1Bus->setValue(this->memory[this->readRegister1Bus->getValue()]);
     this->readData2Bus->setValue(this->memory[this->readRegister2Bus->getValue()]);
 }
 
-void Registers::updateState() {
+void Registers::writeRegisters() {
     if (this->writeControlBus->getValue()) {
         this->memory[this->writeRegisterBus->getValue()] = this->writeDataBus->getValue();
     }

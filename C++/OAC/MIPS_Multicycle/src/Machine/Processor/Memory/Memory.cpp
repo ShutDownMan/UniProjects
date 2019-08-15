@@ -44,7 +44,7 @@ void Memory::writeMem() {
         memcpy(&this->memory[this->addressBus->getValue()], &(val = this->writeDataBus->getValue()), sizeof(int));
 }
 
-void Memory::updateState() {
+void Memory::readMem() {
     unsigned int val;
 
     if (this->readMemControlBus->getValue()) {

@@ -26,7 +26,7 @@ private:
 public:
     Registers();
 
-    void updateState();
+    void writeRegisters();
 
     void initialize(INBus *readRegister1BusRef, INBus *readRegisterBus2Ref, INBus *writeRegisterBusRef,
                     INBus *writeDataBusRef,
@@ -42,7 +42,7 @@ public:
 
     void updateIO();
 
-    void updatePassive();
+    void readRegisters();
 };
 
 

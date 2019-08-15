@@ -40,23 +40,25 @@ void ALUController::updatePassive() {
             if (this->functBus->getValue() == IS_JR_MASK)
                 this->BranchJumpSrcSignal->setValue(1);
 
-            // XXX?
-            if (!(fsignal & 0x09u)) // F0 e F3
-                result &= ~(1ul << 0u);
-            else
-                result |= 1ul << 0u;
-
-            // XX?X
-            if ((fsignal & 0x04u)) // F2
-                result &= ~(1ul << 1u);
-            else
-                result |= 1ul << 1u;
-
-            // X?XX
-            if (!(fsignal & 0x02u)) // F1
-                result &= ~(1ul << 2u);
-            else
-                result |= 1ul << 2u;
+            switch (fsignal) {
+                case IS_ADD_MASK:
+                    result = 2;
+                    break;
+                case IS_SUB_MASK:
+                    result = 6;
+                    break;
+                case IS_AND_MASK:
+                    result = 0;
+                    break;
+                case IS_OR_MASK:
+                    result = 1;
+                    break;
+                case IS_SLT_MASK:
+                    result = 7;
+                    break;
+                default:
+                    break;
+            }
 
             break;
         case 3:

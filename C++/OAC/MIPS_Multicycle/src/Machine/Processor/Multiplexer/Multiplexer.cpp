@@ -79,6 +79,7 @@ void Multiplexer::printContents() {
         str += "\tinputCBus: " + to_string(this->inputCBus->getValue()) + "\n";
     if (this->inputDBus)
         str += "\tinputDBus: " + to_string(this->inputDBus->getValue()) + "\n";
+    str += "\toutBus: " + to_string(this->outBus->getValue()) + "\n";
     str += "\tcontrolSignal: " + to_string(this->controlSignal->getValue()) + "\n";
 
     Machine::debugInfo(str.c_str(), 2);

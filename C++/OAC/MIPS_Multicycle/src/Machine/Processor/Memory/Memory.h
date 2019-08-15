@@ -23,7 +23,7 @@ private:
 public:
     Memory();
 
-    void updateState();
+    void readMem();
 
     void initialize(unsigned char *memoryRef, INBus *addressBusRef, INBus *writeDataRef, INBus *writeMemControlBusRef,
                     INBus *readMemControlBusRef);
