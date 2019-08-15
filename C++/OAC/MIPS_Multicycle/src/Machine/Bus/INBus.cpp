@@ -23,8 +23,6 @@ INBus::INBus(unsigned int mask, OUTBus *refBus) : mask(mask), refBus(refBus) {
 
 void INBus::update() {
     this->value = refBus->getValue();
-//    string str = to_string(this->value);
-//    Machine::debugInfo(str.c_str(), 2);
 }
 
 unsigned int INBus::getValue() const {
