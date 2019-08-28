@@ -1,3 +1,0 @@
-/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/MIPS_MULTICYCLE.dir
-/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MULTICYCLE/cmake-build-debug/CMakeFiles/edit_cache.dir
