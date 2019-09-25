@@ -1,0 +1,3 @@
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/CMakeFiles/rebuild_cache.dir
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/CMakeFiles/edit_cache.dir
