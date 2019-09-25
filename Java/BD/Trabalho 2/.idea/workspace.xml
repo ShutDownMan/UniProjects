@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e91343ae-a290-43b2-8a05-9cb5d0caedd3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/exec_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_postgresql_9_1_901_1_jdbc4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/postgresql-9.1-901-1.jdbc4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/misc/dbmodel.dbm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/misc/empresa_telecom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DBConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/EmpresaTelecom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Endereco.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Fatura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Internet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Ligacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5ad44ae9-b33d-4f60-bc2f-62ce436b42b8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5ad44ae9-b33d-4f60-bc2f-62ce436b42b8/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5ad44ae9-b33d-4f60-bc2f-62ce436b42b8/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabalho 2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho 2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbmodel/dbmodel.dbm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="e91343ae-a290-43b2-8a05-9cb5d0caedd3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +56,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../TGGER" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -124,12 +99,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7e6771e3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@185b50de" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7e6771e3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@2bda6a82" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@185b50de" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7147b33b" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -149,6 +124,7 @@
       <updated>1566167879206</updated>
       <workItem from="1566167883796" duration="10139000" />
       <workItem from="1566180175592" duration="26560000" />
+      <workItem from="1567696562136" duration="95000" />
     </task>
     <servers />
   </component>

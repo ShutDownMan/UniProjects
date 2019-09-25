@@ -9,16 +9,16 @@
 	@postcondition matriz é alocada, inicializada e retornada
 */
 Matriz *inicializaMatriz(int linhas, int colunas) {
-	/// aloca memâ”œâ”‚ria para estrutura de controle da matriz
+	/// aloca memória para estrutura de controle da matriz
 	Matriz *novaMatriz = (Matriz *)malloc(sizeof(Matriz));
 
-	/// aloca espaâ”œÂºo para o vetor de linhas da matriz de tamanho 'linhas' \
+	/// aloca espaço para o vetor de linhas da matriz de tamanho 'linhas' \
 	(vetor de vetores)
 	novaMatriz->m = (double **)malloc(sizeof(double *)*linhas);
 
 	/// para cada linha na matriz
 	for(int i = 0; i < linhas; ++i) {
-		/// aloca espaâ”œÂºo para um vetor de tamanho 'colunas'
+		/// aloca espaço para um vetor de tamanho 'colunas'
 		novaMatriz->m[i] = (double *)malloc(sizeof(double)*colunas);
 		for(int j = 0; j < colunas; ++j) {
 			novaMatriz->m[i][j] = 0;
@@ -72,12 +72,12 @@ void printMatriz(Matriz *matriz) {
 	/// para cada linha na matriz
 	for(i = 0; i < matriz->tamanhoLinhas; ++i) {
 		/// para cada coluna na matriz
-		printf("%c ", '³'); //< 179
+		printf("%c ", 179); //< 179
 		for(j = 0; j < matriz->tamanhoColunas; ++j) {
 			/// se elemento atual for negativo
 			printaElemento(matriz->m[i][j]);
 		}
-		printf("%c\n", '³'); //< 179
+		printf("%c\n", 179); //< 179
 	}
 }
 
@@ -91,10 +91,10 @@ void printaElemento(double num) {
 	/// se elemento atual for negativo
 	if(num < 0) {
 		/// printa com precisÃ§Ã£o de 4 casas
-		printf("%.4lf ", num);
+		printf("%4lf ", num);
 	} else {
 		/// printa com precisÃ§Ã£o de 5 casas
-		printf("%.5lf ", num);
+		printf("%5lf ", num);
 	}
 }
 
@@ -210,7 +210,7 @@ void ordenarPonteirosPorPosicoes(int posicoes[], double *ptrs[], int tamanho) {
 void freeMatriz(Matriz *matriz) {
 	/// para cada linha na matriz
 	for(int i = 0; i < matriz->tamanhoLinhas; ++i) {
-		/// libera memâ”œâ”‚ria do vetor
+		/// libera memória do vetor
 		free(matriz->m[i]);
 	}
 	/// libera vetor de colunas

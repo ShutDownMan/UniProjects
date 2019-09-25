@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <conio.h>
 #include "matriz.h"
 
 /*!
@@ -77,7 +76,7 @@ int main(void) {
 	itrGaussJacobi(matrizAB, ordem, erro, iteracoes);
 
 	printf("Pressione qualquer tecla para sair do programa.\n");
-	getch();
+	getc(stdin);
 
 	/// libera memória das matrizes utilizadas nos cálculos
 	freeMatriz(matrizA);
@@ -124,6 +123,7 @@ void itrGaussJacobi(Matriz *matrizAB, int ordem, double erro, int maxK) {
 
 	printf("\nResolvendo por Gauss-Jacobi...\n");
 	/// iteração sobre resultados
+	printf("xi		soma	mii\n");
 	do {
 		/// para cada linha na matriz
 		for(i = 0; i < ordem; ++i) {
@@ -133,7 +133,7 @@ void itrGaussJacobi(Matriz *matrizAB, int ordem, double erro, int maxK) {
 					somatoria += matrizAB->m[i][j]*vetorXAtual[j];
 				}
 			}
-			/// calcula numerador
+			/// calcula numerador (xi - sum)
 			numerador = matrizAB->m[i][ordem] - somatoria;
 
 			/// calcula denominador
@@ -141,6 +141,8 @@ void itrGaussJacobi(Matriz *matrizAB, int ordem, double erro, int maxK) {
 
 			/// armazena resultados e calcula erro
 			vetorXProx[i] = numerador/denominador;
+
+			printf("%lf		%lf		%lf\n", matrizAB->m[i][ordem], somatoria, matrizAB->m[i][i]);
 		}
 
 		for(j = maxErro = 0; j < ordem; ++j) {
