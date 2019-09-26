@@ -21,12 +21,10 @@ void InstructionMemory::initialize(unsigned int *memoryRef, INBus *readAddressBu
     this->readAddressBus = readAddressBusRef;
 }
 
-void InstructionMemory::updateState() {
-    this->instructionBus->setValue(this->memory[this->readAddressBus->getValue()/4]);
-}
-
 void InstructionMemory::updateIO() {
     this->readAddressBus->update();
+
+    this->instructionBus->setValue(this->memory[this->readAddressBus->getValue()/4]);
 }
 
 OUTBus *InstructionMemory::getInstructionBus() const {

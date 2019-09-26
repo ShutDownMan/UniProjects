@@ -32,7 +32,7 @@ void Multiplexer::initialize(INBus *inputABusRef, INBus *inputBBusRef, INBus *co
     this->controlSignal = controlSignalRef;
 }
 
-OUTBus *Multiplexer::getOutBus() const {
+OUTBus *Multiplexer::getOutputBus() const {
     return outBus;
 }
 

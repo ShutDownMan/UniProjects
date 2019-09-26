@@ -20,8 +20,6 @@ private:
 public:
     InstructionMemory();
 
-    void updateState();
-
     void updateIO();
 
     void initialize(unsigned int *memoryRef, INBus *readAddressBusRef);

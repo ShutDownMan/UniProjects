@@ -12,14 +12,13 @@ class BranchControl {
 private:
     INBus *branchSignalBus;
     INBus *zeroSignalBus;
-    INBus *jumpSignalBus;
 
     OUTBus *outBus;
 
 public:
     BranchControl();
 
-    void initialize(INBus *branchSignalBusRef, INBus *zeroSignalBusRef, INBus *jumpSignalBusRef);
+    void initialize(INBus *branchSignalBusRef, INBus *zeroSignalBusRef);
 
     void updateIO();
 
