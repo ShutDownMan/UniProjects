@@ -16,16 +16,16 @@
  * @postcondition cabeçalho para árvore B vazia é escrito no arquivo
  */
 void createEmptyBTree(FILE *f) {
-    BTreeHeader header;
+	BTreeHeader header;
 
-    /// inicializa cabeçalho para valores padrões
-    header.root = -1;
-    header.topPos = 0;
-    header.freeNodesRoot = -1;
-    header.freeNodesQuantity = 0;
+	/// inicializa cabeçalho para valores padrões
+	header.root = -1;
+	header.topPos = 0;
+	header.freeNodesRoot = -1;
+	header.freeNodesQuantity = 0;
 
-    /// escreve cabeãlho em arquivo
-    writeBTreeHeaderToFile(f, &header);
+	/// escreve cabeãlho em arquivo
+	writeBTreeHeaderToFile(f, &header);
 }
 
 /**
@@ -35,31 +35,31 @@ void createEmptyBTree(FILE *f) {
  * @postcondition nó é alocado e inicializado em memória
  */
 BTreeNode *createNode() {
-    /// aloca espaço em memória para o nó
-    BTreeNode *node = (BTreeNode *) malloc(sizeof(BTreeNode));
+	/// aloca espaço em memória para o nó
+	BTreeNode *node = (BTreeNode *) malloc(sizeof(BTreeNode));
 
-    /// para cada elemento nos campos
-    for (int i = 0; i < ORDER; ++i) {
-        /// inicializa para seus valores padrões
-        node->keys[i].id = 0;
-        node->keys[i].regPos = -1;
-        node->children[i] = -1;
-    }
+	/// para cada elemento nos campos
+	for (int i = 0; i < ORDER; ++i) {
+		/// inicializa para seus valores padrões
+		node->keys[i].id = 0;
+		node->keys[i].regPos = -1;
+		node->children[i] = -1;
+	}
 
-    /// quantidade de chaveze e posição de nó inicializados para valores padrão
-    node->keyNum = 0;
-    node->nodePos = -1;
+	/// quantidade de chaveze e posição de nó inicializados para valores padrão
+	node->keyNum = 0;
+	node->nodePos = -1;
 
-    /// retorna nó
-    return node;
+	/// retorna nó
+	return node;
 }
 
 FreeNode *createFreeNode() {
-    FreeNode *newFreeNode = (FreeNode *) malloc(sizeof(FreeNode));
+	FreeNode *newFreeNode = (FreeNode *) malloc(sizeof(FreeNode));
 
-    newFreeNode->nextNode = -1;
+	newFreeNode->nextNode = -1;
 
-    return newFreeNode;
+	return newFreeNode;
 }
 
 //- WRITE -//
@@ -71,12 +71,12 @@ FreeNode *createFreeNode() {
  * @precondition arquivo tem que estar aberto e ter direitos de escrita
  */
 void writeBTreeHeaderToFile(FILE *f, BTreeHeader *header) {
-    if (!header)
-        return;
+	if (!header)
+		return;
 
-    fseek(f, 0, SEEK_SET);
+	fseek(f, 0, SEEK_SET);
 
-    fwrite(header, sizeof(BTreeHeader), 1, f);
+	fwrite(header, sizeof(BTreeHeader), 1, f);
 }
 
 /**!
@@ -89,38 +89,38 @@ void writeBTreeHeaderToFile(FILE *f, BTreeHeader *header) {
  * @postcondition nó é escrito no arquivo
  */
 int writeNodeToFile(FILE *f, BTreeHeader *header, BTreeNode *node) {
-    int pos;
+	int pos;
 
-    /// se header ou nó são nulos
-    if (!header || !node)
-        return -1; //< retorna posição inválida
-    /// se nó possui posição inválida no arquivo
-    if ((pos = node->nodePos) == -1) {
-        /// se não existem posições livres dentro do arquivo
-        if ((pos = header->freeNodesRoot) == -1) {
-            /// coloca posição para topo do arquivo
-            pos = header->topPos++;
-        } else {
-            /// atualiza posição livre no arquivo
-            FreeNode *freeNode = readBTreeFreeNode(f, pos);
-            header->freeNodesRoot = freeNode->nextNode;
-            free(freeNode);
-        }
-    }
+	/// se header ou nó são nulos
+	if (!header || !node)
+		return -1; //< retorna posição inválida
+	/// se nó possui posição inválida no arquivo
+	if ((pos = node->nodePos) == -1) {
+		/// se não existem posições livres dentro do arquivo
+		if ((pos = header->freeNodesRoot) == -1) {
+			/// coloca posição para topo do arquivo
+			pos = header->topPos++;
+		} else {
+			/// atualiza posição livre no arquivo
+			FreeNode *freeNode = readBTreeFreeNode(f, pos);
+			header->freeNodesRoot = freeNode->nextNode;
+			free(freeNode);
+		}
+	}
 
 //    printf("pos = %d\n", pos);
 
-    /// armazena posição do nó em arquivo no nó
-    node->nodePos = pos;
+	/// armazena posição do nó em arquivo no nó
+	node->nodePos = pos;
 
-    /// calcula posição para escrita do nó em arquivo
-    fseek(f, sizeof(BTreeHeader) + sizeof(BTreeNode) * pos, SEEK_SET);
+	/// calcula posição para escrita do nó em arquivo
+	fseek(f, sizeof(BTreeHeader) + sizeof(BTreeNode) * pos, SEEK_SET);
 
-    /// escreve nó
-    fwrite(node, sizeof(BTreeNode), 1, f);
+	/// escreve nó
+	fwrite(node, sizeof(BTreeNode), 1, f);
 
-    /// retorna posição de escrita
-    return pos;
+	/// retorna posição de escrita
+	return pos;
 }
 
 /**
@@ -131,63 +131,63 @@ int writeNodeToFile(FILE *f, BTreeHeader *header, BTreeNode *node) {
  * @postcondition valor é inserido no arquivo
  */
 void insertBTree(FILE *f, int id, int regPos) {
-    /// cabeçalho do arquivo
-    BTreeHeader *header = readBTreeHeader(f);
-    /// raiz da árvore
-    BTreeNode *root = readBTreeNode(f, header->root);
-    BTreeNode *newNode;
+	/// cabeçalho do arquivo
+	BTreeHeader *header = readBTreeHeader(f);
+	/// raiz da árvore
+	BTreeNode *root = readBTreeNode(f, header->root);
+	BTreeNode *newNode;
 
-    RegData data = {.id = id, .regPos = regPos};
+	RegData data = {.id = id, .regPos = regPos};
 
-    /// se árvore é vazia
-    if (!root) {
-        /// cria um novo nó para ser raiz
-        root = createNode();
+	/// se árvore é vazia
+	if (!root) {
+		/// cria um novo nó para ser raiz
+		root = createNode();
 
-        /// atribui valor para chaves
-        root->keys[0] = data;
-        root->keyNum = 1;
+		/// atribui valor para chaves
+		root->keys[0] = data;
+		root->keyNum = 1;
 
-        /// atualiza cabeçalho para apontar para raiz
-        header->root = writeNodeToFile(f, header, root);
-    } else {
-        /// função auxiliar para inserção
-        insertAux(f, header, root, data);
-        /// se ocorreu overflow no nó
-        if (overflow(root)) {
-            /// splita o nó
-            RegData m;
+		/// atualiza cabeçalho para apontar para raiz
+		header->root = writeNodeToFile(f, header, root);
+	} else {
+		/// função auxiliar para inserção
+		insertAux(f, header, root, data);
+		/// se ocorreu overflow no nó
+		if (overflow(root)) {
+			/// splita o nó
+			RegData m;
 
-            newNode = split(root, &m);
-            BTreeNode *newRoot = createNode();
+			newNode = split(root, &m);
+			BTreeNode *newRoot = createNode();
 
-            /// inicializa novos nós criados no split
-            newRoot->keys[0] = m;
-            newRoot->children[0] = header->root;
-            newRoot->keyNum = 1;
+			/// inicializa novos nós criados no split
+			newRoot->keys[0] = m;
+			newRoot->children[0] = header->root;
+			newRoot->keyNum = 1;
 
-            newRoot->children[1] = writeNodeToFile(f, header, newNode);
-            header->root = writeNodeToFile(f, header, newRoot);
+			newRoot->children[1] = writeNodeToFile(f, header, newNode);
+			header->root = writeNodeToFile(f, header, newRoot);
 
-            /// libera memória utilizada pelos nós em memória
-            freeBTreeNode(newNode);
-            freeBTreeNode(newRoot);
-        }
-        /// escreve raiz no arquivo
-        writeNodeToFile(f, header, root);
-    }
+			/// libera memória utilizada pelos nós em memória
+			freeBTreeNode(newNode);
+			freeBTreeNode(newRoot);
+		}
+		/// escreve raiz no arquivo
+		writeNodeToFile(f, header, root);
+	}
 
 //    printHeader(header);
-    /// escreve cabeçalho no arquivo
-    writeBTreeHeaderToFile(f, header);
+	/// escreve cabeçalho no arquivo
+	writeBTreeHeaderToFile(f, header);
 
-    printf("-----------\n");
-    printBTree(f);
-    printf("-----------\n");
+	printf("-----------\n");
+	printBTree(f);
+	printf("-----------\n");
 
-    /// libera memória utilizada pela raiz e pelo cabeçalho
-    freeBTreeNode(root);
-    free(header);
+	/// libera memória utilizada pela raiz e pelo cabeçalho
+	freeBTreeNode(root);
+	free(header);
 }
 
 /**
@@ -200,37 +200,37 @@ void insertBTree(FILE *f, int id, int regPos) {
  * @postcondition valor é inserido no arquivo
  */
 void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, RegData info) {
-    int pos = 0;
+	int pos = 0;
 
-    /// se valor não existe no nó atual
-    if (!searchBTreePos(currentNode, info.id, &pos)) {
-        /// se nó atual é folha
-        if (isLeaf(currentNode)) {
-            /// insere valor no nó atual
-            insertOnRight(currentNode, pos, info, -1);
-        } else {
+	/// se valor não existe no nó atual
+	if (!searchBTreePos(currentNode, info.id, &pos)) {
+		/// se nó atual é folha
+		if (isLeaf(currentNode)) {
+			/// insere valor no nó atual
+			insertOnRight(currentNode, pos, info, -1);
+		} else {
 
-            /// lê nó indicado para inserção
-            BTreeNode *node = readBTreeNode(f, currentNode->children[pos]);
-            /// insere no nó lido
-            insertAux(f, header, node, info);
-            /// se ocorreu overflow no nó indicado
-            if (overflow(node)) {
-                /// splita o nó
-                RegData m;
-                BTreeNode *aux = split(node, &m);
-                insertOnRight(currentNode, pos, m, writeNodeToFile(f, header, aux));
+			/// lê nó indicado para inserção
+			BTreeNode *node = readBTreeNode(f, currentNode->children[pos]);
+			/// insere no nó lido
+			insertAux(f, header, node, info);
+			/// se ocorreu overflow no nó indicado
+			if (overflow(node)) {
+				/// splita o nó
+				RegData m;
+				BTreeNode *aux = split(node, &m);
+				insertOnRight(currentNode, pos, m, writeNodeToFile(f, header, aux));
 
-                /// escreve nós splitados no arquivo
-                writeNodeToFile(f, header, node);
+				/// escreve nós splitados no arquivo
+				writeNodeToFile(f, header, node);
 
-                /// libera memória utilizada pelo nó indicado
-                freeBTreeNode(aux);
-            }
-        }
-    }
-    /// atualiza nó atual em arquivo
-    writeNodeToFile(f, header, currentNode);
+				/// libera memória utilizada pelo nó indicado
+				freeBTreeNode(aux);
+			}
+		}
+	}
+	/// atualiza nó atual em arquivo
+	writeNodeToFile(f, header, currentNode);
 }
 
 /**
@@ -241,16 +241,16 @@ void insertAux(FILE *f, BTreeHeader *header, BTreeNode *currentNode, RegData inf
  * @param p é o endereço para filho a direita do valor inserido
  */
 void insertOnRight(BTreeNode *node, int pos, RegData info, int p) {
-    /// move todos valores antes de pos para direita
-    for (int i = node->keyNum; i > pos; --i) {
-        node->keys[i] = node->keys[i - 1];
-        node->children[i + 1] = node->children[i];
-    }
+	/// move todos valores antes de pos para direita
+	for (int i = node->keyNum; i > pos; --i) {
+		node->keys[i] = node->keys[i - 1];
+		node->children[i + 1] = node->children[i];
+	}
 
-    /// insere valor em seu lugar correto
-    node->keys[pos] = info;
-    node->children[pos + 1] = p;
-    node->keyNum++;
+	/// insere valor em seu lugar correto
+	node->keys[pos] = info;
+	node->children[pos + 1] = p;
+	node->keyNum++;
 }
 
 /**
@@ -261,7 +261,7 @@ void insertOnRight(BTreeNode *node, int pos, RegData info, int p) {
  * @postcondition nenhuma
  */
 int overflow(BTreeNode *node) {
-    return (node->keyNum == ORDER);
+	return (node->keyNum == ORDER);
 }
 
 /**
@@ -273,27 +273,27 @@ int overflow(BTreeNode *node) {
  * @postcondition um novo nó é criado e retornado
  */
 BTreeNode *split(BTreeNode *node, RegData *m) {
-    /// cria novo nó
-    BTreeNode *newNode = createNode();
+	/// cria novo nó
+	BTreeNode *newNode = createNode();
 
-    /// calcula posição mediana
-    int q = (ORDER - 1) / 2;
-    newNode->keyNum = q;
-    node->keyNum = q;
+	/// calcula posição mediana
+	int q = (ORDER - 1) / 2;
+	newNode->keyNum = q;
+	node->keyNum = q;
 
-    /// atribui para m valor da chave mediana
-    *m = node->keys[q];
+	/// atribui para m valor da chave mediana
+	*m = node->keys[q];
 
-    /// atribui valores acima da posição mediana de node para newNode
-    newNode->children[0] = node->children[q + 1];
-    for (int i = 0; i < newNode->keyNum; ++i) {
-        newNode->keys[i] = node->keys[q + i + 1];
-        newNode->children[i + 1] = node->children[q + i + 2];
-    }
+	/// atribui valores acima da posição mediana de node para newNode
+	newNode->children[0] = node->children[q + 1];
+	for (int i = 0; i < newNode->keyNum; ++i) {
+		newNode->keys[i] = node->keys[q + i + 1];
+		newNode->children[i + 1] = node->children[q + i + 2];
+	}
 
 
-    /// retona nó criado na operação
-    return newNode;
+	/// retona nó criado na operação
+	return newNode;
 }
 
 /**
@@ -306,14 +306,14 @@ BTreeNode *split(BTreeNode *node, RegData *m) {
  * @precondition node e pos não podem ser nulos
  */
 int searchBTreePos(BTreeNode *node, int info, int *pos) {
-    /// passa pelas chaves procurando por um valor maior que o valor passado
-    for ((*pos) = 0; (*pos) < node->keyNum; (*pos)++) {
-        if (info == node->keys[(*pos)].id)
-            return 1;
-        else if (info < node->keys[(*pos)].id)
-            return 0;
-    }
-    return 0;
+	/// passa pelas chaves procurando por um valor maior que o valor passado
+	for ((*pos) = 0; (*pos) < node->keyNum; (*pos)++) {
+		if (info == node->keys[(*pos)].id)
+			return 1;
+		else if (info < node->keys[(*pos)].id)
+			return 0;
+	}
+	return 0;
 }
 
 /**
@@ -324,7 +324,7 @@ int searchBTreePos(BTreeNode *node, int info, int *pos) {
  * @postcondition nenhuma
  */
 int isLeaf(BTreeNode *node) {
-    return (node->children[0] == -1);
+	return (node->children[0] == -1);
 }
 
 //- READ -//
@@ -337,17 +337,17 @@ int isLeaf(BTreeNode *node) {
  * @postcondition espaço em memória para o cabeçalho é alocado e inicializado
  */
 BTreeHeader *readBTreeHeader(FILE *f) {
-    /// aloca espaço na memória para o cabeçalho
-    BTreeHeader *header = (BTreeHeader *) malloc(sizeof(BTreeHeader));
+	/// aloca espaço na memória para o cabeçalho
+	BTreeHeader *header = (BTreeHeader *) malloc(sizeof(BTreeHeader));
 
-    /// vai para posição correta
-    fseek(f, 0, SEEK_SET);
+	/// vai para posição correta
+	fseek(f, 0, SEEK_SET);
 
-    /// lê cabeçalho
-    fread(header, sizeof(BTreeHeader), 1, f);
+	/// lê cabeçalho
+	fread(header, sizeof(BTreeHeader), 1, f);
 
-    /// retorna cabeçalho lido
-    return header;
+	/// retorna cabeçalho lido
+	return header;
 }
 
 /**
@@ -359,23 +359,23 @@ BTreeHeader *readBTreeHeader(FILE *f) {
  * @postcondition espaço em memória para o nó é alocado e inicializado
  */
 BTreeNode *readBTreeNode(FILE *f, int pos) {
-    BTreeNode *node;
+	BTreeNode *node;
 
-    /// se posição é invalida
-    if (pos == -1)
-        return NULL;
+	/// se posição é invalida
+	if (pos == -1)
+		return NULL;
 
-    /// aloca espaço em memória para o nó
-    node = (BTreeNode *) malloc(sizeof(BTreeNode));
+	/// aloca espaço em memória para o nó
+	node = (BTreeNode *) malloc(sizeof(BTreeNode));
 
-    /// calcula posição do nó em arquivo
-    fseek(f, sizeof(BTreeHeader) + sizeof(BTreeNode) * pos, SEEK_SET);
+	/// calcula posição do nó em arquivo
+	fseek(f, sizeof(BTreeHeader) + sizeof(BTreeNode) * pos, SEEK_SET);
 
-    /// lê nó do arquivo
-    fread(node, sizeof(BTreeNode), 1, f);
+	/// lê nó do arquivo
+	fread(node, sizeof(BTreeNode), 1, f);
 
-    /// retorna nó lido
-    return node;
+	/// retorna nó lido
+	return node;
 }
 
 /**
@@ -387,299 +387,299 @@ BTreeNode *readBTreeNode(FILE *f, int pos) {
  * @postcondition espaço em memória para o nó livre é alocado e inicializado
  */
 FreeNode *readBTreeFreeNode(FILE *f, int pos) {
-    FreeNode *node;
+	FreeNode *node;
 
-    /// se posição passada é invalida
-    if (pos == -1)
-        return NULL;
+	/// se posição passada é invalida
+	if (pos == -1)
+		return NULL;
 
-    /// aloca memória para nó
-    node = (FreeNode *) malloc(sizeof(FreeNode));
+	/// aloca memória para nó
+	node = (FreeNode *) malloc(sizeof(FreeNode));
 
-    /// calcula posição do nó
-    fseek(f, sizeof(BTreeHeader) + sizeof(BTreeNode) * pos, SEEK_SET);
+	/// calcula posição do nó
+	fseek(f, sizeof(BTreeHeader) + sizeof(BTreeNode) * pos, SEEK_SET);
 
-    /// lê nó do arquivo
-    fread(node, sizeof(FreeNode), 1, f);
+	/// lê nó do arquivo
+	fread(node, sizeof(FreeNode), 1, f);
 
-    /// retorna nó lido
-    return node;
+	/// retorna nó lido
+	return node;
 }
 
 //- REMOVE -//
 
 void removeBTree(FILE *fTree, int id) {
-    BTreeHeader *header = readBTreeHeader(fTree);
-    BTreeNode *root = readBTreeNode(fTree, header->root);
+	BTreeHeader *header = readBTreeHeader(fTree);
+	BTreeNode *root = readBTreeNode(fTree, header->root);
 
-    RegData data = {.id = id, .regPos = -1};
+	RegData data = {.id = id, .regPos = -1};
 
-    removeBTreeAux(fTree, header, root, data);
+	removeBTreeAux(fTree, header, root, data);
 
-    freeBTreeNode(root);
-    free(header);
+	freeBTreeNode(root);
+	free(header);
 }
 
 void removeBTreeAux(FILE *fTree, BTreeHeader *header, BTreeNode *node, RegData info) {
-    int pos;
-    searchBTreePos(node, info.id, &pos);
+	int pos;
+	searchBTreePos(node, info.id, &pos);
 
-    if (pos < node->keyNum && node->keys[pos].id == info.id) {
-        if (isLeaf(node)) {
-            removeFromLeaf(node, pos);
-        } else {
-            removeFromInnerNode(fTree, header, node, pos);
-        }
-        writeNodeToFile(fTree, header, node);
-    } else {
-        if (isLeaf(node)) {
-            printf("The value [%d] is not present in tree\n", info);
-            return;
-        }
+	if (pos < node->keyNum && node->keys[pos].id == info.id) {
+		if (isLeaf(node)) {
+			removeFromLeaf(node, pos);
+		} else {
+			removeFromInnerNode(fTree, header, node, pos);
+		}
+		writeNodeToFile(fTree, header, node);
+	} else {
+		if (isLeaf(node)) {
+			printf("The value [%d] is not present in tree\n", info);
+			return;
+		}
 
-        int flag = (pos == node->keyNum);
+		int flag = (pos == node->keyNum);
 
-        BTreeNode *nextNode = readBTreeNode(fTree, node->children[pos]);
+		BTreeNode *nextNode = readBTreeNode(fTree, node->children[pos]);
 //        printf("nextNode->keyNum = %d\n", nextNode->keyNum);
-        printBTreeNodeKeys(nextNode);
-        if (nextNode->keyNum < ORDER / 2) {
-            fill(fTree, header, node, pos);
-        }
+		printBTreeNodeKeys(nextNode);
+		if (nextNode->keyNum < ORDER / 2) {
+			fill(fTree, header, node, pos);
+		}
 
-        BTreeNode *prevNode = NULL;
-        BTreeNode *modifiedNode = NULL;
-        if (flag && pos > node->keyNum) {
-            removeBTreeAux(fTree, header, prevNode = readBTreeNode(fTree, node->children[pos - 1]), info);
-            modifiedNode = prevNode;
-        } else {
+		BTreeNode *prevNode = NULL;
+		BTreeNode *modifiedNode = NULL;
+		if (flag && pos > node->keyNum) {
+			removeBTreeAux(fTree, header, prevNode = readBTreeNode(fTree, node->children[pos - 1]), info);
+			modifiedNode = prevNode;
+		} else {
 //            printf("removeBTreeAux (0)\n");
-            removeBTreeAux(fTree, header, nextNode, info);
-            modifiedNode = nextNode;
-        }
+			removeBTreeAux(fTree, header, nextNode, info);
+			modifiedNode = nextNode;
+		}
 
-        if (modifiedNode->keyNum < ORDER / 2) {
-            fill(fTree, header, node, pos);
-        }
+		if (modifiedNode->keyNum < ORDER / 2) {
+			fill(fTree, header, node, pos);
+		}
 
-        freeBTreeNode(prevNode);
-        freeBTreeNode(nextNode);
-    }
+		freeBTreeNode(prevNode);
+		freeBTreeNode(nextNode);
+	}
 }
 
 void removeFromLeaf(BTreeNode *node, int pos) {
-    for (int i = pos + 1; i < node->keyNum; ++i) {
-        node->keys[i - 1] = node->keys[i];
-    }
+	for (int i = pos + 1; i < node->keyNum; ++i) {
+		node->keys[i - 1] = node->keys[i];
+	}
 
-    node->keyNum--;
+	node->keyNum--;
 }
 
 void removeFromInnerNode(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos) {
-    RegData k = node->keys[pos];
+	RegData k = node->keys[pos];
 
-    BTreeNode *leftChildNode = readBTreeNode(fTree, node->children[pos]);
-    BTreeNode *rightChildNode = readBTreeNode(fTree, node->children[pos + 1]);
+	BTreeNode *leftChildNode = readBTreeNode(fTree, node->children[pos]);
+	BTreeNode *rightChildNode = readBTreeNode(fTree, node->children[pos + 1]);
 
 //    printf("removeFromInnerNode (0)\n");
 
-    if (leftChildNode->keyNum >= ORDER / 2) {
-        RegData pred = getPred(fTree, node, pos);
-        node->keys[pos] = pred;
-        removeBTreeAux(fTree, header, leftChildNode, pred);
-    } else if (rightChildNode->keyNum >= ORDER / 2) {
-        RegData succ = getSucc(fTree, node, pos);
-        node->keys[pos] = succ;
-        removeBTreeAux(fTree, header, rightChildNode, succ);
-    } else {
+	if (leftChildNode->keyNum >= ORDER / 2) {
+		RegData pred = getPred(fTree, node, pos);
+		node->keys[pos] = pred;
+		removeBTreeAux(fTree, header, leftChildNode, pred);
+	} else if (rightChildNode->keyNum >= ORDER / 2) {
+		RegData succ = getSucc(fTree, node, pos);
+		node->keys[pos] = succ;
+		removeBTreeAux(fTree, header, rightChildNode, succ);
+	} else {
 //        printf("removeFromInnerNode (1)\n");
-        merge(fTree, header, node, pos);
-        removeBTreeAux(fTree, header, leftChildNode, k);
-    }
+		merge(fTree, header, node, pos);
+		removeBTreeAux(fTree, header, leftChildNode, k);
+	}
 
-    writeNodeToFile(fTree, header, leftChildNode);
-    writeNodeToFile(fTree, header, rightChildNode);
-    writeNodeToFile(fTree, header, node);
+	writeNodeToFile(fTree, header, leftChildNode);
+	writeNodeToFile(fTree, header, rightChildNode);
+	writeNodeToFile(fTree, header, node);
 
-    freeBTreeNode(leftChildNode);
-    freeBTreeNode(rightChildNode);
+	freeBTreeNode(leftChildNode);
+	freeBTreeNode(rightChildNode);
 }
 
 RegData getPred(FILE *f, BTreeNode *node, int pos) {
-    BTreeNode *current = readBTreeNode(f, node->children[pos]);
-    BTreeNode *next = NULL;
-    RegData pred;
+	BTreeNode *current = readBTreeNode(f, node->children[pos]);
+	BTreeNode *next = NULL;
+	RegData pred;
 
-    while (!isLeaf(current)) {
-        next = readBTreeNode(f, node->keyNum);
-        freeBTreeNode(current);
-        current = next;
-    }
+	while (!isLeaf(current)) {
+		next = readBTreeNode(f, node->keyNum);
+		freeBTreeNode(current);
+		current = next;
+	}
 
-    pred = current->keys[current->keyNum - 1];
-    freeBTreeNode(current);
+	pred = current->keys[current->keyNum - 1];
+	freeBTreeNode(current);
 
-    return pred;
+	return pred;
 }
 
 
 RegData getSucc(FILE *f, BTreeNode *node, int pos) {
-    BTreeNode *current = readBTreeNode(f, node->children[pos + 1]);
-    BTreeNode *next = NULL;
-    RegData succ;
+	BTreeNode *current = readBTreeNode(f, node->children[pos + 1]);
+	BTreeNode *next = NULL;
+	RegData succ;
 
-    while (!isLeaf(current)) {
-        next = readBTreeNode(f, 0);
-        freeBTreeNode(current);
-        current = next;
-    }
+	while (!isLeaf(current)) {
+		next = readBTreeNode(f, 0);
+		freeBTreeNode(current);
+		current = next;
+	}
 
-    succ = current->keys[0];
-    freeBTreeNode(current);
+	succ = current->keys[0];
+	freeBTreeNode(current);
 
-    return succ;
+	return succ;
 }
 
 void merge(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos) {
-    BTreeNode *child = readBTreeNode(fTree, pos);
-    BTreeNode *sibling = readBTreeNode(fTree, pos + 1);
+	BTreeNode *child = readBTreeNode(fTree, pos);
+	BTreeNode *sibling = readBTreeNode(fTree, pos + 1);
 
 //    printf("merge (0)\n");
 
-    child->keys[(ORDER - 1) / 2 - 1] = node->keys[pos];
+	child->keys[(ORDER - 1) / 2 - 1] = node->keys[pos];
 
-    for (int i = 0; i < sibling->keyNum; ++i) {
-        child->keys[i + (ORDER - 1) / 2] = sibling->keys[i];
-    }
+	for (int i = 0; i < sibling->keyNum; ++i) {
+		child->keys[i + (ORDER - 1) / 2] = sibling->keys[i];
+	}
 
-    if (!isLeaf(child)) {
-        for (int i = 0; i <= sibling->keyNum; ++i)
-            child->children[i + (ORDER - 1) / 2] = sibling->children[i];
-    }
+	if (!isLeaf(child)) {
+		for (int i = 0; i <= sibling->keyNum; ++i)
+			child->children[i + (ORDER - 1) / 2] = sibling->children[i];
+	}
 
-    for (int i = pos + 1; i < node->keyNum; ++i)
-        node->keys[i - 1] = node->keys[i];
+	for (int i = pos + 1; i < node->keyNum; ++i)
+		node->keys[i - 1] = node->keys[i];
 
-    for (int i = pos + 2; i <= node->keyNum; ++i)
-        node->children[i - 1] = node->children[i];
+	for (int i = pos + 2; i <= node->keyNum; ++i)
+		node->children[i - 1] = node->children[i];
 
-    child->keyNum += sibling->keyNum + 1;
-    node->keyNum--;
+	child->keyNum += sibling->keyNum + 1;
+	node->keyNum--;
 
-    writeNodeToFile(fTree, header, child);
-    writeNodeToFile(fTree, header, node);
+	writeNodeToFile(fTree, header, child);
+	writeNodeToFile(fTree, header, node);
 
-    writeBTreeFreeNodesList(fTree, header, sibling);
+	writeBTreeFreeNodesList(fTree, header, sibling);
 
-    writeBTreeHeaderToFile(fTree, header);
+	writeBTreeHeaderToFile(fTree, header);
 
-    freeBTreeNode(sibling);
-    freeBTreeNode(child);
+	freeBTreeNode(sibling);
+	freeBTreeNode(child);
 }
 
 void fill(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos) {
-    BTreeNode *childPrev = readBTreeNode(fTree, node->children[pos - 1]);
-    BTreeNode *childNext = readBTreeNode(fTree, node->children[pos + 1]);
+	BTreeNode *childPrev = readBTreeNode(fTree, node->children[pos - 1]);
+	BTreeNode *childNext = readBTreeNode(fTree, node->children[pos + 1]);
 
-    if (pos != 0 && childPrev->keyNum - 1 >= ORDER / 2) {
+	if (pos != 0 && childPrev->keyNum - 1 >= ORDER / 2) {
 //        printf("fill (0)\n");
-        borrowFromPrev(fTree, header, node, pos);
-    } else if (pos != node->keyNum && childNext->keyNum - 1 >= ORDER / 2) {
-        borrowFromNext(fTree, header, node, pos);
-    } else {
-        if (pos != node->keyNum) {
-            merge(fTree, header, node, pos);
-        } else {
-            merge(fTree, header, node, pos - 1);
-        }
-    }
+		borrowFromPrev(fTree, header, node, pos);
+	} else if (pos != node->keyNum && childNext->keyNum - 1 >= ORDER / 2) {
+		borrowFromNext(fTree, header, node, pos);
+	} else {
+		if (pos != node->keyNum) {
+			merge(fTree, header, node, pos);
+		} else {
+			merge(fTree, header, node, pos - 1);
+		}
+	}
 
-    freeBTreeNode(childNext);
-    freeBTreeNode(childPrev);
+	freeBTreeNode(childNext);
+	freeBTreeNode(childPrev);
 }
 
 void borrowFromPrev(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos) {
-    BTreeNode *child = readBTreeNode(fTree, node->children[pos]);
-    BTreeNode *sibling = readBTreeNode(fTree, node->children[pos - 1]);
+	BTreeNode *child = readBTreeNode(fTree, node->children[pos]);
+	BTreeNode *sibling = readBTreeNode(fTree, node->children[pos - 1]);
 
-    for (int i = child->keyNum - 1; i >= 0; --i)
-        child->keys[i + 1] = child->keys[i];
+	for (int i = child->keyNum - 1; i >= 0; --i)
+		child->keys[i + 1] = child->keys[i];
 
-    if (!isLeaf(child)) {
-        for (int i = child->keyNum; i >= 0; --i)
-            child->children[i + 1] = child->children[i];
-    }
+	if (!isLeaf(child)) {
+		for (int i = child->keyNum; i >= 0; --i)
+			child->children[i + 1] = child->children[i];
+	}
 
-    child->keys[0] = node->keys[pos - 1];
+	child->keys[0] = node->keys[pos - 1];
 
-    if (!isLeaf(child))
-        child->children[0] = sibling->children[sibling->keyNum];
+	if (!isLeaf(child))
+		child->children[0] = sibling->children[sibling->keyNum];
 
-    node->keys[pos - 1] = sibling->keys[sibling->keyNum - 1];
+	node->keys[pos - 1] = sibling->keys[sibling->keyNum - 1];
 
-    child->keyNum += 1;
-    sibling->keyNum -= 1;
+	child->keyNum += 1;
+	sibling->keyNum -= 1;
 
-    writeNodeToFile(fTree, header, child);
-    writeNodeToFile(fTree, header, sibling);
-    writeNodeToFile(fTree, header, node);
+	writeNodeToFile(fTree, header, child);
+	writeNodeToFile(fTree, header, sibling);
+	writeNodeToFile(fTree, header, node);
 
-    freeBTreeNode(child);
-    freeBTreeNode(sibling);
+	freeBTreeNode(child);
+	freeBTreeNode(sibling);
 }
 
 void borrowFromNext(FILE *fTree, BTreeHeader *header, BTreeNode *node, int pos) {
-    BTreeNode *child = readBTreeNode(fTree, node->children[pos]);
-    BTreeNode *sibling = readBTreeNode(fTree, node->children[pos + 1]);
+	BTreeNode *child = readBTreeNode(fTree, node->children[pos]);
+	BTreeNode *sibling = readBTreeNode(fTree, node->children[pos + 1]);
 
-    child->keys[(child->keyNum)] = node->keys[pos];
+	child->keys[(child->keyNum)] = node->keys[pos];
 
-    if (!isLeaf(child)) {
-        child->children[(child->keyNum) + 1] = sibling->children[0];
-    }
+	if (!isLeaf(child)) {
+		child->children[(child->keyNum) + 1] = sibling->children[0];
+	}
 
-    child->keys[pos] = node->keys[0];
+	child->keys[pos] = node->keys[0];
 
-    for (int i = 1; i < sibling->keyNum; ++i) {
-        sibling->keys[i - 1] = sibling->keys[i];
-    }
+	for (int i = 1; i < sibling->keyNum; ++i) {
+		sibling->keys[i - 1] = sibling->keys[i];
+	}
 
-    if (!isLeaf(sibling)) {
-        for (int i = 1; i <= sibling->keyNum; ++i) {
-            sibling->children[i - 1] = sibling->children[i];
-        }
-    }
+	if (!isLeaf(sibling)) {
+		for (int i = 1; i <= sibling->keyNum; ++i) {
+			sibling->children[i - 1] = sibling->children[i];
+		}
+	}
 
-    child->keyNum += 1;
-    sibling->keyNum -= 1;
+	child->keyNum += 1;
+	sibling->keyNum -= 1;
 
-    writeNodeToFile(fTree, header, child);
-    writeNodeToFile(fTree, header, sibling);
-    writeNodeToFile(fTree, header, node);
+	writeNodeToFile(fTree, header, child);
+	writeNodeToFile(fTree, header, sibling);
+	writeNodeToFile(fTree, header, node);
 
-    freeBTreeNode(child);
-    freeBTreeNode(sibling);
+	freeBTreeNode(child);
+	freeBTreeNode(sibling);
 }
 
 void writeBTreeFreeNodesList(FILE *fTree, BTreeHeader *header, BTreeNode *node) {
-    int pos;
-    FreeNode *freeNode;
+	int pos;
+	FreeNode *freeNode;
 
-    if (!header || !node)
-        return;
+	if (!header || !node)
+		return;
 
-    pos = node->nodePos;
-    freeNode = createFreeNode();
+	pos = node->nodePos;
+	freeNode = createFreeNode();
 
-    freeNode->nextNode = header->freeNodesRoot;
-    header->freeNodesRoot = pos;
+	freeNode->nextNode = header->freeNodesRoot;
+	header->freeNodesRoot = pos;
 
-    header->freeNodesQuantity++;
+	header->freeNodesQuantity++;
 
-    fseek(fTree, sizeof(BTreeHeader) + sizeof(BTreeNode) * pos, SEEK_SET);
+	fseek(fTree, sizeof(BTreeHeader) + sizeof(BTreeNode) * pos, SEEK_SET);
 
-    fwrite(freeNode, sizeof(FreeNode), 1, fTree);
+	fwrite(freeNode, sizeof(FreeNode), 1, fTree);
 
-    free(freeNode);
+	free(freeNode);
 }
 
 /**
@@ -689,9 +689,9 @@ void writeBTreeFreeNodesList(FILE *fTree, BTreeHeader *header, BTreeNode *node) 
  * @postcondition nenhuma
  */
 void freeBTreeNode(BTreeNode *node) {
-    /// se nó passado não é nulo
-    if (!node)
-        free(node); //< libera memória utilziada por este
+	/// se nó passado não é nulo
+	if (!node)
+		free(node); //< libera memória utilziada por este
 }
 
 //- SHOW -//
@@ -703,11 +703,11 @@ void freeBTreeNode(BTreeNode *node) {
  * @postcondition nenhuma
  */
 void printHeader(BTreeHeader *header) {
-    printf("--------------------\n");
-    printf("Root = %d\n", header->root);
-    printf("Node Quantity = %d\n", header->topPos);
-    printf("Free Nodes Root = %d\n", header->freeNodesRoot);
-    printf("--------------------\n");
+	printf("--------------------\n");
+	printf("Root = %d\n", header->root);
+	printf("Node Quantity = %d\n", header->topPos);
+	printf("Free Nodes Root = %d\n", header->freeNodesRoot);
+	printf("--------------------\n");
 }
 
 /**
@@ -717,43 +717,43 @@ void printHeader(BTreeHeader *header) {
  * @postcondition nenhuma
  */
 void printBTree(FILE *f) {
-    /// lê cabeçalho e raiz da árvore
-    BTreeHeader *header = readBTreeHeader(f);
-    BTreeNode *root = readBTreeNode(f, header->root);
-    /// cria fila
-    Queue *q = createQueue();
-    int nodeCount;
+	/// lê cabeçalho e raiz da árvore
+	BTreeHeader *header = readBTreeHeader(f);
+	BTreeNode *root = readBTreeNode(f, header->root);
+	/// cria fila
+	Queue *q = createQueue();
+	int nodeCount;
 
-    /// coloca raiz na fila
-    pushQ(q, root);
+	/// coloca raiz na fila
+	pushQ(q, root);
 
-    /// enquanto não se acabarem os nós
-    nodeCount = q->count;
-    while (nodeCount) {
-        /// printa os nós do nível atual na saida padrão
-        while (nodeCount) {
-            QNode *qNode = popQ(q);
-            BTreeNode *bTreeNode = (BTreeNode *) qNode->info;
+	/// enquanto não se acabarem os nós
+	nodeCount = q->count;
+	while (nodeCount) {
+		/// printa os nós do nível atual na saida padrão
+		while (nodeCount) {
+			QNode *qNode = popQ(q);
+			BTreeNode *bTreeNode = (BTreeNode *) qNode->info;
 
-            printBTreeNodeKeys(bTreeNode);
-            printf(" ");
+			printBTreeNodeKeys(bTreeNode);
+			printf(" ");
 
-            /// puxa os seus filhos para a fila
-            for (int i = 0; i <= bTreeNode->keyNum; ++i) {
-                if (bTreeNode->children[i] != -1)
-                    pushQ(q, readBTreeNode(f, bTreeNode->children[i]));
-            }
-            nodeCount--;
+			/// puxa os seus filhos para a fila
+			for (int i = 0; i <= bTreeNode->keyNum; ++i) {
+				if (bTreeNode->children[i] != -1)
+					pushQ(q, readBTreeNode(f, bTreeNode->children[i]));
+			}
+			nodeCount--;
 
-            free(qNode);
-            freeBTreeNode(bTreeNode);
-        }
-        printf("\n");
-        nodeCount = q->count;
-    }
+			free(qNode);
+			freeBTreeNode(bTreeNode);
+		}
+		printf("\n");
+		nodeCount = q->count;
+	}
 
-    freeBTreeNode(root);
-    deleteQueue(q);
+	freeBTreeNode(root);
+	deleteQueue(q);
 }
 
 /**
@@ -763,12 +763,12 @@ void printBTree(FILE *f) {
  * @postcondition nenhuma
  */
 void printBTreeNodeChildren(BTreeNode *node) {
-    printf("[");
-    for (int i = 0; i < node->keyNum; ++i) {
-        printf("%d,", node->children[i]);
-    }
-    printf("%d", node->children[node->keyNum]);
-    printf("]");
+	printf("[");
+	for (int i = 0; i < node->keyNum; ++i) {
+		printf("%d,", node->children[i]);
+	}
+	printf("%d", node->children[node->keyNum]);
+	printf("]");
 }
 
 /**
@@ -778,14 +778,14 @@ void printBTreeNodeChildren(BTreeNode *node) {
  * @postcondition nenhuma
  */
 void printBTreeNodeKeys(BTreeNode *node) {
-    printf("[");
-    if (node->keyNum) {
-        for (int i = 0; i < node->keyNum - 1; ++i) {
-            printf("%d,", node->keys[i].id);
-        }
-        printf("%d", node->keys[node->keyNum - 1]);
-    } else {
-        printf("!");
-    }
-    printf("]");
+	printf("[");
+	if (node->keyNum) {
+		for (int i = 0; i < node->keyNum - 1; ++i) {
+			printf("%d,", node->keys[i].id);
+		}
+		printf("%d", node->keys[node->keyNum - 1]);
+	} else {
+		printf("!");
+	}
+	printf("]");
 }

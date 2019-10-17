@@ -83,18 +83,23 @@ void Controller::updateState() {
                 case LW:
                 case SW:
                     this->state = MemoryAddressComputation;
+                    Machine::debugInfo("LW or SW Instruction detected", 3);
                     break;
                 case RTYPE:
+                    Machine::debugInfo("RTYPE Instruction detected", 3);
                     this->state = Execution;
                     break;
                 case BEQ:
                 case BNE:
+                    Machine::debugInfo("BEQ or BNE Instruction detected", 3);
                     this->state = BranchCompletion;
                     break;
                 case LI:
+                    Machine::debugInfo("LI Instruction detected", 3);
                     this->state = LoadImmediate;
                     break;
                 case J:
+                    Machine::debugInfo("JUMP Instruction detected", 3);
                     this->state = JumpCompletion;
                     break;
                 case NONE:
@@ -175,7 +180,7 @@ void Controller::updateState() {
             break;
         case JumpCompletion:
             this->PCWriteSignal->setValue(1);
-            this->PCSourceSignal->setValue(2);
+            this->PCSourceSignal->setValue(3);
 
             this->state = InstructionFetch;
             break;

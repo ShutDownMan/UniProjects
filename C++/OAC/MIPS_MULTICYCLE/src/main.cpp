@@ -17,16 +17,15 @@ int main(int argc, char const *argv[]) {
         return 1;
     }
 
+    Machine::debugInfo("Reading Instructions", 1);
     machine->initialize(argv[1], verbosity);
-
-    int i = 0;
 
     do {
         Machine::debugInfo("Clocking Machine", 1);
         machine->clock();
         printf("Type any key for the next clock\n"
-               "Press 'q' to quit");
-    } while (i++ < 128 && getchar_unlocked() != 'q');
+               "Press 'q' to quit\n");
+    } while (getchar_unlocked() != 'q');
 
     return 0;
 }
