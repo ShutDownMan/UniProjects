@@ -68,8 +68,11 @@ public class Main {
         /// Initializing database connection
         DBConnection.initialize();
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f2643318ad2feb0bb797e1050465a823bf58490f
         /// For each statement in the array
         for (String statement : statements) {
             System.out.println("[" + statement + "]");
