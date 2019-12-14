@@ -149,7 +149,7 @@ void Processor::initialize(unsigned char *memoryRef) {
     this->pcSourceMux->initialize(new INBus(this->alu->getOutBus()),
                                   new INBus(this->aluOut->getOutBus()),
                                   new INBus(this->pcShiftLeft2->getOutBus()),
-                                  nullptr,
+                                  new INBus(this->signExtend->getOutBus()),
                                   new INBus(this->controller->getPCSourceSignal()));
 }
 

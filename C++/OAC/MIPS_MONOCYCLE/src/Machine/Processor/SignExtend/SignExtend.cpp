@@ -28,7 +28,7 @@ void SignExtend::initialize(INBus *inBusRef) {
     this->inBus = inBusRef;
 }
 
-OUTBus *SignExtend::getOutBus() const {
+OUTBus *SignExtend::getOutputBus() const {
     return outBus;
 }
 

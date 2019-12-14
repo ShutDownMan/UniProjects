@@ -1,7 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e91343ae-a290-43b2-8a05-9cb5d0caedd3" name="Default Changelist" comment="" />
+    <list default="true" id="e91343ae-a290-43b2-8a05-9cb5d0caedd3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../MemoryTaggerSQL/MemoryTaggerSQL.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MemoryTaggerSQL/src/com/company/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MemoryTaggerSQL/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CompilerIdC/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.2/CompilerIdCXX/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/3.15.3/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Bus/INBus.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Bus/INBus.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Bus/OUTBus.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Bus/OUTBus.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Machine.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Machine.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ALU/ALU.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ALU/ALU.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ALUControl/ALUControl.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ALUControl/ALUControl.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Adder/Adder.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Adder/Adder.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/BranchControl/BranchControl.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/BranchControl/BranchControl.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Control/Control.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Control/Control.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/DataMemory/DataMemory.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/DataMemory/DataMemory.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/InstructionMemory/InstructionMemory.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/InstructionMemory/InstructionMemory.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/PCRegister/PCRegister.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/PCRegister/PCRegister.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Registers/Registers.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/Registers/Registers.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/CMakeFiles/Trabalho_1.dir/src/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/MIPS_MONOCYCLE.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/Trabalho_1" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/Trabalho_1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/BranchControl/BranchControl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/BranchControl/BranchControl.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/BranchControl/BranchControl.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/BranchControl/BranchControl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/InstructionMemory/InstructionMemory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/InstructionMemory/InstructionMemory.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/InstructionMemory/InstructionMemory.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/InstructionMemory/InstructionMemory.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Multiplexer/Multiplexer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Multiplexer/Multiplexer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Multiplexer/Multiplexer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Multiplexer/Multiplexer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/SignExtend/SignExtend.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/SignExtend/SignExtend.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/SignExtend/SignExtend.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/SignExtend/SignExtend.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MONOCYCLE/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/INBus.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/INBus.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/OUTBus.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/OUTBus.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Machine.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Machine.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALU/ALU.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALU/ALU.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALUController/ALUController.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALUController/ALUController.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/BranchController/BranchController.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/BranchController/BranchController.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Controller/Controller.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Controller/Controller.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Memory/Memory.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Memory/Memory.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Register/Register.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Register/Register.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Registers/Registers.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Registers/Registers.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/MIPS_MULTICYCLE.dir/src/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/MIPS_MULTICYCLE" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/MIPS_MULTICYCLE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/src/Machine/Processor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/src/Machine/Processor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/src/Machine/Processor/Controller/Controller.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/src/Machine/Processor/Controller/Controller.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/OAC/MIPS_MULTICYCLE/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C/AED/Trabalhos/BTree/BTree.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C/AED/Trabalhos/BTree/BTree.c" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +144,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../TGGER" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MemoryTagger" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -99,12 +187,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@185b50de" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@12333c50" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@185b50de" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@7147b33b" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@12333c50" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@9f6ca31" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -125,6 +213,7 @@
       <workItem from="1566167883796" duration="10139000" />
       <workItem from="1566180175592" duration="26560000" />
       <workItem from="1567696562136" duration="95000" />
+      <workItem from="1571754531284" duration="22000" />
     </task>
     <servers />
   </component>

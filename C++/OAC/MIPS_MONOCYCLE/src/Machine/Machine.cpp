@@ -17,12 +17,14 @@ Machine::Machine() {
 
 void Machine::clock() {
     debugInfo("================================================", 1);
-    Machine::debugInfo("Clocking Components", 2);
-    processor->clock();
+    Machine::debugInfo("Updating Raising Edge Components", 2);
+    processor->raisingEdge();
     debugInfo("------------------------------------------------", 2);
-    Machine::debugInfo("Updating IO", 2);
-    processor->updateIO();
+    Machine::debugInfo("Updating Passive Components", 2);
+    processor->passive();
     debugInfo("------------------------------------------------", 2);
+    Machine::debugInfo("Updating Falling Edge Components", 2);
+    processor->fallingEdge();
 
     Machine::debugInfo("Registers", 1);
     processor->printRegisters();

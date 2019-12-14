@@ -58,16 +58,20 @@ public:
 
     Multiplexer *memToRegMux = new Multiplexer();
 
-    Multiplexer *branchJumpSrcMux = new Multiplexer();
+    Multiplexer *branchMultiplexer = new Multiplexer();
+
+    Multiplexer *jumpMultiplexer = new Multiplexer();
 
 public:
     Processor();
 
     void initialize(unsigned int *instructionMemoryRef);
 
-    void clock();
+    void raisingEdge();
 
-    void updateIO();
+    void fallingEdge();
+
+    void passive();
 
     void printRegisters();
 

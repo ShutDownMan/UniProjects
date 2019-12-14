@@ -14,16 +14,6 @@ OUTBus.h
 
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.h
 
-/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.cpp
-Machine.h
-/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
-cstdlib
--
-iostream
--
-cstring
--
-
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
 cstdio
 -
@@ -73,6 +63,16 @@ Processor/BranchControl/BranchControl.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
 ../../Bus/OUTBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/BranchControl/BranchControl.cpp
+BranchControl.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/BranchControl/BranchControl.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
 
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/BranchControl/BranchControl.h
 ../../Bus/INBus.h
