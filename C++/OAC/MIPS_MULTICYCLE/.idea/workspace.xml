@@ -11,34 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4be89eb8-1342-430f-aac6-493db561f155" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/INBus.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/INBus.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/OUTBus.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Bus/OUTBus.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Machine.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Machine.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALU/ALU.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALU/ALU.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALUController/ALUController.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ALUController/ALUController.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/BranchController/BranchController.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/BranchController/BranchController.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Controller/Controller.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Controller/Controller.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Memory/Memory.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Memory/Memory.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Multiplexer/Multiplexer.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Register/Register.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Register/Register.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Registers/Registers.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/Registers/Registers.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/Machine/Processor/SignExtend/SignExtend.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MIPS_MULTICYCLE.dir/src/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MIPS_MULTICYCLE" beforeDir="false" afterPath="$PROJECT_DIR$/MIPS_MULTICYCLE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Machine/Processor/Controller/Controller.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="4be89eb8-1342-430f-aac6-493db561f155" name="Default Changelist" comment="" />
     <list id="76593ef6-a82e-4447-9b11-5e358fef409b" name="Noup" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,6 +103,7 @@
       <workItem from="1565833412416" duration="21510000" />
       <workItem from="1569501173626" duration="2364000" />
       <workItem from="1569524256782" duration="3021000" />
+      <workItem from="1576505656767" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="SW funcionando">
       <created>1565842896201</created>

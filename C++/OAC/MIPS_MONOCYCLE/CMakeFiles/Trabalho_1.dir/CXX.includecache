@@ -6,13 +6,31 @@
 
 #IncludeRegexTransform: 
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.cpp
+INBus.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
+
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
 strings.h
 -
 OUTBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.cpp
+OUTBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.cpp
+Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+cstdlib
+-
+iostream
+-
+cstring
+-
 
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
 cstdio
@@ -21,6 +39,14 @@ curses.h
 -
 Processor.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor.cpp
+cstring
+-
+Processor.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor.h
+Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
 
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor.h
 cstdio
@@ -50,13 +76,43 @@ Processor/DataMemory/DataMemory.h
 Processor/BranchControl/BranchControl.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/BranchControl/BranchControl.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ALU/ALU.cpp
+ALU.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ALU/ALU.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
+
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ALU/ALU.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ALUControl/ALUControl.cpp
+ALUControl.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ALUControl/ALUControl.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
+
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ALUControl/ALUControl.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Adder/Adder.cpp
+Adder.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Adder/Adder.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
 
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Adder/Adder.h
 ../../Bus/INBus.h
@@ -78,15 +134,45 @@ iostream
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Control/Control.cpp
+Control.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Control/Control.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
+
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Control/Control.h
 ../../Bus/OUTBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/DataMemory/DataMemory.cpp
+DataMemory.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/DataMemory/DataMemory.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+cstring
+-
+
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/DataMemory/DataMemory.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/InstructionMemory/InstructionMemory.cpp
+InstructionMemory.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/InstructionMemory/InstructionMemory.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
 
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/InstructionMemory/InstructionMemory.h
 ../../Bus/OUTBus.h
@@ -94,13 +180,43 @@ iostream
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Multiplexer/Multiplexer.cpp
+Multiplexer.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Multiplexer/Multiplexer.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
+
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Multiplexer/Multiplexer.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/PCRegister/PCRegister.cpp
+PCRegister.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/PCRegister/PCRegister.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
+
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/PCRegister/PCRegister.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Registers/Registers.cpp
+Registers.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Registers/Registers.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
 
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/Registers/Registers.h
 ../../Bus/INBus.h
@@ -108,13 +224,41 @@ iostream
 ../../Bus/OUTBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.h
 
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ShiftLeft2/ShiftLeft2.cpp
+ShiftLeft2.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ShiftLeft2/ShiftLeft2.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
+
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/ShiftLeft2/ShiftLeft2.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/SignExtend/SignExtend.cpp
+cstdint
+-
+SignExtend.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/SignExtend/SignExtend.h
+../../Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
+string
+-
+iostream
+-
 
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Processor/SignExtend/SignExtend.h
 ../../Bus/INBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/INBus.h
 ../../Bus/OUTBus.h
 /home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Bus/OUTBus.h
+
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/main.cpp
+iostream
+-
+Machine/Machine.h
+/home/jarvis/git_src/UniProjects/C++/OAC/MIPS_MONOCYCLE/src/Machine/Machine.h
 
