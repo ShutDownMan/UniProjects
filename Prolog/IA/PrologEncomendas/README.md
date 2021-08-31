@@ -1,4 +1,4 @@
-# README
+ README
 
 ## Prerequisitos para execução do programa:
 1. Verificar se o compilador `swipl` se encontra instalado e com seu executável nas variáveis de sistema.
