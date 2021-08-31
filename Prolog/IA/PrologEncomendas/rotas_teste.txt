@@ -1,0 +1,8 @@
+% regras de rota em prolog
+
+rota(b,c,200).
+rota(a,e,50).
+rota(a,b,100).
+rota(c,d,20).
+rota(e,c,30).
+rota(e,d,70).
