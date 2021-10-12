@@ -1,0 +1,17 @@
+pedro 6
+R camiseta 45.00 5
+R shorts 32.50 3
+C tenis 230.00 10
+R blusa_polo 85.00 7
+C sapatenis 200.00 10
+C pantufa 25.00 2
+maria 5
+C sandalia 132.50 9
+R biquini 100.00 10
+C sapato_salto 250.00 10
+C sapatilha 80.00 3
+R bata 85.00 7
+lucia 3
+C tenis 200.00 9
+C sandalia 200.00 9
+C sapato_salto 200.00 9

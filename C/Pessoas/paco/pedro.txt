@@ -1,0 +1,6 @@
+R 85.00 7 blusa_polo
+R 45.00 5 camiseta
+R 32.50 3 shorts
+C 200.00 10 sapatenis
+C 230.00 10 tenis
+C 25.00 2 pantufa

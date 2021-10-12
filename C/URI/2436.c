@@ -3,12 +3,12 @@
 
 void solveMatrix(int rows, int cols, int initY, int initX)
 {
-	int **mat = (int**) malloc(sizeof(int *) * rows);
+	int **mat = (int **)malloc(sizeof(int *) * rows);
 	int i, j;
 
 	for (i = 0; i < rows; ++i)
 	{
-		mat[i] = (int*) malloc(sizeof(int) * cols);
+		mat[i] = (int *)malloc(sizeof(int) * cols);
 		for (j = 0; j < cols; ++j)
 		{
 			scanf(" %d ", &mat[i][j]);

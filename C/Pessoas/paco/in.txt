@@ -1,0 +1,3 @@
+a correcao    consiste            , em    retirar brancos repetidos ,eliminar espacos e fazer ajustes nas pontuacoes .
+Sempre que for necessario ; o    texto deve ser corrigido .
+O destaque na   hora de corrigir    vale para todos os erros,independente    , do erro ; e fim.

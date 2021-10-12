@@ -1,0 +1,3 @@
+C 200.00 9 sandalia
+C 200.00 9 sapato_salto
+C 200.00 9 tenis

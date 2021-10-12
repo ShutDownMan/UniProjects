@@ -1,0 +1,5 @@
+R 100.00 10 biquini
+R 85.00 7 bata
+C 250.00 10 sapato_salto
+C 132.50 9 sandalia
+C 80.00 3 sapatilha
