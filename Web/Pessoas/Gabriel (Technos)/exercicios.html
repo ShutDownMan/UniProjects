@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<!-- Ex1: Mude a mensagem de alerta para algo mais calmo -->
+<!-- Ex2: Com javascript, mude o texto do botão -->
+<!-- Ex3: Com javascript, mude a cor de fundo do div com classe container -->
+<!-- Ex4: Com javascript, adicione um paragrafo junto ao botão -->
+<!-- Ex5: Com javascript, esconda o botão -->
+
+<!-- Desafio1: Com javascript, crie um segundo botão que recarrega a página -->
+
+<head>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            border: 3px solid rgb(0, 4, 255);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="center">
+            <button class="button" onclick="alertar()">ALERTAR!</button>
+        </div>
+    </div>
+
+    <script>
+        var mensagem_alerta = "Acorda!!"
+
+        function alertar() {
+            alert(mensagem_alerta)
+        }
+    </script>
+</body>
