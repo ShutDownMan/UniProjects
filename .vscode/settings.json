@@ -4,6 +4,7 @@
         "stdlib.h": "c",
         "stdio.h": "c",
         "tuple": "c",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "math.h": "c"
     }
 }
