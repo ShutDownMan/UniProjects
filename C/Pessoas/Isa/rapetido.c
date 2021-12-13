@@ -60,6 +60,7 @@ double repetido(double *valores, unsigned int qtd_numeros, unsigned int *qtd_rep
     }
 
     *qtd_repeticoes = contagem[0];
+    moda = contagem_val[0];
     /// pega a quantidade de repetições do número com maior frequência
     for(i = 1; i < contagem_tam; ++i) {
         if(contagem[i] > *qtd_repeticoes) {
