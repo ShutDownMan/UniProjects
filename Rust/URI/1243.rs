@@ -1,36 +1,44 @@
 use std::io;
 use std::convert::TryInto;
 
-fn is_word(text: &String) -> bool {
+fn validate_word(text: &String) -> Option<String> {
     let text = if text.ends_with(".") {
         text[..text.len() - 1].to_string()
     } else {
         text.to_string()
     };
 
-    !text.chars()
-        .any(|w| { !w.is_alphabetic() })
+    let is_word = text.len() > 0 && !text.chars()
+        .any(|w| { !w.is_alphabetic() });
+
+    if is_word {
+        Some(text)
+    } else {
+        None
+    }
 }
 
 fn get_code_level(text: &String) -> u32 {
     let words_lens = text
         .split_whitespace()
-        .map(|w| {
-            if is_word(&w.to_string()) {
-                w.len()
+        .filter_map(|w| {
+
+            if let Some(validate_word) = validate_word(&w.to_string()) {
+                Some(validate_word.len())
             } else {
-                0
+                None
             }
         })
         .collect::<Vec<usize>>();
     let avg_len: f32 = (words_lens.iter().sum::<usize>() as f32 / words_lens.len() as f32).try_into().unwrap();
 
+    // println!("{:?}", words_lens);
     // println!("{:?}", avg_len);
 
     match avg_len {
-        avg_len if avg_len <= 3.0 => { 250 },
-        avg_len if avg_len <= 5.0 => { 500 },
-        avg_len if avg_len >= 6.0 => { 1000 },
+        _ if avg_len <= 3.5 => { 250 },
+        _ if avg_len <= 5.0 => { 500 },
+        _ if avg_len >= 6.0 => { 1000 },
         _ => { 250 }
     }
 }
