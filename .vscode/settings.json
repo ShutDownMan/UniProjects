@@ -6,6 +6,12 @@
         "tuple": "c",
         "*.tcc": "cpp",
         "math.h": "c",
-        "lab.h": "c"
+        "lab.h": "c",
+        "array": "c",
+        "hash_map": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "valarray": "c"
     }
 }
