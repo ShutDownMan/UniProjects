@@ -2,109 +2,139 @@
 #include <stdlib.h>
 #include <string.h>
 
-unsigned int *get_substring_frequencies(char *in_str, unsigned int in_str_len);
-unsigned int *create_frequency_array(unsigned int size);
-unsigned int calculate_triangle_index(unsigned int size, unsigned int i, unsigned int j);
-unsigned int triangle(unsigned int n);
-unsigned int neigh(unsigned int size, unsigned int i, unsigned int j);
-void printf_tri_mat(unsigned int *mat, unsigned int size);
+#include "huffman.h"
 
 int main(int argc, char const *argv[])
 {
-	const char *input_str = "baobab";
+    HuffmanSettings *settings = parseSettings(argc, argv);
 
-	unsigned int in_str_len = strlen((char *)input_str);
-	unsigned int *freq_mat = get_substring_frequencies((char *)input_str, in_str_len);
+    printSettings(settings);
 
-	printf_tri_mat(freq_mat, in_str_len);
+    if (argc == 1 || !settings->filePath)
+    {
+        printf("Especifique o arquivo de entrada.\n");
+        printf("ex:\n");
+        printf("./huffman [-w -l] arquivo.txt\n");
+        return 1;
+    }
+
+    char exitCode = compressFile(settings);
+
+    if (exitCode)
+    {
+        printf("[%d] Não foi possível comprimir o arquivo\n", exitCode);
+    }
+
+    return 0;
 }
 
-unsigned int *get_substring_frequencies(char *in_str, unsigned int in_str_len)
+HuffmanSettings *parseSettings(int argc, char const *argv[])
 {
-	unsigned int i, j;
-	unsigned int triangle_index;
-	unsigned int *frequency_arr = create_frequency_array(in_str_len);
-	// printf("triangle(%d) = %d\n", 0, triangle(0));
+    HuffmanSettings *settings = (HuffmanSettings *)malloc(sizeof(HuffmanSettings));
 
-	for (i = 0; i < in_str_len; ++i)
-	{
-		for (j = i + 1; j < in_str_len; ++j)
-		{
-			triangle_index = calculate_triangle_index(in_str_len, i, j);
-			printf("[%d, %d] = %d\n", i, j, triangle_index);
-			if (in_str[i] == in_str[j])
-			{
-				frequency_arr[triangle_index] = 1;
+    settings->useWords = FALSE;
+    settings->useLFSS = FALSE;
+    settings->filePath = NULL;
 
-				if (i > 0 && j > 0)
-					frequency_arr[triangle_index] += frequency_arr[triangle_index - 1];
-			}
-			else
-			{
-				frequency_arr[triangle_index] = 0;
-			}
-		}
-	}
+    for (size_t i = 1; i < argc; i++)
+    {
+        size_t argLen = strlen(argv[i]);
+        if (argLen >= 2 && argv[i][0] == '-')
+        {
+            switch (argv[i][1])
+            {
+            case 'w':
+                settings->useWords = TRUE;
+                break;
+            case 'l':
+                settings->useLFSS = TRUE;
+                break;
 
-	return frequency_arr;
+            default:
+                break;
+            }
+        }
+        else if (argLen >= 1)
+        {
+            settings->filePath = (char *)malloc(sizeof(char) * argLen + 1);
+            strcpy(settings->filePath, argv[i]);
+        }
+    }
+
+    return settings;
 }
 
-unsigned int *create_frequency_array(unsigned int size)
+void printSettings(HuffmanSettings *settings)
 {
-	unsigned int i;
-	unsigned int *frequency_arr = (unsigned int *)malloc(sizeof(unsigned int) * size * size);
-
-	return frequency_arr;
+    printf("Usando palavras: %s\n", (settings->useWords) ? "Sim" : "Não");
+    printf("Usando LFSS: %s\n", (settings->useLFSS) ? "Sim" : "Não");
+    printf("Arquivo de Entrada: %s\n", settings->filePath);
 }
 
-unsigned int calculate_triangle_index(unsigned int size, unsigned int i, unsigned int j)
+int compressFile(HuffmanSettings *settings)
 {
-	int a = triangle(size - 1) - 1;
-	int b = - (triangle(size - j + i) - 1);
-	int c = i;
+    FILE *inputFile = fopen(settings->filePath, "r");
 
-	// printf("------------\n");
-	// printf("a = %d\n", a);
-	// printf("b = %d\n", b);
-	// printf("c = %d\n", c);
+    char *outputFileName = "compressed.hff"; // TODO
+    FILE *outputFile = fopen(outputFileName, "w");
 
-	// return	triangle(size - 1) - 1
-	// 		- triangle(i)
-	// 		- triangle(size - j) - 1;
+    if (!inputFile)
+    {
+        printf("Não foi posssível abrir o arquivo de entrada \"%s\"", settings->filePath);
+        return 1;
+    }
+    if (!outputFile)
+    {
+        printf("Não foi posssível abrir o arquivo de saida \"%s\"", outputFileName);
+        return 1;
+    }
 
-	return a + b + c;
+    if (settings->useWords)
+    {
+        printf("Funcionalidade não implementada.");
+        return 2;
+    }
+    else
+    {
+        int exitCode = compressFilebyChar(inputFile, outputFile, settings);
+        return exitCode;
+    }
 }
 
-unsigned int triangle(unsigned int n)
+int compressFilebyChar(FILE *inputFile, FILE *outputFile, HuffmanSettings *settings)
 {
-	return (n * (n + 1.0)) / 2.0;
+    if (settings->useLFSS)
+    {
+        printf("Funcionalidade não implementada.");
+        return 2;
+    }
+    else
+    {
+        char c;
+        char freqs[256] = {0};
+        while ((c = fgetc(inputFile)) != EOF)
+        {
+            freqs[(unsigned char)c]++;
+        }
+
+        for (size_t i = 0; i < 256; i++)
+        {
+            if (freqs[i])
+            {
+                printf("[%c] - %d\n", (char)i, freqs[i]);
+            }
+        }
+
+        HuffTreeChar *huffTree = generateHuffTreeFromCharFreq(freqs);
+    }
 }
 
-unsigned int neigh(unsigned int size, unsigned int i, unsigned int j)
+HuffTreeChar *generateHuffTreeFromCharFreq(char *freqs)
 {
-	return size - j + i;
-}
+    HuffTreeChar *htChar = (HuffTreeChar *)malloc(sizeof(HuffTreeChar));
 
-void printf_tri_mat(unsigned int *mat, unsigned int size)
-{
-	unsigned int i, j;
-	unsigned int triangle_index;
-	printf("size = %d\n", size);
+    htChar->tree = (HuffTreeCharNode *)malloc(sizeof(HuffTreeCharNode) * 2);
 
-	for (i = 0; i < size; ++i)
-	{
-		for (j = 0; j < size; ++j)
-		{
-			if (j > i)
-			{
-				triangle_index = calculate_triangle_index(size, i, j);
-				printf("%2d ", mat[triangle_index]);
-			}
-			else
-			{
-				printf("%2d ", 0);
-			}
-		}
-		printf("\n");
-	}
+    
+
 }
