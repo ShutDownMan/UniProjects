@@ -111,12 +111,13 @@ int compressFilebyChar(FILE *inputFile, FILE *outputFile, HuffmanSettings *setti
     else
     {
         char c;
-        char freqs[256] = {0};
+        size_t freqs[256] = {0};
         while ((c = fgetc(inputFile)) != EOF)
         {
-            freqs[(unsigned char)c]++;
+            freqs[(size_t)c]++;
         }
 
+        // print freqs
         for (size_t i = 0; i < 256; i++)
         {
             if (freqs[i])
@@ -125,16 +126,99 @@ int compressFilebyChar(FILE *inputFile, FILE *outputFile, HuffmanSettings *setti
             }
         }
 
-        HuffTreeChar *huffTree = generateHuffTreeFromCharFreq(freqs);
+        QueueChar *queue = generateQueueFromCharFreq(freqs);
+        HuffTreeChar *huffTree = generateHuffTreeFromCharQueue(queue);
+    }
+
+    return 0;
+}
+
+QueueChar *generateQueueFromCharFreq(size_t freqs[256])
+{
+    size_t sortedIdx[256] = {0};
+    size_t i = 0;
+
+    printf("--------------------\n");
+    while ((sortedIdx[i] = i) < 256)
+    {
+        if (freqs[sortedIdx[i]])
+        {
+            printf("[%d] - %d\n", i, freqs[sortedIdx[i]]);
+        }
+        i++;
+    }
+
+    charQuickSortIndex(freqs, sortedIdx, 0, 255);
+
+    // print freqs sorted ids
+    printf("--------------------\n");
+    for (size_t i = 0; i < 256; i++)
+    {
+        if (freqs[sortedIdx[i]])
+        {
+            printf("[%d] - %d\n", sortedIdx[i], freqs[sortedIdx[i]]);
+        }
     }
 }
 
-HuffTreeChar *generateHuffTreeFromCharFreq(char *freqs)
+/**
+    @brief ordena inteiros pelo método QuickSort
+    @param vet vetor de inteiros
+    @param left limite esquerdo do vetor
+    @param right limite direito do vetor
+    @precondition nenhuma
+    @postcondition vetor é ordenado em ordem crescente
+*/
+void charQuickSortIndex(size_t vet[], size_t vetIdx[], size_t left, size_t right)
+{
+    size_t j;
+    if (left < right)
+    {
+        j = charSeparate(vet, vetIdx, left, right);
+        charQuickSortIndex(vet, vetIdx, left, j - 1);
+        charQuickSortIndex(vet, vetIdx, j + 1, right);
+    }
+}
+
+/**
+    @brief função auxiliar de QuickSort
+    @param vet vetor de inteiros
+    @param left limite esquerdo
+    @param right limite direito
+    @precondition nenhuma
+    @postcondition vetor é manipulado com referência a um pivô
+*/
+int charSeparate(size_t vet[], size_t vetIdx[], size_t left, size_t right)
+{
+    size_t pivo, pivoIdx, j, k, temp;
+
+    pivo = vet[right];
+    pivoIdx = vetIdx[right];
+    j = left;
+    for (k = left; k < right; k++)
+    {
+        if (vet[k] <= pivo)
+        {
+            temp = vet[j];
+            vet[j] = vet[k];
+            vet[k] = temp;
+            temp = vetIdx[j];
+            vetIdx[j] = vetIdx[k];
+            vetIdx[k] = temp;
+            j++;
+        }
+    }
+    vet[right] = vet[j];
+    vet[j] = pivo;
+    vetIdx[right] = vetIdx[j];
+    vetIdx[j] = pivoIdx;
+
+    return j;
+}
+
+HuffTreeChar *generateHuffTreeFromCharQueue(QueueChar *queue)
 {
     HuffTreeChar *htChar = (HuffTreeChar *)malloc(sizeof(HuffTreeChar));
 
-    htChar->tree = (HuffTreeCharNode *)malloc(sizeof(HuffTreeCharNode) * 2);
-
-    
-
+    // htChar->tree = (Symbol *)malloc(sizeof(HuffTreeCharNode) * 2);
 }

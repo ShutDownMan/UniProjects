@@ -17,20 +17,34 @@ void printSettings(HuffmanSettings *settings);
 int compressFile(HuffmanSettings *settings);
 int compressFilebyChar(FILE *inputFile, FILE *outputFile, HuffmanSettings *settings);
 
-typedef struct HuffTreeChar
-{
-    HuffTreeCharNode *tree;
-} HuffTreeChar;
-
-typedef struct HuffTreeCharNode
+typedef struct CharSymbol
 {
     unsigned char symbol;
     size_t freq;
-} HuffTreeCharNode;
-
-HuffTreeChar *generateHuffTreeFromCharFreq(char *freqs);
+} CharSymbol;
 
 
+typedef struct QueueChar
+{
+    CharSymbol *symbol;
+    struct QueueChar *next;
+} QueueChar;
 
+QueueChar *generateQueueFromCharFreq(size_t *freqs);
+
+void charQuickSortIndex(size_t vet[], size_t vetIdx[], size_t left, size_t right);
+int charSeparate(size_t vet[], size_t vetIdx[], size_t left, size_t right);
+
+typedef struct HuffTreeChar
+{
+    CharSymbol *tree;
+
+    struct HuffTreeChar *leftChild;
+    struct HuffTreeChar *rightChild;
+
+
+} HuffTreeChar;
+
+HuffTreeChar *generateHuffTreeFromCharQueue(QueueChar *queue);
 
 #endif
