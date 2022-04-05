@@ -464,7 +464,7 @@ int main(int argc, char const *argv[])
 
 /*
 
-    short tam_cod;  // tamanho do c¢digo em bits
-    short *cod;     // array com bytes contendo o c¢digo do simbolo
+    short tam_cod;  // tamanho do cï¿½digo em bits
+    short *cod;     // array com bytes contendo o cï¿½digo do simbolo
 
 */
