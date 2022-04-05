@@ -1,0 +1,1 @@
+clear && gcc -g -lm huffman.c huffman_char.c && gdb -ex=r --args ./a.out arquivo_de_entrada.txt
