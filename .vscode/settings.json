@@ -12,6 +12,12 @@
         "string_view": "c",
         "initializer_list": "c",
         "utility": "c",
-        "valarray": "c"
+        "valarray": "c",
+        "random": "c",
+        "huffman_char.h": "c",
+        "system_error": "c",
+        "string.h": "c",
+        "huffman_char_file.h": "c",
+        "symbol_code.h": "c"
     }
 }
